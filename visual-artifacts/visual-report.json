@@ -1,0 +1,16 @@
+{
+  "url": "http://localhost:4173",
+  "reference": "docs/layout-reference.png",
+  "screenshot": "visual-artifacts/homepage-fitted.png",
+  "diff": "visual-artifacts/visual-diff.png",
+  "width": 693,
+  "height": 3182,
+  "numDiffPixels": 774418,
+  "mismatchRatio": 0.3512,
+  "matchPercent": 64.88,
+  "preprocessing": {
+    "grayscale": true,
+    "blur": 1.5,
+    "downscale": 0.5
+  }
+}

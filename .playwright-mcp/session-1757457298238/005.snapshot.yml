@@ -1,0 +1,776 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "логотип Мастерская гранита" [ref=e6] [cursor=pointer]:
+            - /url: index.php
+            - img "логотип Мастерская гранита" [ref=e7]
+          - paragraph [ref=e8]: Производитель памятников из гранита и мрамора в Ростове-на-Дону и области
+        - generic [ref=e9]:
+          - img [ref=e11]
+          - generic [ref=e13]:
+            - text: "Шоурум: Ростов-на-Дону ул. Орбитальная 1в"
+            - button "Показать на карте" [ref=e15]
+        - link "Скачать каталог с ценами" [ref=e17] [cursor=pointer]:
+          - /url: "#getcatalog"
+          - generic [ref=e18]:
+            - text: Скачать каталог с ценами
+            - img [ref=e19]
+        - generic [ref=e22]:
+          - paragraph [ref=e23]:
+            - text: Есть вопрос?
+            - text: Задайте его нашему менеджеру онлайн
+          - generic [ref=e24]:
+            - link "telegram" [ref=e25] [cursor=pointer]:
+              - /url: tg://resolve?domain=MasterskaiaGranita
+              - img [ref=e26]
+            - link "WhatsApp" [ref=e28] [cursor=pointer]:
+              - /url: https://wa.me/79286247616?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20
+              - img [ref=e29]
+        - generic [ref=e31]:
+          - paragraph [ref=e32]: Звоните, ежедневно 9:00 - 18:00
+          - link "+7 (928) 624-76-16" [ref=e33] [cursor=pointer]:
+            - /url: tel:+79286247616
+          - button "Заказать обратный звонок" [ref=e34] [cursor=pointer]:
+            - generic [ref=e35]: Заказать обратный звонок
+      - navigation [ref=e36]:
+        - list [ref=e37]:
+          - listitem [ref=e38]:
+            - link "услуги" [ref=e39] [cursor=pointer]:
+              - /url: "#improvement"
+          - listitem [ref=e40]:
+            - link "Каталог" [ref=e41] [cursor=pointer]:
+              - /url: "#catalog"
+          - listitem [ref=e42]:
+            - link "Гарантии" [ref=e43] [cursor=pointer]:
+              - /url: "#warranty"
+          - listitem [ref=e44]:
+            - link "Портфолио" [ref=e45] [cursor=pointer]:
+              - /url: "#portfolio"
+          - listitem [ref=e46]:
+            - link "Отзывы" [ref=e47] [cursor=pointer]:
+              - /url: "#comment"
+          - listitem [ref=e48]:
+            - link "О компании" [ref=e49] [cursor=pointer]:
+              - /url: "#about"
+          - listitem [ref=e50]:
+            - link "Контроль качества" [ref=e51] [cursor=pointer]:
+              - /url: "#control"
+          - listitem [ref=e52]:
+            - link "Контакты" [ref=e53] [cursor=pointer]:
+              - /url: "#contacts"
+  - generic [ref=e54]:
+    - generic [ref=e56]:
+      - heading "Памятник из мрамора по цене производителя" [level=1] [ref=e57]
+      - paragraph [ref=e58]: с установкой и гарантией 50 лет
+      - list [ref=e59]:
+        - listitem [ref=e60]: Собственное производство
+        - listitem [ref=e61]: 0% рассрочка на 6 месяцев
+        - listitem [ref=e62]: Бесплатная доставка
+        - listitem [ref=e63]: 5% скидка пенсионерам
+        - listitem [ref=e64]: Без предоплаты
+      - link "подобрать памятник и рассчитать стоимость" [ref=e65] [cursor=pointer]:
+        - /url: "#quiz"
+        - generic [ref=e68]: подобрать памятник и рассчитать стоимость
+    - main [ref=e69]:
+      - generic [ref=e73]:
+        - paragraph [ref=e74]: Всего за 1 минуту
+        - heading "Получите бесплатно подборку из 5 вариантов памятника под ваш бюджет" [level=2] [ref=e75]
+        - paragraph [ref=e76]: и 1 из 3х подарков на выбор
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - paragraph [ref=e82]:
+              - generic [ref=e83]: Вопрос 1
+              - text: из 7
+            - generic [ref=e84]:
+              - generic [ref=e85]:
+                - heading "Какой тип памятника вам нужен?" [level=3] [ref=e86]
+                - generic [ref=e87]:
+                  - generic [ref=e88]:
+                    - radio [ref=e89] [cursor=pointer]
+                    - generic [ref=e90]:
+                      - img "одинарный памятник" [ref=e92]
+                      - generic [ref=e93]:
+                        - img [ref=e95]
+                        - paragraph [ref=e97]: Одинарный
+                  - generic [ref=e98]:
+                    - radio [ref=e99] [cursor=pointer]
+                    - generic [ref=e100]:
+                      - img "Двойной памятник" [ref=e102]
+                      - generic [ref=e103]:
+                        - img [ref=e105]
+                        - paragraph [ref=e107]: Двойной
+                  - generic [ref=e108]:
+                    - radio [ref=e109] [cursor=pointer]
+                    - generic [ref=e110]:
+                      - img "Комплекс" [ref=e112]
+                      - generic [ref=e113]:
+                        - img [ref=e115]
+                        - paragraph [ref=e117]: Комплекс
+              - text: ✔
+            - generic [ref=e118]:
+              - generic [ref=e119]: Выберите вариант ответа и нажмите кнопку “Далее”
+              - button "Далее Ответьте на вопрос выше" [disabled] [ref=e121]:
+                - generic [ref=e124]: Далее
+                - generic [ref=e125]: Ответьте на вопрос выше
+          - paragraph [ref=e127]: Отвечайте на вопросы и получите подборку из 5 вариантов памятника под ваш бюджет + подарок
+      - generic [ref=e128]:
+        - heading "Оказываем все виды услуг по благоустройству мест захоронения" [level=2] [ref=e129]
+        - list [ref=e130]:
+          - listitem [ref=e131] [cursor=pointer]:
+            - paragraph [ref=e132]: "01"
+            - paragraph [ref=e133]: наши услуги
+            - generic [ref=e134]:
+              - heading "Изготовление памятников из гранита и мрамора" [level=3] [ref=e136]
+              - generic [ref=e137]:
+                - text: Комплексное благоустройство мест захоронения
+                - list [ref=e138]:
+                  - listitem [ref=e139]: Установка поребрика по периметру места захоронения
+                  - listitem [ref=e140]: Демонтаж любой сложности
+                  - listitem [ref=e141]: Подкраска, снятие грунта, подсыпка песка, правка и ремонт текста из накладных букв и сусального золота.
+                  - listitem [ref=e142]: Укладка плотной изоляции под щебень, подсыпка щебня
+                  - listitem [ref=e143]: Установка оград (гранитных, металлических, из нержавеющей стали)
+                  - listitem [ref=e144]: Укладка плитки
+          - listitem [ref=e145] [cursor=pointer]:
+            - paragraph [ref=e146]: "02"
+            - paragraph [ref=e147]: наши услуги
+            - generic [ref=e148]:
+              - heading "Установка памятников" [level=3] [ref=e150]
+              - generic [ref=e151]:
+                - text: Комплексное благоустройство мест захоронения
+                - list [ref=e152]:
+                  - listitem [ref=e153]: Установка поребрика по периметру места захоронения
+                  - listitem [ref=e154]: Демонтаж любой сложности
+                  - listitem [ref=e155]: Подкраска, снятие грунта, подсыпка песка, правка и ремонт текста из накладных букв и сусального золота.
+                  - listitem [ref=e156]: Укладка плотной изоляции под щебень, подсыпка щебня
+                  - listitem [ref=e157]: Установка оград (гранитных, металлических, из нержавеющей стали)
+                  - listitem [ref=e158]: Укладка плитки
+                  - listitem [ref=e159]: Стяжка цементом через армированную сетку
+                  - listitem [ref=e160]: Иные необходимые виды работ любой сложности
+          - listitem [ref=e161] [cursor=pointer]:
+            - paragraph [ref=e162]: "03"
+            - paragraph [ref=e163]: наши услуги
+            - generic [ref=e164]:
+              - heading "Изготовление ритуальной мебели (ограды, столы, лавочки)" [level=3] [ref=e166]
+              - generic [ref=e167]:
+                - text: Комплексное благоустройство мест захоронения
+                - list [ref=e168]:
+                  - listitem [ref=e169]: Установка поребрика по периметру места захоронения
+                  - listitem [ref=e170]: Демонтаж любой сложности
+                  - listitem [ref=e171]: Подкраска, снятие грунта, подсыпка песка, правка и ремонт текста из накладных букв и сусального золота.
+                  - listitem [ref=e172]: Укладка плотной изоляции под щебень, подсыпка щебня
+                  - listitem [ref=e173]: Установка оград (гранитных, металлических, из нержавеющей стали)
+                  - listitem [ref=e174]: Укладка плитки
+          - listitem [ref=e175] [cursor=pointer]:
+            - paragraph [ref=e176]: "04"
+            - paragraph [ref=e177]: наши услуги
+            - generic [ref=e178]:
+              - heading "Благоустройство места захоронения" [level=3] [ref=e180]:
+                - text: Благоустройство места
+                - text: захоронения
+              - generic [ref=e181]:
+                - text: Комплексное благоустройство мест захоронения
+                - list [ref=e182]:
+                  - listitem [ref=e183]: Установка поребрика по периметру места захоронения
+                  - listitem [ref=e184]: Демонтаж любой сложности
+                  - listitem [ref=e185]: Подкраска, снятие грунта, подсыпка песка, правка и ремонт текста из накладных букв и сусального золота.
+                  - listitem [ref=e186]: Укладка плотной изоляции под щебень, подсыпка щебня
+                  - listitem [ref=e187]: Установка оград (гранитных, металлических, из нержавеющей стали)
+                  - listitem [ref=e188]: Укладка плитки
+                  - listitem [ref=e189]: Стяжка цементом через армированную сетку
+                  - listitem [ref=e190]: Иные необходимые виды работ любой сложности
+      - generic [ref=e192]:
+        - heading "Производим все виды памятников любой сложности" [level=2] [ref=e193]
+        - generic [ref=e194]:
+          - paragraph [ref=e196]: Выберите категорию
+          - button "Одинарный" [ref=e197]
+          - button "Двойной" [ref=e198]
+          - button "Коплексы" [ref=e199]
+          - button "Ограды" [ref=e200]
+          - text: ✔
+        - generic [ref=e202]:
+          - list [ref=e203]:
+            - listitem [ref=e204]:
+              - generic [ref=e205]: Эконом
+              - img "изображение памятника" [ref=e207]
+              - generic [ref=e208]:
+                - paragraph [ref=e209]: "Памятник: ОП-01"
+                - generic [ref=e210]:
+                  - generic [ref=e211]: "Материал: Гранит"
+                  - generic [ref=e212]: "Цвет: Черный"
+                - generic [ref=e213]:
+                  - paragraph [ref=e214]: 35 000 руб
+                  - paragraph [ref=e215]: 40 000 руб
+                - generic [ref=e216]:
+                  - button "заказать" [ref=e217]:
+                    - generic [ref=e218]: заказать
+                  - link "в калькулятор" [ref=e219] [cursor=pointer]:
+                    - /url: "#quiz"
+            - listitem [ref=e220]:
+              - generic [ref=e221]: VIP
+              - img "изображение памятника" [ref=e223]
+              - generic [ref=e224]:
+                - paragraph [ref=e225]: "Памятник: ОП-02"
+                - generic [ref=e226]:
+                  - generic [ref=e227]: "Материал: Мрамор"
+                  - generic [ref=e228]: "Цвет: Серый"
+                - generic [ref=e229]:
+                  - paragraph [ref=e230]: 30 000 руб
+                  - paragraph [ref=e231]: 35 000 руб
+                - generic [ref=e232]:
+                  - button "заказать" [ref=e233]:
+                    - generic [ref=e234]: заказать
+                  - link "в калькулятор" [ref=e235] [cursor=pointer]:
+                    - /url: "#quiz"
+            - listitem [ref=e236]:
+              - generic [ref=e237]: VIP
+              - img "изображение памятника" [ref=e239]
+              - generic [ref=e240]:
+                - paragraph [ref=e241]: "Памятник: ОП-03"
+                - generic [ref=e242]:
+                  - generic [ref=e243]: "Материал: Гранит"
+                  - generic [ref=e244]: "Цвет: Черный"
+                - generic [ref=e245]:
+                  - paragraph [ref=e246]: 51 000 руб
+                  - paragraph [ref=e247]: 56 000 руб
+                - generic [ref=e248]:
+                  - button "заказать" [ref=e249]:
+                    - generic [ref=e250]: заказать
+                  - link "в калькулятор" [ref=e251] [cursor=pointer]:
+                    - /url: "#quiz"
+            - listitem [ref=e252]:
+              - generic [ref=e253]: Эконом
+              - img "изображение памятника" [ref=e255]
+              - generic [ref=e256]:
+                - paragraph [ref=e257]: "Памятник: ОП-04"
+                - generic [ref=e258]:
+                  - generic [ref=e259]: "Материал: Мрамор"
+                  - generic [ref=e260]: "Цвет: Серый"
+                - generic [ref=e261]:
+                  - paragraph [ref=e262]: 26 500 руб
+                  - paragraph [ref=e263]: 30 000 руб
+                - generic [ref=e264]:
+                  - button "заказать" [ref=e265]:
+                    - generic [ref=e266]: заказать
+                  - link "в калькулятор" [ref=e267] [cursor=pointer]:
+                    - /url: "#quiz"
+            - listitem [ref=e268]:
+              - generic [ref=e269]: VIP
+              - img "изображение памятника" [ref=e271]
+              - generic [ref=e272]:
+                - paragraph [ref=e273]: "Памятник: ОП-05"
+                - generic [ref=e274]:
+                  - generic [ref=e275]: "Материал: Гранит"
+                  - generic [ref=e276]: "Цвет: Черный"
+                - paragraph [ref=e278]: Цена договорная
+                - generic [ref=e279]:
+                  - button "заказать" [ref=e280]:
+                    - generic [ref=e281]: заказать
+                  - link "в калькулятор" [ref=e282] [cursor=pointer]:
+                    - /url: "#quiz"
+            - listitem [ref=e283]:
+              - generic [ref=e284]: VIP
+              - img "изображение памятника" [ref=e286]
+              - generic [ref=e287]:
+                - paragraph [ref=e288]: "Памятник: ОП-06"
+                - generic [ref=e289]:
+                  - generic [ref=e290]: "Материал: Гранит"
+                  - generic [ref=e291]: "Цвет: Черный"
+                - paragraph [ref=e293]: Цена договорная
+                - generic [ref=e294]:
+                  - button "заказать" [ref=e295]:
+                    - generic [ref=e296]: заказать
+                  - link "в калькулятор" [ref=e297] [cursor=pointer]:
+                    - /url: "#quiz"
+          - button "Посмотреть еще" [ref=e298] [cursor=pointer]:
+            - generic [ref=e299]:
+              - text: Посмотреть еще
+              - img [ref=e300]
+      - generic [ref=e305]:
+        - heading "Не нашли подходящий памятник? Уверены, он есть в новом каталоге" [level=2] [ref=e306]
+        - generic [ref=e307]:
+          - generic [ref=e308]:
+            - text: Выберите категорию памятника
+            - generic [ref=e310]:
+              - combobox [ref=e311] [cursor=pointer]:
+                - text: Памятники из гранита
+                - listbox:
+                  - option "✔Памятники из гранита" [ref=e312]
+                  - option "Памятники из мрамора" [ref=e313]
+              - option "Памятники из гранита" [selected]
+              - option "Памятники из мрамора"
+          - generic [ref=e314]:
+            - text: Куда прислать каталог?
+            - generic [ref=e315]:
+              - generic [ref=e317]:
+                - combobox [ref=e318] [cursor=pointer]:
+                  - text: whats app
+                  - listbox:
+                    - option "✔whats app" [ref=e319]
+                    - option "telegram" [ref=e320]
+                - option "whats app" [selected]
+                - option "telegram"
+              - img [ref=e323]
+          - generic [ref=e325]:
+            - text: Введите номер Вашего телефона
+            - textbox "Введите номер Вашего телефона" [ref=e326]:
+              - /placeholder: + 7 (_ _ _) _ _ _ - _ _ - _ _
+          - button "получить каталог сейчас" [ref=e327]:
+            - generic [ref=e330]: получить каталог сейчас
+          - generic [ref=e333]: Нажимая кнопку вы соглашаетесь с условиями Политики конфиденциальности
+      - generic [ref=e334]:
+        - img "Портфолио"
+        - heading "Наши бригады работают в любое время года" [level=2] [ref=e335]
+        - paragraph [ref=e336]: Посмотрите на их работу
+        - generic [ref=e338]:
+          - button "Previous slide" [disabled] [ref=e339]:
+            - img [ref=e340]
+          - button "Next slide" [ref=e343]:
+            - img [ref=e344]
+          - generic [ref=e347]:
+            - list [ref=e348]:
+              - group "1 / 9" [ref=e349]:
+                - link [ref=e350] [cursor=pointer]:
+                  - /url: media/img/works/01.jpg
+                - button [ref=e351]:
+                  - img [ref=e352]
+                - generic [ref=e355]:
+                  - heading "Гранитный комплекс" [level=3] [ref=e356]
+                  - generic [ref=e357]: Гранитный комплекс с индивидуальным дизайном
+              - group "2 / 9" [ref=e358]:
+                - link [ref=e359] [cursor=pointer]:
+                  - /url: media/img/works/02.jpg
+                - button [ref=e360]:
+                  - img [ref=e361]
+                - generic [ref=e364]:
+                  - heading "Гранитный манумент" [level=3] [ref=e365]
+                  - generic [ref=e366]: Гранитный манумент войнам погибшим во время СВО
+              - group "3 / 9" [ref=e367]:
+                - link [ref=e368] [cursor=pointer]:
+                  - /url: media/img/works/03.jpg
+                - button [ref=e369]:
+                  - img [ref=e370]
+                - generic [ref=e373]:
+                  - heading "Гранитный памятник" [level=3] [ref=e374]
+                  - generic [ref=e375]: Гранитный памятник + полноразмерный гранитный мяч
+              - group "4 / 9" [ref=e376]:
+                - link [ref=e377] [cursor=pointer]:
+                  - /url: media/img/works/04.jpg
+                - button [ref=e378]:
+                  - img [ref=e379]
+                - generic [ref=e382]:
+                  - heading "Грантиный памятник" [level=3] [ref=e383]
+                  - generic [ref=e384]: Гранитный памятник на троих, бетонное основание мраморная крошка
+              - group "5 / 9" [ref=e385]:
+                - link [ref=e386] [cursor=pointer]:
+                  - /url: media/img/works/05.jpg
+                - button [ref=e387]:
+                  - img [ref=e388]
+                - generic [ref=e391]:
+                  - heading "Гранитный памятник" [level=3] [ref=e392]
+                  - generic [ref=e393]: Гранитный памятник под навесом облагорожен тротуарной плиткой
+              - group "6 / 9" [ref=e394]:
+                - link [ref=e395] [cursor=pointer]:
+                  - /url: media/img/works/06.jpg
+                - button [ref=e396]:
+                  - img [ref=e397]
+                - generic [ref=e400]:
+                  - heading "Гранитный памятник" [level=3] [ref=e401]
+                  - generic [ref=e402]: Гранитный памятник с элементами скульптуры
+              - group "7 / 9" [ref=e403]:
+                - link [ref=e404] [cursor=pointer]:
+                  - /url: media/img/works/07.jpg
+                - button [ref=e405]:
+                  - img [ref=e406]
+                - generic [ref=e409]:
+                  - heading "Комплекс мраморный" [level=3] [ref=e410]
+                  - generic [ref=e411]: Комплекс мраморный
+              - group "8 / 9" [ref=e412]:
+                - link [ref=e413] [cursor=pointer]:
+                  - /url: media/img/works/08.jpg
+                - button [ref=e414]:
+                  - img [ref=e415]
+                - generic [ref=e418]:
+                  - heading "Гранитный памятник" [level=3] [ref=e419]
+                  - generic [ref=e420]: Памятник из красного гранита с черной вставкой под портрет
+              - group "9 / 9" [ref=e421]:
+                - link [ref=e422] [cursor=pointer]:
+                  - /url: media/img/works/09.jpg
+                - button [ref=e423]:
+                  - img [ref=e424]
+                - generic [ref=e427]:
+                  - heading "Гранитный памятник" [level=3] [ref=e428]
+                  - generic [ref=e429]: Памятник из дымовчкого гранита, буквы позолоченны
+            - generic [ref=e430]:
+              - button "Go to slide 1" [ref=e431] [cursor=pointer]
+              - button "Go to slide 2" [ref=e432] [cursor=pointer]
+              - button "Go to slide 3" [ref=e433] [cursor=pointer]
+              - button "Go to slide 4" [ref=e434] [cursor=pointer]
+              - button "Go to slide 5" [ref=e435] [cursor=pointer]
+              - button "Go to slide 6" [ref=e436] [cursor=pointer]
+              - button "Go to slide 7" [ref=e437] [cursor=pointer]
+      - generic [ref=e440]:
+        - heading "Разработаем индивидуальный дизайн и оформим памятник по вашему желанию" [level=2] [ref=e442]
+        - list [ref=e444]:
+          - listitem [ref=e445]:
+            - img "графировка портрета" [ref=e447]
+            - generic [ref=e448]:
+              - paragraph [ref=e449]: "01"
+              - heading "Портрет" [level=3] [ref=e450]
+              - paragraph [ref=e451]: Нанесем фото при помощи гравировки или напечатаем на керамической заготовке
+          - listitem [ref=e452]:
+            - img "позолоченные буквы" [ref=e454]
+            - generic [ref=e455]:
+              - paragraph [ref=e456]: "02"
+              - heading "Сусальное золото" [level=3] [ref=e457]
+              - paragraph [ref=e458]: Подчеркнем ваше особое отношение к усопшему и покроем элементы помятника позолотой
+          - listitem [ref=e459]:
+            - img "памятник из 2ух видов камня" [ref=e461]
+            - generic [ref=e462]:
+              - paragraph [ref=e463]: "03"
+              - heading "Облицовка" [level=3] [ref=e464]
+              - paragraph [ref=e465]: Соединим несколько видов камня в оформлении, чтобы показать эксклюзивность памятника
+          - listitem [ref=e466]:
+            - img "выгравированный крест" [ref=e468]
+            - generic [ref=e469]:
+              - paragraph [ref=e470]: "04"
+              - heading "Религиозная символика" [level=3] [ref=e471]
+              - paragraph [ref=e472]: Сделаем выгравированный объемный крест или полумесяц, если усопший был религиозным и добавим эпитафию
+          - listitem [ref=e473]:
+            - img "Плита на надгробии" [ref=e475]
+            - generic [ref=e476]:
+              - paragraph [ref=e477]: "05"
+              - heading "Плита на надгробии" [level=3] [ref=e478]
+              - paragraph [ref=e479]: Плита из бетона или гранита сделает могилу на кладбище более ухоженной
+          - listitem [ref=e480]:
+            - img "декор памятника" [ref=e482]
+            - generic [ref=e483]:
+              - paragraph [ref=e484]: "06"
+              - heading "Декор" [level=3] [ref=e485]
+              - paragraph [ref=e486]: Контрастные мраморные фигуры или статуи – например, ангелы или голуби – украсят стелу
+      - generic [ref=e489]:
+        - heading "Не знаете что именно хотите заказать? Оставьте нам свой номер телефона для бесплатной консультации." [level=2] [ref=e490]:
+          - generic [ref=e491]: Не знаете что именно хотите заказать?
+          - text: Оставьте нам свой
+          - text: номер телефона для бесплатной консультации.
+        - generic [ref=e492]:
+          - generic [ref=e493]:
+            - generic [ref=e494]:
+              - text: Введите номер Вашего телефона
+              - textbox "Введите номер Вашего телефона" [ref=e495]:
+                - /placeholder: + 7 (_ _ _) _ _ _ - _ _ - _ _
+            - button "перезвоните мне" [ref=e496]:
+              - generic [ref=e499]: перезвоните мне
+          - generic [ref=e502]: Нажимая кнопку вы соглашаетесь с условиями Политики конфиденциальности
+      - generic [ref=e503]:
+        - img "Отзывы"
+        - heading "Посмотрите, что думают о нас наши клиенты" [level=2] [ref=e504]
+        - generic [ref=e505]:
+          - generic [ref=e506]:
+            - button "Previous slide" [disabled] [ref=e507]:
+              - img [ref=e508]
+            - button "Next slide" [ref=e511]:
+              - img [ref=e512]
+            - generic [ref=e516]:
+              - group "1 / 4" [ref=e517] [cursor=pointer]:
+                - link [ref=e518]:
+                  - /url: media/img/ot1.jpg
+              - group "2 / 4" [ref=e519] [cursor=pointer]:
+                - link [ref=e520]:
+                  - /url: media/img/ot2.jpg
+              - group "3 / 4" [ref=e521] [cursor=pointer]:
+                - link [ref=e522]:
+                  - /url: media/img/ot3.jpg
+              - group "4 / 4" [ref=e523] [cursor=pointer]:
+                - link [ref=e524]:
+                  - /url: media/img/ot1.jpg
+          - generic [ref=e525]:
+            - button "Go to slide 1" [ref=e526] [cursor=pointer]
+            - button "Go to slide 2" [ref=e527] [cursor=pointer]
+            - button "Go to slide 3" [ref=e528] [cursor=pointer]
+      - generic [ref=e530]:
+        - generic [ref=e531]:
+          - generic [ref=e532]:
+            - heading "Собственное производство полного цикла от 3D-визуализации до готового изделия" [level=2] [ref=e533]
+            - list [ref=e534]:
+              - listitem [ref=e535]: Мы изготавливаем абсолютно все детали, необходимые для оформления участка на кладбище - памятники, цветники, ограды, столики, скамейки, скульптуры.
+              - listitem [ref=e536]: Мы не просто создаем визуализацию гранитных шедевров, но знаем, как их изготовить.
+            - button "Раскрыть полностью" [ref=e537] [cursor=pointer]:
+              - generic [ref=e538]:
+                - text: Раскрыть полностью
+                - img [ref=e539]
+          - generic [ref=e541]:
+            - generic [ref=e542]:
+              - heading "16лет" [level=3] [ref=e543]
+              - paragraph [ref=e544]: опыт работы на рынке РФ
+            - generic [ref=e545]:
+              - heading "5" [level=3] [ref=e546]
+              - paragraph [ref=e547]: монтажных бригад в штате
+            - generic [ref=e548]:
+              - heading "120+" [level=3] [ref=e549]
+              - paragraph [ref=e550]: памятников производим в месяц
+        - generic [ref=e552]:
+          - button "Previous slide" [disabled] [ref=e553]:
+            - img [ref=e554]
+          - button "Next slide" [ref=e557]:
+            - img [ref=e558]
+          - generic [ref=e562]:
+            - group "1 / 3" [ref=e563] [cursor=pointer]:
+              - link "процесс производства" [ref=e564]:
+                - /url: media/img/about-gallery-1.jpg
+                - img "процесс производства" [ref=e565]
+            - group "2 / 3" [ref=e566] [cursor=pointer]:
+              - link "процесс производства" [ref=e567]:
+                - /url: media/img/about-gallery-2.jpg
+                - img "процесс производства" [ref=e568]
+            - group "3 / 3" [ref=e569] [cursor=pointer]:
+              - link "процесс производства" [ref=e570]:
+                - /url: media/img/about-gallery-3.jpg
+                - img "процесс производства" [ref=e571]
+      - generic [ref=e574]:
+        - generic [ref=e575]:
+          - heading "Тройной контроль качества" [level=2] [ref=e576]
+          - paragraph [ref=e577]: Когда наш инженер примет работу монтажной бригады, мы отправим фотоотчет с контролем каждого этапа удобным вам способом.
+        - list [ref=e578]:
+          - listitem [ref=e579]:
+            - paragraph [ref=e580]: "01"
+            - paragraph [ref=e581]: Проверка памятника на производстве
+            - paragraph [ref=e582]: Обследование памятника производится методом визуального осмотра его состояния и необходимых контрольных обмеров и измерений на отсутствие сколов, микротрещин
+          - listitem [ref=e583]:
+            - paragraph [ref=e584]: "02"
+            - paragraph [ref=e585]: Проверка перед проведением монтажных работ
+            - paragraph [ref=e586]: Инженер по качеству проверяет укомплектованность заказа всеми необходимыми материалами и инструментами для монтажа
+          - listitem [ref=e587]:
+            - paragraph [ref=e588]: "03"
+            - paragraph [ref=e589]: Проверка отчета после завершения монтажа
+            - paragraph [ref=e590]: Бригадир фотографирует каждый этап монтажных работ и отправляет отчет
+      - generic [ref=e591]:
+        - heading "Гарантируем земля не просядет и памятник не наклонится" [level=2] [ref=e592]
+        - paragraph [ref=e593]: Устанавливаем памятники по современной технологии и даем гарантию 5 лет
+        - list [ref=e594]:
+          - listitem [ref=e595]:
+            - paragraph [ref=e596]: "01"
+            - paragraph [ref=e597]: процесс
+            - heading "Прибыв на место установки монтажная бригада производит разметку площади, которую охватит фундамент" [level=3] [ref=e598]:
+              - text: Прибыв на место установки
+              - text: монтажная бригада производит разметку площади, которую охватит фундамент
+          - listitem [ref=e599]:
+            - paragraph [ref=e600]: "02"
+            - paragraph [ref=e601]: процесс
+            - heading "Делается планировка участка, могила по ширине перекрывается швеллером нужного сечения минимум 100мм" [level=3] [ref=e602]
+          - listitem [ref=e603]:
+            - paragraph [ref=e604]: "03"
+            - paragraph [ref=e605]: процесс
+            - heading "При заливке бетонного основания вяжется арматура 10 мм клеткой 30х30" [level=3] [ref=e606]
+          - listitem [ref=e607]:
+            - paragraph [ref=e608]: "04"
+            - paragraph [ref=e609]: процесс
+            - heading "Далее на эту выровненную по горизонту плоскость устанавливается памятник." [level=3] [ref=e610]
+      - generic [ref=e613]:
+        - heading "10 аргументов почему вы можете полностью довериться нам" [level=2] [ref=e615]
+        - list [ref=e617]:
+          - listitem [ref=e618]:
+            - heading "Собственное производство" [level=3] [ref=e620]
+            - paragraph [ref=e621]: Изготавливаем любые нестандартные размеры
+          - listitem [ref=e622]:
+            - heading "Индвидуальный дизайн" [level=3] [ref=e624]
+            - paragraph [ref=e625]: Делаем как типовые памятники, так и памятники по вашему дизайну
+          - listitem [ref=e626]:
+            - heading "Профессиональные портреты" [level=3] [ref=e628]:
+              - text: Профессионал
+              - text: ьные портреты
+            - paragraph [ref=e629]: В штате свой художник с опытом работы более 15 лет
+          - listitem [ref=e630]:
+            - heading "Разрешение" [level=3] [ref=e632]
+            - paragraph [ref=e633]: Поможем получить от властей разрешение на установку
+          - listitem [ref=e634]:
+            - heading "5% скидка" [level=3] [ref=e636]
+            - paragraph [ref=e637]: пенсионерам и всем льготным категориям граждан. Компенсация средств для военнослужащих
+          - listitem [ref=e638]:
+            - heading "Любая форма оплаты" [level=3] [ref=e640]
+            - paragraph [ref=e641]: Наличные, на банковскую карту сразу или частями по договорённости
+          - listitem [ref=e642]:
+            - heading "Без предоплаты" [level=3] [ref=e644]
+            - paragraph [ref=e645]: Оплата по факту монтажа
+          - listitem [ref=e646]:
+            - heading "Персональный менеджер" [level=3] [ref=e648]
+            - paragraph [ref=e649]: Ваши просьбы слышат и выполняют с первого раза
+          - listitem [ref=e650]:
+            - heading "Гарантия" [level=3] [ref=e652]
+            - paragraph [ref=e653]: Гарантия на установку 5 лет, гарантия на материал 50 лет
+          - listitem [ref=e654]:
+            - heading "Доставка" [level=3] [ref=e656]
+            - paragraph [ref=e657]: Доставка в любой уголок области
+      - generic [ref=e660]:
+        - generic [ref=e661]:
+          - heading "Бесплатная консультацию по подбору памятника" [level=2] [ref=e662]
+          - generic [ref=e663]:
+            - paragraph [ref=e664]: Что будет у вас на консультации с нами?
+            - list [ref=e665]:
+              - listitem [ref=e666]: Расскажем о преимуществах того или иного типа памятников;
+              - listitem [ref=e667]: Сделаем примерный расчёт стоимости;
+              - listitem [ref=e668]: Договоримся о личной встрече.
+          - paragraph [ref=e669]: "Это ни к чему Вас не обязывает, введите лишь номер телефона:"
+        - generic [ref=e670]:
+          - generic [ref=e671]:
+            - generic [ref=e672]:
+              - text: Введите номер Вашего телефона
+              - textbox "Введите номер Вашего телефона" [ref=e673]:
+                - /placeholder: + 7 (_ _ _) _ _ _ - _ _ - _ _
+            - button "перезвоните мне" [ref=e674]:
+              - generic [ref=e677]: перезвоните мне
+          - generic [ref=e680]: Нажимая кнопку вы соглашаетесь с условиями Политики конфиденциальности
+      - generic [ref=e683]:
+        - generic [ref=e684]:
+          - generic [ref=e685]:
+            - img [ref=e687]
+            - paragraph [ref=e689]: "Адрес:"
+            - paragraph [ref=e690]: Ростов-на-Дону ул. Орбитальная 1в
+          - generic [ref=e691]:
+            - img [ref=e693]
+            - paragraph [ref=e695]: "Телефон:"
+            - link "+8 (928) 624-76-16" [ref=e696] [cursor=pointer]:
+              - /url: tel:89286247616
+          - generic [ref=e698]:
+            - link "WhatsApp" [ref=e699] [cursor=pointer]:
+              - /url: https://wa.me/79286247616?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20
+              - img [ref=e700]
+            - link "telegram" [ref=e702] [cursor=pointer]:
+              - /url: tg://resolve?domain=MasterskaiaGranita
+              - img [ref=e703]
+          - generic [ref=e705]:
+            - img [ref=e707]
+            - paragraph [ref=e712]: "E-mail:"
+            - link "gor.161@mail.ru" [ref=e713] [cursor=pointer]:
+              - /url: mailto:gor.161@mail.ru
+          - generic [ref=e714]:
+            - img [ref=e716]
+            - paragraph [ref=e718]: "График работы:"
+            - paragraph [ref=e719]: "Ежедненвно: 09:00 - 18:00"
+        - generic [ref=e720]:
+          - heading "До встречи в магазине" [level=3] [ref=e721]
+          - generic [ref=e722]:
+            - link "изображение магазина" [ref=e724] [cursor=pointer]:
+              - /url: media/img/shop-img.jpg
+              - img "изображение магазина" [ref=e725]
+            - link "изображение магазина" [ref=e727] [cursor=pointer]:
+              - /url: media/img/shop-img1.jpg
+              - img "изображение магазина" [ref=e728]
+        - iframe [ref=e730]:
+          - generic [ref=f1e2]:
+            - generic:
+              - generic:
+                - img [ref=f1e8] [cursor=pointer]
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic [ref=f1e13]:
+                        - generic [ref=f1e14]:
+                          - button [ref=f1e17] [cursor=pointer]:
+                            - generic:
+                              - generic:
+                                - img
+                          - button "Пробки" [ref=f1e19] [cursor=pointer]:
+                            - generic [ref=f1e20]:
+                              - generic:
+                                - img
+                            - generic [ref=f1e22]: Пробки
+                        - iframe [ref=f1e23]:
+                          
+                      - generic [ref=f1e24]:
+                        - generic [ref=f1e27]:
+                          - button "Приблизить" [ref=f1e29] [cursor=pointer]:
+                            - generic:
+                              - generic:
+                                - img
+                          - button "Отдалить" [ref=f1e31] [cursor=pointer]:
+                            - generic:
+                              - generic:
+                                - img
+                        - iframe [ref=f1e32]:
+                          
+                      - generic [ref=f1e33]:
+                        - button "Моё местоположение" [ref=f1e36] [cursor=pointer]:
+                          - generic:
+                            - generic:
+                              - img
+                        - iframe [ref=f1e37]:
+                          
+                      - generic [ref=f1e38]:
+                        - button "Открыть в Яндекс Картах" [ref=f1e41] [cursor=pointer]:
+                          - generic:
+                            - generic:
+                              - img
+                          - generic [ref=f1e42]: Открыть в Яндекс Картах
+                        - iframe [ref=f1e43]:
+                          
+                      - generic:
+                        - generic:
+                          - generic:
+                            - button "Открыть в Картах":
+                              - generic:
+                                - generic:
+                                  - img
+                              - generic: Открыть в Картах
+                        - iframe [ref=f1e44]:
+                          
+                      - generic:
+                        - generic:
+                          - generic:
+                            - button:
+                              - generic:
+                                - generic:
+                                  - img
+                        - iframe [ref=f1e45]:
+                          
+                    - generic:
+                      - generic:
+                        - contentinfo:
+                          - generic [ref=f1e47]:
+                            - generic [ref=f1e48]: © Яндекс
+                            - link "Условия использования" [ref=f1e49] [cursor=pointer]:
+                              - /url: https://yandex.ru/legal/maps_termsofuse/?lang=ru
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: 500 м
+                    - iframe [ref=f1e50]:
+                      
+                - iframe [ref=f1e51]:
+                  
+    - contentinfo [ref=e731]:
+      - generic [ref=e733]:
+        - generic [ref=e734]:
+          - link "логотип Мастерская гранита" [ref=e735] [cursor=pointer]:
+            - /url: index.php
+            - img "логотип Мастерская гранита" [ref=e736]
+          - paragraph [ref=e737]: Производитель памятников из гранита и мрамора в Ростове-на-Дону и области
+        - paragraph [ref=e738]:
+          - text: Copyright 2022
+          - text: Все права защищены
+        - button "Политика конфиденциальности" [ref=e739] [cursor=pointer]
+        - paragraph [ref=e740]:
+          - text: Сделано с любовью в
+          - link "paradigma.website" [ref=e741] [cursor=pointer]:
+            - /url: https://paradigma.website/
+    - generic:
+      - button "закрыть сайдбар" [ref=e742]:
+        - img [ref=e743]
+      - generic [ref=e745]:
+        - link "Скачать каталог" [ref=e746] [cursor=pointer]:
+          - /url: "#getcatalog"
+          - img [ref=e747]
+          - paragraph [ref=e751]: Скачать каталог
+        - link "Получить подборку вариантов" [ref=e752] [cursor=pointer]:
+          - /url: "#quiz"
+          - img [ref=e753]
+          - paragraph [ref=e755]: Получить подборку вариантов
+        - link "Консультация менеджера" [ref=e756] [cursor=pointer]:
+          - /url: "#callback"
+          - img [ref=e757]
+          - paragraph [ref=e759]: Консультация менеджера
+    - button "прокрутить страницу наверх" [ref=e760]:
+      - img [ref=e761]
+    - option "whats app" [selected]
+    - option "telegram"

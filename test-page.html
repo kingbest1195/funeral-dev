@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ритуальная служба Век в Шуе. Круглосуточная помощь в трудную минуту. Организация похорон, кремация, памятники.">
+  <title>Ритуальная служба Век - Помощь в трудную минуту | Шуя</title>
+  
+  <!-- Preload fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #2d3748;
+      background-color: #ffffff;
+    }
+    
+    .header {
+      background: #1a365d;
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    
+    .phone {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #b8860b;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .phone:hover {
+      color: #daa520;
+    }
+    
+    .hero {
+      background: linear-gradient(rgba(26, 54, 93, 0.8), rgba(26, 54, 93, 0.8)), #f7fafc;
+      padding: 4rem 0;
+      text-align: center;
+      color: white;
+    }
+    
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    
+    .hero p {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: #b8860b;
+      color: white;
+      padding: 0.75rem 2rem;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    
+    .cta-button:hover {
+      background: #daa520;
+    }
+    
+    .services {
+      padding: 4rem 0;
+      background: #f7fafc;
+    }
+    
+    .services h2 {
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2rem;
+      color: #1a365d;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .service-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1rem;
+      color: #1a365d;
+    }
+    
+    .footer {
+      background: #2d3748;
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .emergency-notice {
+      background: #e53e3e;
+      color: white;
+      text-align: center;
+      padding: 0.5rem;
+      font-weight: 600;
+    }
+    
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .phone {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="emergency-notice">
+    КРУГЛОСУТОЧНО: +7 (920) 366-36-36
+  </div>
+  
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">Ритуальная служба «Век»</div>
+        <a href="tel:+79203663636" class="phone">+7 (920) 366-36-36</a>
+      </div>
+    </div>
+  </header>
+  
+  <section class="hero">
+    <div class="container">
+      <h1>Помощь в трудную минуту</h1>
+      <p>Ритуальные услуги в Шуе с 2012 года. Организация похорон, кремация, памятники, транспортировка</p>
+      <a href="tel:+79203663636" class="cta-button">Вызвать агента</a>
+    </div>
+  </section>
+  
+  <section class="services">
+    <div class="container">
+      <h2>Наши услуги</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Организация похорон</h3>
+          <p>Полный комплекс ритуальных услуг. Поможем организовать достойные проводы в сложный момент.</p>
+        </div>
+        <div class="service-card">
+          <h3>Кремация</h3>
+          <p>Кремационные услуги с соблюдением всех традиций и требований.</p>
+        </div>
+        <div class="service-card">
+          <h3>Военные захоронения</h3>
+          <p>Специальные услуги для участников СВО и военных. Государственная поддержка.</p>
+        </div>
+        <div class="service-card">
+          <h3>Памятники</h3>
+          <p>Изготовление и установка памятников, надгробий, оград.</p>
+        </div>
+        <div class="service-card">
+          <h3>Транспорт "Груз 200"</h3>
+          <p>Специализированный транспорт для перевозки. Опытные водители.</p>
+        </div>
+        <div class="service-card">
+          <h3>Ритуальные товары</h3>
+          <p>Гробы, венки, цветы, ритуальная одежда и другие необходимые товары.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Ритуальная служба «Век». г. Шуя, ул. Свердлова, 91/2</p>
+      <p>Круглосуточно: <a href="tel:+79203663636" style="color: #b8860b;">+7 (920) 366-36-36</a></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)",
+      "Bash(npx playwright screenshot:*)",
+      "Bash(npx playwright install:*)",
+      "Bash(npx vite:*)",
+      "Bash(timeout 60 npx playwright install chromium)",
+      "Bash(node:*)",
+      "Bash(npm run build:*)",
+      "Bash(python3:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_close",
+      "Bash(find:*)",
+      "Bash(sed:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,380 @@
+// =================
+// MEDIA QUERIES - Миксины для медиавыражений проекта ритуальной службы "Век"
+// Mobile-First подход для адаптивной верстки
+// =================
+
+// ОСНОВНЫЕ МИКСИНЫ МЕДИАВЫРАЖЕНИЙ
+// =================
+
+/// Медиавыражение "от" указанной точки останова (mobile-first)
+/// @param {string} $breakpoint - Название точки останова или значение в px
+@mixin media-up($breakpoint) {
+  $value: null;
+  
+  @if type-of($breakpoint) == 'string' {
+    @if $breakpoint == 'xs' {
+      $value: $breakpoint-xs;
+    } @else if $breakpoint == 'sm' {
+      $value: $breakpoint-sm;
+    } @else if $breakpoint == 'md' {
+      $value: $breakpoint-md;
+    } @else if $breakpoint == 'lg' {
+      $value: $breakpoint-lg;
+    } @else if $breakpoint == 'xl' {
+      $value: $breakpoint-xl;
+    } @else if $breakpoint == '2xl' {
+      $value: $breakpoint-2xl;
+    } @else {
+      @error "Неизвестная точка останова: #{$breakpoint}. Доступные: xs, sm, md, lg, xl, 2xl";
+    }
+  } @else {
+    $value: $breakpoint;
+  }
+  
+  @media (min-width: $value) {
+    @content;
+  }
+}
+
+/// Медиавыражение "до" указанной точки останова (desktop-first)
+/// @param {string} $breakpoint - Название точки останова или значение в px
+@mixin media-down($breakpoint) {
+  $value: null;
+  
+  @if type-of($breakpoint) == 'string' {
+    @if $breakpoint == 'xs' {
+      $value: $breakpoint-xs - 1px;
+    } @else if $breakpoint == 'sm' {
+      $value: $breakpoint-sm - 1px;
+    } @else if $breakpoint == 'md' {
+      $value: $breakpoint-md - 1px;
+    } @else if $breakpoint == 'lg' {
+      $value: $breakpoint-lg - 1px;
+    } @else if $breakpoint == 'xl' {
+      $value: $breakpoint-xl - 1px;
+    } @else if $breakpoint == '2xl' {
+      $value: $breakpoint-2xl - 1px;
+    } @else {
+      @error "Неизвестная точка останова: #{$breakpoint}. Доступные: xs, sm, md, lg, xl, 2xl";
+    }
+  } @else {
+    $value: $breakpoint - 1px;
+  }
+  
+  @media (max-width: $value) {
+    @content;
+  }
+}
+
+/// Медиавыражение "между" двумя точками останова
+/// @param {string} $min - Минимальная точка останова
+/// @param {string} $max - Максимальная точка останова
+@mixin media-between($min, $max) {
+  $min-value: null;
+  $max-value: null;
+  
+  // Получаем минимальное значение
+  @if type-of($min) == 'string' {
+    @if $min == 'xs' {
+      $min-value: $breakpoint-xs;
+    } @else if $min == 'sm' {
+      $min-value: $breakpoint-sm;
+    } @else if $min == 'md' {
+      $min-value: $breakpoint-md;
+    } @else if $min == 'lg' {
+      $min-value: $breakpoint-lg;
+    } @else if $min == 'xl' {
+      $min-value: $breakpoint-xl;
+    } @else if $min == '2xl' {
+      $min-value: $breakpoint-2xl;
+    }
+  } @else {
+    $min-value: $min;
+  }
+  
+  // Получаем максимальное значение
+  @if type-of($max) == 'string' {
+    @if $max == 'xs' {
+      $max-value: $breakpoint-xs - 1px;
+    } @else if $max == 'sm' {
+      $max-value: $breakpoint-sm - 1px;
+    } @else if $max == 'md' {
+      $max-value: $breakpoint-md - 1px;
+    } @else if $max == 'lg' {
+      $max-value: $breakpoint-lg - 1px;
+    } @else if $max == 'xl' {
+      $max-value: $breakpoint-xl - 1px;
+    } @else if $max == '2xl' {
+      $max-value: $breakpoint-2xl - 1px;
+    }
+  } @else {
+    $max-value: $max - 1px;
+  }
+  
+  @media (min-width: $min-value) and (max-width: $max-value) {
+    @content;
+  }
+}
+
+/// Медиавыражение только для указанной точки останова
+/// @param {string} $breakpoint - Название точки останова
+@mixin media-only($breakpoint) {
+  @if $breakpoint == 'xs' {
+    @include media-down(sm) {
+      @content;
+    }
+  } @else if $breakpoint == 'sm' {
+    @include media-between(sm, md) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @include media-between(md, lg) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @include media-between(lg, xl) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @include media-between(xl, 2xl) {
+      @content;
+    }
+  } @else if $breakpoint == '2xl' {
+    @include media-up(2xl) {
+      @content;
+    }
+  } @else {
+    @error "Неизвестная точка останова: #{$breakpoint}. Доступные: xs, sm, md, lg, xl, 2xl";
+  }
+}
+
+// СПЕЦИАЛЬНЫЕ МЕДИАВЫРАЖЕНИЯ
+// =================
+
+/// Медиавыражение для мобильных устройств (до 768px)
+@mixin mobile {
+  @include media-down(md) {
+    @content;
+  }
+}
+
+/// Медиавыражение для планшетов (от 768px до 1024px)
+@mixin tablet {
+  @include media-between(md, lg) {
+    @content;
+  }
+}
+
+/// Медиавыражение для планшетов и выше (от 768px)
+@mixin tablet-up {
+  @include media-up(md) {
+    @content;
+  }
+}
+
+/// Медиавыражение для десктопов (от 1024px)
+@mixin desktop {
+  @include media-up(lg) {
+    @content;
+  }
+}
+
+/// Медиавыражение для больших экранов (от 1200px)
+@mixin large-desktop {
+  @include media-up(xl) {
+    @content;
+  }
+}
+
+/// Медиавыражение для очень больших экранов (от 1400px)
+@mixin extra-large-desktop {
+  @include media-up(2xl) {
+    @content;
+  }
+}
+
+/// Медиавыражение для небольших мобильных устройств (до 576px)
+@mixin small-mobile {
+  @include media-down(sm) {
+    @content;
+  }
+}
+
+/// Медиавыражение для портретной ориентации
+@mixin portrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+/// Медиавыражение для альбомной ориентации
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+/// Медиавыражение для устройств с высокой плотностью пикселей (Retina)
+@mixin retina {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+/// Медиавыражение для устройств, поддерживающих hover
+@mixin hover-support {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+/// Медиавыражение для устройств без поддержки hover (сенсорные)
+@mixin no-hover {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}
+
+/// Медиавыражение для печати
+@mixin print {
+  @media print {
+    @content;
+  }
+}
+
+/// Медиавыражение для пользователей, предпочитающих уменьшенные анимации
+@mixin prefers-reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+/// Медиавыражение для темной темы
+@mixin prefers-dark {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+/// Медиавыражение для светлой темы
+@mixin prefers-light {
+  @media (prefers-color-scheme: light) {
+    @content;
+  }
+}
+
+// СОСТАВНЫЕ МЕДИАВЫРАЖЕНИЯ ДЛЯ ПРОЕКТА
+// =================
+
+/// Медиавыражение для мобильной навигации (гамбургер меню)
+@mixin mobile-navigation {
+  @include media-down(lg) {
+    @content;
+  }
+}
+
+/// Медиавыражение для десктопной навигации (горизонтальное меню)
+@mixin desktop-navigation {
+  @include media-up(lg) {
+    @content;
+  }
+}
+
+/// Медиавыражение для сетки на мобильных (1 колонка)
+@mixin mobile-grid {
+  @include media-down(md) {
+    @content;
+  }
+}
+
+/// Медиавыражение для сетки на планшетах (2 колонки)
+@mixin tablet-grid {
+  @include media-between(md, lg) {
+    @content;
+  }
+}
+
+/// Медиавыражение для сетки на десктопе (3+ колонки)
+@mixin desktop-grid {
+  @include media-up(lg) {
+    @content;
+  }
+}
+
+/// Медиавыражение для боковой панели (скрытие на мобильных)
+@mixin sidebar-visibility {
+  @include media-down(lg) {
+    display: none;
+  }
+  
+  @include media-up(lg) {
+    display: block;
+  }
+}
+
+/// Медиавыражение для адаптивного шрифта заголовков
+@mixin responsive-heading {
+  @include small-mobile {
+    font-size: $font-size-2xl;
+    line-height: $line-height-tight;
+  }
+  
+  @include mobile {
+    font-size: $font-size-3xl;
+    line-height: $line-height-tight;
+  }
+  
+  @include tablet-up {
+    font-size: $font-size-4xl;
+    line-height: $line-height-tight;
+  }
+  
+  @include desktop {
+    font-size: $font-size-5xl;
+    line-height: $line-height-tight;
+  }
+  
+  @include large-desktop {
+    font-size: $font-size-6xl;
+    line-height: $line-height-tight;
+  }
+}
+
+/// Медиавыражение для адаптивных отступов контейнера
+@mixin responsive-container-padding {
+  padding-left: $container-padding-mobile;
+  padding-right: $container-padding-mobile;
+  
+  @include tablet-up {
+    padding-left: $container-padding;
+    padding-right: $container-padding;
+  }
+}
+
+/// Медиавыражение для скрытия элементов на мобильных
+@mixin hide-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}
+
+/// Медиавыражение для показа элементов только на мобильных
+@mixin show-mobile-only {
+  @include tablet-up {
+    display: none !important;
+  }
+}
+
+/// Медиавыражение для скрытия элементов на десктопе
+@mixin hide-desktop {
+  @include desktop {
+    display: none !important;
+  }
+}
+
+/// Медиавыражение для показа элементов только на десктопе
+@mixin show-desktop-only {
+  @include mobile {
+    display: none !important;
+  }
+}

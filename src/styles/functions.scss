@@ -1,0 +1,220 @@
+// =================
+// SASS FUNCTIONS - Функции для проекта ритуальной службы "Век"
+// =================
+
+// ФУНКЦИИ ДЛЯ ОТСТУПОВ И РАЗМЕРОВ
+// =================
+
+/// Функция для создания отступов кратных базовой единице
+/// @param {number} $multiplier - Множитель для базовой единицы отступа
+/// @return {string} - Значение отступа в px
+@function spacing($multiplier) {
+  @return $spacing-unit * $multiplier;
+}
+
+/// Функция для вычисления процентной ширины колонки в сетке
+/// @param {number} $columns - Количество колонок
+/// @param {number} $total-columns - Общее количество колонок в сетке (по умолчанию 12)
+/// @return {percentage} - Ширина в процентах
+@function col-width($columns, $total-columns: $grid-columns) {
+  @return percentage($columns / $total-columns);
+}
+
+/// Функция для создания гибкой типографики (fluid typography)
+/// @param {string} $min-size - Минимальный размер шрифта
+/// @param {string} $max-size - Максимальный размер шрифта
+/// @param {string} $min-vw - Минимальная ширина viewport
+/// @param {string} $max-vw - Максимальная ширина viewport
+/// @return {string} - Значение clamp для адаптивного размера
+@function fluid-type($min-size, $max-size, $min-vw: $breakpoint-sm, $max-vw: $breakpoint-xl) {
+  $min-size-rem: strip-unit($min-size) / 16;
+  $max-size-rem: strip-unit($max-size) / 16;
+  $min-vw-rem: strip-unit($min-vw) / 16;
+  $max-vw-rem: strip-unit($max-vw) / 16;
+  
+  @return clamp(#{$min-size-rem}rem, #{$min-size-rem}rem + (#{$max-size-rem} - #{$min-size-rem}) * ((100vw - #{$min-vw-rem}rem) / (#{$max-vw-rem} - #{$min-vw-rem})), #{$max-size-rem}rem);
+}
+
+// УТИЛИТАРНЫЕ ФУНКЦИИ
+// =================
+
+/// Удаляет единицы измерения из значения
+/// @param {string} $value - Значение с единицами измерения
+/// @return {number} - Число без единиц
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+/// Конвертирует px в rem
+/// @param {string} $px - Значение в пикселях
+/// @param {number} $base - Базовый размер шрифта (по умолчанию 16px)
+/// @return {string} - Значение в rem
+@function px-to-rem($px, $base: 16) {
+  @return (strip-unit($px) / $base) * 1rem;
+}
+
+/// Конвертирует rem в px
+/// @param {string} $rem - Значение в rem
+/// @param {number} $base - Базовый размер шрифта (по умолчанию 16px)
+/// @return {string} - Значение в px
+@function rem-to-px($rem, $base: 16) {
+  @return (strip-unit($rem) * $base) * 1px;
+}
+
+/// Вычисляет контрастность между двумя цветами
+/// @param {color} $color1 - Первый цвет
+/// @param {color} $color2 - Второй цвет
+/// @return {number} - Коэффициент контрастности
+@function contrast-ratio($color1, $color2) {
+  $l1: luminance($color1);
+  $l2: luminance($color2);
+  
+  @if $l1 > $l2 {
+    @return ($l1 + 0.05) / ($l2 + 0.05);
+  } @else {
+    @return ($l2 + 0.05) / ($l1 + 0.05);
+  }
+}
+
+/// Вычисляет яркость цвета
+/// @param {color} $color - Цвет
+/// @return {number} - Значение яркости от 0 до 1
+@function luminance($color) {
+  $red: red($color);
+  $green: green($color);
+  $blue: blue($color);
+  
+  $red: $red / 255;
+  $green: $green / 255;
+  $blue: $blue / 255;
+  
+  $red: if($red <= 0.03928, $red / 12.92, pow(($red + 0.055) / 1.055, 2.4));
+  $green: if($green <= 0.03928, $green / 12.92, pow(($green + 0.055) / 1.055, 2.4));
+  $blue: if($blue <= 0.03928, $blue / 12.92, pow(($blue + 0.055) / 1.055, 2.4));
+  
+  @return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
+}
+
+/// Возводит число в степень
+/// @param {number} $base - Основание
+/// @param {number} $exponent - Степень
+/// @return {number} - Результат возведения в степень
+@function pow($base, $exponent) {
+  $result: 1;
+  
+  @for $i from 1 through $exponent {
+    $result: $result * $base;
+  }
+  
+  @return $result;
+}
+
+// ЦВЕТОВЫЕ ФУНКЦИИ
+// =================
+
+/// Осветляет цвет с сохранением насыщенности
+/// @param {color} $color - Исходный цвет
+/// @param {percentage} $amount - Процент осветления
+/// @return {color} - Осветленный цвет
+@function tint($color, $amount) {
+  @return mix(white, $color, $amount);
+}
+
+/// Затемняет цвет с сохранением насыщенности
+/// @param {color} $color - Исходный цвет
+/// @param {percentage} $amount - Процент затемнения
+/// @return {color} - Затемненный цвет
+@function shade($color, $amount) {
+  @return mix(black, $color, $amount);
+}
+
+/// Получает оптимальный цвет текста (черный или белый) для данного фона
+/// @param {color} $background - Цвет фона
+/// @param {color} $light - Светлый цвет текста (по умолчанию белый)
+/// @param {color} $dark - Темный цвет текста (по умолчанию черный)
+/// @return {color} - Оптимальный цвет текста
+@function text-contrast($background, $light: $color-text-white, $dark: $color-text-primary) {
+  $light-contrast: contrast-ratio($background, $light);
+  $dark-contrast: contrast-ratio($background, $dark);
+  
+  @if $light-contrast > $dark-contrast {
+    @return $light;
+  } @else {
+    @return $dark;
+  }
+}
+
+/// Создает полупрозрачный цвет
+/// @param {color} $color - Исходный цвет
+/// @param {number} $opacity - Прозрачность от 0 до 1
+/// @return {color} - Цвет с заданной прозрачностью
+@function alpha($color, $opacity) {
+  @return rgba($color, $opacity);
+}
+
+// МАТЕМАТИЧЕСКИЕ ФУНКЦИИ
+// =================
+
+/// Возвращает максимальное значение из списка
+/// @param {...} $values - Список значений
+/// @return {number} - Максимальное значение
+@function max-value($values...) {
+  $max: nth($values, 1);
+  
+  @each $value in $values {
+    @if $value > $max {
+      $max: $value;
+    }
+  }
+  
+  @return $max;
+}
+
+/// Возвращает минимальное значение из списка
+/// @param {...} $values - Список значений
+/// @return {number} - Минимальное значение
+@function min-value($values...) {
+  $min: nth($values, 1);
+  
+  @each $value in $values {
+    @if $value < $min {
+      $min: $value;
+    }
+  }
+  
+  @return $min;
+}
+
+/// Ограничивает значение в заданном диапазоне
+/// @param {number} $value - Исходное значение
+/// @param {number} $min - Минимальное значение
+/// @param {number} $max - Максимальное значение
+/// @return {number} - Ограниченное значение
+@function clamp-value($value, $min, $max) {
+  @return max($min, min($max, $value));
+}
+
+// СПЕЦИАЛЬНЫЕ ФУНКЦИИ ДЛЯ ПРОЕКТА
+// =================
+
+/// Генерирует CSS для адаптивного контейнера
+/// @param {string} $size - Размер контейнера (sm, md, lg, xl, 2xl)
+/// @return {string} - Максимальная ширина контейнера
+@function container-size($size) {
+  $sizes: (
+    'sm': $container-sm,
+    'md': $container-md,
+    'lg': $container-lg,
+    'xl': $container-xl,
+    '2xl': $container-2xl
+  );
+  
+  @return map-get($sizes, $size);
+}
+
+/// Создает значение для CSS Grid с заданным количеством колонок
+/// @param {number} $columns - Количество колонок
+/// @return {string} - Значение для grid-template-columns
+@function grid-cols($columns) {
+  @return repeat($columns, 1fr);
+}

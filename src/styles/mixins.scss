@@ -1,0 +1,510 @@
+// =================
+// SASS MIXINS - Миксины для проекта ритуальной службы "Век"
+// =================
+
+// ТИПОГРАФИКА
+// =================
+
+/// Миксин для шрифтов заголовков
+@mixin heading-font {
+  font-family: $font-heading;
+  font-display: swap;
+}
+
+/// Миксин для основного шрифта
+@mixin body-font {
+  font-family: $font-body;
+  font-display: swap;
+}
+
+/// Миксин для текста с ограничением количества строк (многоточие)
+/// @param {number} $lines - Количество строк
+@mixin text-ellipsis($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/// Миксин для адаптивной типографики
+/// @param {string} $min-size - Минимальный размер
+/// @param {string} $max-size - Максимальный размер
+@mixin fluid-typography($min-size, $max-size) {
+  font-size: $min-size;
+  font-size: fluid-type($min-size, $max-size);
+}
+
+/// Миксин для стилей заголовков
+/// @param {string} $level - Уровень заголовка (h1, h2, h3, h4, h5, h6)
+@mixin heading($level) {
+  @include heading-font;
+
+  @if $level == "h1" {
+    @include fluid-typography($font-size-4xl, $font-size-6xl);
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+    margin-bottom: $margin-lg;
+  } @else if $level == "h2" {
+    @include fluid-typography($font-size-3xl, $font-size-5xl);
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+    margin-bottom: $margin-md;
+  } @else if $level == "h3" {
+    @include fluid-typography($font-size-2xl, $font-size-4xl);
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-normal;
+    margin-bottom: $margin-md;
+  } @else if $level == "h4" {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-medium;
+    line-height: $line-height-normal;
+    margin-bottom: $margin-sm;
+  } @else if $level == "h5" {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+    line-height: $line-height-normal;
+    margin-bottom: $margin-sm;
+  } @else if $level == "h6" {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-normal;
+    margin-bottom: $margin-sm;
+  }
+}
+
+// КНОПКИ И ИНТЕРАКТИВНЫЕ ЭЛЕМЕНТЫ
+// =================
+
+/// Базовые стили для кнопок
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: $font-body;
+  font-weight: $body-weight-bold; // Semibold
+  text-transform: uppercase;
+  letter-spacing: 0.08em; // чуть шире кернинг как в референсе
+  transition: all $duration-base $ease-smooth;
+  user-select: none;
+  white-space: nowrap;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+/// Основная кнопка (primary)
+@mixin button-primary {
+  @include button-base;
+  // Фон и объём как в референсе: мягкий градиент + лёгкая фаска
+  background-color: $color-accent; // fallback
+  background-image: linear-gradient(
+    180deg,
+    lighten($color-accent, 6%) 0%,
+    $color-accent 60%,
+    darken($color-accent, 6%) 100%
+  );
+  color: $color-text-white;
+  border: $border-width-thin solid darken($color-accent, 6%);
+  padding: $padding-md $padding-xl;
+  font-size: $font-size-base;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+    0 8px 22px
+      rgba(red($color-accent), green($color-accent), blue($color-accent), 0.25);
+
+  &:hover:not(:disabled) {
+    background-image: linear-gradient(
+      180deg,
+      lighten($color-accent, 10%) 0%,
+      lighten($color-accent, 4%) 60%,
+      $color-accent 100%
+    );
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px
+      rgba(red($color-accent), green($color-accent), blue($color-accent), 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    background-image: linear-gradient(
+      180deg,
+      $color-accent 0%,
+      darken($color-accent, 4%) 60%,
+      darken($color-accent, 10%) 100%
+    );
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  &:focus {
+    @include focus-visible;
+  }
+}
+
+/// Акцентная кнопка (accent)
+@mixin button-accent {
+  @include button-base;
+  background-color: $color-accent;
+  color: $color-text-white;
+  padding: $padding-md $padding-xl;
+  font-size: $font-size-base;
+
+  &:hover:not(:disabled) {
+    background-color: $color-accent-light;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: $shadow-sm;
+  }
+
+  &:focus {
+    @include focus-visible;
+  }
+}
+
+/// Вторичная кнопка (secondary)
+@mixin button-secondary {
+  @include button-base;
+  background-color: transparent;
+  color: $color-accent; // текст золотой
+  border: $border-width-thin solid $color-accent; // контур золотой
+  padding: $padding-md $padding-xl;
+  font-size: $font-size-base;
+
+  &:hover:not(:disabled) {
+    // При ховере — как primary: заливка с градиентом
+    background-color: $color-accent;
+    background-image: linear-gradient(
+      180deg,
+      lighten($color-accent, 8%) 0%,
+      $color-accent 60%,
+      darken($color-accent, 6%) 100%
+    );
+    color: $color-text-white;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px
+      rgba(red($color-accent), green($color-accent), blue($color-accent), 0.25);
+    border-color: darken($color-accent, 6%);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  &:focus {
+    @include focus-visible;
+  }
+}
+
+/// Кнопка-ссылка (link)
+@mixin button-link {
+  @include button-base;
+  background-color: transparent;
+  color: $color-accent;
+  padding: $padding-sm $padding-md;
+  font-size: $font-size-base;
+  text-decoration: underline;
+  border-radius: 0;
+
+  &:hover:not(:disabled) {
+    color: $color-accent-light;
+    text-decoration: none;
+  }
+
+  &:focus {
+    @include focus-visible;
+  }
+}
+
+// ФОКУС И ДОСТУПНОСТЬ
+// =================
+
+/// Стили фокуса для доступности
+@mixin focus-visible {
+  outline: 2px solid $color-accent;
+  outline-offset: 2px;
+}
+
+/// Скрыть элемент визуально, но оставить для screen readers
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/// Показать визуально скрытый элемент при фокусе
+@mixin visually-hidden-focusable {
+  @include visually-hidden;
+
+  &:focus {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    padding: inherit !important;
+    margin: inherit !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: inherit !important;
+  }
+}
+
+// КОНТЕЙНЕРЫ И СЕТКИ
+// =================
+
+/// Основной контейнер
+@mixin container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+
+  @include media-up(sm) {
+    max-width: $container-sm;
+  }
+
+  @include media-up(md) {
+    max-width: $container-md;
+  }
+
+  @include media-up(lg) {
+    max-width: $container-lg;
+  }
+
+  @include media-up(xl) {
+    max-width: $container-xl;
+  }
+
+  @include media-up(2xl) {
+    max-width: $container-2xl;
+  }
+}
+
+/// Флексбокс сетка
+/// @param {string} $gap - Отступ между элементами
+@mixin flex-grid($gap: $grid-gap) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap;
+}
+
+/// CSS Grid сетка
+/// @param {number} $columns - Количество колонок
+/// @param {string} $gap - Отступ между элементами
+@mixin css-grid($columns: $grid-columns, $gap: $grid-gap) {
+  display: grid;
+  grid-template-columns: grid-cols($columns);
+  gap: $gap;
+}
+
+/// Центрирование элемента
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/// Абсолютное центрирование
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// ПОЗИЦИОНИРОВАНИЕ И РАЗМЕРЫ
+// =================
+
+/// Полное заполнение родителя
+@mixin fill-parent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/// Размеры квадрата
+/// @param {string} $size - Размер стороны квадрата
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+/// Соотношение сторон
+/// @param {number} $width - Ширина
+/// @param {number} $height - Высота
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    padding-top: percentage($height / $width);
+  }
+
+  & > * {
+    @include fill-parent;
+  }
+}
+
+// ЭФФЕКТЫ И АНИМАЦИИ
+// =================
+
+/// Плавное появление
+@mixin fade-in($duration: $duration-base) {
+  opacity: 0;
+  animation: fade-in $duration $ease-smooth forwards;
+}
+
+/// Плавное исчезновение
+@mixin fade-out($duration: $duration-base) {
+  opacity: 1;
+  animation: fade-out $duration $ease-smooth forwards;
+}
+
+/// Появление снизу вверх
+@mixin slide-up($duration: $duration-base, $distance: 30px) {
+  transform: translateY($distance);
+  opacity: 0;
+  animation: slide-up $duration $ease-smooth forwards;
+}
+
+/// Hover эффект для карточек
+@mixin card-hover {
+  transition: all $duration-base $ease-smooth;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+/// Пульсация (loading индикатор)
+@mixin pulse {
+  animation: pulse 2s $ease-in-out infinite;
+}
+
+// ФОРМЫ И ПОЛЯ ВВОДА
+// =================
+
+/// Базовые стили для полей ввода
+@mixin input-base {
+  width: 100%;
+  padding: $padding-md;
+  border: $border-width-thin solid $color-border;
+  border-radius: $border-radius-md;
+  font-family: $font-body;
+  font-size: $font-size-base;
+  color: $color-text-primary;
+  background-color: $color-bg-primary;
+  transition: all $duration-base $ease-smooth;
+
+  &::placeholder {
+    color: $color-text-muted;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px alpha($color-primary, 0.1);
+  }
+
+  &:disabled {
+    background-color: $color-bg-secondary;
+    color: $color-text-muted;
+    cursor: not-allowed;
+  }
+
+  &.error {
+    border-color: $color-error;
+
+    &:focus {
+      box-shadow: 0 0 0 3px alpha($color-error, 0.1);
+    }
+  }
+}
+
+/// Стили для текстовых полей
+@mixin input-text {
+  @include input-base;
+  height: 48px;
+}
+
+/// Стили для многострочных полей (textarea)
+@mixin input-textarea {
+  @include input-base;
+  min-height: 120px;
+  resize: vertical;
+}
+
+/// Стили для select
+@mixin input-select {
+  @include input-base;
+  height: 48px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+// УТИЛИТЫ
+// =================
+
+/// Сброс списков
+@mixin list-reset {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/// Сброс кнопок
+@mixin button-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+/// Очистка float
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/// Truncate текста
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

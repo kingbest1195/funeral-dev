@@ -1,0 +1,289 @@
+// =================
+// GLOBAL CSS VARIABLES - CSS-переменные для проекта ритуальной службы "Век"
+// Основано на референсе дизайна docs/layout-reference.png и технических требованиях
+// =================
+
+:root {
+  // ЦВЕТОВАЯ ПАЛИТРА (извлечено из референса дизайна)
+  // =================
+
+  // Основные цвета (UI new)
+  --color-primary: #444442; // Основной текст/заголовки
+  --color-primary-light: #5a5a58;
+  --color-primary-dark: #2e2e2d;
+
+  --color-secondary: #888888; // Вторичный текст и элементы
+  --color-accent: #c49e5e; // Золотой акцент
+  --color-accent-light: #d9bb82; // Hover/active светлее
+  --color-accent-dark: #a98240; // Акцент темнее
+
+  // Текстовые цвета
+  --color-text-primary: #444442; // Основной текст
+  --color-text-secondary: #888888; // Вторичный текст
+  --color-text-muted: #9a9a9a; // Приглушенный текст
+  --color-text-white: #ffffff; // Белый текст
+  --color-text-light: #f7fafc; // Светлый текст
+
+  // Фоновые цвета
+  --color-bg-primary: #ffffff; // Белые карточки/контейнеры
+  --color-bg-secondary: #f6f6f6; // Светло-серый фон страницы
+  --color-bg-dark: #2d3748; // Темный фон
+  --color-bg-darker: #1a202c; // Еще более темный фон
+  --color-bg-overlay: rgba(26, 26, 26, 0.85); // Overlay для модалок
+
+  // Служебные цвета
+  --color-success: #10b981; // Успех (зеленый)
+  --color-error: #ef4444; // Ошибка (красный)
+  --color-warning: #f59e0b; // Предупреждение (оранжевый)
+  --color-info: #3b82f6; // Информация (синий)
+
+  // Цвета границ
+  --color-border: #eaeaea; // Тонкая серая граница карточек
+  --color-border-dark: #cccccc; // Темнее
+  --color-border-accent: #c49e5e; // Акцентная граница в тон кнопок
+  --color-border-light: #f0f0f0; // Светлее
+
+  // ТИПОГРАФИКА
+  // =================
+
+  // Шрифтовые семейства
+  --font-heading: "SangBleu Sunrise";
+  --font-body: "Euclid Flex", "Inter", "Roboto", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-monospace: "Monaco", "Menlo", "Consolas", monospace;
+
+  // Веса шрифтов
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  // Размеры шрифтов (базовые значения в rem)
+  --font-size-xs: 0.75rem; // 12px
+  --font-size-sm: 0.875rem; // 14px
+  --font-size-base: 1rem; // 16px
+  --font-size-lg: 1.125rem; // 18px
+  --font-size-xl: 1.25rem; // 20px
+  --font-size-2xl: 1.5rem; // 24px
+  --font-size-3xl: 2rem; // 32px
+  --font-size-4xl: 2.5rem; // 40px
+  --font-size-5xl: 3rem; // 48px
+  --font-size-6xl: 4rem; // 64px
+  --font-size-7xl: 5rem; // 80px
+  --font-size-8xl: 6rem; // 96px
+
+  // Высоты строк
+  --line-height-none: 1;
+  --line-height-tight: 1.22; // чуть свободнее для заголовков как в референсе
+  --line-height-snug: 1.34;
+  --line-height-normal: 1.62; // основной текст
+  --line-height-relaxed: 1.7;
+  --line-height-loose: 1.8;
+
+  // Межбуквенные интервалы
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.02em;
+  --letter-spacing-wider: 0.04em;
+
+  // ОТСТУПЫ И РАЗМЕРЫ
+  // =================
+
+  // Базовая единица отступов
+  --spacing-unit: 0.5rem; // 8px
+
+  // Отступы (кратные базовой единице)
+  --spacing-0: 0;
+  --spacing-1: calc(var(--spacing-unit) * 0.5); // 4px
+  --spacing-2: var(--spacing-unit); // 8px
+  --spacing-3: calc(var(--spacing-unit) * 1.5); // 12px
+  --spacing-4: calc(var(--spacing-unit) * 2); // 16px
+  --spacing-5: calc(var(--spacing-unit) * 2.5); // 20px
+  --spacing-6: calc(var(--spacing-unit) * 3); // 24px
+  --spacing-8: calc(var(--spacing-unit) * 4); // 32px
+  --spacing-10: calc(var(--spacing-unit) * 5); // 40px
+  --spacing-12: calc(var(--spacing-unit) * 6); // 48px
+  --spacing-16: calc(var(--spacing-unit) * 8); // 64px
+  --spacing-20: calc(var(--spacing-unit) * 10); // 80px
+  --spacing-24: calc(var(--spacing-unit) * 12); // 96px
+  --spacing-32: calc(var(--spacing-unit) * 16); // 128px
+
+  // КОНТЕЙНЕРЫ И СЕТКИ
+  // =================
+
+  // Максимальные ширины контейнеров
+  --container-xs: 20rem; // 320px
+  --container-sm: 33.75rem; // 540px
+  --container-md: 45rem; // 720px
+  --container-lg: 60rem; // 960px
+  --container-xl: 85.5rem; // 1368px — шире контейнер для соответствия референсу
+  --container-2xl: 90rem; // 1440px запас по большим экранам
+  --container-full: 100%;
+
+  // Отступы контейнеров
+  --container-padding: 1.25rem; // 20px
+  --container-padding-sm: 1rem; // 16px
+
+  // Сетка
+  --grid-columns: 12;
+  --grid-gap: 1.875rem; // 30px
+  --grid-gap-sm: 0.9375rem; // 15px
+
+  // ТОЧКИ ОСТАНОВА (для JS использования)
+  // =================
+  --breakpoint-xs: 20rem; // 320px
+  --breakpoint-sm: 36rem; // 576px
+  --breakpoint-md: 48rem; // 768px
+  --breakpoint-lg: 62rem; // 992px
+  --breakpoint-xl: 75rem; // 1200px
+  --breakpoint-2xl: 87.5rem; // 1400px
+
+  // АНИМАЦИИ И ПЕРЕХОДЫ
+  // =================
+
+  // Длительности
+  --duration-fast: 0.15s;
+  --duration-base: 0.3s;
+  --duration-slow: 0.5s;
+  --duration-slower: 0.75s;
+
+  // Функции плавности
+  --ease-linear: linear;
+  --ease-in: ease-in;
+  --ease-out: ease-out;
+  --ease-in-out: ease-in-out;
+  --ease-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  // ТЕНИ И ЭФФЕКТЫ
+  // =================
+
+  // Тени (на основе референса)
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 20px 30px rgba(0, 0, 0, 0.15);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.2);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-outline: 0 0 0 3px rgba(212, 165, 116, 0.3);
+
+  // Скругления углов
+  --border-radius-none: 0;
+  --border-radius-xs: 0.125rem; // 2px
+  --border-radius-sm: 0.25rem; // 4px
+  --border-radius-md: 0.375rem; // 6px
+  --border-radius-lg: 0.5rem; // 8px
+  --border-radius-xl: 1rem; // 16px
+  --border-radius-2xl: 1.5rem; // 24px
+  --border-radius-full: 9999px;
+
+  // Толщины границ
+  --border-width-0: 0;
+  --border-width-1: 1px;
+  --border-width-2: 2px;
+  --border-width-4: 4px;
+  --border-width-8: 8px;
+
+  // Z-INDEX СЛОИ
+  // =================
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+
+  // СПЕЦИФИЧЕСКИЕ ПЕРЕМЕННЫЕ ПРОЕКТА
+  // =================
+
+  // Высоты элементов интерфейса
+  --header-height: 5rem; // 80px
+  --footer-height: auto;
+  --button-height-sm: 2rem; // 32px
+  --button-height-md: 2.5rem; // 40px
+  --button-height-lg: 3rem; // 48px
+  --input-height: 3rem; // 48px
+
+  // Ширины элементов
+  --sidebar-width: 16rem; // 256px
+  --sidebar-width-collapsed: 4rem; // 64px
+
+  // Специфические размеры для проекта
+  --service-card-width: 20rem; // 320px
+  --service-card-height: 24rem; // 384px
+  --testimonial-card-width: 18rem; // 288px
+
+  // Цвета для состояний элементов
+  --color-hover-overlay: rgba(212, 165, 116, 0.1);
+  --color-active-overlay: rgba(212, 165, 116, 0.2);
+  --color-disabled-overlay: rgba(107, 114, 128, 0.5);
+
+  // Градиенты (из референса дизайна)
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  );
+  --gradient-accent: linear-gradient(
+    135deg,
+    var(--color-accent) 0%,
+    var(--color-accent-light) 100%
+  );
+  --gradient-dark: linear-gradient(
+    135deg,
+    var(--color-bg-dark) 0%,
+    var(--color-bg-darker) 100%
+  );
+}
+
+// ТЕМНАЯ ТЕМА — отключена. Дизайн проекта фиксированно светлый по референсу.
+
+// АДАПТИВНЫЕ ПЕРЕМЕННЫЕ
+// =================
+
+// Мобильные устройства
+@media (max-width: 768px) {
+  :root {
+    --container-padding: var(--spacing-4);
+    --grid-gap: var(--grid-gap-sm);
+    --header-height: 4rem;
+
+    // Уменьшенные размеры шрифтов для мобильных
+    --font-size-4xl: 2rem; // 32px вместо 40px
+    --font-size-5xl: 2.5rem; // 40px вместо 48px
+    --font-size-6xl: 3rem; // 48px вместо 64px
+  }
+}
+
+// Планшеты
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --container-padding: var(--spacing-6);
+  }
+}
+
+// Большие экраны
+@media (min-width: 1400px) {
+  :root {
+    --container-padding: var(--spacing-8);
+    --header-height: 6rem; // 96px для больших экранов
+  }
+}
+
+// ПЕРЕМЕННЫЕ ДЛЯ ПЕЧАТИ
+// =================
+
+@media print {
+  :root {
+    --color-primary: #000000;
+    --color-text-primary: #000000;
+    --color-bg-primary: #ffffff;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+  }
+}

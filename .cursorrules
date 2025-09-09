@@ -1,0 +1,310 @@
+# AI Agent Technical Rules for Funeral Service Website
+
+## Design Reference
+
+### Layout Reference
+- **Design mockup**: `docs/layout-reference.png` - Use this as the primary visual reference for layout, styling, and component structure
+- Follow the exact visual hierarchy, spacing, and component placement shown in the reference
+- Match colors, typography, and overall aesthetic from the reference design
+
+## Technology Stack Requirements
+
+### Core Technologies
+- **Frontend**: JSX components with vanilla JavaScript (NO TypeScript)
+- **Styling**: SCSS with BEM methodology
+- **Build Tool**: Vite with Minista static site generator
+- **Architecture**: Component-based modular structure
+
+### Required Libraries and Tools
+```json
+{
+  "postcss-px-to-rem": "^1.x.x",
+  "postcss-preset-env": "^9.x.x", 
+  "css-normalize": "^8.x.x",
+  "imask": "^7.x.x",
+  "swiper": "^11.x.x"
+}
+```
+
+## File Structure Requirements
+
+```
+src/
+├── components/           # Reusable UI components
+│   ├── Header/
+│   │   ├── Header.jsx
+│   │   └── Header.scss
+│   ├── Button/
+│   │   ├── Button.jsx
+│   │   └── Button.scss
+│   └── ...
+├── pages/               # Page-specific components
+│   ├── HomePage/
+│   │   ├── HomePage.jsx
+│   │   └── HomePage.scss
+│   └── ...
+├── styles/
+│   ├── _variables.scss  # All design tokens
+│   ├── _mixins.scss     # Reusable SCSS mixins
+│   ├── _normalize.scss  # CSS normalization
+│   └── main.scss        # Global styles
+├── assets/
+│   ├── images/
+│   └── icons/
+└── utils/
+    └── constants.js
+```
+
+## SCSS/CSS Rules
+
+### BEM Methodology (Strict)
+```scss
+// ✅ Correct BEM structure
+.header {
+  &__logo { }
+  &__nav { }
+  &__phone {
+    &--highlighted { }
+  }
+}
+
+// ❌ Avoid nested selectors beyond BEM
+.header .nav .item { } // Wrong
+```
+
+### Variables and Mixins Requirements
+```scss
+// _variables.scss - Extract colors from docs/layout-reference.png:
+$primary-color: #1a365d;     // Update based on reference
+$secondary-color: #4a5568;   // Update based on reference
+$text-color: #2d3748;        // Update based on reference
+$background-color: #ffffff;  // Update based on reference
+$accent-color: #b8860b;      // Update based on reference
+$font-heading: 'Playfair Display', serif;  // For all headings (H1-H6)
+$font-body: 'Roboto', sans-serif;       // For body text and paragraphs
+
+// Breakpoints
+$mobile: 320px;
+$tablet: 768px;
+$desktop: 1024px;
+$wide: 1200px;
+
+// _mixins.scss - Must include:
+@mixin heading-font {
+  font-family: $font-heading;
+  font-display: swap;
+}
+
+@mixin body-font {
+  font-family: $font-body;
+  font-display: swap;
+}
+
+@mixin button-primary { }
+@mixin container { }
+@mixin visually-hidden { }
+@mixin focus-visible { }
+```
+
+### PostCSS Configuration
+- Always use `postcss-px-to-rem` for all font sizes and spacing
+- Configure `postcss-preset-env` for modern CSS features
+- Include `css-normalize` as base reset
+
+## Design Implementation Guidelines
+
+### Visual Reference Compliance
+- **Always reference**: `docs/layout-reference.png` before implementing any component
+- **Color extraction**: Extract exact colors from the reference image for variables
+- **Typography matching**: Match font sizes, weights, and line heights from reference
+- **Spacing consistency**: Replicate margins, paddings, and gaps as shown
+- **Component hierarchy**: Follow the exact layout structure and component nesting
+
+### Layout Analysis from Reference
+- Analyze the reference for:
+  - Header structure and navigation
+  - Hero section layout and CTA placement
+  - Service cards arrangement and styling
+  - Statistics section format
+  - Footer structure and content organization
+  - Mobile responsiveness cues
+
+### Typography Rules
+- **Headings (H1-H6)**: Use 'Playfair Display' serif font
+- **Body text**: Use 'Roboto' sans-serif font
+- **Font loading**: Implement with `font-display: swap` for performance
+- **Font weights**: Define appropriate weights for both font families
+- **Line heights**: Match typography spacing from reference design
+
+## Component Development Rules
+
+### JSX Component Structure
+```jsx
+// Component template
+import './ComponentName.scss';
+
+const ComponentName = ({ children, className, ...props }) => {
+  return (
+    <div className={`component-name ${className || ''}`} {...props}>
+      {children}
+    </div>
+  );
+};
+
+export default ComponentName;
+```
+
+### Component Requirements
+- Each component MUST have its own `.scss` file
+- Use BEM naming convention for all CSS classes
+- Props should include `className` for style extension
+- Components must be fully modular and reusable
+- No inline styles allowed
+
+### Accessibility Requirements (Critical)
+- All images MUST have descriptive `alt` attributes
+- Use semantic HTML5 elements (`<header>`, `<main>`, `<section>`, `<article>`)
+- Implement proper heading hierarchy (H1 → H2 → H3)
+- Include ARIA labels for interactive elements
+- Ensure keyboard navigation support
+- Test with screen readers
+- Minimum color contrast ratio 4.5:1
+- Focus indicators must be visible and clear
+
+```jsx
+// Accessibility example
+<button 
+  className="btn btn--primary"
+  aria-label="Вызвать ритуального агента круглосуточно"
+  tabIndex="0"
+>
+  Вызвать агента 24/7
+</button>
+```
+
+## SEO Requirements (Critical Priority)
+
+### Meta Tags and Structure
+- Unique `<title>` and `<meta description>` for each page
+- Proper Open Graph and Twitter Card meta tags
+- Canonical URLs for all pages
+- Structured data (JSON-LD) for:
+  - LocalBusiness
+  - FuneralService  
+  - Product (for catalog items)
+  - Review (for testimonials)
+  - FAQPage
+
+### HTML Structure for SEO
+```jsx
+// Page structure example
+<main>
+  <h1>Единственный H1 на странице</h1>
+  <section>
+    <h2>Наши услуги</h2>
+    <article>
+      <h3>Организация похорон</h3>
+    </article>
+  </section>
+</main>
+```
+
+### Image Optimization
+- All images compressed and optimized for web
+- Multiple formats (WebP with fallbacks)
+- Lazy loading implementation
+- Descriptive file names (not IMG_001.jpg)
+
+## JavaScript Rules
+
+### Phone Number Integration
+```javascript
+// Always make phone numbers clickable
+<a href="tel:+79203663636" className="header__phone">
+  +7 (920) 366-36-36
+</a>
+```
+
+### Form Handling with IMask
+```javascript
+import IMask from 'imask';
+
+// Phone input masking
+const phoneInput = document.querySelector('#phone');
+const maskOptions = {
+  mask: '+{7} (000) 000-00-00'
+};
+IMask(phoneInput, maskOptions);
+```
+
+### Swiper Implementation
+- Use for testimonials and photo galleries
+- Always include navigation and pagination
+- Ensure mobile-friendly configuration
+
+## Performance Requirements
+
+### Critical Performance Metrics
+- Google PageSpeed Insights score > 90
+- First Contentful Paint < 2.5s
+- Largest Contentful Paint < 2.5s
+- Cumulative Layout Shift < 0.1
+
+### Implementation Rules
+- Lazy load all images below the fold
+- Minimize and compress all CSS/JS
+- Use critical CSS inline for above-the-fold content
+- Implement proper caching headers
+- Optimize font loading with `font-display: swap`
+
+## Content and Localization Rules
+
+### Russian Language Support
+- All content in Russian language
+- Proper Cyrillic font support
+- Russian number formatting for prices
+- Local business hours format
+- Russian phone number formatting
+
+### Contact Information Display
+- Phone number: +7 (920) 366-36-36 (always clickable)
+- Business name: "Ритуальная служба Век"
+- Location: "г. Шуя, Ивановская область"
+
+## Development Workflow
+
+### Code Quality
+- Use ESLint for JavaScript code quality
+- Use Stylelint for SCSS code quality
+- Prettier for consistent code formatting
+- No console.log statements in production
+
+### Testing Requirements
+- Manual accessibility testing with keyboard navigation
+- Cross-browser testing (Chrome, Firefox, Safari, Edge)
+- Mobile device testing on real devices
+- PageSpeed testing on each major change
+
+### Git Commit Rules
+- Use conventional commits format
+- Include Russian language in commit descriptions when relevant
+- Always test locally before committing
+
+## Forbidden Practices
+
+❌ **Never Use:**
+- TypeScript (project specifically avoids it)
+- Inline styles in JSX
+- !important in CSS (except for utility classes)
+- Generic class names (avoid .container, .wrapper)
+- External CDN dependencies (bundle everything locally)
+- jQuery or other heavy JS libraries
+- CSS frameworks like Bootstrap or Tailwind
+
+✅ **Always Use:**
+- Semantic HTML elements
+- BEM methodology for CSS
+- Component-based architecture
+- Accessible markup patterns
+- SEO-optimized structure
+- Performance-first approach

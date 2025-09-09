@@ -1,0 +1,189 @@
+// =================
+// MAIN STYLES - Главный файл стилей проекта ритуальной службы "Век"
+// =================
+
+// ИМПОРТ ПЕРЕМЕННЫХ И ФУНКЦИЙ (в правильном порядке)
+// =================
+
+// 1. CSS переменные (должны быть первыми)
+@import './variables.scss';
+
+// 2. Sass константы
+@import './constants.scss';
+
+// 3. Функции
+@import './functions.scss';
+
+// 4. Медиа-миксины  
+@import './media.scss';
+
+// 5. Миксины (зависят от функций и медиа-миксинов)
+@import './mixins.scss';
+
+// БАЗОВЫЕ СТИЛИ
+// =================
+
+// 6. Шрифты
+@import './fonts.scss';
+
+// 7. Нормализация
+@import './normalize.scss';
+
+// 8. Глобальные стили
+@import './globals.scss';
+
+// 9. Утилитарные классы
+@import './utils.scss';
+
+// КОМПОНЕНТЫ
+// =================
+
+// Компоненты импортируются отдельно в своих JSX файлах
+
+// АДАПТИВНЫЕ СТИЛИ И ОПТИМИЗАЦИИ
+// =================
+
+// Стили для print-версии
+@media print {
+  * {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+  
+  .global {
+    &__header,
+    &__footer,
+    &__back-to-top,
+    &__mobile-call-button {
+      display: none !important;
+    }
+    
+    &__main {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+  
+  // Разрывы страниц
+  .page-break-before {
+    page-break-before: always;
+  }
+  
+  .page-break-after {
+    page-break-after: always;
+  }
+  
+  .page-break-inside-avoid {
+    page-break-inside: avoid;
+  }
+}
+
+// Стили для пользователей с ограниченными возможностями
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .global__back-to-top {
+    animation: none !important;
+  }
+}
+
+// Высокая контрастность
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: #000000;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 10px 15px rgba(--color-0, 0, 0, 0.5);
+  }
+}
+
+// Стили для старых браузеров (фолбэки)
+@supports not (display: grid) {
+  .global__footer-content {
+    display: block;
+    
+    & > * {
+      margin-bottom: var(--spacing-8);
+    }
+  }
+}
+
+@supports not (position: sticky) {
+  .global__header {
+    position: relative;
+  }
+}
+
+// КРИТИЧЕСКИЕ СТИЛИ (инлайн в production)
+// =================
+
+// Стили, которые должны загружаться первыми для предотвращения FOUC
+.critical-styles {
+  // Базовые стили body
+  body {
+    font-family: var(--font-body);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+  }
+  
+  // Базовые стили контейнера
+  .container {
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+  }
+  
+  // Предотвращение скачков при загрузке шрифтов
+  .font-loading {
+    font-display: swap;
+  }
+}
+
+// ДЕБАГ СТИЛИ (только в development)
+// =================
+
+@if $debug-mode == true {
+  .debug {
+    outline: 2px solid red !important;
+    
+    &--layout {
+      * {
+        outline: 1px solid rgba(255, 0, 0, 0.3) !important;
+      }
+    }
+    
+    &--spacing {
+      * {
+        background-color: rgba(0, 255, 0, 0.1) !important;
+      }
+    }
+  }
+  
+  // Показываем сетку
+  .debug-grid {
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
+      background-size: 10px 10px;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  }
+}
