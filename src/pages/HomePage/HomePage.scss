@@ -14,7 +14,8 @@
   background: var(--color-bg-secondary);
   color: var(--color-text-primary);
   min-height: 640px;
-  padding: var(--spacing-24) 0;
+  // дополнительный верхний отступ, чтобы на первом экране было видно только шапку и hero
+  padding: calc(var(--spacing-24) + 120px) 0 var(--spacing-24) 0;
   box-shadow: inset 0 -1px 0 var(--color-border);
 
   // Убираем ангела и любые декоративные фоны
@@ -103,6 +104,11 @@
   }
 }
 
+// Повышаем специфичность, чтобы переопределить общий .section padding
+.home-page .hero.section {
+  padding: calc(var(--spacing-24) + 120px) 0 var(--spacing-24) 0;
+}
+
 // ПЕРВЫЕ ШАГИ
 // =================
 
@@ -136,6 +142,166 @@
     @media (max-width: 767px) {
       gap: var(--spacing-6);
     }
+  }
+}
+
+// ПЕРВЫЕ ШАГИ — НОВЫЙ ДВУХКОЛОНОЧНЫЙ ВАРИАНТ
+.first-steps__grid {
+  display: grid;
+  grid-template-columns: 7fr 3fr; // 70% / 30%
+  gap: var(--spacing-12);
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+}
+
+.first-steps__col--text {
+  align-self: center;
+}
+
+.first-steps__heading {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-2xl);
+  color: var(--color-primary);
+  margin: 0 0 var(--spacing-4) 0;
+}
+
+.first-steps__text {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.first-steps__col--call {
+  align-self: center;
+}
+
+.first-steps__call-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-8);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.first-steps__icon {
+  width: 96px;
+  height: 96px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+
+  svg,
+  img {
+    width: 96px;
+    height: 96px;
+  }
+}
+
+.first-steps__phone {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.first-steps__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+}
+
+// ПОСОБИЕ НА ПОГРЕБЕНИЕ
+.burial-benefit {
+  &__grid {
+    display: grid;
+    grid-template-columns: 7fr 3fr; // как в first-steps: текст 70% / визуал 30%
+    gap: var(--spacing-12);
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-8);
+    }
+  }
+
+  // выравниваем текстовую колонку по центру контейнера
+  &__col--text {
+    align-self: center;
+  }
+
+  // Правая колонка с иконкой и суммой — аналог call-блока из first-steps
+  &__amount-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-4);
+    padding: var(--spacing-8);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  }
+
+  &__icon {
+    width: 96px;
+    height: 96px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+
+    svg,
+    img {
+      width: 96px;
+      height: 96px;
+    }
+  }
+
+  &__title {
+    // те же стили, что и у .first-steps__heading
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-4) 0;
+    text-align: left;
+  }
+
+  &__amount {
+    // как .stats-number
+    display: block;
+    margin-bottom: var(--spacing-3);
+    font-size: var(--font-size-5xl);
+    color: var(--color-accent);
+  }
+
+  &__text {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  &__label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    letter-spacing: var(--letter-spacing-wider);
+    text-transform: uppercase;
   }
 }
 
@@ -266,14 +432,22 @@
   &__icon {
     width: 40px;
     height: 40px;
-    border-radius: var(--border-radius-md);
-    border: 1px solid var(--color-border-accent);
-    background: linear-gradient(
-      180deg,
-      var(--color-accent-light),
-      var(--color-accent)
-    );
-    opacity: 0.9;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: #ffffff;
+    color: var(
+      --color-accent
+    ); // задаёт цвет линий для внутреннего SVG через currentColor
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+    svg {
+      display: block;
+      width: 24px;
+      height: 24px;
+    }
   }
 
   &:hover {
@@ -320,10 +494,11 @@
   &__title {
     text-align: center;
     margin-bottom: var(--spacing-12);
-    // Синхронизируем с остальными секциями: Euclid Flex, вес medium
-    font-family: var(--font-body);
-    font-weight: var(--font-weight-medium);
+    // Используем шрифт заголовков с обычным весом
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-regular);
     letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-primary);
   }
 }
 
@@ -365,11 +540,11 @@
   }
 
   &__title {
-    font-family: var(--font-heading);
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-semibold);
     margin-bottom: var(--spacing-3);
     color: var(--color-primary);
+    text-align: left;
   }
 
   &__description {
@@ -522,33 +697,41 @@
   text-align: left;
 
   &__title {
+    text-align: center;
     margin-bottom: var(--spacing-6);
   }
 
   &__slider {
     margin-top: var(--spacing-8);
+    position: relative;
+    // Пагинация будет в нормальном потоке ниже карточек
+    padding-bottom: 0;
 
     .swiper-button-prev,
     .swiper-button-next {
       color: var(--color-accent);
+      @media (max-width: 1024px) {
+        display: none; // планшеты и ниже — без стрелок
+      }
     }
 
     .swiper-pagination-bullet-active {
       background: var(--color-accent);
     }
 
-    @media (max-width: 767px) {
+    .swiper-pagination {
+      position: static !important; // не перекрывает карточки
+      margin-top: 20px !important; // отступ от низа карточек
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media (max-width: 1024px) {
       .swiper-button-prev,
       .swiper-button-next {
         display: none;
-      }
-
-      // добавляем внутренний отступ снизу у контейнера слайдера,
-      // чтобы под карточкой оставалось пространство
-      padding-bottom: 60px;
-
-      .swiper-pagination {
-        bottom: 20px !important; // 20px от низа активной карточки
       }
     }
   }
@@ -697,8 +880,8 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-12);
 
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr; // одна колонка ниже 1000px
     gap: var(--spacing-8);
   }
 }
@@ -750,6 +933,32 @@
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     margin: 0;
+  }
+
+  &__route {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .office-item {
+    display: grid;
+    grid-template-columns: 1fr auto; // адрес слева, кнопка «Маршрут» справа
+    align-items: center; // вертикальное выравнивание по центру
+    column-gap: var(--spacing-4);
+
+    &__address,
+    &__note,
+    &__schedule {
+      grid-column: 1 / 2;
+    }
+
+    &__route {
+      display: block;
+      grid-column: 2 / 3;
+      grid-row: 1 / -1; // тянем по всей высоте блока
+      align-self: center; // центрируем по вертикали
+    }
   }
 }
 

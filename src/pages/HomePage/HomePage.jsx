@@ -8,6 +8,9 @@ import busWebp from "../../assets/images/transport-and-office/bus-comfort.webp";
 import busJpg from "../../assets/images/transport-and-office/bus-comfort.jpg";
 import officeWebp from "../../assets/images/transport-and-office/office-facade.webp";
 import officeJpg from "../../assets/images/transport-and-office/office-facade.jpg";
+// Иконки (высокое качество, прозрачный фон)
+import phoneIcon from "../../assets/icons/phone-linear-gold.png";
+import benefitIcon from "../../assets/icons/benefit-coin-leaf-gold.png";
 // Swiper для отзывов
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y } from "swiper/modules";
@@ -98,43 +101,44 @@ const HomePage = () => {
               <h2 className="first-steps__title">
                 Что делать, если умер близкий человек?
               </h2>
-              <p className="first-steps__intro">
-                Понимаем, как тяжело в такой момент собраться с мыслями. Мы
-                подготовили краткую инструкцию, чтобы вы знали, как действовать.
-                Позвоните нам по номеру{" "}
-                <a href="tel:+79203663636" className="phone-number">
-                  +7 (920) 366-36-36
-                </a>
-                . Наш агент приедет, поможет с оформлением всех документов и
-                возьмет на себя организацию похорон. Вам не придется делать это
-                в одиночку.
-              </p>
-              <div className="first-steps__instructions">
-                <div className="instruction-step">
-                  <div className="instruction-step__number">1</div>
-                  <p className="instruction-step__text">
-                    Вызовите скорую помощь и полицию. Для констатации смерти и
-                    получения протокола осмотра.
+              <div className="first-steps__grid">
+                <div className="first-steps__col first-steps__col--text">
+                  <h3 className="first-steps__heading">
+                    Мы возьмем все заботы на себя
+                  </h3>
+                  <p className="first-steps__text">
+                    Понимаем, как тяжело в такой момент собраться с мыслями.
+                    Позвоните нам, и наш специалист немедленно приедет, поможет
+                    с оформлением всех документов и полностью возьмет на себя
+                    организацию похорон. Вам не придется делать это в одиночку.
                   </p>
                 </div>
-                <div className="instruction-step">
-                  <div className="instruction-step__number">2</div>
-                  <p className="instruction-step__text">
-                    Получите медицинское свидетельство о смерти. Его выдают в
-                    морге или поликлинике.
-                  </p>
-                </div>
-                <div className="instruction-step">
-                  <div className="instruction-step__number">3</div>
-                  <p className="instruction-step__text">
-                    Позвоните нам по номеру{" "}
-                    <a href="tel:+79203663636" className="phone-number">
+                <div
+                  className="first-steps__col first-steps__col--call"
+                  aria-label="Круглосуточная помощь по телефону"
+                >
+                  <div
+                    className="first-steps__call-block"
+                    role="group"
+                    aria-label="Связаться по телефону"
+                  >
+                    <div className="first-steps__icon" aria-hidden="true">
+                      <img
+                        src={phoneIcon}
+                        alt="Иконка телефона"
+                        width="96"
+                        height="96"
+                      />
+                    </div>
+                    <a
+                      href="tel:+79203663636"
+                      className="first-steps__phone"
+                      aria-label="Позвонить +7 (920) 366-36-36"
+                    >
                       +7 (920) 366-36-36
                     </a>
-                    . Наш агент приедет, поможет с оформлением всех документов и
-                    возьмет на себя организацию похорон. Вам не придется делать
-                    это в одиночку.
-                  </p>
+                    <div className="first-steps__label">Круглосуточно</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -152,7 +156,25 @@ const HomePage = () => {
 
           <div className="services__grid">
             <div className="service-card">
-              <div className="service-card__icon" aria-hidden="true" />
+              <div className="service-card__icon" aria-hidden="true">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M4 7h16M6 7v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7M9 11h6"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
               <h3 className="service-card__title">Организация похорон</h3>
               <p className="service-card__description">
                 Полностью организуем прощание: от сбора документов и подготовки
@@ -166,7 +188,25 @@ const HomePage = () => {
             </div>
 
             <div className="service-card">
-              <div className="service-card__icon" aria-hidden="true" />
+              <div className="service-card__icon" aria-hidden="true">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M4 12h16M7 7l-3 5 3 5M17 7l3 5-3 5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
               <h3 className="service-card__title">
                 Захоронение участников СВО
               </h3>
@@ -182,7 +222,25 @@ const HomePage = () => {
             </div>
 
             <div className="service-card">
-              <div className="service-card__icon" aria-hidden="true" />
+              <div className="service-card__icon" aria-hidden="true">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M4 20h16M6 16l6-10 6 10H6z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
               <h3 className="service-card__title">
                 Благоустройство захоронений
               </h3>
@@ -198,7 +256,25 @@ const HomePage = () => {
             </div>
 
             <div className="service-card">
-              <div className="service-card__icon" aria-hidden="true" />
+              <div className="service-card__icon" aria-hidden="true">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M4 6h10l6 6v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z M14 6v6h6"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
               <h3 className="service-card__title">
                 Каталог ритуальных товаров
               </h3>
@@ -214,7 +290,25 @@ const HomePage = () => {
             </div>
 
             <div className="service-card">
-              <div className="service-card__icon" aria-hidden="true" />
+              <div className="service-card__icon" aria-hidden="true">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M3 16h18M5 12l2-7h10l2 7M8 16v3m8-3v3"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
               <h3 className="service-card__title">Груз 200</h3>
               <p className="service-card__description">
                 Организуем транспортировку тела усопшего в любой город России и
@@ -228,7 +322,25 @@ const HomePage = () => {
             </div>
 
             <div className="service-card">
-              <div className="service-card__icon" aria-hidden="true" />
+              <div className="service-card__icon" aria-hidden="true">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M12 3v18M19 12a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
               <h3 className="service-card__title">Кремация</h3>
               <p className="service-card__description">
                 Помогаем с организацией кремации в г. Иваново, предоставляем
@@ -238,6 +350,50 @@ const HomePage = () => {
                 <a href="#" aria-label="Подробнее: Кремация">
                   Подробнее
                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Пособие на погребение */}
+      <section className="burial-benefit section">
+        <div className="container">
+          <div className="card">
+            <div className="card__body">
+              <div className="burial-benefit__grid">
+                {/* Левая колонка — текст */}
+                <div className="burial-benefit__col burial-benefit__col--text">
+                  <h3 className="burial-benefit__title">
+                    Вычитаем пособие на погребение из стоимости услуг
+                  </h3>
+                  <p className="burial-benefit__text">
+                    Государство предоставляет пособие на погребение. Мы поможем
+                    вам с оформлением необходимых документов и сразу вычтем эту
+                    сумму из итогового счета, чтобы уменьшить ваши расходы.
+                  </p>
+                </div>
+
+                {/* Правая колонка — иконка + сумма, как call-блок в first-steps */}
+                <div
+                  className="burial-benefit__col burial-benefit__col--visual"
+                  aria-label="Размер пособия на погребение"
+                >
+                  <div className="burial-benefit__amount-block" role="group">
+                    <div className="burial-benefit__icon" aria-hidden="true">
+                      <img
+                        src={benefitIcon}
+                        alt="Иконка руки с монетой и листком"
+                        width="96"
+                        height="96"
+                      />
+                    </div>
+                    <div className="burial-benefit__amount">9165 ₽</div>
+                    <div className="burial-benefit__label">
+                      Пособие на погребение
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -566,6 +722,17 @@ const HomePage = () => {
                   <p className="office-item__schedule">
                     График работы: Пн-Вс, с 8:00 до 17:00
                   </p>
+                  <p className="office-item__route d-desktop-none">
+                    <a
+                      className="btn btn--secondary btn--sm"
+                      href="https://yandex.uz/maps/-/CCUrZ-xwOC"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Построить маршрут: Красноармейский пер., 6"
+                    >
+                      Маршрут
+                    </a>
+                  </p>
                 </div>
 
                 <div className="office-item">
@@ -576,6 +743,17 @@ const HomePage = () => {
                   <p className="office-item__schedule">
                     График работы: Пн-Вс, с 8:00 до 17:00
                   </p>
+                  <p className="office-item__route d-desktop-none">
+                    <a
+                      className="btn btn--secondary btn--sm"
+                      href="https://yandex.ru/maps/-/CBBL5DQy~C"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Построить маршрут: Фабричная, 27"
+                    >
+                      Маршрут
+                    </a>
+                  </p>
                 </div>
 
                 <div className="office-item">
@@ -584,6 +762,17 @@ const HomePage = () => {
                   </h4>
                   <p className="office-item__schedule">
                     График работы: Пн-Вс, с 8:00 до 17:00
+                  </p>
+                  <p className="office-item__route d-desktop-none">
+                    <a
+                      className="btn btn--secondary btn--sm"
+                      href="https://yandex.ru/maps/-/CLUSVS6V"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Построить маршрут: Генерала Белова, 33"
+                    >
+                      Маршрут
+                    </a>
                   </p>
                 </div>
               </div>

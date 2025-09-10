@@ -1,5 +1,6 @@
 import React from "react";
 import { COMPANY_INFO, devLog } from "../../helpers/index.js";
+import iconPhone from "../../assets/icons/icon-phone.svg";
 import logoUrl from "../../../docs/logo-vek.png";
 import "./Global.scss";
 
@@ -230,27 +231,71 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
               </ul>
             </nav>
             <div className="global__contacts">
-              <div className="global__phone-block">
-                <a
-                  href={`tel:${COMPANY_INFO.phone.replace(/\D/g, "")}`}
-                  className="phone-number phone-number--hero"
-                  onClick={handlePhoneClick}
-                  aria-label={`Позвонить по номеру ${COMPANY_INFO.phone}`}
-                >
-                  {COMPANY_INFO.phone}
-                </a>
-                <p className="global__schedule">
-                  ({COMPANY_INFO.phoneSchedule})
-                </p>
-              </div>
-              <button
-                className="btn btn--secondary btn--sm global__callback-btn"
-                onClick={() => {
-                  devLog("Открыть форму обратного звонка");
-                }}
-                aria-label="Заказать обратный звонок"
+              <a
+                href={`tel:${COMPANY_INFO.phone.replace(/\D/g, "")}`}
+                className="phone-number phone-number--hero"
+                onClick={handlePhoneClick}
+                aria-label={`Позвонить по номеру ${COMPANY_INFO.phone}`}
               >
-                Заказать звонок
+                {COMPANY_INFO.phone}
+              </a>
+              <span className="global__schedule global__schedule--inline">
+                ({COMPANY_INFO.phoneSchedule})
+              </span>
+              <button
+                className="global__call-circle"
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.location.href = `tel:${COMPANY_INFO.phone.replace(
+                      /\D/g,
+                      ""
+                    )}`;
+                  }
+                }}
+                aria-label="Позвонить сейчас"
+                type="button"
+              >
+                <img
+                  src={iconPhone}
+                  alt=""
+                  width="22"
+                  height="22"
+                  aria-hidden="true"
+                />
+              </button>
+              <button
+                className="global__menu-burger"
+                aria-label="Открыть меню"
+                type="button"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M4 7h16"
+                    stroke="#ffffff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M4 12h16"
+                    stroke="#ffffff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M4 17h16"
+                    stroke="#ffffff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
               </button>
             </div>
           </div>
@@ -408,7 +453,9 @@ const MobileCallButton = () => {
       onClick={handleClick}
       aria-label={`Позвонить ${COMPANY_INFO.phone}`}
     >
-      <span className="global__mobile-call-icon">📞</span>
+      <span className="global__mobile-call-icon" aria-hidden="true">
+        <img src={iconPhone} alt="" width="24" height="24" />
+      </span>
       <span className="global__mobile-call-text">Позвонить</span>
     </a>
   );

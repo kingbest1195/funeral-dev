@@ -29,17 +29,23 @@
   // =================
 
   &__header {
-    background-color: #ffffff; // сплошной белый
-    position: sticky;
-    top: 0;
+    // Dynamic Island стиль
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: var(--z-sticky);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06); // лёгкая тень как по референсу
-    border-bottom: 1px solid var(--color-border);
-    border-radius: 0;
+    background-color: #ffffff;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 50px; // «пилюля»
     margin: 0;
+    width: min(1338px, 94%);
 
     @media (max-width: 767px) {
-      position: sticky;
+      top: 12px;
+      border-radius: 28px;
+      width: calc(100% - 16px);
     }
   }
 
@@ -51,21 +57,22 @@
   &__header-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: var(--spacing-4) 0; // немного больше воздуха
+    justify-content: space-between; // всегда растягиваем
+    padding: var(--spacing-3) var(--spacing-5);
 
     @media (max-width: 767px) {
-      flex-direction: column;
-      text-align: center;
-      gap: var(--spacing-4);
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+      gap: var(--spacing-3);
     }
   }
 
   &__nav {
-    margin-right: var(--spacing-8);
+    margin-right: var(--spacing-6);
 
     @media (max-width: 1024px) {
-      display: none;
+      display: none; // скрываем пункты меню на планшетах и мобильных
     }
   }
 
@@ -75,6 +82,13 @@
     list-style: none;
     margin: 0;
     padding: 0;
+
+    li {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
 
     a {
       color: var(--color-primary);
@@ -93,6 +107,9 @@
 
   &__logo {
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
 
     &-link {
       display: inline-flex;
@@ -112,7 +129,20 @@
     margin: 0;
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
-    margin-top: var(--spacing-1);
+    margin-top: 0;
+    white-space: nowrap;
+
+    // скрыть на узких десктопах 1280-1200
+    @media (max-width: 1280px) and (min-width: 1201px) {
+      display: none;
+    }
+
+    @media (max-width: 1200px) and (min-width: 1025px) {
+      display: none;
+    }
+    @media (max-width: 1024px) {
+      display: none;
+    }
   }
 
   &__contacts {
@@ -123,7 +153,7 @@
 
     @media (max-width: 767px) {
       align-items: center;
-      text-align: center;
+      text-align: left;
     }
   }
 
@@ -139,13 +169,58 @@
     }
   }
 
-  &__callback-btn {
-    white-space: nowrap;
-    padding-left: var(--spacing-5);
-    padding-right: var(--spacing-5);
+  &__menu-burger {
+    width: 48px; // возвращаем исходный размер кнопки
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: #fff; // белая иконка «бургер»
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    transition: transform var(--duration-base) var(--ease-smooth);
+    font-size: 0; // используем SVG-иконку внутри
 
-    @media (max-width: 767px) {
-      order: -1; // Показываем кнопку над телефоном на мобильных
+    &:hover {
+      transform: translateY(-1px);
+    }
+    &:focus {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 1024px) {
+      display: inline-flex; // показываем на планшетах и мобильных
+    }
+  }
+
+  &__call-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    transition: transform var(--duration-base) var(--ease-smooth);
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+    &:focus {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 1200px) {
+      display: none; // скрывать кнопку звонка 1200 и ниже
     }
   }
 
@@ -154,6 +229,13 @@
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     margin-top: var(--spacing-1);
+
+    @media (max-width: 767px) {
+      display: none; // на мобильных скрываем круглосуточно
+    }
+    @media (max-width: 1200px) and (min-width: 1025px) {
+      display: none;
+    }
   }
 
   // MAIN CONTENT
@@ -172,6 +254,11 @@
     background-image: none;
     color: var(--color-text-light);
     margin-top: auto;
+    padding-bottom: 0;
+
+    @media (max-width: 767px) {
+      padding-bottom: 70px; // чтобы нижняя панель звонка не перекрывала футер
+    }
 
     a {
       color: var(--color-accent-light);
@@ -185,6 +272,7 @@
   &__footer-content {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
+    align-items: start; // колонки по верхам
     gap: var(--spacing-8);
     padding: var(--spacing-20) 0 var(--spacing-8) 0;
 
@@ -265,8 +353,19 @@
   &__footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: var(--spacing-6) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; // по умолчанию центрируем
+    gap: var(--spacing-2);
+    flex-direction: column; // две строки одна под другой
+
+    // модификатор для выравнивания слева при необходимости
+    &.global__footer-bottom--align-left {
+      justify-content: flex-start;
+    }
   }
 
+  &__legal,
   &__copyright {
     text-align: center;
 
@@ -352,13 +451,20 @@
 
   &__mobile-call-icon {
     margin-right: var(--spacing-2);
-    font-size: var(--font-size-lg);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
   }
 
   &__mobile-call-text {
     font-size: var(--font-size-base);
+    color: #ffffff; // текст на кнопке «Позвонить» белым на планшетах
+    vertical-align: middle;
     @media (max-width: 767px) {
-      color: var(--color-text-primary); // тёмно-серый текст на золотом фоне
+      color: var(--color-text-primary); // на узких мобильных — как было
     }
   }
 }
