@@ -2,6 +2,8 @@
 // SASS FUNCTIONS - Функции для проекта ритуальной службы "Век"
 // =================
 
+@use "sass:math";
+
 // ФУНКЦИИ ДЛЯ ОТСТУПОВ И РАЗМЕРОВ
 // =================
 
@@ -17,7 +19,7 @@
 /// @param {number} $total-columns - Общее количество колонок в сетке (по умолчанию 12)
 /// @return {percentage} - Ширина в процентах
 @function col-width($columns, $total-columns: $grid-columns) {
-  @return percentage($columns / $total-columns);
+  @return percentage(math.div($columns, $total-columns));
 }
 
 /// Функция для создания гибкой типографики (fluid typography)
@@ -27,12 +29,12 @@
 /// @param {string} $max-vw - Максимальная ширина viewport
 /// @return {string} - Значение clamp для адаптивного размера
 @function fluid-type($min-size, $max-size, $min-vw: $breakpoint-sm, $max-vw: $breakpoint-xl) {
-  $min-size-rem: strip-unit($min-size) / 16;
-  $max-size-rem: strip-unit($max-size) / 16;
-  $min-vw-rem: strip-unit($min-vw) / 16;
-  $max-vw-rem: strip-unit($max-vw) / 16;
+  $min-size-rem: math.div(strip-unit($min-size), 16);
+  $max-size-rem: math.div(strip-unit($max-size), 16);
+  $min-vw-rem: math.div(strip-unit($min-vw), 16);
+  $max-vw-rem: math.div(strip-unit($max-vw), 16);
   
-  @return clamp(#{$min-size-rem}rem, #{$min-size-rem}rem + (#{$max-size-rem} - #{$min-size-rem}) * ((100vw - #{$min-vw-rem}rem) / (#{$max-vw-rem} - #{$min-vw-rem})), #{$max-size-rem}rem);
+  @return clamp(#{$min-size-rem}rem, #{$min-size-rem}rem + (#{$max-size-rem} - #{$min-size-rem}) * (math.div((100vw - #{$min-vw-rem}rem), (#{$max-vw-rem} - #{$min-vw-rem}))), #{$max-size-rem}rem);
 }
 
 // УТИЛИТАРНЫЕ ФУНКЦИИ
@@ -42,7 +44,7 @@
 /// @param {string} $value - Значение с единицами измерения
 /// @return {number} - Число без единиц
 @function strip-unit($value) {
-  @return $value / ($value * 0 + 1);
+  @return math.div($value, ($value * 0 + 1));
 }
 
 /// Конвертирует px в rem
@@ -50,7 +52,7 @@
 /// @param {number} $base - Базовый размер шрифта (по умолчанию 16px)
 /// @return {string} - Значение в rem
 @function px-to-rem($px, $base: 16) {
-  @return (strip-unit($px) / $base) * 1rem;
+  @return math.div(strip-unit($px), $base) * 1rem;
 }
 
 /// Конвертирует rem в px
@@ -70,9 +72,9 @@
   $l2: luminance($color2);
   
   @if $l1 > $l2 {
-    @return ($l1 + 0.05) / ($l2 + 0.05);
+    @return math.div(($l1 + 0.05), ($l2 + 0.05));
   } @else {
-    @return ($l2 + 0.05) / ($l1 + 0.05);
+    @return math.div(($l2 + 0.05), ($l1 + 0.05));
   }
 }
 
@@ -84,13 +86,13 @@
   $green: green($color);
   $blue: blue($color);
   
-  $red: $red / 255;
-  $green: $green / 255;
-  $blue: $blue / 255;
+  $red: math.div($red, 255);
+  $green: math.div($green, 255);
+  $blue: math.div($blue, 255);
   
-  $red: if($red <= 0.03928, $red / 12.92, pow(($red + 0.055) / 1.055, 2.4));
-  $green: if($green <= 0.03928, $green / 12.92, pow(($green + 0.055) / 1.055, 2.4));
-  $blue: if($blue <= 0.03928, $blue / 12.92, pow(($blue + 0.055) / 1.055, 2.4));
+  $red: if($red <= 0.03928, math.div($red, 12.92), pow(math.div(($red + 0.055), 1.055), 2.4));
+  $green: if($green <= 0.03928, math.div($green, 12.92), pow(math.div(($green + 0.055), 1.055), 2.4));
+  $blue: if($blue <= 0.03928, math.div($blue, 12.92), pow(math.div(($blue + 0.055), 1.055), 2.4));
   
   @return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
 }

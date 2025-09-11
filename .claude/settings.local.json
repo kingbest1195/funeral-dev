@@ -22,7 +22,9 @@
       "Bash(sed:*)",
       "Bash(npm ls:*)",
       "Bash(npm run lint:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(sass-migrator:*)",
+      "Bash(git restore:*)"
     ],
     "deny": [],
     "ask": []

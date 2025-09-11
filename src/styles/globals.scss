@@ -2,6 +2,8 @@
 // GLOBAL STYLES - Глобальные стили для проекта ритуальной службы "Век"
 // =================
 
+@use "sass:map";
+
 // БАЗОВЫЕ HTML ЭЛЕМЕНТЫ
 // =================
 
@@ -54,7 +56,7 @@ h3,
 .h3 {
   // Меньшие заголовки на Euclid Flex для лучшей читаемости
   @include body-font($body-weight-bold);
-  font-size: map-get($font-sizes, "xl");
+  font-size: map.get($font-sizes, "xl");
   line-height: var(--line-height-normal);
   color: var(--color-text-primary);
 
@@ -66,7 +68,7 @@ h3,
 h4,
 .h4 {
   @include body-font($body-weight-medium);
-  font-size: map-get($font-sizes, "lg");
+  font-size: map.get($font-sizes, "lg");
   line-height: var(--line-height-normal);
   color: var(--color-text-primary);
 
@@ -78,7 +80,7 @@ h4,
 h5,
 .h5 {
   @include body-font($body-weight-medium);
-  font-size: map-get($font-sizes, "base");
+  font-size: map.get($font-sizes, "base");
   line-height: var(--line-height-normal);
   color: var(--color-text-primary);
 
@@ -90,7 +92,7 @@ h5,
 h6,
 .h6 {
   @include body-font($body-weight-semibold);
-  font-size: map-get($font-sizes, "sm");
+  font-size: map.get($font-sizes, "sm");
   line-height: var(--line-height-normal);
   color: var(--color-text-primary);
 
