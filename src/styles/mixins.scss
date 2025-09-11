@@ -35,6 +35,27 @@
   }
 }
 
+/// Централизованный миксин для breakpoints (упрощенная версия) 
+/// @param {string} $key - Ключ breakpoint из карты
+$breakpoints: (
+  xs: $breakpoint-xs,
+  sm: $breakpoint-sm, 
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  2xl: $breakpoint-2xl
+) !default;
+
+@mixin breakpoint($key) {
+  @if map-has-key($breakpoints, $key) {
+    @media (min-width: map-get($breakpoints, $key)) {
+      @content;
+    }
+  } @else {
+    @warn "Неизвестный breakpoint: #{$key}. Доступные: #{map-keys($breakpoints)}";
+  }
+}
+
 /// Миксин для адаптивной типографики
 /// @param {string} $min-size - Минимальный размер
 /// @param {string} $max-size - Максимальный размер
@@ -43,33 +64,33 @@
   font-size: fluid-type($min-size, $max-size);
 }
 
-/// Миксин для стилей заголовков
+/// Миксин для стилей заголовков с адаптивной типографикой
 /// @param {string} $level - Уровень заголовка (h1, h2, h3, h4, h5, h6)
 @mixin heading($level) {
   @include heading-font;
 
   @if $level == "h1" {
-    @include fluid-typography($font-size-4xl, $font-size-6xl);
+    font-size: clamp(2rem, 4vw, 4rem); // Адаптивная типографика с clamp()
     font-weight: $font-weight-bold;
     line-height: $line-height-tight;
     margin-bottom: $margin-lg;
   } @else if $level == "h2" {
-    @include fluid-typography($font-size-3xl, $font-size-5xl);
+    font-size: clamp(1.75rem, 3.5vw, 3rem); // Адаптивная типографика с clamp()
     font-weight: $font-weight-semibold;
     line-height: $line-height-tight;
     margin-bottom: $margin-md;
   } @else if $level == "h3" {
-    @include fluid-typography($font-size-2xl, $font-size-4xl);
+    font-size: clamp(1.5rem, 3vw, 2.5rem); // Адаптивная типографика с clamp()
     font-weight: $font-weight-semibold;
     line-height: $line-height-normal;
     margin-bottom: $margin-md;
   } @else if $level == "h4" {
-    font-size: $font-size-xl;
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
     font-weight: $font-weight-medium;
     line-height: $line-height-normal;
     margin-bottom: $margin-sm;
   } @else if $level == "h5" {
-    font-size: $font-size-lg;
+    font-size: clamp(1.125rem, 2vw, 1.25rem);
     font-weight: $font-weight-medium;
     line-height: $line-height-normal;
     margin-bottom: $margin-sm;

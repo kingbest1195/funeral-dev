@@ -1,0 +1,38 @@
+// =================
+// SECTION TITLE COMPONENT - Переиспользуемый компонент заголовка секции
+// Использует миксины и адаптивную типографику согласно плану оптимизации
+// =================
+
+.section-title {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  margin: 0 0 var(--spacing-6) 0;
+  
+  // Базовые стили для всех заголовков
+  &--h1 {
+    font-size: clamp(2rem, 4vw, 4rem); // h1 адаптивная типографика
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--spacing-8);
+  }
+  
+  &--h2 {  
+    font-size: clamp(1.75rem, 3.5vw, 3rem); // h2 адаптивная типографика
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--spacing-6);
+  }
+  
+  // Модификатор для центрированного текста
+  &--centered {
+    text-align: center;
+  }
+  
+  // Улучшенная типографика
+  letter-spacing: var(--letter-spacing-tight);
+  
+  // Адаптивные отступы
+  @media (max-width: 767px) {
+    margin-bottom: var(--spacing-4);
+  }
+}
