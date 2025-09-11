@@ -195,6 +195,99 @@
     @media (max-width: 1024px) {
       display: inline-flex; // показываем на планшетах и мобильных
     }
+
+    // Переключение между иконками бургер/крест (crossfade + scale)
+    .global__burger-icon {
+      width: 22px;
+      height: 22px;
+    }
+    .morph-lines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity var(--duration-base) var(--ease-smooth);
+    }
+    .morph-lines .morph-line {
+      stroke: #ffffff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      opacity: 1;
+      transition: transform var(--duration-base) var(--ease-smooth),
+        opacity var(--duration-base) var(--ease-smooth);
+      transform-origin: 50% 50%;
+    }
+    // базовая форма линий бургера (ровно совпадают с path по оси Y: 6,12,18)
+    .morph-line--top {
+      transform: translateY(0);
+    }
+    .morph-line--middle {
+      opacity: 1;
+    }
+    .morph-line--bottom {
+      transform: translateY(0);
+    }
+    .icon-burger,
+    .icon-close {
+      transition: opacity var(--duration-base) var(--ease-smooth),
+        transform var(--duration-base) var(--ease-smooth);
+      transform-origin: 50% 50%;
+    }
+    .icon-close {
+      opacity: 0;
+      transform: scale(0.85) rotate(-10deg);
+    }
+    .icon-burger {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+    .icon-burger.is-hidden {
+      opacity: 0;
+    }
+    .icon-close.is-hidden {
+      opacity: 0;
+    }
+    &.is-opening {
+      .icon-burger,
+      .icon-close,
+      .morph-lines .morph-line {
+        transition-duration: var(--duration-slow);
+      }
+      .morph-lines {
+        opacity: 1;
+      }
+    }
+    &.is-open {
+      .icon-burger {
+        opacity: 0;
+        transform: scale(0.85) rotate(10deg);
+      }
+      .icon-close {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+      // перетекание линий в крест
+      .morph-line--top {
+        transform: translateY(6px) rotate(45deg) scaleX(0.88);
+      }
+      .morph-line--middle {
+        opacity: 0;
+      }
+      .morph-line--bottom {
+        transform: translateY(-6px) rotate(-45deg) scaleX(0.88);
+      }
+    }
+
+    &.is-closing {
+      .morph-lines .morph-line,
+      .icon-burger,
+      .icon-close {
+        transition-duration: calc(var(--duration-base) / 2);
+      }
+      .morph-lines {
+        opacity: 1;
+      }
+    }
   }
 
   &__call-circle {
@@ -246,6 +339,96 @@
     padding-top: 0; // Контентные компоненты сами управляют отступами
   }
 
+  // MOBILE MENU PANEL
+  // =================
+  &__mobile-menu {
+    display: none;
+    transform-origin: top center;
+    transform: scaleY(0);
+    transition: transform var(--duration-normal) var(--ease-smooth),
+      opacity var(--duration-normal) var(--ease-smooth),
+      max-height var(--duration-normal) var(--ease-smooth),
+      visibility var(--duration-normal) var(--ease-smooth),
+      padding-bottom var(--duration-normal) var(--ease-smooth);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    border-top: 1px solid var(--color-border);
+    background: #ffffff;
+    padding: 0 var(--spacing-5) 0;
+
+    @media (max-width: 1024px) {
+      display: block;
+    }
+
+    &--open {
+      transform: scaleY(1);
+      opacity: 1;
+      max-height: 80vh;
+      visibility: visible;
+      padding-bottom: var(--spacing-5);
+      transition-duration: var(--duration-slow); // чуть медленнее
+    }
+    &--closing {
+      transition-duration: calc(var(--duration-slow) / 2);
+    }
+  }
+
+  &__mobile-nav {
+    padding-top: var(--spacing-2);
+  }
+
+  &__mobile-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: var(--spacing-2) 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+
+    a {
+      display: block;
+      padding: var(--spacing-3) 0;
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--color-border);
+      text-align: left;
+
+      &:hover,
+      &:focus {
+        color: var(--color-accent);
+      }
+    }
+  }
+
+  &__mobile-contacts {
+    padding-top: var(--spacing-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-4);
+
+    .office-item__route {
+      margin: 0;
+    }
+    .global__mobile-schedule {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+    }
+  }
+}
+
+// Блокировка скролла страницы, когда меню открыто (класс ставится на body)
+body.no-scroll {
+  overflow: hidden;
+}
+
+// Обертка для следующих BEM-блоков, которые должны быть внутри .global
+.global {
   // FOOTER
   // =================
 
@@ -485,6 +668,16 @@
 @media (max-width: 767px) {
   body {
     padding-bottom: 70px; // Высота мобильной кнопки звонка
+  }
+}
+
+// Скрываем дублирующиеся элементы контактов в шапке, когда открыто мобильное меню
+@media (max-width: 1024px) {
+  .global--menu-open .global__schedule {
+    visibility: hidden;
+  }
+  .global--menu-open .phone-number--hero {
+    visibility: hidden;
   }
 }
 
