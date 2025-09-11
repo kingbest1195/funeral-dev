@@ -1,0 +1,60 @@
+// =================
+// SECTION LAYOUT - Общие стили для секций
+// =================
+
+.section {
+  padding: var(--spacing-20) 0;
+
+  @media (max-width: 1024px) {
+    padding: var(--spacing-16) 0;
+  }
+
+  @media (max-width: 767px) {
+    padding: var(--spacing-12) 0;
+  }
+
+  // MODIFIERS
+  // =================
+
+  &--compact {
+    padding: var(--spacing-12) 0;
+
+    @media (max-width: 767px) {
+      padding: var(--spacing-8) 0;
+    }
+  }
+
+  &--hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-24) 0;
+  }
+}
+
+// Фоновые модификаторы
+.bg-light {
+  background-color: var(--color-bg-secondary);
+}
+
+.bg-dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-white);
+
+  .section__title,
+  .section__subtitle {
+    color: var(--color-text-white);
+  }
+}
+
+// Разделители
+.divider {
+  border: none;
+  height: 1px;
+  background: var(--color-border);
+  margin: var(--spacing-16) 0;
+  
+  @media (max-width: 767px) {
+    margin: var(--spacing-12) 0;
+  }
+}

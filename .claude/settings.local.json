@@ -19,7 +19,10 @@
       "mcp__playwright__browser_resize",
       "mcp__playwright__browser_close",
       "Bash(find:*)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm run lint:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,35 @@
+// =================
+// CONTAINER LAYOUT - Контейнер для контента
+// =================
+
+.container {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+
+  @media (max-width: 1024px) {
+    max-width: var(--container-lg);
+    padding: 0 var(--spacing-6);
+  }
+
+  @media (max-width: 767px) {
+    max-width: var(--container-md);
+    padding: 0 var(--spacing-4);
+  }
+
+  // MODIFIERS
+  // =================
+
+  &--narrow {
+    max-width: var(--container-md);
+  }
+
+  &--wide {
+    max-width: var(--container-2xl);
+  }
+
+  &--flush {
+    padding: 0;
+  }
+}

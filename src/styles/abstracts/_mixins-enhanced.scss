@@ -1,0 +1,206 @@
+// =================
+// ENHANCED MIXINS - Дополнительные миксины для DRY принципа
+// =================
+
+// CARD MIXINS
+// =================
+
+@mixin card-base {
+  background: var(--color-bg-primary);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-6);
+  transition: var(--duration-base) var(--ease-smooth);
+}
+
+@mixin card-hover {
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+@mixin card-full {
+  @include card-base;
+  @include card-hover;
+}
+
+// BUTTON MIXINS
+// =================
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease-smooth);
+  white-space: nowrap;
+
+  &:focus {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-size($padding-y, $padding-x, $font-size) {
+  padding: #{$padding-y} #{$padding-x};
+  font-size: #{$font-size};
+}
+
+@mixin button-style($bg-color, $text-color, $hover-bg: null, $border-color: null) {
+  background: #{$bg-color};
+  color: #{$text-color};
+  border-color: #{$border-color or $bg-color};
+
+  @if $hover-bg {
+    &:hover {
+      background: #{$hover-bg};
+      border-color: #{$hover-bg};
+    }
+  }
+}
+
+// GRID MIXINS
+// =================
+
+@mixin grid-responsive($min-width, $gap: var(--spacing-6)) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+@mixin grid-columns($columns, $gap: var(--spacing-6)) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// TEXT MIXINS
+// =================
+
+@mixin text-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin text-clamp($lines: 3) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin text-gradient($color1, $color2) {
+  background: linear-gradient(135deg, $color1, $color2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// SPACING MIXINS
+// =================
+
+@mixin space-y($space) {
+  > * + * {
+    margin-top: $space;
+  }
+}
+
+@mixin space-x($space) {
+  > * + * {
+    margin-left: $space;
+  }
+}
+
+// POSITIONING MIXINS  
+// =================
+
+@mixin center-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ANIMATION MIXINS
+// =================
+
+@mixin fade-in($duration: var(--duration-base)) {
+  opacity: 0;
+  animation: fadeIn $duration var(--ease-smooth) forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@mixin slide-up($duration: var(--duration-base), $distance: 20px) {
+  transform: translateY($distance);
+  opacity: 0;
+  animation: slideUp $duration var(--ease-smooth) forwards;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// ACCESSIBILITY MIXINS
+// =================
+
+@mixin focus-outline {
+  &:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-sm);
+  }
+}
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+// PRINT MIXINS
+// =================
+
+@mixin print-hide {
+  @media print {
+    display: none !important;
+  }
+}
+
+@mixin print-only {
+  display: none;
+  
+  @media print {
+    display: block !important;
+  }
+}

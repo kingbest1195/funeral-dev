@@ -461,11 +461,8 @@
 
   &__mobile-call-text {
     font-size: var(--font-size-base);
-    color: #ffffff; // текст на кнопке «Позвонить» белым на планшетах
+    color: #ffffff; // текст на кнопке «Позвонить» всегда белый
     vertical-align: middle;
-    @media (max-width: 767px) {
-      color: var(--color-text-primary); // на узких мобильных — как было
-    }
   }
 }
 

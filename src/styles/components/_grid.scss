@@ -1,0 +1,66 @@
+// =================
+// GRID COMPONENT - Универсальная сетка
+// =================
+
+.grid {
+  display: grid;
+  gap: var(--spacing-6);
+
+  @media (max-width: 767px) {
+    gap: var(--spacing-4);
+  }
+
+  // MODIFIERS
+  // =================
+
+  &--services {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-8);
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-6);
+    }
+  }
+
+  &--advantages {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-6);
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-5);
+    }
+  }
+
+  &--stats {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-8);
+    text-align: center;
+
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-6);
+    }
+  }
+
+  &--transport {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-8);
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-6);
+    }
+  }
+
+  &--two-columns {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-6);
+    }
+  }
+}

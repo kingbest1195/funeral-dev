@@ -1,0 +1,99 @@
+// =================
+// CARD COMPONENT - Универсальная карточка
+// =================
+
+.card {
+  background: var(--color-bg-primary);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-6);
+  transition: var(--duration-base) var(--ease-smooth);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  // ELEMENTS
+  // =================
+
+  &__icon {
+    margin-bottom: var(--spacing-4);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    img, svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__title {
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-3);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  &__description {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-4);
+  }
+
+  &__actions {
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: var(--font-weight-medium);
+      
+      &:hover {
+        color: var(--color-primary-dark);
+      }
+    }
+  }
+
+  // MODIFIERS
+  // =================
+
+  &--service {
+    text-align: left;
+  }
+
+  &--advantage {
+    text-align: left;
+    padding: var(--spacing-5);
+  }
+
+  &--review {
+    .card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--spacing-3);
+    }
+
+    .card__author {
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .card__rating {
+      color: var(--color-accent);
+    }
+
+    .card__verified {
+      color: var(--color-success);
+    }
+
+    .card__footer {
+      margin-top: var(--spacing-4);
+      
+      a {
+        font-size: var(--font-size-sm);
+        color: var(--color-text-muted);
+      }
+    }
+  }
+}

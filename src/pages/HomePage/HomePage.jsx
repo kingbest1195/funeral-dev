@@ -56,8 +56,9 @@ const HomePage = () => {
 
   return (
     <Global seo={seoData} pageClass="home-page">
-      {/* Hero секция */}
-      <section className="hero section">
+      <main>
+        {/* Hero секция */}
+        <section className="hero section">
         <div className="container">
           <div className="hero__grid">
             <div className="hero__content">
@@ -364,9 +365,9 @@ const HomePage = () => {
               <div className="burial-benefit__grid">
                 {/* Левая колонка — текст */}
                 <div className="burial-benefit__col burial-benefit__col--text">
-                  <h3 className="burial-benefit__title">
+                  <h2 className="burial-benefit__title">
                     Вычитаем пособие на погребение из стоимости услуг
-                  </h3>
+                  </h2>
                   <p className="burial-benefit__text">
                     Государство предоставляет пособие на погребение. Мы поможем
                     вам с оформлением необходимых документов и сразу вычтем эту
@@ -809,6 +810,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+      </main>
     </Global>
   );
 };

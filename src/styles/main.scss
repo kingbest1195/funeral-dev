@@ -19,6 +19,7 @@
 
 // 5. Миксины (зависят от функций и медиа-миксинов)
 @import './mixins.scss';
+@import './abstracts/mixins-enhanced';
 
 // БАЗОВЫЕ СТИЛИ
 // =================
@@ -35,10 +36,18 @@
 // 9. Утилитарные классы
 @import './utils.scss';
 
+// LAYOUT
+// =================
+
+@import './layout/container';
+@import './layout/section';
+
 // КОМПОНЕНТЫ
 // =================
 
-// Компоненты импортируются отдельно в своих JSX файлах
+@import './components/button';
+@import './components/card';
+@import './components/grid';
 
 // АДАПТИВНЫЕ СТИЛИ И ОПТИМИЗАЦИИ
 // =================

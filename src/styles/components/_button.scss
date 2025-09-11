@@ -1,0 +1,99 @@
+// =================
+// BUTTON COMPONENT - Универсальная кнопка
+// =================
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-3) var(--spacing-6);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease-smooth);
+  white-space: nowrap;
+
+  &:focus {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  // SIZE MODIFIERS
+  // =================
+
+  &--sm {
+    padding: var(--spacing-2) var(--spacing-4);
+    font-size: var(--font-size-sm);
+  }
+
+  &--lg {
+    padding: var(--spacing-4) var(--spacing-8);
+    font-size: var(--font-size-lg);
+  }
+
+  // STYLE MODIFIERS
+  // =================
+
+  &--primary {
+    background: var(--color-accent);
+    color: var(--color-text-white);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
+
+    &:hover {
+      background: var(--color-accent-dark);
+      border-color: var(--color-accent-dark);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+
+    &:hover {
+      background: var(--color-primary);
+      color: var(--color-text-white);
+    }
+  }
+
+  &--accent {
+    background: var(--color-accent);
+    color: var(--color-text-white);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
+
+    &:hover {
+      background: var(--color-accent-dark);
+      border-color: var(--color-accent-dark);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    border-color: var(--color-border);
+
+    &:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+  }
+}
