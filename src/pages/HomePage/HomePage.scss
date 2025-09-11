@@ -3,9 +3,11 @@
 // Все общие компоненты перенесены в src/styles/components/
 // =================
 
-.home-page {
-  // Специфические стили только для главной страницы
-}
+@use "@/styles/mixins" as *;
+
+// .home-page {
+//   // Специфические стили только для главной страницы
+// }
 
 // HERO СЕКЦИЯ
 // =================
@@ -24,7 +26,7 @@
     display: none;
   }
 
-  @media (max-width: 767px) {
+  @include md-down {
     padding: var(--spacing-16) 0;
   }
 
@@ -34,7 +36,7 @@
     align-items: center;
     gap: var(--spacing-12);
 
-    @media (max-width: 1024px) {
+    @include lg-down {
       grid-template-columns: 1fr;
       gap: var(--spacing-8);
     }
@@ -50,7 +52,7 @@
     letter-spacing: var(--letter-spacing-tight);
     margin-bottom: var(--spacing-4);
 
-    @media (max-width: 767px) {
+    @include md-down {
       margin-bottom: var(--spacing-4);
     }
   }
@@ -62,7 +64,7 @@
     max-width: 42rem;
     margin: 0 0 var(--spacing-8) 0;
 
-    @media (max-width: 767px) {
+    @include md-down {
       font-size: var(--font-size-base);
       margin-bottom: var(--spacing-6);
     }
@@ -78,7 +80,7 @@
         color: var(--color-text-white);
       }
 
-      @media (max-width: 767px) {
+      @include md-down {
         width: 100%;
         font-size: var(--font-size-base);
         padding: var(--spacing-4) var(--spacing-6);
@@ -99,7 +101,7 @@
       object-fit: cover;
     }
 
-    @media (max-width: 767px) {
+    @include md-down {
       max-height: 320px;
     }
   }
@@ -140,7 +142,7 @@
     display: grid;
     gap: var(--spacing-8);
 
-    @media (max-width: 767px) {
+    @include md-down {
       gap: var(--spacing-6);
     }
   }
@@ -152,7 +154,7 @@
   grid-template-columns: 7fr 3fr; // 70% / 30%
   gap: var(--spacing-12);
 
-  @media (max-width: 1024px) {
+  @include lg-down {
     grid-template-columns: 1fr;
     gap: var(--spacing-8);
   }
@@ -234,7 +236,7 @@
     grid-template-columns: 7fr 3fr; // как в first-steps: текст 70% / визуал 30%
     gap: var(--spacing-12);
 
-    @media (max-width: 1024px) {
+    @include lg-down {
       grid-template-columns: 1fr;
       gap: var(--spacing-8);
     }
@@ -312,7 +314,7 @@
   align-items: flex-start;
   gap: var(--spacing-3);
 
-  @media (max-width: 767px) {
+  @include md-down {
     gap: var(--spacing-3);
   }
 
@@ -374,7 +376,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: var(--grid-gap);
 
-    @media (max-width: 767px) {
+    @include md-down {
       grid-template-columns: 1fr;
       gap: var(--grid-gap-sm);
     }
@@ -509,7 +511,7 @@
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
     gap: var(--grid-gap);
 
-    @media (max-width: 767px) {
+    @include md-down {
       grid-template-columns: 1fr;
       gap: var(--grid-gap-sm);
     }
@@ -525,7 +527,7 @@
   border: 1px solid #eaeaea;
   position: relative;
   overflow: hidden;
-  
+
   // Оптимизированный внутренний layout с Flexbox согласно плану
   display: flex;
   flex-direction: column;
@@ -571,7 +573,7 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-16);
 
-    @media (max-width: 1024px) {
+    @include lg-down {
       grid-template-columns: 1fr;
       gap: var(--spacing-8);
     }
@@ -603,7 +605,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-8);
 
-    @media (max-width: 767px) {
+    @include md-down {
       grid-template-columns: repeat(2, 1fr);
       gap: var(--spacing-6);
     }
@@ -633,6 +635,10 @@
 .calculator {
   text-align: center;
   position: relative;
+
+  @include lg-down {
+    text-align: left;
+  }
 
   // добавим небольшой визуал/иконографику фоном слева
   &::before {
@@ -691,7 +697,7 @@
       padding: var(--spacing-5) var(--spacing-10);
       border-radius: 12px;
 
-      @media (max-width: 767px) {
+      @include md-down {
         width: 100%;
       }
     }
@@ -718,7 +724,7 @@
     .swiper-button-prev,
     .swiper-button-next {
       color: var(--color-accent);
-      @media (max-width: 1024px) {
+      @include lg-down {
         display: none; // планшеты и ниже — без стрелок
       }
     }
@@ -736,7 +742,7 @@
       gap: 8px;
     }
 
-    @media (max-width: 1024px) {
+    @include lg-down {
       .swiper-button-prev,
       .swiper-button-next {
         display: none;
@@ -820,7 +826,7 @@
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: var(--spacing-8);
 
-  @media (max-width: 767px) {
+  @include md-down {
     grid-template-columns: 1fr;
     gap: var(--spacing-6);
   }
@@ -888,7 +894,7 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-12);
 
-  @media (max-width: 1000px) {
+  @include lg-down {
     grid-template-columns: 1fr; // одна колонка ниже 1000px
     gap: var(--spacing-8);
   }
@@ -948,7 +954,7 @@
   }
 }
 
-@media (max-width: 1000px) {
+@include lg-down {
   .office-item {
     display: grid;
     grid-template-columns: 1fr auto; // адрес слева, кнопка «Маршрут» справа
@@ -1024,7 +1030,7 @@
           border-color: #fff;
         }
 
-        @media (max-width: 767px) {
+        @include md-down {
           width: 100%;
           font-size: var(--font-size-lg);
           padding: var(--spacing-4) var(--spacing-6);
@@ -1037,7 +1043,7 @@
 // АДАПТИВНЫЕ УЛУЧШЕНИЯ
 // =================
 
-@media (max-width: 1024px) {
+@include lg-down {
   .service-card,
   .advantage-card {
     padding: var(--spacing-6);
@@ -1048,7 +1054,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@include md-down {
   .hero {
     &__content {
       padding: 0 var(--spacing-4);
@@ -1094,7 +1100,7 @@
 }
 
 // Увеличенная область клика для мобильных
-@media (max-width: 767px) {
+@include md-down {
   .service-card,
   .advantage-card {
     min-height: 44px; // WCAG рекомендация

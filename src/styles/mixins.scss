@@ -3,6 +3,7 @@
 // =================
 
 @use "sass:color";
+@use "sass:map";
 
 // ТИПОГРАФИКА
 // =================
@@ -35,24 +36,200 @@
   }
 }
 
-/// Централизованный миксин для breakpoints (упрощенная версия) 
+// МЕДИАЗАПРОСЫ И АДАПТИВНОСТЬ  
+// =================
+
+/// Современные миксины для медиазапросов с синтаксисом width
+/// Основаны на брейкпоинтах проекта из constants.scss
+
+// Mobile-first медиазапросы (от указанного размера и больше)
+@mixin xs-up {
+  @media (width >= 320px) {
+    @content;
+  }
+}
+
+@mixin sm-up {
+  @media (width >= 576px) {
+    @content;
+  }
+}
+
+@mixin md-up {
+  @media (width >= 768px) {
+    @content;
+  }
+}
+
+@mixin lg-up {
+  @media (width >= 992px) {
+    @content;
+  }
+}
+
+@mixin xl-up {
+  @media (width >= 1200px) {
+    @content;
+  }
+}
+
+@mixin xxl-up {
+  @media (width >= 1400px) {
+    @content;
+  }
+}
+
+// Desktop-first медиазапросы (до указанного размера включительно)
+@mixin xs-down {
+  @media (width <= 319px) {
+    @content;
+  }
+}
+
+@mixin sm-down {
+  @media (width <= 575px) {
+    @content;
+  }
+}
+
+@mixin md-down {
+  @media (width <= 767px) {
+    @content;
+  }
+}
+
+@mixin lg-down {
+  @media (width <= 991px) {
+    @content;
+  }
+}
+
+@mixin xl-down {
+  @media (width <= 1199px) {
+    @content;
+  }
+}
+
+@mixin xxl-down {
+  @media (width <= 1399px) {
+    @content;
+  }
+}
+
+// Диапазонные медиазапросы (только в указанном диапазоне)
+@mixin xs-only {
+  @media (width < 576px) {
+    @content;
+  }
+}
+
+@mixin sm-only {
+  @media (width >= 576px) and (width < 768px) {
+    @content;
+  }
+}
+
+@mixin md-only {
+  @media (width >= 768px) and (width < 992px) {
+    @content;
+  }
+}
+
+@mixin lg-only {
+  @media (width >= 992px) and (width < 1200px) {
+    @content;
+  }
+}
+
+@mixin xl-only {
+  @media (width >= 1200px) and (width < 1400px) {
+    @content;
+  }
+}
+
+@mixin xxl-only {
+  @media (width >= 1400px) {
+    @content;
+  }
+}
+
+// Специальные миксины для удобства
+@mixin mobile {
+  @media (width < 768px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (width >= 768px) and (width < 992px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (width >= 992px) {
+    @content;
+  }
+}
+
+@mixin mobile-tablet {
+  @media (width < 992px) {
+    @content;
+  }
+}
+
+@mixin tablet-desktop {
+  @media (width >= 768px) {
+    @content;
+  }
+}
+
+/// Миксин для hover с поддержкой мобильных устройств
+/// @param {boolean} $hasActiveEffectOnMobile - Добавлять ли эффект :active на мобильных
+@mixin hover($hasActiveEffectOnMobile: true) {
+  @media (any-hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+  @if $hasActiveEffectOnMobile {
+    @media (any-hover: none) {
+      &:active {
+        @content;
+      }
+    }
+  }
+}
+
+/// Устаревший централизованный миксин для breakpoints (для обратной совместимости)
 /// @param {string} $key - Ключ breakpoint из карты
 $breakpoints: (
-  xs: $breakpoint-xs,
-  sm: $breakpoint-sm, 
-  md: $breakpoint-md,
-  lg: $breakpoint-lg,
-  xl: $breakpoint-xl,
-  2xl: $breakpoint-2xl
+  xs: 320px,
+  sm: 576px, 
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  2xl: 1400px
 ) !default;
 
 @mixin breakpoint($key) {
-  @if map-has-key($breakpoints, $key) {
-    @media (min-width: map-get($breakpoints, $key)) {
+  @if map.has-key($breakpoints, $key) {
+    @media (min-width: map.get($breakpoints, $key)) {
       @content;
     }
   } @else {
-    @warn "Неизвестный breakpoint: #{$key}. Доступные: #{map-keys($breakpoints)}";
+    @warn "Неизвестный breakpoint: #{$key}. Доступные: #{map.keys($breakpoints)}";
+  }
+}
+
+/// Алиасы для старых миксинов (для обратной совместимости)
+@mixin media-up($key) {
+  @if map.has-key($breakpoints, $key) {
+    @media (min-width: map.get($breakpoints, $key)) {
+      @content;
+    }
+  } @else {
+    @warn "Неизвестный breakpoint: #{$key}. Доступные: #{map.keys($breakpoints)}";
   }
 }
 

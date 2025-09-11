@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://ритуал-век.рф/sitemap.xml

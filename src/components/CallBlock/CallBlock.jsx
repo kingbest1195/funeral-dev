@@ -11,7 +11,7 @@ const CallBlock = ({ phone, note, icon, ariaLabel, parentClass = "first-steps" }
         <div className={`${parentClass}__icon`} aria-hidden="true">
           <img
             src={icon}
-            alt="Иконка телефона"
+            alt="Телефон ритуального агента для круглосуточного вызова в Шуе"
             width="96"
             height="96"
           />

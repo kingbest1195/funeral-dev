@@ -1,13 +1,13 @@
 import React from "react";
-import { COMPANY_INFO, devLog } from "../../helpers/index.js";
-import iconPhone from "../../assets/icons/icon-phone.svg";
-import logoUrl from "../../assets/icons/logo-vek.svg";
+import { COMPANY_INFO, devLog } from "@/helpers/index.js";
+import iconPhone from "@/assets/icons/icon-phone.svg";
+import logoUrl from "@/assets/icons/logo-vek.svg";
 // Favicons (импорт для корректной работы Vite с хешированными путями)
-import favicon32 from "../../assets/favicons/favicon-32x32.png";
-import favicon16 from "../../assets/favicons/favicon-16x16.png";
-import appleTouchIcon from "../../assets/favicons/apple-touch-icon.png";
-import siteManifestUrl from "../../assets/favicons/site.webmanifest";
-import faviconIco from "../../assets/favicons/favicon.ico";
+import favicon32 from "@/assets/favicons/favicon-32x32.png";
+import favicon16 from "@/assets/favicons/favicon-16x16.png";
+import appleTouchIcon from "@/assets/favicons/apple-touch-icon.png";
+import siteManifestUrl from "@/assets/favicons/site.webmanifest";
+import faviconIco from "@/assets/favicons/favicon.ico";
 import "./Global.scss";
 
 /**

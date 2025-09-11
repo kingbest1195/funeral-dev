@@ -11,7 +11,7 @@ const BenefitBlock = ({ amount, label, icon, ariaLabel, parentClass = "burial-be
         <div className={`${parentClass}__icon`} aria-hidden="true">
           <img
             src={icon}
-            alt="Иконка руки с монетой и листком"
+            alt="Пособие на погребение - государственная выплата для ритуальных услуг"
             width="96"
             height="96"
           />

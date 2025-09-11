@@ -1,19 +1,19 @@
 import React from "react";
-import Global from "../../components/Global/Global.jsx";
-import InfoSection from "../../components/InfoSection/InfoSection.jsx";
-import CallBlock from "../../components/CallBlock/CallBlock.jsx";
-import BenefitBlock from "../../components/BenefitBlock/BenefitBlock.jsx";
+import Global from "@/components/Global/Global.jsx";
+import InfoSection from "@/components/InfoSection/InfoSection.jsx";
+import CallBlock from "@/components/CallBlock/CallBlock.jsx";
+import BenefitBlock from "@/components/BenefitBlock/BenefitBlock.jsx";
 import "./HomePage.scss";
 // Импорт изображений для корректной работы в Vite preview/build
-import hearseWebp from "../../assets/images/transport-and-office/hearse-modern.webp";
-import hearseJpg from "../../assets/images/transport-and-office/hearse-modern.jpg";
-import busWebp from "../../assets/images/transport-and-office/bus-comfort.webp";
-import busJpg from "../../assets/images/transport-and-office/bus-comfort.jpg";
-import officeWebp from "../../assets/images/transport-and-office/office-facade.webp";
-import officeJpg from "../../assets/images/transport-and-office/office-facade.jpg";
+import hearseWebp from "@/assets/images/transport-and-office/hearse-modern.webp";
+import hearseJpg from "@/assets/images/transport-and-office/hearse-modern.jpg";
+import busWebp from "@/assets/images/transport-and-office/bus-comfort.webp";
+import busJpg from "@/assets/images/transport-and-office/bus-comfort.jpg";
+import officeWebp from "@/assets/images/transport-and-office/office-facade.webp";
+import officeJpg from "@/assets/images/transport-and-office/office-facade.jpg";
 // Иконки (высокое качество, прозрачный фон)
-import phoneIcon from "../../assets/icons/phone-linear-gold.png";
-import benefitIcon from "../../assets/icons/benefit-coin-leaf-gold.png";
+import phoneIcon from "@/assets/icons/phone-linear-gold.png";
+import benefitIcon from "@/assets/icons/benefit-coin-leaf-gold.png";
 // Swiper для отзывов
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y } from "swiper/modules";
@@ -87,7 +87,7 @@ const HomePage = () => {
                 <source srcSet={officeWebp} type="image/webp" />
                 <img
                   src={officeJpg}
-                  alt="Интерьер и фасад офиса ритуальной службы Век"
+                  alt="Офис ритуальной службы Век в Шуе по адресу Красноармейский переулок, 6"
                   loading="eager"
                   decoding="async"
                 />
@@ -577,7 +577,7 @@ const HomePage = () => {
                   <source srcSet={hearseWebp} type="image/webp" />
                   <img
                     src={hearseJpg}
-                    alt="Современный катафалк ритуальной службы Век"
+                    alt="Катафалк ритуальной службы Век в Шуе для достойных проводов"
                     loading="lazy"
                     width="800"
                     height="533"
@@ -595,7 +595,7 @@ const HomePage = () => {
                   <source srcSet={busWebp} type="image/webp" />
                   <img
                     src={busJpg}
-                    alt="Комфортабельный автобус для перевозки родных"
+                    alt="Автобус ритуальной службы Век для перевозки родственников на похороны в Шуе"
                     loading="lazy"
                     width="800"
                     height="533"
@@ -614,7 +614,7 @@ const HomePage = () => {
                   <source srcSet={officeWebp} type="image/webp" />
                   <img
                     src={officeJpg}
-                    alt="Фасад офиса ритуальной службы Век в Шуе"
+                    alt="Фасад офиса ритуальной службы Век в Шуе на Красноармейском переулке, 6"
                     loading="lazy"
                     width="800"
                     height="533"
