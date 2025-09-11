@@ -1,7 +1,13 @@
 import React from "react";
 import { COMPANY_INFO, devLog } from "../../helpers/index.js";
 import iconPhone from "../../assets/icons/icon-phone.svg";
-import logoUrl from "../../../docs/logo-vek.png";
+import logoUrl from "../../assets/icons/logo-vek.svg";
+// Favicons (импорт для корректной работы Vite с хешированными путями)
+import favicon32 from "../../assets/favicons/favicon-32x32.png";
+import favicon16 from "../../assets/favicons/favicon-16x16.png";
+import appleTouchIcon from "../../assets/favicons/apple-touch-icon.png";
+import siteManifestUrl from "../../assets/favicons/site.webmanifest";
+import faviconIco from "../../assets/favicons/favicon.ico";
 import "./Global.scss";
 
 /**
@@ -138,6 +144,36 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
       }
       canonicalTag.setAttribute("href", canonical);
     }
+
+    // Favicon / App icons
+    const ensureLink = (rel, attrs = {}) => {
+      let link = document.querySelector(
+        `link[rel="${rel}"]${
+          attrs.sizes
+            ? `[sizes="${attrs.sizes}"]`
+            : attrs.type
+            ? `[type="${attrs.type}"]`
+            : attrs.href
+            ? `[href="${attrs.href}"]`
+            : ""
+        }`
+      );
+      if (!link) {
+        link = document.createElement("link");
+        link.setAttribute("rel", rel);
+        Object.entries(attrs).forEach(([k, v]) => link.setAttribute(k, v));
+        document.head.appendChild(link);
+      } else {
+        Object.entries(attrs).forEach(([k, v]) => link.setAttribute(k, v));
+      }
+    };
+
+    // Добавляем стандартные фавиконки из src/assets/favicons
+    ensureLink("icon", { type: "image/png", sizes: "32x32", href: favicon32 });
+    ensureLink("icon", { type: "image/png", sizes: "16x16", href: favicon16 });
+    ensureLink("apple-touch-icon", { sizes: "180x180", href: appleTouchIcon });
+    ensureLink("manifest", { href: siteManifestUrl });
+    ensureLink("icon", { href: faviconIco });
 
     // JSON-LD структурированные данные
     let jsonLdScript = document.querySelector(
