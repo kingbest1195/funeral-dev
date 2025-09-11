@@ -196,96 +196,52 @@
       display: inline-flex; // показываем на планшетах и мобильных
     }
 
-    // Переключение между иконками бургер/крест (crossfade + scale)
+    // SVG c тремя path и анимацией stroke-dasharray/stroke-dashoffset
     .global__burger-icon {
-      width: 22px;
-      height: 22px;
+      width: 30px;
+      height: 30px;
+      display: block;
     }
-    .morph-lines {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity var(--duration-base) var(--ease-smooth);
-    }
-    .morph-lines .morph-line {
+    .global__burger-line {
+      fill: none;
       stroke: #ffffff;
-      stroke-width: 2;
+      stroke-width: 6;
       stroke-linecap: round;
-      opacity: 1;
-      transition: transform var(--duration-base) var(--ease-smooth),
-        opacity var(--duration-base) var(--ease-smooth);
-      transform-origin: 50% 50%;
+      stroke-dasharray: 60 207;
+      transition: stroke-dasharray var(--duration-slow)
+          cubic-bezier(0.4, 0, 0.2, 1),
+        stroke-dashoffset var(--duration-slow) cubic-bezier(0.4, 0, 0.2, 1);
     }
-    // базовая форма линий бургера (ровно совпадают с path по оси Y: 6,12,18)
-    .morph-line--top {
-      transform: translateY(0);
+    .global__burger-line--2 {
+      stroke-dasharray: 60 60;
     }
-    .morph-line--middle {
-      opacity: 1;
-    }
-    .morph-line--bottom {
-      transform: translateY(0);
-    }
-    .icon-burger,
-    .icon-close {
-      transition: opacity var(--duration-base) var(--ease-smooth),
-        transform var(--duration-base) var(--ease-smooth);
-      transform-origin: 50% 50%;
-    }
-    .icon-close {
-      opacity: 0;
-      transform: scale(0.85) rotate(-10deg);
-    }
-    .icon-burger {
-      opacity: 1;
-      transform: scale(1) rotate(0deg);
-    }
-    .icon-burger.is-hidden {
-      opacity: 0;
-    }
-    .icon-close.is-hidden {
-      opacity: 0;
+    // неактивное состояние — корректируем третью линию
+    &:not(.is-open) {
+      .global__burger-line--3 {
+        stroke-dasharray: 30 207;
+        stroke-dashoffset: -30;
+      }
     }
     &.is-opening {
-      .icon-burger,
-      .icon-close,
       .morph-lines .morph-line {
         transition-duration: var(--duration-slow);
       }
-      .morph-lines {
-        opacity: 1;
-      }
     }
     &.is-open {
-      .icon-burger {
-        opacity: 0;
-        transform: scale(0.85) rotate(10deg);
+      // активное состояние — превращение в крест
+      .global__burger-line {
+        stroke-dasharray: 90 207;
+        stroke-dashoffset: -134;
       }
-      .icon-close {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-      }
-      // перетекание линий в крест
-      .morph-line--top {
-        transform: translateY(6px) rotate(45deg) scaleX(0.88);
-      }
-      .morph-line--middle {
-        opacity: 0;
-      }
-      .morph-line--bottom {
-        transform: translateY(-6px) rotate(-45deg) scaleX(0.88);
+      .global__burger-line--2 {
+        stroke-dasharray: 1 60;
+        stroke-dashoffset: -30;
       }
     }
 
     &.is-closing {
-      .morph-lines .morph-line,
-      .icon-burger,
-      .icon-close {
+      .global__burger-line {
         transition-duration: calc(var(--duration-base) / 2);
-      }
-      .morph-lines {
-        opacity: 1;
       }
     }
   }
