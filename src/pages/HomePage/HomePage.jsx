@@ -1,5 +1,8 @@
 import React from "react";
 import Global from "../../components/Global/Global.jsx";
+import InfoSection from "../../components/InfoSection/InfoSection.jsx";
+import CallBlock from "../../components/CallBlock/CallBlock.jsx";
+import BenefitBlock from "../../components/BenefitBlock/BenefitBlock.jsx";
 import "./HomePage.scss";
 // Импорт изображений для корректной работы в Vite preview/build
 import hearseWebp from "../../assets/images/transport-and-office/hearse-modern.webp";
@@ -94,58 +97,22 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Первые шаги */}
-      <section className="first-steps section">
-        <div className="container">
-          <div className="card">
-            <div className="card__body">
-              <h2 className="first-steps__title">
-                Что делать, если умер близкий человек?
-              </h2>
-              <div className="first-steps__grid">
-                <div className="first-steps__col first-steps__col--text">
-                  <h3 className="first-steps__heading">
-                    Мы возьмем все заботы на себя
-                  </h3>
-                  <p className="first-steps__text">
-                    Понимаем, как тяжело в такой момент собраться с мыслями.
-                    Позвоните нам, и наш специалист немедленно приедет, поможет
-                    с оформлением всех документов и полностью возьмет на себя
-                    организацию похорон. Вам не придется делать это в одиночку.
-                  </p>
-                </div>
-                <div
-                  className="first-steps__col first-steps__col--call"
-                  aria-label="Круглосуточная помощь по телефону"
-                >
-                  <div
-                    className="first-steps__call-block"
-                    role="group"
-                    aria-label="Связаться по телефону"
-                  >
-                    <div className="first-steps__icon" aria-hidden="true">
-                      <img
-                        src={phoneIcon}
-                        alt="Иконка телефона"
-                        width="96"
-                        height="96"
-                      />
-                    </div>
-                    <a
-                      href="tel:+79203663636"
-                      className="first-steps__phone"
-                      aria-label="Позвонить +7 (920) 366-36-36"
-                    >
-                      +7 (920) 366-36-36
-                    </a>
-                    <div className="first-steps__label">Круглосуточно</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Первые шаги - переиспользуемый компонент с оригинальной версткой */}
+      <InfoSection
+        className="first-steps"
+        title="Что делать, если умер близкий человек?"
+        heading="Мы возьмем все заботы на себя"
+        text="Понимаем, как тяжело в такой момент собраться с мыслями. Позвоните нам, и наш специалист немедленно приедет, поможет с оформлением всех документов и полностью возьмет на себя организацию похорон. Вам не придется делать это в одиночку."
+        rightContent={
+          <CallBlock
+            phone="+7 (920) 366-36-36"
+            note="Круглосуточно"
+            icon={phoneIcon}
+            ariaLabel="Связаться по телефону"
+            parentClass="first-steps"
+          />
+        }
+      />
 
       {/* Услуги */}
       <section id="services" className="services section">
@@ -357,49 +324,21 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Пособие на погребение */}
-      <section className="burial-benefit section">
-        <div className="container">
-          <div className="card">
-            <div className="card__body">
-              <div className="burial-benefit__grid">
-                {/* Левая колонка — текст */}
-                <div className="burial-benefit__col burial-benefit__col--text">
-                  <h2 className="burial-benefit__title">
-                    Вычитаем пособие на погребение из стоимости услуг
-                  </h2>
-                  <p className="burial-benefit__text">
-                    Государство предоставляет пособие на погребение. Мы поможем
-                    вам с оформлением необходимых документов и сразу вычтем эту
-                    сумму из итогового счета, чтобы уменьшить ваши расходы.
-                  </p>
-                </div>
-
-                {/* Правая колонка — иконка + сумма, как call-блок в first-steps */}
-                <div
-                  className="burial-benefit__col burial-benefit__col--visual"
-                  aria-label="Размер пособия на погребение"
-                >
-                  <div className="burial-benefit__amount-block" role="group">
-                    <div className="burial-benefit__icon" aria-hidden="true">
-                      <img
-                        src={benefitIcon}
-                        alt="Иконка руки с монетой и листком"
-                        width="96"
-                        height="96"
-                      />
-                    </div>
-                    <div className="burial-benefit__amount">9165 ₽</div>
-                    <div className="burial-benefit__label">
-                      Пособие на погребение
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Пособие на погребение - переиспользуемый компонент с оригинальной версткой */}
+      <InfoSection
+        className="burial-benefit"
+        title="Вычитаем пособие на погребение из стоимости услуг"
+        text="Государство предоставляет пособие на погребение. Мы поможем вам с оформлением необходимых документов и сразу вычтем эту сумму из итогового счета, чтобы уменьшить ваши расходы."
+        rightContent={
+          <BenefitBlock
+            amount="9165 ₽"
+            label="Пособие на погребение"
+            icon={benefitIcon}
+            ariaLabel="Размер пособия на погребение"
+            parentClass="burial-benefit"
+          />
+        }
+      />
 
       <hr className="divider" aria-hidden="true" />
 

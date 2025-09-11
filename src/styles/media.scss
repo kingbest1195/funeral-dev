@@ -3,6 +3,8 @@
 // Mobile-First подход для адаптивной верстки
 // =================
 
+@use "sass:meta";
+
 // ОСНОВНЫЕ МИКСИНЫ МЕДИАВЫРАЖЕНИЙ
 // =================
 
@@ -11,7 +13,7 @@
 @mixin media-up($breakpoint) {
   $value: null;
   
-  @if type-of($breakpoint) == 'string' {
+  @if meta.type-of($breakpoint) == 'string' {
     @if $breakpoint == 'xs' {
       $value: $breakpoint-xs;
     } @else if $breakpoint == 'sm' {
@@ -41,7 +43,7 @@
 @mixin media-down($breakpoint) {
   $value: null;
   
-  @if type-of($breakpoint) == 'string' {
+  @if meta.type-of($breakpoint) == 'string' {
     @if $breakpoint == 'xs' {
       $value: $breakpoint-xs - 1px;
     } @else if $breakpoint == 'sm' {
@@ -74,7 +76,7 @@
   $max-value: null;
   
   // Получаем минимальное значение
-  @if type-of($min) == 'string' {
+  @if meta.type-of($min) == 'string' {
     @if $min == 'xs' {
       $min-value: $breakpoint-xs;
     } @else if $min == 'sm' {
@@ -93,7 +95,7 @@
   }
   
   // Получаем максимальное значение
-  @if type-of($max) == 'string' {
+  @if meta.type-of($max) == 'string' {
     @if $max == 'xs' {
       $max-value: $breakpoint-xs - 1px;
     } @else if $max == 'sm' {

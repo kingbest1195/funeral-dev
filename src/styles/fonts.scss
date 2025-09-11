@@ -3,6 +3,8 @@
 // Новая пара шрифтов: SangBleu Sunrise (заголовки) + Euclid Flex (текст)
 // =================
 
+@use "sass:map";
+
 // Локальные лицензированные шрифты (SangBleu Sunrise + Euclid Flex)
 
 // SangBleu Sunrise (заголовки)
@@ -175,23 +177,23 @@ $line-heights: (
 @mixin responsive-heading($level: "h2", $weight: $heading-weight-semibold) {
   @include heading-font($weight);
 
-  $sizes: map-get($heading-sizes, $level);
+  $sizes: map.get($heading-sizes, $level);
 
-  font-size: map-get($sizes, "mobile");
-  line-height: map-get($line-heights, "tight");
+  font-size: map.get($sizes, "mobile");
+  line-height: map.get($line-heights, "tight");
 
   @include tablet-up {
-    font-size: map-get($sizes, "tablet");
+    font-size: map.get($sizes, "tablet");
   }
 
   @include desktop {
-    font-size: map-get($sizes, "desktop");
+    font-size: map.get($sizes, "desktop");
   }
 }
 
 // Миксин для размера шрифта с rem конвертацией
 @mixin font-size($size-name) {
-  $size: map-get($font-sizes, $size-name);
+  $size: map.get($font-sizes, $size-name);
   font-size: $size;
 }
 
@@ -280,22 +282,22 @@ $line-heights: (
 
 // Высоты строк
 .leading-none {
-  line-height: map-get($line-heights, "none");
+  line-height: map.get($line-heights, "none");
 }
 .leading-tight {
-  line-height: map-get($line-heights, "tight");
+  line-height: map.get($line-heights, "tight");
 }
 .leading-snug {
-  line-height: map-get($line-heights, "snug");
+  line-height: map.get($line-heights, "snug");
 }
 .leading-normal {
-  line-height: map-get($line-heights, "normal");
+  line-height: map.get($line-heights, "normal");
 }
 .leading-relaxed {
-  line-height: map-get($line-heights, "relaxed");
+  line-height: map.get($line-heights, "relaxed");
 }
 .leading-loose {
-  line-height: map-get($line-heights, "loose");
+  line-height: map.get($line-heights, "loose");
 }
 
 // Межбуквенные интервалы
