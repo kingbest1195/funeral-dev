@@ -1,0 +1,635 @@
+// =================
+// QUIZ CALCULATOR - Пошаговый квиз-калькулятор в модальном окне
+// Использует переменные из variables.scss, следует принципам модульности
+// =================
+
+@use "../../styles/constants.scss" as *;
+@use "../../styles/mixins.scss" as *;
+
+// МОДАЛЬНОЕ ОКНО
+// =================
+.quiz-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-modal);
+  @include center;
+  padding: var(--spacing-4);
+
+  // Обеспечиваем центрирование на всех устройствах
+  min-height: 100vh;
+  min-height: 100dvh; // Динамическая высота viewport
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-bg-overlay);
+    cursor: pointer;
+  }
+
+  &__content {
+    position: relative;
+    background-color: var(--color-bg-primary);
+    border-radius: var(--border-radius-xl);
+    box-shadow: var(--shadow-2xl);
+    width: 100%;
+    max-width: var(--container-md);
+    max-height: 90vh;
+    max-height: 90dvh; // Динамическая высота viewport
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: modalSlideIn var(--duration-base) var(--ease-smooth);
+  }
+
+  &__close {
+    position: absolute;
+    top: var(--spacing-6); // Увеличили отступ от var(--spacing-4)
+    right: var(--spacing-6); // Увеличили отступ от var(--spacing-4)
+    z-index: 10;
+    background: transparent;
+    border: none;
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-none);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    width: var(--spacing-10);
+    height: var(--spacing-10);
+    @include center;
+    border-radius: var(--border-radius-full);
+    transition: all var(--duration-fast) var(--ease-smooth);
+
+    &:hover {
+      background-color: var(--color-hover-overlay);
+      color: var(--color-text-primary);
+    }
+
+    &:focus {
+      outline: var(--border-width-2) solid var(--color-accent);
+      outline-offset: var(--border-width-2);
+    }
+  }
+}
+
+// АНИМАЦИЯ ПОЯВЛЕНИЯ МОДАЛЬНОГО ОКНА
+@keyframes modalSlideIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// ЗАГОЛОВОК КВИЗА
+// =================
+.quiz-header {
+  padding: var(--spacing-10) var(--spacing-8) var(--spacing-6); // Увеличили верхний отступ
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+  border-bottom: var(--border-width-1) solid var(--color-border);
+  flex-shrink: 0;
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+    margin: 0 0 var(--spacing-6) 0;
+  }
+}
+
+// ПРОГРЕСС-БАР
+// =================
+.quiz-progress {
+  width: 100%;
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-3);
+  }
+
+  &__text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+  }
+
+  &__percentage {
+    font-size: var(--font-size-sm);
+    color: var(--color-accent);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  &__bar {
+    width: 100%;
+    height: var(--spacing-2); // 6px -> используем переменную
+    background-color: var(--color-border-light);
+    border-radius: var(--border-radius-full);
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__fill {
+    height: 100%;
+    background: var(--gradient-accent);
+    border-radius: var(--border-radius-full);
+    transition: width var(--duration-slow) var(--ease-smooth);
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+      animation: progressShimmer 2s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes progressShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+// ТЕЛО КВИЗА
+// =================
+.quiz-body {
+  padding: var(--spacing-8);
+  min-height: 25rem; // 400px -> rem
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex: 1; // Позволяет телу занимать оставшееся место
+  
+  // Для экранов с малой высотой - обеспечиваем скролл
+  @media (max-height: 600px) {
+    min-height: auto;
+    max-height: 50vh;
+  }
+}
+
+// ШАГ КВИЗА
+// =================
+.quiz-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    margin-bottom: var(--spacing-8);
+    text-align: center;
+  }
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-snug);
+    margin: 0;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+// ВАРИАНТЫ ОТВЕТОВ
+// =================
+.quiz-options {
+  display: grid;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-8);
+  flex: 1;
+}
+
+.quiz-option {
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease-smooth);
+  outline: none;
+
+  &__content {
+    padding: var(--spacing-6);
+    border: var(--border-width-2) solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    background-color: var(--color-bg-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    min-height: calc(var(--spacing-16) + var(--spacing-2)); // 72px -> считаем через переменные
+    transition: inherit;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: var(--spacing-12);
+    height: var(--spacing-12);
+    background-color: var(--color-bg-primary);
+    border: var(--border-width-1) solid var(--color-border-light);
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: inherit;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: var(--border-radius-sm);
+    }
+  }
+
+  &__label {
+    flex: 1;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-snug);
+  }
+
+  &__checkbox {
+    position: relative;
+    flex-shrink: 0;
+
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  &__checkmark {
+    width: var(--spacing-6);
+    height: var(--spacing-6);
+    border: var(--border-width-2) solid var(--color-border-dark);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--color-bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: inherit;
+
+    &::after {
+      content: "✓";
+      font-size: var(--font-size-sm);
+      color: var(--color-bg-primary);
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all var(--duration-fast) var(--ease-smooth);
+    }
+  }
+
+  // СОСТОЯНИЯ
+  &:hover &__content {
+    border-color: var(--color-accent-light);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+  }
+
+  &:hover &__icon {
+    border-color: var(--color-accent-light);
+    box-shadow: var(--shadow-xs);
+  }
+
+  &:focus &__content {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-outline);
+  }
+
+  &--selected &__content {
+    border-color: var(--color-accent);
+    background-color: rgba(196, 158, 94, 0.05);
+    box-shadow: var(--shadow-sm);
+  }
+
+  &--selected &__icon {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-sm);
+    position: relative; // Важно! Обеспечиваем правильный контекст позиционирования
+    
+    // Золотой круг с галочкой
+    &::after {
+      content: "✓";
+      position: absolute;
+      top: var(--spacing-1);
+      right: var(--spacing-1);
+      width: var(--spacing-4);
+      height: var(--spacing-4);
+      background-color: var(--color-accent);
+      border-radius: var(--border-radius-full);
+      color: var(--color-text-white);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1; // Поверх изображения
+    }
+  }
+
+  &--selected &__checkmark {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  // МНОЖЕСТВЕННЫЙ ВЫБОР
+  &--multiple {
+    .quiz-option__content {
+      padding-right: var(--spacing-8);
+    }
+  }
+}
+
+// НАВИГАЦИЯ
+// =================
+.quiz-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-top: auto;
+}
+
+// КНОПКИ
+// =================
+.quiz-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-body);
+  line-height: var(--line-height-none);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease-smooth);
+  border: var(--border-width-2) solid transparent;
+  outline: none;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:focus {
+    box-shadow: var(--shadow-outline);
+  }
+
+  // ОСНОВНАЯ КНОПКА
+  &--primary {
+    background-color: var(--color-accent);
+    color: var(--color-text-white);
+    border-color: var(--color-accent);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-accent-dark);
+      border-color: var(--color-accent-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+
+  // ВТОРИЧНАЯ КНОПКА
+  &--secondary {
+    background-color: transparent;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-hover-overlay);
+      transform: translateY(-1px);
+    }
+  }
+
+  // БОЛЬШАЯ КНОПКА
+  &--large {
+    padding: var(--spacing-5) var(--spacing-8);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    min-height: var(--input-height);
+  }
+}
+
+// ФОРМА
+// =================
+.quiz-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-normal);
+    text-align: center;
+    margin: 0 0 var(--spacing-8) 0;
+  }
+
+  &__field {
+    margin-bottom: var(--spacing-6);
+  }
+
+  &__label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-2);
+  }
+
+  &__input {
+    width: 100%;
+    height: var(--input-height);
+    padding: var(--spacing-4) var(--spacing-4);
+    font-size: var(--font-size-base);
+    font-family: var(--font-body);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+    border: var(--border-width-2) solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    outline: none;
+    transition: all var(--duration-base) var(--ease-smooth);
+
+    &::placeholder {
+      color: var(--color-text-muted);
+    }
+
+    &:hover {
+      border-color: var(--color-border-dark);
+    }
+
+    &:focus {
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-outline);
+    }
+
+    &:invalid {
+      border-color: var(--color-error);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-4);
+    margin-top: auto;
+    padding-top: var(--spacing-6);
+  }
+}
+
+// АДАПТИВНОСТЬ
+// =================
+
+// Используем миксин вместо хардкода
+@include md-down {
+  .quiz-modal {
+    padding: var(--spacing-2);
+    // Убираем align-items: center - используем миксин center
+    
+    // Специальная логика для мобильных устройств
+    // Обеспечиваем правильное центрирование на iPhone и других мобильных
+    min-height: 100vh;
+    min-height: 100dvh;
+    justify-content: center;
+    align-items: center;
+
+    &__content {
+      max-height: 85vh; // Уменьшили с 90vh для лучшего отображения
+      max-height: 85dvh;
+      margin: 0;
+      
+      // Убираем фиксированную высоту, позволяем контенту определять размер
+      height: auto;
+    }
+
+    &__close {
+      top: var(--spacing-6); // Ещё больше отступ для мобильных
+      right: var(--spacing-6); // Ещё больше отступ для мобильных  
+      width: var(--spacing-8);
+      height: var(--spacing-8);
+    }
+  }
+
+  .quiz-header {
+    padding: var(--spacing-12) var(--spacing-4) var(--spacing-4); // Ещё больше верхний отступ для крестика
+
+    &__title {
+      font-size: var(--font-size-xl);
+    }
+  }
+
+  .quiz-body {
+    padding: var(--spacing-6) var(--spacing-4);
+    min-height: auto;
+  }
+
+  .quiz-step {
+    &__title {
+      font-size: var(--font-size-lg);
+    }
+  }
+
+  .quiz-options {
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-6);
+  }
+
+  .quiz-option {
+    &__content {
+      padding: var(--spacing-4);
+      min-height: var(--spacing-16); // 64px -> переменная
+    }
+
+    &__icon {
+      width: var(--spacing-10);
+      height: var(--spacing-10);
+    }
+
+    &__label {
+      font-size: var(--font-size-sm);
+    }
+  }
+
+  .quiz-navigation,
+  .quiz-form__actions {
+    flex-direction: column;
+    gap: var(--spacing-3);
+
+    .quiz-btn {
+      width: 100%;
+    }
+  }
+
+  .quiz-btn {
+    padding: var(--spacing-3) var(--spacing-5);
+
+    &--large {
+      padding: var(--spacing-4) var(--spacing-6);
+    }
+  }
+}
+
+// Очень маленькие экраны
+@include sm-down {
+  .quiz-modal {
+    &__content {
+      max-height: 90vh;
+      max-height: 90dvh;
+      margin: 0;
+    }
+  }
+
+  .quiz-options {
+    gap: var(--spacing-2);
+  }
+
+  .quiz-option {
+    &__content {
+      padding: var(--spacing-3);
+      min-height: calc(var(--spacing-12) + var(--spacing-2)); // 56px -> считаем
+      gap: var(--spacing-3);
+    }
+
+    &__label {
+      font-size: var(--font-size-xs);
+      line-height: var(--line-height-tight);
+    }
+  }
+}
+
+// ПЕЧАТЬ (скрыть модальное окно при печати)
+@media print {
+  .quiz-modal {
+    display: none !important;
+  }
+}

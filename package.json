@@ -8,10 +8,14 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run optimize:images && vite build",
+    "build:dev": "vite build",
     "preview": "vite preview",
     "lint:scss": "stylelint 'src/**/*.scss' --fix",
-    "lint:js": "eslint 'src/**/*.{js,jsx}' --fix"
+    "lint:js": "eslint 'src/**/*.{js,jsx}' --fix",
+    "optimize:images": "node scripts/optimize-all-images.cjs",
+    "test:quiz": "node tests/test-optimizations.cjs",
+    "test:final": "node tests/test-final-improvements.cjs"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +37,12 @@
     "vite": "^7.1.5"
   },
   "devDependencies": {
+    "@squoosh/lib": "^0.3.1",
+    "glob": "^11.0.3",
+    "imagemin": "^9.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^10.0.0",
+    "imagemin-webp": "^8.0.0",
     "pixelmatch": "^7.1.0",
     "playwright": "^1.55.0",
     "pngjs": "^7.0.0",

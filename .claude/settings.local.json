@@ -24,7 +24,11 @@
       "Bash(npm run lint:*)",
       "Bash(git checkout:*)",
       "Bash(sass-migrator:*)",
-      "Bash(git restore:*)"
+      "Bash(git restore:*)",
+      "Bash(pkill:*)",
+      "mcp__openai-gpt-image-mcp__create-image",
+      "Bash(npm run test:*)",
+      "Bash(npm run optimize:images:*)"
     ],
     "deny": [],
     "ask": []

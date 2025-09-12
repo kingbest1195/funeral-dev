@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Global from "@/components/Global/Global.jsx";
 import InfoSection from "@/components/InfoSection/InfoSection.jsx";
 import CallBlock from "@/components/CallBlock/CallBlock.jsx";
 import BenefitBlock from "@/components/BenefitBlock/BenefitBlock.jsx";
+import QuizCalculator from "@/components/QuizCalculator/QuizCalculator.jsx";
 import "./HomePage.scss";
 // Импорт изображений для корректной работы в Vite preview/build
 import hearseWebp from "@/assets/images/transport-and-office/hearse-modern.webp";
@@ -25,6 +26,13 @@ import "swiper/css/pagination";
  * Главная страница сайта ритуальной службы "Век"
  */
 const HomePage = () => {
+  // Состояние для управления видимостью квиз-калькулятора
+  const [isQuizOpen, setIsQuizOpen] = useState(false);
+
+  // Обработчики для открытия/закрытия квиза
+  const openQuiz = () => setIsQuizOpen(true);
+  const closeQuiz = () => setIsQuizOpen(false);
+
   // SEO данные для главной страницы
   const seoData = {
     title: "Ритуальная служба Век - Помощь в трудную минуту | Шуя",
@@ -456,7 +464,11 @@ const HomePage = () => {
                   расчет.
                 </p>
                 <div className="calculator__button">
-                  <button className="btn btn--primary btn--lg">
+                  <button 
+                    className="btn btn--primary btn--lg"
+                    onClick={openQuiz}
+                    aria-label="Открыть калькулятор стоимости похорон"
+                  >
                     Перейти к расчету
                   </button>
                 </div>
@@ -761,6 +773,9 @@ const HomePage = () => {
             </div>
           </div>
         </section>
+
+        {/* Квиз-калькулятор стоимости похорон */}
+        <QuizCalculator isOpen={isQuizOpen} onClose={closeQuiz} />
       </main>
     </Global>
   );

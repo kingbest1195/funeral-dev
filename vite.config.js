@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import imageOptimizationPlugin from './vite-plugins/image-optimization-plugin.js';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    imageOptimizationPlugin()
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
