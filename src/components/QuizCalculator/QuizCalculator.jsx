@@ -3,6 +3,7 @@ import QuizStep from "./QuizStep";
 import QuizOption from "./QuizOption";
 import QuizProgress from "./QuizProgress";
 import Input from "../Input";
+import { validatePhone } from "@/helpers";
 import "./QuizCalculator.scss";
 
 /**
@@ -172,13 +173,6 @@ const QuizCalculator = ({ isOpen, onClose }) => {
     }
   };
 
-  // Функция валидации номера телефона
-  const validatePhone = (phone) => {
-    // Убираем все не цифровые символы кроме +
-    const cleanPhone = phone.replace(/[^\d+]/g, '');
-    // Проверяем российский формат: +7 и 10 цифр после
-    return cleanPhone.match(/^\+7\d{10}$/);
-  };
 
   // Обработчик отправки формы
   const handleSubmit = (e) => {
@@ -233,7 +227,7 @@ const QuizCalculator = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="quiz-modal">
+    <div className="quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quiz-title">
       <div className="quiz-modal__overlay" onClick={handleClose}></div>
       <div className="quiz-modal__content">
         <button 
@@ -245,7 +239,7 @@ const QuizCalculator = ({ isOpen, onClose }) => {
         </button>
 
         <header className="quiz-header">
-          <h2 className="quiz-header__title">
+          <h2 id="quiz-title" className="quiz-header__title">
             Рассчитайте стоимость похорон за 1 минуту
           </h2>
           <QuizProgress 
@@ -253,6 +247,13 @@ const QuizCalculator = ({ isOpen, onClose }) => {
             totalSteps={totalSteps} 
           />
         </header>
+
+        <div aria-live="polite" aria-atomic="true" className="sr-only">
+          {currentStep <= totalSteps 
+            ? `Шаг ${currentStep} из ${totalSteps}: ${quizSteps[currentStep]?.title}`
+            : "Заполните контактные данные для получения расчета"
+          }
+        </div>
 
         <main className="quiz-body">
           {currentStep <= totalSteps ? (
