@@ -33,6 +33,7 @@ const HomePage = () => {
   const openQuiz = () => setIsQuizOpen(true);
   const closeQuiz = () => setIsQuizOpen(false);
 
+
   // SEO данные для главной страницы
   const seoData = {
     title: "Ритуальная служба Век - Помощь в трудную минуту | Шуя",
@@ -122,6 +123,7 @@ const HomePage = () => {
             />
           }
         />
+
 
         {/* Услуги */}
         <section id="services" className="services section">

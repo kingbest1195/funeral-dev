@@ -3,6 +3,7 @@ import QuizStep from "./QuizStep";
 import QuizOption from "./QuizOption";
 import QuizProgress from "./QuizProgress";
 import Input from "../Input";
+import PopupNotification from "../PopupNotification/PopupNotification";
 import { validatePhone } from "@/helpers";
 import "./QuizCalculator.scss";
 
@@ -13,9 +14,9 @@ import "./QuizCalculator.scss";
 const QuizCalculator = ({ isOpen, onClose }) => {
   // Ключи для sessionStorage
   const STORAGE_KEYS = {
-    CURRENT_STEP: 'quiz_current_step',
-    ANSWERS: 'quiz_answers',
-    FORM_DATA: 'quiz_form_data'
+    CURRENT_STEP: "quiz_current_step",
+    ANSWERS: "quiz_answers",
+    FORM_DATA: "quiz_form_data",
   };
 
   // Функции для работы с sessionStorage
@@ -23,7 +24,7 @@ const QuizCalculator = ({ isOpen, onClose }) => {
     try {
       sessionStorage.setItem(key, JSON.stringify(data));
     } catch (error) {
-      console.warn('Не удалось сохранить данные в sessionStorage:', error);
+      console.warn("Не удалось сохранить данные в sessionStorage:", error);
     }
   };
 
@@ -32,60 +33,111 @@ const QuizCalculator = ({ isOpen, onClose }) => {
       const item = sessionStorage.getItem(key);
       return item ? JSON.parse(item) : defaultValue;
     } catch (error) {
-      console.warn('Не удалось загрузить данные из sessionStorage:', error);
+      console.warn("Не удалось загрузить данные из sessionStorage:", error);
       return defaultValue;
     }
   };
 
   const clearStorage = () => {
     try {
-      Object.values(STORAGE_KEYS).forEach(key => {
+      Object.values(STORAGE_KEYS).forEach((key) => {
         sessionStorage.removeItem(key);
       });
     } catch (error) {
-      console.warn('Не удалось очистить sessionStorage:', error);
+      console.warn("Не удалось очистить sessionStorage:", error);
     }
   };
 
   // Инициализация состояния с восстановлением из sessionStorage
-  const [currentStep, setCurrentStep] = useState(() => 
+  const [currentStep, setCurrentStep] = useState(() =>
     loadFromStorage(STORAGE_KEYS.CURRENT_STEP, 1)
   );
-  const [answers, setAnswers] = useState(() => 
+  const [answers, setAnswers] = useState(() =>
     loadFromStorage(STORAGE_KEYS.ANSWERS, {})
   );
-  const [formData, setFormData] = useState(() => 
+  const [formData, setFormData] = useState(() =>
     loadFromStorage(STORAGE_KEYS.FORM_DATA, { name: "", phone: "" })
   );
-  
+
+  // Состояние уведомлений
+  const [notification, setNotification] = useState({
+    isVisible: false,
+    type: "info",
+    title: "",
+    message: "",
+  });
+
   // Ref для поля телефона
   const phoneInputRef = useRef(null);
+
+  // Хелпер для показа уведомлений
+  const showNotification = (type, title, message) => {
+    setNotification({
+      isVisible: true,
+      type,
+      title,
+      message,
+    });
+  };
+
+  // Хелпер для скрытия уведомлений
+  const hideNotification = () => {
+    setNotification((prev) => ({ ...prev, isVisible: false }));
+  };
 
   // Получение динамических данных для шагов квиза
   const getQuizSteps = () => {
     const isCremation = answers.step_1 === "cremation";
-    
+
     return {
       1: {
         title: "Какой вид захоронения вы рассматриваете?",
         options: [
           { value: "funeral", label: "Похороны", icon: "coffin" },
-          { value: "cremation", label: "Кремация", icon: "urn" }
+          { value: "cremation", label: "Кремация", icon: "urn" },
         ],
-        type: "single"
+        type: "single",
       },
       2: {
-        title: isCremation ? "Какую урну вы предпочитаете?" : "Какой гроб вы предпочитаете?",
-        options: isCremation ? [
-          { value: "economy", label: "Эконом / Простая керамика", icon: "urn-simple" },
-          { value: "standard", label: "Стандарт / Деревянная", icon: "urn-wooden" },
-          { value: "premium", label: "Премиум / Мрамор/металл", icon: "urn-premium" }
-        ] : [
-          { value: "economy", label: "Эконом / Обитый тканью", icon: "coffin-simple" },
-          { value: "standard", label: "Стандарт / Деревянный", icon: "coffin-wooden" },
-          { value: "premium", label: "Премиум / Лакированный", icon: "coffin-premium" }
-        ],
-        type: "single"
+        title: isCremation
+          ? "Какую урну вы предпочитаете?"
+          : "Какой гроб вы предпочитаете?",
+        options: isCremation
+          ? [
+              {
+                value: "economy",
+                label: "Эконом / Простая керамика",
+                icon: "urn-simple",
+              },
+              {
+                value: "standard",
+                label: "Стандарт / Деревянная",
+                icon: "urn-wooden",
+              },
+              {
+                value: "premium",
+                label: "Премиум / Мрамор/металл",
+                icon: "urn-premium",
+              },
+            ]
+          : [
+              {
+                value: "economy",
+                label: "Эконом / Обитый тканью",
+                icon: "coffin-simple",
+              },
+              {
+                value: "standard",
+                label: "Стандарт / Деревянный",
+                icon: "coffin-wooden",
+              },
+              {
+                value: "premium",
+                label: "Премиум / Лакированный",
+                icon: "coffin-premium",
+              },
+            ],
+        type: "single",
       },
       3: {
         title: "Какие принадлежности вам понадобятся?",
@@ -93,18 +145,18 @@ const QuizCalculator = ({ isOpen, onClose }) => {
           { value: "wreath", label: "Венок", icon: "wreath" },
           { value: "cross", label: "Крест на могилу", icon: "cross" },
           { value: "ribbons", label: "Траурные ленты", icon: "ribbon" },
-          { value: "clothes", label: "Одежда для усопшего", icon: "clothes" }
+          { value: "clothes", label: "Одежда для усопшего", icon: "clothes" },
         ],
-        type: "multiple"
+        type: "multiple",
       },
       4: {
         title: "Нужен ли транспорт для гостей?",
         options: [
           { value: "yes", label: "Да, автобус", icon: "bus" },
-          { value: "no", label: "Нет, не нужен", icon: "no-bus" }
+          { value: "no", label: "Нет, не нужен", icon: "no-bus" },
         ],
-        type: "single"
-      }
+        type: "single",
+      },
     };
   };
 
@@ -124,31 +176,30 @@ const QuizCalculator = ({ isOpen, onClose }) => {
     saveToStorage(STORAGE_KEYS.FORM_DATA, formData);
   }, [formData]);
 
-
   // Обработчик выбора ответа
   const handleAnswerSelect = (stepKey, answer) => {
     const step = quizSteps[currentStep];
-    
+
     if (step.type === "multiple") {
       // Для множественного выбора
-      setAnswers(prev => {
+      setAnswers((prev) => {
         const currentAnswers = prev[stepKey] || [];
         const isSelected = currentAnswers.includes(answer);
-        
+
         return {
           ...prev,
           [stepKey]: isSelected
-            ? currentAnswers.filter(a => a !== answer)
-            : [...currentAnswers, answer]
+            ? currentAnswers.filter((a) => a !== answer)
+            : [...currentAnswers, answer],
         };
       });
     } else {
       // Для одиночного выбора - автоматический переход к следующему шагу
-      setAnswers(prev => ({ ...prev, [stepKey]: answer }));
-      
+      setAnswers((prev) => ({ ...prev, [stepKey]: answer }));
+
       setTimeout(() => {
         if (currentStep < totalSteps) {
-          setCurrentStep(prev => prev + 1);
+          setCurrentStep((prev) => prev + 1);
         } else {
           // Переход к форме
           setCurrentStep(totalSteps + 1);
@@ -160,7 +211,7 @@ const QuizCalculator = ({ isOpen, onClose }) => {
   // Обработчик перехода к следующему шагу (для множественного выбора)
   const handleNextStep = () => {
     if (currentStep < totalSteps) {
-      setCurrentStep(prev => prev + 1);
+      setCurrentStep((prev) => prev + 1);
     } else {
       setCurrentStep(totalSteps + 1);
     }
@@ -169,52 +220,65 @@ const QuizCalculator = ({ isOpen, onClose }) => {
   // Обработчик возврата к предыдущему шагу
   const handlePrevStep = () => {
     if (currentStep > 1) {
-      setCurrentStep(prev => prev - 1);
+      setCurrentStep((prev) => prev - 1);
     }
   };
-
 
   // Обработчик отправки формы
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Валидация полей перед отправкой
     if (!formData.name.trim()) {
-      alert("Пожалуйста, введите ваше имя");
+      showNotification(
+        "error",
+        "Вы кое-что забыли",
+        "Пожалуйста, введите ваше имя"
+      );
       return;
     }
-    
+
     if (!formData.phone || !validatePhone(formData.phone)) {
-      alert("Пожалуйста, введите корректный номер телефона");
+      showNotification(
+        "error",
+        "Вы кое-что забыли",
+        "Пожалуйста, введите корректный номер телефона"
+      );
       // Фокусируемся на поле телефона
       if (phoneInputRef.current) {
         phoneInputRef.current.focus();
       }
       return;
     }
-    
-    const finalData = { 
-      ...answers, 
+
+    const finalData = {
+      ...answers,
       ...formData,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
-    
+
     // Здесь будет логика отправки данных на сервер
     console.log("Quiz data:", finalData);
-    
+
     // Очистить сохраненные данные после успешной отправки
     clearStorage();
-    
-    // Закрыть модальное окно
-    onClose();
-    
+
     // Показать уведомление об успешной отправке
-    alert("Спасибо! Наш специалист свяжется с вами в течение 5 минут.");
+    showNotification(
+      "success",
+      "Заявка отправлена!",
+      "Спасибо! Наш специалист свяжется с вами в течение 5 минут."
+    );
+
+    // Закрыть модальное окно через небольшую задержку
+    setTimeout(() => {
+      onClose();
+    }, 3000);
   };
 
   // Обработчик изменения полей формы
   const handleFormChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   // Закрытие модального окна
@@ -227,153 +291,174 @@ const QuizCalculator = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quiz-title">
-      <div className="quiz-modal__overlay" onClick={handleClose}></div>
-      <div className="quiz-modal__content">
-        <button 
-          className="quiz-modal__close" 
-          onClick={handleClose}
-          aria-label="Закрыть калькулятор"
-        >
-          &times;
-        </button>
+    <>
+      <div
+        className="quiz-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="quiz-title"
+      >
+        <div className="quiz-modal__overlay" onClick={handleClose}></div>
+        <div className="quiz-modal__content">
+          <button
+            className="quiz-modal__close"
+            onClick={handleClose}
+            aria-label="Закрыть калькулятор"
+          >
+            &times;
+          </button>
 
-        <header className="quiz-header">
-          <h2 id="quiz-title" className="quiz-header__title">
-            Рассчитайте стоимость похорон за 1 минуту
-          </h2>
-          <QuizProgress 
-            currentStep={currentStep} 
-            totalSteps={totalSteps} 
-          />
-        </header>
+          <header className="quiz-header">
+            <h2 id="quiz-title" className="quiz-header__title">
+              Рассчитайте стоимость похорон за 1 минуту
+            </h2>
+            <QuizProgress currentStep={currentStep} totalSteps={totalSteps} />
+          </header>
 
-        <div aria-live="polite" aria-atomic="true" className="sr-only">
-          {currentStep <= totalSteps 
-            ? `Шаг ${currentStep} из ${totalSteps}: ${quizSteps[currentStep]?.title}`
-            : "Заполните контактные данные для получения расчета"
-          }
-        </div>
+          <div aria-live="polite" aria-atomic="true" className="sr-only">
+            {currentStep <= totalSteps
+              ? `Шаг ${currentStep} из ${totalSteps}: ${quizSteps[currentStep]?.title}`
+              : "Заполните контактные данные для получения расчета"}
+          </div>
 
-        <main className="quiz-body">
-          {currentStep <= totalSteps ? (
-            <QuizStep 
-              title={quizSteps[currentStep].title}
-              stepNumber={currentStep}
-            >
-              <div className="quiz-options">
-                {quizSteps[currentStep].options.map((option) => (
-                  <QuizOption
-                    key={option.value}
-                    label={option.label}
-                    value={option.value}
-                    icon={option.icon}
-                    type={quizSteps[currentStep].type}
-                    isSelected={
-                      quizSteps[currentStep].type === "multiple"
-                        ? (answers[`step_${currentStep}`] || []).includes(option.value)
-                        : answers[`step_${currentStep}`] === option.value
-                    }
-                    onClick={() => handleAnswerSelect(`step_${currentStep}`, option.value)}
-                  />
-                ))}
-              </div>
-
-              <div className="quiz-navigation">
-                {currentStep > 1 && (
-                  <button 
-                    type="button" 
-                    className="quiz-btn quiz-btn--secondary"
-                    onClick={handlePrevStep}
-                  >
-                    Назад
-                  </button>
-                )}
-                
-                {quizSteps[currentStep].type === "multiple" && (
-                  <button 
-                    type="button" 
-                    className="quiz-btn quiz-btn--primary"
-                    onClick={handleNextStep}
-                    disabled={!answers[`step_${currentStep}`] || answers[`step_${currentStep}`].length === 0}
-                  >
-                    Далее
-                  </button>
-                )}
-              </div>
-            </QuizStep>
-          ) : (
-            <QuizStep 
-              title="Расчет почти готов!"
-              stepNumber={currentStep}
-            >
-              <div className="quiz-form">
-                <p className="quiz-form__description">
-                  Оставьте ваш номер телефона, и наш специалист свяжется с вами в течение 5 минут, 
-                  чтобы озвучить точную стоимость и ответить на все вопросы.
-                </p>
-                
-                <form onSubmit={handleSubmit}>
-                  <div className="quiz-form__field">
-                    <label htmlFor="quiz-name" className="quiz-form__label">
-                      Ваше имя
-                    </label>
-                    <Input
-                      id="quiz-name"
-                      type="text"
-                      className="quiz-form__input"
-                      value={formData.name}
-                      onChange={(value) => handleFormChange("name", value)}
-                      required
-                      placeholder="Введите ваше имя"
-                      requiredMessage="Пожалуйста, введите ваше имя"
+          <main className="quiz-body">
+            {currentStep <= totalSteps ? (
+              <QuizStep
+                title={quizSteps[currentStep].title}
+                stepNumber={currentStep}
+              >
+                <div className="quiz-options">
+                  {quizSteps[currentStep].options.map((option) => (
+                    <QuizOption
+                      key={option.value}
+                      label={option.label}
+                      value={option.value}
+                      icon={option.icon}
+                      type={quizSteps[currentStep].type}
+                      isSelected={
+                        quizSteps[currentStep].type === "multiple"
+                          ? (answers[`step_${currentStep}`] || []).includes(
+                              option.value
+                            )
+                          : answers[`step_${currentStep}`] === option.value
+                      }
+                      onClick={() =>
+                        handleAnswerSelect(`step_${currentStep}`, option.value)
+                      }
                     />
-                  </div>
+                  ))}
+                </div>
 
-                  <div className="quiz-form__field">
-                    <label htmlFor="quiz-phone" className="quiz-form__label">
-                      Ваш номер телефона
-                    </label>
-                    <Input
-                      id="quiz-phone"
-                      ref={phoneInputRef}
-                      type="tel"
-                      className="quiz-form__input"
-                      required
-                      placeholder="+7 (___) ___-__-__"
-                      mask={true}
-                      numericOnly={true}
-                      onChange={(value) => handleFormChange("phone", value)}
-                      onMaskComplete={(value) => handleFormChange("phone", value)}
-                      requiredMessage="Пожалуйста, введите ваш номер телефона"
-                    />
-                  </div>
-
-                  <div className="quiz-form__actions">
-                    {currentStep > 1 && (
-                      <button 
-                        type="button" 
-                        className="quiz-btn quiz-btn--secondary"
-                        onClick={handlePrevStep}
-                      >
-                        Назад
-                      </button>
-                    )}
-                    
-                    <button 
-                      type="submit" 
-                      className="quiz-btn quiz-btn--primary quiz-btn--large"
+                <div className="quiz-navigation">
+                  {currentStep > 1 && (
+                    <button
+                      type="button"
+                      className="quiz-btn quiz-btn--secondary"
+                      onClick={handlePrevStep}
                     >
-                      Получить точный расчет
+                      Назад
                     </button>
-                  </div>
-                </form>
-              </div>
-            </QuizStep>
-          )}
-        </main>
+                  )}
+
+                  {quizSteps[currentStep].type === "multiple" && (
+                    <button
+                      type="button"
+                      className="quiz-btn quiz-btn--primary"
+                      onClick={handleNextStep}
+                      disabled={
+                        !answers[`step_${currentStep}`] ||
+                        answers[`step_${currentStep}`].length === 0
+                      }
+                    >
+                      Далее
+                    </button>
+                  )}
+                </div>
+              </QuizStep>
+            ) : (
+              <QuizStep title="Расчет почти готов!" stepNumber={currentStep}>
+                <div className="quiz-form">
+                  <p className="quiz-form__description">
+                    Оставьте ваш номер телефона, и наш специалист свяжется с
+                    вами в течение 5 минут, чтобы озвучить точную стоимость и
+                    ответить на все вопросы.
+                  </p>
+
+                  <form onSubmit={handleSubmit}>
+                    <div className="quiz-form__field">
+                      <label htmlFor="quiz-name" className="quiz-form__label">
+                        Ваше имя
+                      </label>
+                      <Input
+                        id="quiz-name"
+                        type="text"
+                        className="quiz-form__input"
+                        value={formData.name}
+                        onChange={(value) => handleFormChange("name", value)}
+                        required
+                        placeholder="Введите ваше имя"
+                        requiredMessage="Пожалуйста, введите ваше имя"
+                      />
+                    </div>
+
+                    <div className="quiz-form__field">
+                      <label htmlFor="quiz-phone" className="quiz-form__label">
+                        Ваш номер телефона
+                      </label>
+                      <Input
+                        id="quiz-phone"
+                        ref={phoneInputRef}
+                        type="tel"
+                        className="quiz-form__input"
+                        required
+                        placeholder="+7 (___) ___-__-__"
+                        mask={true}
+                        numericOnly={true}
+                        onChange={(value) => handleFormChange("phone", value)}
+                        onMaskComplete={(value) =>
+                          handleFormChange("phone", value)
+                        }
+                        requiredMessage="Пожалуйста, введите ваш номер телефона"
+                      />
+                    </div>
+
+                    <div className="quiz-form__actions">
+                      {currentStep > 1 && (
+                        <button
+                          type="button"
+                          className="quiz-btn quiz-btn--secondary"
+                          onClick={handlePrevStep}
+                        >
+                          Назад
+                        </button>
+                      )}
+
+                      <button
+                        type="submit"
+                        className="quiz-btn quiz-btn--primary quiz-btn--large"
+                      >
+                        Получить точный расчет
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </QuizStep>
+            )}
+          </main>
+        </div>
       </div>
-    </div>
+
+      {/* Уведомления */}
+      <PopupNotification
+        type={notification.type}
+        title={notification.title}
+        message={notification.message}
+        isVisible={notification.isVisible}
+        onClose={hideNotification}
+        closable={true}
+        duration={notification.type === "success" ? 0 : 5000}
+      />
+    </>
   );
 };
 
