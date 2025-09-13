@@ -55,12 +55,14 @@
     background: transparent;
     border: none;
     font-size: var(--font-size-2xl);
-    line-height: var(--line-height-none);
+    line-height: 1;
     color: var(--color-text-secondary);
     cursor: pointer;
     width: var(--spacing-10);
     height: var(--spacing-10);
-    @include center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: var(--border-radius-full);
     transition: all var(--duration-fast) var(--ease-smooth);
 
@@ -175,6 +177,14 @@
   overflow-y: auto;
   flex: 1; // Позволяет телу занимать оставшееся место
   
+  // Скрытие scrollbar
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // IE and Edge
+  
+  &::-webkit-scrollbar {
+    display: none; // Chrome, Safari, Opera
+  }
+  
   // Для экранов с малой высотой - обеспечиваем скролл
   @media (max-height: 600px) {
     min-height: auto;
@@ -267,11 +277,13 @@
     line-height: var(--line-height-snug);
   }
 
-  &__checkbox {
+  &__checkbox,
+  &__radio {
     position: relative;
     flex-shrink: 0;
 
-    input[type="checkbox"] {
+    input[type="checkbox"],
+    input[type="radio"] {
       position: absolute;
       opacity: 0;
       width: 0;
@@ -279,11 +291,11 @@
     }
   }
 
-  &__checkmark {
+  &__checkmark,
+  &__radiomark {
     width: var(--spacing-6);
     height: var(--spacing-6);
     border: var(--border-width-2) solid var(--color-border-dark);
-    border-radius: var(--border-radius-sm);
     background-color: var(--color-bg-primary);
     display: flex;
     align-items: center;
@@ -298,6 +310,14 @@
       transform: scale(0.5);
       transition: all var(--duration-fast) var(--ease-smooth);
     }
+  }
+
+  &__checkmark {
+    border-radius: var(--border-radius-sm);
+  }
+
+  &__radiomark {
+    border-radius: var(--border-radius-full);
   }
 
   // СОСТОЯНИЯ
@@ -326,29 +346,12 @@
   &--selected &__icon {
     border-color: var(--color-accent);
     box-shadow: var(--shadow-sm);
-    position: relative; // Важно! Обеспечиваем правильный контекст позиционирования
-    
-    // Золотой круг с галочкой
-    &::after {
-      content: "✓";
-      position: absolute;
-      top: var(--spacing-1);
-      right: var(--spacing-1);
-      width: var(--spacing-4);
-      height: var(--spacing-4);
-      background-color: var(--color-accent);
-      border-radius: var(--border-radius-full);
-      color: var(--color-text-white);
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-bold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1; // Поверх изображения
-    }
   }
 
-  &--selected &__checkmark {
+  // Убираем галочку на иконке для всех типов опций
+
+  &--selected &__checkmark,
+  &--selected &__radiomark {
     background-color: var(--color-accent);
     border-color: var(--color-accent);
 
@@ -466,36 +469,6 @@
     margin-bottom: var(--spacing-2);
   }
 
-  &__input {
-    width: 100%;
-    height: var(--input-height);
-    padding: var(--spacing-4) var(--spacing-4);
-    font-size: var(--font-size-base);
-    font-family: var(--font-body);
-    color: var(--color-text-primary);
-    background-color: var(--color-bg-primary);
-    border: var(--border-width-2) solid var(--color-border);
-    border-radius: var(--border-radius-lg);
-    outline: none;
-    transition: all var(--duration-base) var(--ease-smooth);
-
-    &::placeholder {
-      color: var(--color-text-muted);
-    }
-
-    &:hover {
-      border-color: var(--color-border-dark);
-    }
-
-    &:focus {
-      border-color: var(--color-accent);
-      box-shadow: var(--shadow-outline);
-    }
-
-    &:invalid {
-      border-color: var(--color-error);
-    }
-  }
 
   &__actions {
     display: flex;

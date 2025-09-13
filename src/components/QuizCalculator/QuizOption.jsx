@@ -107,7 +107,7 @@ const QuizOption = ({
         
         <span className="quiz-option__label">{label}</span>
         
-        {type === "multiple" && (
+        {type === "multiple" ? (
           <div className="quiz-option__checkbox">
             <input
               type="checkbox"
@@ -117,6 +117,17 @@ const QuizOption = ({
               aria-hidden="true"
             />
             <span className="quiz-option__checkmark"></span>
+          </div>
+        ) : (
+          <div className="quiz-option__radio">
+            <input
+              type="radio"
+              checked={isSelected}
+              onChange={handleClick}
+              tabIndex={-1}
+              aria-hidden="true"
+            />
+            <span className="quiz-option__radiomark"></span>
           </div>
         )}
       </div>

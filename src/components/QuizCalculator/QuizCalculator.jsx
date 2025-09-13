@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import IMask from "imask";
 import QuizStep from "./QuizStep";
 import QuizOption from "./QuizOption";
 import QuizProgress from "./QuizProgress";
+import Input from "../Input";
 import "./QuizCalculator.scss";
 
 /**
@@ -59,7 +59,6 @@ const QuizCalculator = ({ isOpen, onClose }) => {
   
   // Ref для поля телефона
   const phoneInputRef = useRef(null);
-  const phoneMaskRef = useRef(null);
 
   // Получение динамических данных для шагов квиза
   const getQuizSteps = () => {
@@ -124,31 +123,6 @@ const QuizCalculator = ({ isOpen, onClose }) => {
     saveToStorage(STORAGE_KEYS.FORM_DATA, formData);
   }, [formData]);
 
-  // Инициализация маски телефона
-  useEffect(() => {
-    if (phoneInputRef.current && currentStep === totalSteps + 1) {
-      phoneMaskRef.current = IMask(phoneInputRef.current, {
-        mask: '+{7} (000) 000-00-00',
-        lazy: false,
-        placeholderChar: '_'
-      });
-      
-      // Обработчик изменений маски
-      phoneMaskRef.current.on('complete', () => {
-        setFormData(prev => ({ 
-          ...prev, 
-          phone: phoneMaskRef.current.value 
-        }));
-      });
-      
-      // Очистка при размонтировании
-      return () => {
-        if (phoneMaskRef.current) {
-          phoneMaskRef.current.destroy();
-        }
-      };
-    }
-  }, [currentStep, totalSteps]);
 
   // Обработчик выбора ответа
   const handleAnswerSelect = (stepKey, answer) => {
@@ -198,17 +172,36 @@ const QuizCalculator = ({ isOpen, onClose }) => {
     }
   };
 
+  // Функция валидации номера телефона
+  const validatePhone = (phone) => {
+    // Убираем все не цифровые символы кроме +
+    const cleanPhone = phone.replace(/[^\d+]/g, '');
+    // Проверяем российский формат: +7 и 10 цифр после
+    return cleanPhone.match(/^\+7\d{10}$/);
+  };
+
   // Обработчик отправки формы
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Получаем актуальное значение телефона из маски
-    const phoneValue = phoneMaskRef.current ? phoneMaskRef.current.value : formData.phone;
+    // Валидация полей перед отправкой
+    if (!formData.name.trim()) {
+      alert("Пожалуйста, введите ваше имя");
+      return;
+    }
+    
+    if (!formData.phone || !validatePhone(formData.phone)) {
+      alert("Пожалуйста, введите корректный номер телефона");
+      // Фокусируемся на поле телефона
+      if (phoneInputRef.current) {
+        phoneInputRef.current.focus();
+      }
+      return;
+    }
     
     const finalData = { 
       ...answers, 
       ...formData,
-      phone: phoneValue,
       timestamp: new Date().toISOString()
     };
     
@@ -324,14 +317,15 @@ const QuizCalculator = ({ isOpen, onClose }) => {
                     <label htmlFor="quiz-name" className="quiz-form__label">
                       Ваше имя
                     </label>
-                    <input
+                    <Input
                       id="quiz-name"
                       type="text"
                       className="quiz-form__input"
                       value={formData.name}
-                      onChange={(e) => handleFormChange("name", e.target.value)}
+                      onChange={(value) => handleFormChange("name", value)}
                       required
                       placeholder="Введите ваше имя"
+                      requiredMessage="Пожалуйста, введите ваше имя"
                     />
                   </div>
 
@@ -339,13 +333,18 @@ const QuizCalculator = ({ isOpen, onClose }) => {
                     <label htmlFor="quiz-phone" className="quiz-form__label">
                       Ваш номер телефона
                     </label>
-                    <input
+                    <Input
                       id="quiz-phone"
                       ref={phoneInputRef}
                       type="tel"
                       className="quiz-form__input"
                       required
                       placeholder="+7 (___) ___-__-__"
+                      mask={true}
+                      numericOnly={true}
+                      onChange={(value) => handleFormChange("phone", value)}
+                      onMaskComplete={(value) => handleFormChange("phone", value)}
+                      requiredMessage="Пожалуйста, введите ваш номер телефона"
                     />
                   </div>
 

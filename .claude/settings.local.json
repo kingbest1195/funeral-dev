@@ -28,7 +28,9 @@
       "Bash(pkill:*)",
       "mcp__openai-gpt-image-mcp__create-image",
       "Bash(npm run test:*)",
-      "Bash(npm run optimize:images:*)"
+      "Bash(npm run optimize:images:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs"
     ],
     "deny": [],
     "ask": []
