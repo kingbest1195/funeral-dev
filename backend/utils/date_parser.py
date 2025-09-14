@@ -2,6 +2,7 @@
 Утилиты для парсинга дат из различных источников.
 """
 import re
+import random
 from datetime import datetime, timedelta
 from config.constants import RUSSIAN_MONTHS
 
@@ -65,4 +66,84 @@ def parse_yandex_date(date_str: str) -> datetime:
                 continue
 
     # Если не удалось распарсить, возвращаем текущую дату
+    return now
+
+
+def parse_google_date(date_str: str) -> datetime:
+    """
+    Парсит дату из Google Maps с добавлением случайности.
+    Поддерживает форматы: "год назад", "3 года назад", "7 месяцев назад"
+
+    Args:
+        date_str: Строка с датой на русском языке
+
+    Returns:
+        datetime: Распарсенная дата с рандомизацией
+    """
+    date_str = date_str.lower().strip()
+    now = datetime.now()
+
+    # Извлекаем число и период
+    period_match = re.search(r'(\d+)?\s*(год|года|лет|месяц|месяца|месяцев|день|дня|дней|неделю|недели|недель)\s*назад', date_str)
+
+    if period_match:
+        # Получаем значение периода (если не указано, то 1)
+        period_value = int(period_match.group(1)) if period_match.group(1) else 1
+        period_label = period_match.group(2)
+
+        print(f"Парсинг даты Google: '{date_str}' -> период: {period_value} {period_label}")
+
+        if "год" in period_label or "лет" in period_label:
+            # Год назад - добавляем рандом в месяц (±3) и день (1-28)
+            base_date = now - timedelta(days=period_value * 365)
+            random_months = random.randint(-3, 3)
+            random_days = random.randint(1, 28)
+
+            try:
+                # Вычисляем новый месяц
+                new_month = base_date.month + random_months
+                new_year = base_date.year
+
+                # Корректируем год, если месяц выходит за пределы
+                if new_month > 12:
+                    new_month -= 12
+                    new_year += 1
+                elif new_month < 1:
+                    new_month += 12
+                    new_year -= 1
+
+                final_date = datetime(new_year, new_month, random_days)
+                print(f"  Результат: {final_date.strftime('%d.%m.%Y')}")
+                return final_date
+
+            except ValueError:
+                # Если не получилось создать дату, используем базовую
+                final_date = base_date.replace(day=random_days)
+                print(f"  Результат (fallback): {final_date.strftime('%d.%m.%Y')}")
+                return final_date
+
+        elif "месяц" in period_label:
+            # Месяц назад - добавляем рандом в день (±7)
+            base_date = now - timedelta(days=period_value * 30)
+            random_days = random.randint(-7, 7)
+            final_date = base_date + timedelta(days=random_days)
+            print(f"  Результат: {final_date.strftime('%d.%m.%Y')}")
+            return final_date
+
+        elif "неделю" in period_label or "недели" in period_label or "недель" in period_label:
+            # Неделя назад - добавляем рандом в день (±2)
+            base_date = now - timedelta(weeks=period_value)
+            random_days = random.randint(-2, 2)
+            final_date = base_date + timedelta(days=random_days)
+            print(f"  Результат: {final_date.strftime('%d.%m.%Y')}")
+            return final_date
+
+        elif "день" in period_label or "дня" in period_label or "дней" in period_label:
+            # День назад - без рандомизации
+            final_date = now - timedelta(days=period_value)
+            print(f"  Результат: {final_date.strftime('%d.%m.%Y')}")
+            return final_date
+
+    # Если не удалось распарсить, возвращаем текущую дату
+    print(f"  Не удалось распарсить дату: '{date_str}', используется текущая")
     return now

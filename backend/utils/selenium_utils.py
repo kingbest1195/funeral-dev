@@ -33,11 +33,24 @@ def setup_chrome_driver(headless: bool = True) -> webdriver.Chrome:
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option('useAutomationExtension', False)
 
+    # Дополнительные меры против детекции headless режима
+    if headless:
+        # Устанавливаем реалистичный размер окна
+        options.add_argument("--window-size=1920,1080")
+        # Отключаем различные функции, которые могут выдать headless
+        options.add_argument("--disable-web-security")
+        options.add_argument("--allow-running-insecure-content")
+        options.add_argument("--disable-features=VizDisplayCompositor")
+
     try:
         # Пробуем использовать системный ChromeDriver
         try:
             driver = webdriver.Chrome(options=options)
+            # Скрываем признаки автоматизации
             driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+            driver.execute_script("Object.defineProperty(navigator, 'plugins', {get: () => [1, 2, 3, 4, 5]})")
+            driver.execute_script("Object.defineProperty(navigator, 'languages', {get: () => ['ru-RU', 'ru']})")
+            driver.execute_script("window.chrome = {runtime: {}}")
             print("✅ Используем системный ChromeDriver")
             return driver
         except Exception as e1:
@@ -49,7 +62,11 @@ def setup_chrome_driver(headless: bool = True) -> webdriver.Chrome:
                     service=ChromeService(ChromeDriverManager().install()),
                     options=options
                 )
+                # Скрываем признаки автоматизации
                 driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+                driver.execute_script("Object.defineProperty(navigator, 'plugins', {get: () => [1, 2, 3, 4, 5]})")
+                driver.execute_script("Object.defineProperty(navigator, 'languages', {get: () => ['ru-RU', 'ru']})")
+                driver.execute_script("window.chrome = {runtime: {}}")
                 print("✅ Используем ChromeDriver через webdriver-manager")
                 return driver
             except Exception as e2:

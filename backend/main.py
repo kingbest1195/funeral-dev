@@ -15,6 +15,7 @@ import atexit
 
 from database import Review, get_session, init_db
 from parsers.yandex_parser import fetch_and_save_yandex_reviews
+from parsers.google_parser import fetch_and_save_google_reviews
 from config.constants import API_CONFIG, SCHEDULER_CONFIG
 
 # Планировщик задач
@@ -29,7 +30,7 @@ async def lifespan(app: FastAPI):
     # Запуск планировщика
     scheduler.start()
 
-    # Добавляем задачу для ежедневного сбора отзывов
+    # Добавляем задачи для ежедневного сбора отзывов
     scheduler.add_job(
         func=fetch_and_save_yandex_reviews,
         trigger=CronTrigger(
@@ -41,7 +42,21 @@ async def lifespan(app: FastAPI):
         replace_existing=True
     )
 
-    print(f"Планировщик запущен. Ежедневный сбор отзывов настроен на {SCHEDULER_CONFIG['daily_parse_hour']:02d}:{SCHEDULER_CONFIG['daily_parse_minute']:02d}")
+    # Добавляем Google парсер через 30 минут после Yandex (чтобы не перегружать систему)
+    scheduler.add_job(
+        func=fetch_and_save_google_reviews,
+        trigger=CronTrigger(
+            hour=SCHEDULER_CONFIG["daily_parse_hour"],
+            minute=SCHEDULER_CONFIG["daily_parse_minute"] + 30
+        ),
+        id='daily_google_reviews',
+        name='Ежедневный сбор отзывов Google',
+        replace_existing=True
+    )
+
+    print(f"Планировщик запущен. Ежедневный сбор отзывов настроен:")
+    print(f"  • Яндекс Карты: {SCHEDULER_CONFIG['daily_parse_hour']:02d}:{SCHEDULER_CONFIG['daily_parse_minute']:02d}")
+    print(f"  • Google Карты: {SCHEDULER_CONFIG['daily_parse_hour']:02d}:{SCHEDULER_CONFIG['daily_parse_minute'] + 30:02d}")
 
     yield
 
@@ -165,8 +180,17 @@ async def get_reviews_count(
 async def manual_fetch_yandex():
     """Ручной запуск сбора отзывов из Яндекс карт."""
     try:
-        fetch_and_save_yandex_reviews()
-        return {"message": "Сбор отзывов из Яндекс карт запущен"}
+        new_reviews_count = fetch_and_save_yandex_reviews()
+        return {"message": f"Сбор отзывов из Яндекс карт завершен. Добавлено новых отзывов: {new_reviews_count}"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Ошибка запуска сбора: {str(e)}")
+
+@app.post("/api/reviews/fetch-google")
+async def manual_fetch_google():
+    """Ручной запуск сбора отзывов из Google карт."""
+    try:
+        new_reviews_count = fetch_and_save_google_reviews()
+        return {"message": f"Сбор отзывов из Google карт завершен. Добавлено новых отзывов: {new_reviews_count}"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Ошибка запуска сбора: {str(e)}")
 
