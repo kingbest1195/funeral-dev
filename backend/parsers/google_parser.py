@@ -6,18 +6,18 @@ import os
 import time
 import re
 from datetime import datetime
-from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import Session
 
-from database import Review, init_db, create_engine_instance
+from database import Review, get_session
 from config.constants import GOOGLE_SELECTORS, PARSING_CONFIG
 from utils.date_parser import parse_google_date
-from utils.selenium_utils import setup_chrome_driver, extract_background_image_url
+from utils.selenium_utils import setup_chrome_driver
+from utils.logger import logger
 
 
 class GoogleReviewsParser:
@@ -25,30 +25,29 @@ class GoogleReviewsParser:
 
     def __init__(self):
         """Инициализация парсера."""
-        load_dotenv()
         # Для Google URLs не разбиваем по запятым, так как URL содержит координаты
         google_urls_raw = os.getenv("GOOGLE_URLS", "")
         # Если есть несколько URL, они должны быть разделены символом |
         self.google_urls = google_urls_raw.split('|') if '|' in google_urls_raw else [google_urls_raw]
-        self.db_name = os.getenv("DATABASE_NAME")
 
-        if not self.google_urls[0] or not self.db_name:
-            raise ValueError("Переменные GOOGLE_URLS или DATABASE_NAME не найдены в .env")
-
-        # Подключение к базе данных
-        self.engine = create_engine_instance()
-        Session = sessionmaker(bind=self.engine)
-        self.session = Session()
-
-        # Инициализируем БД, если таблицы не существуют
-        init_db()
+        if not self.google_urls[0]:
+            raise ValueError("Переменная GOOGLE_URLS не найдена в .env")
 
         self.driver = None
+        self.session: Session = None
 
     def __enter__(self):
         """Контекстный менеджер - инициализация."""
-        self.driver = setup_chrome_driver(headless=True)
-        return self
+        try:
+            self.driver = setup_chrome_driver(headless=True)
+            self.session = get_session()
+            return self
+        except Exception as e:
+            if self.driver:
+                self.driver.quit()
+            if self.session:
+                self.session.close()
+            raise e
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         """Контекстный менеджер - очистка."""
@@ -64,7 +63,7 @@ class GoogleReviewsParser:
         Returns:
             bool: True если диалог был обработан
         """
-        print("Проверяю наличие диалога согласия...")
+        logger.info("Проверяю наличие диалога согласия")
 
         try:
             # Ждем до 10 секунд для диалога согласия
@@ -73,22 +72,22 @@ class GoogleReviewsParser:
             for selector in GOOGLE_SELECTORS["consent_button"]:
                 try:
                     consent_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, selector)))
-                    print(f"✅ Найдена кнопка согласия: {selector}")
+                    logger.success(f"Найдена кнопка согласия: {selector}")
                     consent_button.click()
-                    print("✅ Кнопка согласия нажата")
+                    logger.success("Кнопка согласия нажата")
 
                     # Ждем до 10 секунд пока страница перезагрузится
-                    time.sleep(10)
+                    time.sleep(PARSING_CONFIG["consent_wait_time"])
                     return True
 
                 except (TimeoutException, NoSuchElementException):
                     continue
 
-            print("ℹ️  Диалог согласия не найден, продолжаем...")
+            logger.info("Диалог согласия не найден, продолжаем...")
             return False
 
         except Exception as e:
-            print(f"⚠️  Ошибка при обработке диалога согласия: {e}")
+            logger.warning(f"Ошибка при обработке диалога согласия: {e}")
             return False
 
     def _find_and_click_reviews_tab(self) -> bool:
@@ -98,10 +97,10 @@ class GoogleReviewsParser:
         Returns:
             bool: True если вкладка найдена и нажата
         """
-        print("Ищу вкладку с отзывами...")
+        logger.info("Ищу вкладку с отзывами...")
 
         try:
-            wait = WebDriverWait(self.driver, 15)
+            # Поиск вкладок с отзывами
 
             # Сначала пробуем найти по aria-label с "Отзывы"
             try:
@@ -110,10 +109,10 @@ class GoogleReviewsParser:
                     try:
                         aria_label = tab.get_attribute('aria-label')
                         if aria_label and 'отзыв' in aria_label.lower():
-                            print(f"✅ Найдена вкладка отзывов по aria-label: {aria_label}")
+                            logger.success(f"Найдена вкладка отзывов по aria-label: {aria_label}")
                             tab.click()
-                            print("✅ Вкладка отзывов нажата")
-                            time.sleep(5)
+                            logger.success("Вкладка отзывов нажата")
+                            time.sleep(PARSING_CONFIG["tab_click_wait_time"])
                             return True
                     except:
                         continue
@@ -127,10 +126,10 @@ class GoogleReviewsParser:
                     try:
                         text = tab.text.lower()
                         if 'отзыв' in text or 'review' in text:
-                            print(f"✅ Найдена вкладка отзывов по тексту: {tab.text}")
+                            logger.success(f"Найдена вкладка отзывов по тексту: {tab.text}")
                             tab.click()
-                            print("✅ Вкладка отзывов нажата")
-                            time.sleep(5)
+                            logger.success("Вкладка отзывов нажата")
+                            time.sleep(PARSING_CONFIG["tab_click_wait_time"])
                             return True
                     except:
                         continue
@@ -141,19 +140,19 @@ class GoogleReviewsParser:
             try:
                 tabs = self.driver.find_elements(By.CSS_SELECTOR, 'button[role="tab"]')
                 if len(tabs) >= 2:
-                    print("✅ Пробую кликнуть на вторую вкладку")
+                    logger.info("Пробую кликнуть на вторую вкладку")
                     tabs[1].click()
-                    print("✅ Вторая вкладка нажата")
-                    time.sleep(5)
+                    logger.success("Вторая вкладка нажата")
+                    time.sleep(PARSING_CONFIG["tab_click_wait_time"])
                     return True
             except:
                 pass
 
-            print("❌ Вкладка с отзывами не найдена")
+            logger.error("Вкладка с отзывами не найдена")
             return False
 
         except Exception as e:
-            print(f"⚠️  Ошибка при поиске вкладки отзывов: {e}")
+            logger.warning(f"Ошибка при поиске вкладки отзывов: {e}")
             return False
 
     def _load_all_reviews(self, url: str) -> bool:
@@ -167,7 +166,7 @@ class GoogleReviewsParser:
             bool: True если загрузка успешна
         """
         try:
-            print(f"Обрабатываю URL: {url}")
+            logger.info(f"Обрабатываю URL: {url}")
             self.driver.get(url)
 
             # Обрабатываем диалог согласия
@@ -175,29 +174,28 @@ class GoogleReviewsParser:
 
             if consent_handled:
                 # После клика на согласие нужно подождать, пока страница полностью загрузится
-                print("Ожидаю загрузки основной страницы после согласия...")
-                time.sleep(15)  # Увеличенное время ожидания
+                logger.info("Ожидаю загрузки основной страницы после согласия...")
+                time.sleep(PARSING_CONFIG["page_reload_wait_time"])  # Увеличенное время ожидания
 
                 # Проверяем что мы на правильной странице
                 current_url = self.driver.current_url
-                print(f"Текущий URL после согласия: {current_url}")
+                logger.debug(f"Текущий URL после согласия: {current_url}")
 
             # Находим и кликаем на вкладку отзывов
             if not self._find_and_click_reviews_tab():
                 return False
 
             # Ждем загрузки отзывов
-            wait = WebDriverWait(self.driver, PARSING_CONFIG["page_load_timeout"])
 
             # Пробуем найти контейнер с отзывами
             reviews_found = False
-            print("🔍 Пробую найти отзывы на странице...")
+            logger.info("Пробую найти отзывы на странице...")
 
             for i, selector in enumerate(GOOGLE_SELECTORS["review_cards"], 1):
                 try:
-                    print(f"  Пробую селектор #{i}: {selector}")
+                    logger.debug(f"  Пробую селектор #{i}: {selector}")
                     elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
-                    print(f"    Найдено элементов: {len(elements)}")
+                    logger.debug(f"    Найдено элементов: {len(elements)}")
 
                     if elements and len(elements) > 0:
                         # Дополнительная проверка - есть ли в элементах текст отзывов
@@ -208,43 +206,43 @@ class GoogleReviewsParser:
                                 break
 
                         if text_found:
-                            print("✅ Отзывы найдены!")
+                            logger.success("Отзывы найдены!")
                             reviews_found = True
                             break
                         else:
-                            print("    Элементы найдены, но без текста отзывов")
+                            logger.debug("    Элементы найдены, но без текста отзывов")
                 except Exception as e:
-                    print(f"    Ошибка с селектором: {e}")
+                    logger.debug(f"    Ошибка с селектором: {e}")
                     continue
 
             if not reviews_found:
                 # Дополнительная отладочная информация
-                print("❌ Отзывы не найдены. Показываю структуру страницы:")
+                logger.warning("Отзывы не найдены. Показываю структуру страницы:")
                 try:
                     # Ищем все элементы с атрибутом data-
                     data_elements = self.driver.find_elements(By.CSS_SELECTOR, "[data-review-id]")
-                    print(f"  Элементы с data-review-id: {len(data_elements)}")
+                    logger.debug(f"  Элементы с data-review-id: {len(data_elements)}")
 
                     # Ищем все div с классами
                     all_divs = self.driver.find_elements(By.CSS_SELECTOR, "div[class*='font']")
-                    print(f"  Div'ы с 'font' в классе: {len(all_divs)}")
+                    logger.debug(f"  Div'ы с 'font' в классе: {len(all_divs)}")
 
                     # Показываем заголовок страницы для понимания где мы
                     title = self.driver.title
-                    print(f"  Заголовок страницы: {title}")
+                    logger.debug(f"  Заголовок страницы: {title}")
 
                     # Показываем H1 если есть
                     h1_elements = self.driver.find_elements(By.TAG_NAME, "h1")
                     for h1 in h1_elements:
                         if h1.text.strip():
-                            print(f"  H1: {h1.text.strip()}")
+                            logger.debug(f"  H1: {h1.text.strip()}")
 
                 except Exception as e:
-                    print(f"  Ошибка при отладке: {e}")
+                    logger.debug(f"  Ошибка при отладке: {e}")
 
                 return False
 
-            time.sleep(5)  # Даем время на загрузку
+            time.sleep(PARSING_CONFIG["tab_click_wait_time"])  # Даем время на загрузку
 
             # Находим прокручиваемый контейнер
             scrollable_element = self._find_scrollable_container()
@@ -255,10 +253,10 @@ class GoogleReviewsParser:
             return True
 
         except TimeoutException:
-            print(f"Не удалось загрузить страницу: {url}")
+            logger.error(f"Не удалось загрузить страницу: {url}")
             return False
         except Exception as e:
-            print(f"Ошибка при загрузке страницы {url}: {e}")
+            logger.error(f"Ошибка при загрузке страницы {url}: {e}")
             return False
 
     def _find_scrollable_container(self):
@@ -274,7 +272,7 @@ class GoogleReviewsParser:
 
     def _scroll_to_load_all_reviews(self, scrollable_element):
         """Прокручивает страницу для загрузки всех отзывов."""
-        print("Начинаю прокрутку для загрузки всех отзывов...")
+        logger.info("Начинаю прокрутку для загрузки всех отзывов")
 
         previous_review_count = 0
         stable_count_attempts = 0
@@ -296,18 +294,18 @@ class GoogleReviewsParser:
                 except:
                     continue
 
-            print(f"  Найдено отзывов: {current_reviews}")
+            logger.debug(f"Найдено отзывов: {current_reviews}")
 
             # Если количество не изменилось, увеличиваем счетчик стабильности
             if current_reviews == previous_review_count:
                 stable_count_attempts += 1
-                print(f"  Количество стабильно ({stable_count_attempts}/{max_stable_attempts})")
+                logger.debug(f"Количество стабильно ({stable_count_attempts}/{max_stable_attempts})")
             else:
                 stable_count_attempts = 0  # Сбрасываем, если количество изменилось
 
             previous_review_count = current_reviews
 
-        print("Загрузка отзывов завершена, начинаю парсинг...")
+        logger.info("Загрузка отзывов завершена, начинаю парсинг")
 
     def _expand_review_text(self, review_element):
         """
@@ -322,13 +320,13 @@ class GoogleReviewsParser:
                     expand_button = review_element.find_element(By.CSS_SELECTOR, selector)
                     if expand_button.is_displayed():
                         expand_button.click()
-                        time.sleep(1)  # Ждем раскрытия текста
-                        print("    📖 Текст отзыва раскрыт")
+                        time.sleep(PARSING_CONFIG["text_expand_wait_time"])  # Ждем раскрытия текста
+                        logger.debug("Текст отзыва раскрыт")
                         return
                 except:
                     continue
         except Exception as e:
-            print(f"    ⚠️  Не удалось раскрыть текст: {e}")
+            logger.warning(f"Не удалось раскрыть текст: {e}")
 
     def _parse_review_cards(self, url: str) -> int:
         """
@@ -350,15 +348,15 @@ class GoogleReviewsParser:
             except:
                 continue
 
-        print(f"Найдено {len(review_elements)} отзывов для данного филиала")
+        logger.success(f"Найдено {len(review_elements)} отзывов для данного филиала")
 
         if not review_elements:
-            print("Отзывы не найдены, возможно изменилась структура страницы")
+            logger.warning("Отзывы не найдены, возможно изменилась структура страницы")
             return 0
 
         # Раскрываем тексты всех отзывов
         for i, element in enumerate(review_elements, 1):
-            print(f"  📖 Раскрываю текст отзыва {i}/{len(review_elements)}")
+            logger.processing(f"Раскрываю текст отзыва {i}/{len(review_elements)}")
             self._expand_review_text(element)
 
         # Теперь парсим через BeautifulSoup
@@ -377,7 +375,7 @@ class GoogleReviewsParser:
 
         for j, card in enumerate(review_cards, 1):
             try:
-                print(f"  📝 Обрабатываю отзыв {j}/{len(review_cards)}")
+                logger.processing(f"Обрабатываю отзыв {j}/{len(review_cards)}")
                 review_data = self._extract_review_data(card, url)
 
                 if not review_data:
@@ -386,7 +384,7 @@ class GoogleReviewsParser:
                 # Проверяем дубликаты в текущей сессии
                 review_hash = f"{review_data['author_name']}|{review_data['review_text'][:100]}"
                 if review_hash in processed_reviews:
-                    print(f"    ⚪ Дубликат отзыва пропущен")
+                    logger.info("Дубликат отзыва пропущен")
                     continue
                 processed_reviews.add(review_hash)
 
@@ -401,12 +399,12 @@ class GoogleReviewsParser:
                     new_review = Review(**review_data)
                     self.session.add(new_review)
                     new_reviews_count += 1
-                    print(f"    ✅ Добавлен новый отзыв от: {review_data['author_name']} (⭐{review_data['rating']})")
+                    logger.success(f"Добавлен новый отзыв от: {review_data['author_name']} (⭐{review_data['rating']})")
                 else:
-                    print(f"    ⚪ Отзыв от {review_data['author_name']} уже существует")
+                    logger.info(f"Отзыв от {review_data['author_name']} уже существует")
 
             except Exception as e:
-                print(f"  ! Не удалось обработать карточку отзыва: {e}")
+                logger.error(f"Не удалось обработать карточку отзыва: {e}")
                 continue
 
         return new_reviews_count
@@ -425,18 +423,18 @@ class GoogleReviewsParser:
         # Автор
         author_name = self._extract_with_selectors(card, GOOGLE_SELECTORS["author"])
         if not author_name:
-            print("    ⚠️  Не найден автор отзыва")
+            logger.warning("Не найден автор отзыва")
             return None
 
-        print(f"    👤 Автор: {author_name}")
+        logger.debug(f"Автор: {author_name}")
 
         # Текст отзыва
         review_text = self._extract_with_selectors(card, GOOGLE_SELECTORS["text"])
         if not review_text:
-            print("    ⚠️  Не найден текст отзыва")
+            logger.warning("Не найден текст отзыва")
             return None
 
-        print(f"    💬 Текст: {review_text[:50]}...")
+        logger.debug(f"Текст: {review_text[:50]}...")
 
         # Дата отзыва
         publish_date = self._extract_review_date(card)
@@ -511,7 +509,7 @@ class GoogleReviewsParser:
         Returns:
             int: Общее количество новых отзывов
         """
-        print("Начинаю сбор отзывов с Google Maps...")
+        logger.info("Начинаю сбор отзывов с Google Maps")
         total_new_reviews = 0
 
         for url in self.google_urls:
@@ -522,16 +520,16 @@ class GoogleReviewsParser:
             try:
                 if self._load_all_reviews(url):
                     new_reviews_count = self._parse_review_cards(url)
-                    print(f"Добавлено {new_reviews_count} новых отзывов для URL: {url}")
+                    logger.success(f"Добавлено {new_reviews_count} новых отзывов для URL: {url}")
                     total_new_reviews += new_reviews_count
 
             except Exception as e:
-                print(f"Ошибка при обработке URL {url}: {e}")
+                logger.error(f"Ошибка при обработке URL {url}: {e}")
                 continue
 
         # Сохранение изменений
         self.session.commit()
-        print(f"Сбор отзывов с Google Maps завершен. Всего добавлено новых отзывов: {total_new_reviews}")
+        logger.success(f"Сбор отзывов с Google Maps завершен. Всего добавлено новых отзывов: {total_new_reviews}")
         return total_new_reviews
 
 

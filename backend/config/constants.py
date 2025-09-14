@@ -43,7 +43,12 @@ PARSING_CONFIG = {
     "max_stable_attempts": 5,
     "scroll_delay": 2,
     "page_load_timeout": 15,
-    "default_rating": 5.0
+    "default_rating": 5.0,
+    "consent_wait_time": 10,
+    "tab_click_wait_time": 5,
+    "page_reload_wait_time": 15,
+    "text_expand_wait_time": 1,
+    "element_load_wait_time": 5
 }
 
 # Настройки Chrome WebDriver

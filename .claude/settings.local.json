@@ -41,7 +41,9 @@
       "Bash(chmod:*)",
       "Bash(timeout 300 python3 test_google_parser.py)",
       "Bash(lsof:*)",
-      "Bash(kill:*)"
+      "Bash(kill:*)",
+      "Bash(grep:*)",
+      "Bash(xargs kill:*)"
     ],
     "deny": [],
     "ask": []
