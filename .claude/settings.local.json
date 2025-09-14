@@ -35,7 +35,9 @@
       "Bash(pip3 install:*)",
       "Bash(arch:*)",
       "Bash(brew:*)",
-      "Bash(timeout 300 python3 yandex_parser.py)"
+      "Bash(timeout 300 python3 yandex_parser.py)",
+      "Bash(python:*)",
+      "Bash(tree:*)"
     ],
     "deny": [],
     "ask": []

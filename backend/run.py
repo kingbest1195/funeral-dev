@@ -4,7 +4,7 @@
 import sys
 import asyncio
 from database import init_db, get_session, Review
-from yandex_parser import fetch_and_save_yandex_reviews
+from parsers.yandex_parser import fetch_and_save_yandex_reviews
 
 def setup_database():
     """Инициализация базы данных."""

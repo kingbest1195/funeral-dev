@@ -14,7 +14,8 @@ import uvicorn
 import atexit
 
 from database import Review, get_session, init_db
-from yandex_parser import fetch_and_save_yandex_reviews
+from parsers.yandex_parser import fetch_and_save_yandex_reviews
+from config.constants import API_CONFIG, SCHEDULER_CONFIG
 
 # Планировщик задач
 scheduler = BackgroundScheduler()
@@ -28,16 +29,19 @@ async def lifespan(app: FastAPI):
     # Запуск планировщика
     scheduler.start()
 
-    # Добавляем задачу для ежедневного сбора отзывов (в 2:00 ночи)
+    # Добавляем задачу для ежедневного сбора отзывов
     scheduler.add_job(
         func=fetch_and_save_yandex_reviews,
-        trigger=CronTrigger(hour=2, minute=0),
+        trigger=CronTrigger(
+            hour=SCHEDULER_CONFIG["daily_parse_hour"],
+            minute=SCHEDULER_CONFIG["daily_parse_minute"]
+        ),
         id='daily_yandex_reviews',
         name='Ежедневный сбор отзывов Яндекс',
         replace_existing=True
     )
 
-    print("Планировщик запущен. Ежедневный сбор отзывов настроен на 02:00")
+    print(f"Планировщик запущен. Ежедневный сбор отзывов настроен на {SCHEDULER_CONFIG['daily_parse_hour']:02d}:{SCHEDULER_CONFIG['daily_parse_minute']:02d}")
 
     yield
 
@@ -55,7 +59,7 @@ app = FastAPI(
 # Настройка CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:5173"],  # Vite dev server
+    allow_origins=API_CONFIG["cors_origins"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -81,7 +85,7 @@ async def health_check():
 
 @app.get("/api/reviews", response_model=List[dict])
 async def get_reviews(
-    limit: int = 10,
+    limit: int = API_CONFIG["default_page_size"],
     offset: int = 0,
     source: str = None,
     db: Session = Depends(get_db)
