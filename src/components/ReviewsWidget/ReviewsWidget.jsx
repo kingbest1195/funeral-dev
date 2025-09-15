@@ -9,6 +9,39 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+// SVG компоненты для навигации
+const ArrowLeftIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 12H18M6 12L11 7M6 12L11 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const ArrowRightIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+// Конфигурация компонента
+const REVIEWS_CONFIG = {
+  ITEMS_PER_PAGE: 9, // 3x3 на десктопе
+  CACHE: {
+    KEY: 'funeral_reviews_cache',
+    TIMESTAMP_KEY: 'funeral_reviews_cache_timestamp',
+    DURATION: 30 * 60 * 1000, // 30 минут
+  },
+  PAGINATION_THRESHOLDS: {
+    SMALL: 25,
+    MEDIUM: 15,
+  },
+  BREAKPOINTS: {
+    TABLET: 768,
+    DESKTOP: 1024,
+  },
+  AUTO_LOAD_THRESHOLD: 3, // Загружать за 3 слайда до конца
+  CTA_LINK: 'https://yandex.ru/maps/org/vek/22307782205/reviews/?ll=41.376142%2C56.846580&z=10',
+};
+
 /**
  * Виджет отзывов с асинхронной загрузкой и кешированием
  */
@@ -19,21 +52,11 @@ const ReviewsWidget = () => {
   const [error, setError] = useState(null);
   const [hasMore, setHasMore] = useState(true);
   const [currentOffset, setCurrentOffset] = useState(0);
-  const [isInitialized, setIsInitialized] = useState(false);
-  const ITEMS_PER_PAGE = 9; // Загружаем по 9 отзывов (3x3 на десктопе)
-
-  // Ключи для кеширования
-  const CACHE_KEY = 'funeral_reviews_cache';
-  const CACHE_TIMESTAMP_KEY = 'funeral_reviews_cache_timestamp';
-  const CACHE_DURATION = 30 * 60 * 1000; // 30 минут
 
   // Загрузка отзывов после монтирования компонента
   useEffect(() => {
-    if (!isInitialized) {
-      setIsInitialized(true);
-      loadReviews();
-    }
-  }, [isInitialized]);
+    loadReviews();
+  }, []);
 
   // Эффект для адаптации пагинации при изменении количества отзывов
   useEffect(() => {
@@ -47,9 +70,9 @@ const ReviewsWidget = () => {
       // Убираем предыдущие классы
       paginationEl.classList.remove('pagination-medium', 'pagination-small');
 
-      if (bulletCount > 25) {
+      if (bulletCount > REVIEWS_CONFIG.PAGINATION_THRESHOLDS.SMALL) {
         paginationEl.classList.add('pagination-small');
-      } else if (bulletCount > 15) {
+      } else if (bulletCount > REVIEWS_CONFIG.PAGINATION_THRESHOLDS.MEDIUM) {
         paginationEl.classList.add('pagination-medium');
       }
     };
@@ -62,14 +85,14 @@ const ReviewsWidget = () => {
   // Функция проверки кеша
   const getCachedReviews = () => {
     try {
-      const cachedData = localStorage.getItem(CACHE_KEY);
-      const cachedTimestamp = localStorage.getItem(CACHE_TIMESTAMP_KEY);
+      const cachedData = localStorage.getItem(REVIEWS_CONFIG.CACHE.KEY);
+      const cachedTimestamp = localStorage.getItem(REVIEWS_CONFIG.CACHE.TIMESTAMP_KEY);
 
       if (cachedData && cachedTimestamp) {
         const now = Date.now();
         const timestamp = parseInt(cachedTimestamp);
 
-        if (now - timestamp < CACHE_DURATION) {
+        if (now - timestamp < REVIEWS_CONFIG.CACHE.DURATION) {
           return JSON.parse(cachedData);
         }
       }
@@ -82,8 +105,8 @@ const ReviewsWidget = () => {
   // Функция сохранения в кеш
   const setCachedReviews = (data) => {
     try {
-      localStorage.setItem(CACHE_KEY, JSON.stringify(data));
-      localStorage.setItem(CACHE_TIMESTAMP_KEY, Date.now().toString());
+      localStorage.setItem(REVIEWS_CONFIG.CACHE.KEY, JSON.stringify(data));
+      localStorage.setItem(REVIEWS_CONFIG.CACHE.TIMESTAMP_KEY, Date.now().toString());
     } catch (error) {
       console.warn('Ошибка сохранения кеша отзывов:', error);
     }
@@ -113,7 +136,7 @@ const ReviewsWidget = () => {
       setCurrentOffset(uniqueCachedReviews.length);
 
       // Если кешированных отзывов меньше чем ITEMS_PER_PAGE, значит это все что есть
-      if (uniqueCachedReviews.length < ITEMS_PER_PAGE) {
+      if (uniqueCachedReviews.length < REVIEWS_CONFIG.ITEMS_PER_PAGE) {
         setHasMore(false);
       } else {
         setHasMore(true);
@@ -131,7 +154,7 @@ const ReviewsWidget = () => {
       setError(null);
 
       console.log('📡 Отправляю запрос к /api/reviews');
-      const response = await fetch(`/api/reviews?offset=0&limit=${ITEMS_PER_PAGE}`, {
+      const response = await fetch(`/api/reviews?offset=0&limit=${REVIEWS_CONFIG.ITEMS_PER_PAGE}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -170,7 +193,7 @@ const ReviewsWidget = () => {
       setCurrentOffset(uniqueReviews.length);
 
       // Проверяем есть ли еще данные
-      if (data.length < ITEMS_PER_PAGE) {
+      if (data.length < REVIEWS_CONFIG.ITEMS_PER_PAGE) {
         setHasMore(false);
       }
 
@@ -205,7 +228,7 @@ const ReviewsWidget = () => {
       setLoadingMore(true);
       console.log(`🔄 Загружаю дополнительные отзывы, offset: ${currentOffset}`);
 
-      const response = await fetch(`/api/reviews?offset=${currentOffset}&limit=${ITEMS_PER_PAGE}`, {
+      const response = await fetch(`/api/reviews?offset=${currentOffset}&limit=${REVIEWS_CONFIG.ITEMS_PER_PAGE}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -220,7 +243,7 @@ const ReviewsWidget = () => {
       console.log(`📊 Получено дополнительных отзывов: ${newReviews.length}`);
 
       // Если получили меньше чем запрашивали - это конец
-      if (newReviews.length < ITEMS_PER_PAGE) {
+      if (newReviews.length < REVIEWS_CONFIG.ITEMS_PER_PAGE) {
         setHasMore(false);
         console.log('✅ Достигнут конец списка отзывов');
       }
@@ -250,7 +273,7 @@ const ReviewsWidget = () => {
           setCurrentOffset(prev => prev + newReviews.length);
 
           // Если мы получили полную порцию дубликатов, пробуем еще раз
-          if (newReviews.length === ITEMS_PER_PAGE && hasMore) {
+          if (newReviews.length === REVIEWS_CONFIG.ITEMS_PER_PAGE && hasMore) {
             console.log('🔄 Все отзывы были дубликатами, пробую загрузить еще');
             setTimeout(() => loadMoreReviews(), 100);
             return;
@@ -282,8 +305,8 @@ const ReviewsWidget = () => {
         }}
         pagination={{ clickable: true }}
         breakpoints={{
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
+          [REVIEWS_CONFIG.BREAKPOINTS.TABLET]: { slidesPerView: 2 },
+          [REVIEWS_CONFIG.BREAKPOINTS.DESKTOP]: { slidesPerView: 3 },
         }}
         a11y={{
           prevSlideMessage: "Предыдущие отзывы",
@@ -299,14 +322,10 @@ const ReviewsWidget = () => {
 
       {/* Кнопки навигации для состояния загрузки */}
       <div className="swiper-button-prev" style={{ opacity: 0.5, pointerEvents: 'none' }}>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 12H18M6 12L11 7M6 12L11 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
+        <ArrowLeftIcon />
       </div>
       <div className="swiper-button-next" style={{ opacity: 0.5, pointerEvents: 'none' }}>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
+        <ArrowRightIcon />
       </div>
     </div>
   );
@@ -338,8 +357,8 @@ const ReviewsWidget = () => {
         }}
         pagination={{ clickable: true }}
         breakpoints={{
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: Math.min(reviews.length, 3) },
+          [REVIEWS_CONFIG.BREAKPOINTS.TABLET]: { slidesPerView: 2 },
+          [REVIEWS_CONFIG.BREAKPOINTS.DESKTOP]: { slidesPerView: Math.min(reviews.length, 3) },
         }}
         a11y={{
           prevSlideMessage: "Предыдущие отзывы",
@@ -349,7 +368,7 @@ const ReviewsWidget = () => {
           // Автозагрузка при достижении последних слайдов
           if (hasMore && !loadingMore) {
             const totalSlides = swiper.slides?.length || 0;
-            const threshold = Math.max(1, totalSlides - 3); // Загружаем за 3 слайда до конца
+            const threshold = Math.max(1, totalSlides - REVIEWS_CONFIG.AUTO_LOAD_THRESHOLD);
 
             if (swiper.activeIndex >= threshold) {
               console.log('🔄 Автозагрузка на слайде:', swiper.activeIndex, 'threshold:', threshold);
@@ -397,49 +416,49 @@ const ReviewsWidget = () => {
 
       {/* Кнопки навигации внутри slider */}
       <div className="swiper-button-prev">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 12H18M6 12L11 7M6 12L11 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
+        <ArrowLeftIcon />
       </div>
       <div className="swiper-button-next">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
+        <ArrowRightIcon />
       </div>
     </div>
   );
 
   return (
-    <section className="reviews section">
+    <section
+      className="reviews section"
+      aria-labelledby="reviews-title"
+      role="region"
+    >
       <div className="container">
-        <div className="reviews__header">
-          <h2 className="reviews__title">Что о нас говорят</h2>
+        <header className="reviews__header">
+          <h2 id="reviews-title" className="reviews__title">Что о нас говорят</h2>
           <p className="reviews__subtitle">
             Реальные отзывы наших клиентов с Яндекс.Карт и Google Карт
           </p>
-        </div>
+        </header>
 
-        <div className="reviews__content">
+        <div className="reviews__content" aria-live="polite">
           {loading && renderLoading()}
           {!loading && error && renderError()}
           {!loading && !error && reviews.length === 0 && renderEmpty()}
           {!loading && !error && reviews.length > 0 && renderReviews()}
         </div>
 
-        <div className="reviews__cta">
+        <aside className="reviews__cta" role="complementary" aria-label="Призыв к действию">
           <p className="reviews__cta-text">
             Поделитесь своим опытом работы с нами
           </p>
           <a
-            href="https://yandex.ru/maps/org/vek/22307782205/reviews/?ll=41.376142%2C56.846580&z=10"
+            href={REVIEWS_CONFIG.CTA_LINK}
             target="_blank"
             rel="noopener noreferrer"
             className="reviews__cta-link btn btn--secondary btn--sm"
-            aria-label="Оставить отзыв в Яндекс.Картах"
+            aria-label="Оставить отзыв в Яндекс.Картах (откроется в новой вкладке)"
           >
             Оставить отзыв в Яндекс.Картах
           </a>
-        </div>
+        </aside>
       </div>
     </section>
   );

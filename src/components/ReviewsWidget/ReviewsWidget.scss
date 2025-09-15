@@ -49,9 +49,7 @@
       margin-top: 0;
       opacity: 1;
       visibility: visible;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include center;
       background: transparent;
       border: 1px solid var(--color-border);
       border-radius: 50%;
@@ -68,12 +66,12 @@
       svg {
         color: var(--color-text-primary);
         transition: color var(--duration-base) var(--ease-smooth);
-        width: 20px;
-        height: 20px;
+        width: var(--spacing-5); // 20px
+        height: var(--spacing-5); // 20px
         pointer-events: none;
       }
 
-      &:hover {
+      @include hover {
         border-color: var(--color-primary);
         color: var(--color-primary);
 
@@ -86,7 +84,7 @@
         opacity: 0.5;
         cursor: not-allowed;
 
-        &:hover {
+        @include hover {
           border-color: var(--color-border);
           color: var(--color-text-primary);
 
@@ -110,13 +108,10 @@
     }
   }
 
-  &__slider {
     .swiper-pagination {
       position: static !important;
       margin-top: var(--spacing-6) !important;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include center;
       gap: var(--spacing-2);
       padding: var(--spacing-1) 0;
       flex-wrap: wrap;
@@ -130,13 +125,14 @@
     }
 
     .swiper-pagination-bullet {
-      width: 12px;
-      height: 12px;
+      width: var(--spacing-3); // 12px
+      height: var(--spacing-3); // 12px
       background: var(--color-border-dark);
       opacity: 0.5;
       transition: all var(--duration-base) var(--ease-smooth);
-      margin: 2px;
+      margin: var(--spacing-1); // 2px
       flex-shrink: 0;
+      border-radius: 50%;
 
       &-active {
         background: var(--color-accent);
@@ -145,14 +141,14 @@
       }
     }
 
-    // Адаптивные классы для пагинации
+    // Адаптивные классы для пагинации при большом количестве bullets
     .swiper-pagination.pagination-medium {
       gap: calc(var(--spacing-2) * 0.75);
 
       .swiper-pagination-bullet {
-        width: 8px;
-        height: 8px;
-        margin: 1px;
+        width: var(--spacing-2); // 8px
+        height: var(--spacing-2); // 8px
+        margin: calc(var(--spacing-1) / 2); // 1px
 
         &-active {
           transform: scale(1.1);
@@ -164,9 +160,9 @@
       gap: calc(var(--spacing-2) * 0.5);
 
       .swiper-pagination-bullet {
-        width: 6px;
-        height: 6px;
-        margin: 1px;
+        width: calc(var(--spacing-2) * 0.75); // 6px
+        height: calc(var(--spacing-2) * 0.75); // 6px
+        margin: calc(var(--spacing-1) / 2); // 1px
 
         &-active {
           transform: scale(1.05);
@@ -174,28 +170,26 @@
       }
     }
 
-    // Альтернативный подход через CSS Container Queries (если поддерживается)
+    // Альтернативный подход через CSS Container Queries
     @container (max-width: 600px) {
       .swiper-pagination {
         gap: calc(var(--spacing-2) * 0.5);
       }
 
       .swiper-pagination-bullet {
-        width: 8px;
-        height: 8px;
-        margin: 1px;
+        width: var(--spacing-2); // 8px
+        height: var(--spacing-2); // 8px
+        margin: calc(var(--spacing-1) / 2); // 1px
       }
     }
-  }
 
   &__cta {
-    display: flex;
+    @include center;
     flex-direction: column;
-    align-items: center;
     gap: var(--spacing-4);
     padding: var(--spacing-6) var(--spacing-4);
     background: var(--color-accent-transparent);
-    border: 1px solid var(--color-border);
+    border: var(--border-width-1) solid var(--color-border);
     border-radius: var(--border-radius-lg);
     text-align: center;
 
@@ -219,11 +213,11 @@
     color: var(--color-accent);
     transition: all var(--duration-base) var(--ease-smooth);
 
-    &:hover {
+    @include hover {
       background: var(--color-accent);
       color: var(--color-text-white);
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(196, 158, 94, 0.25);
+      box-shadow: var(--shadow-md);
     }
 
     &:focus {
@@ -235,16 +229,14 @@
   // Карточка "Загрузить еще"
   &__load-more-card {
     background: var(--color-bg-primary);
-    border: 2px dashed var(--color-border);
+    border: var(--border-width-2) dashed var(--color-border);
     border-radius: var(--border-radius-lg);
     padding: var(--spacing-8);
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include center;
     transition: all var(--duration-base) var(--ease-smooth);
 
-    &:hover {
+    @include hover {
       border-color: var(--color-accent);
       background: var(--color-accent-transparent);
     }
@@ -281,16 +273,14 @@
       transform: none;
     }
 
-    &:hover:not(:disabled) {
+    @include hover(":not(:disabled)") {
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(196, 158, 94, 0.25);
+      box-shadow: var(--shadow-md);
     }
   }
-}
 
-// Адаптивность
-@include md-down {
-  .reviews {
+  // Адаптивность
+  @include md-down {
     &__cta {
       flex-direction: column;
       text-align: center;
@@ -305,15 +295,15 @@
 // Анимация появления
 .reviews {
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s ease-out forwards;
-  animation-delay: 0.2s;
+  transform: translateY(var(--spacing-5));
+  animation: fadeInUp var(--duration-slow) var(--ease-out) forwards;
+  animation-delay: var(--duration-base);
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(var(--spacing-5));
   }
   to {
     opacity: 1;
