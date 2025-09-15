@@ -1,0 +1,323 @@
+@use "@/styles/mixins" as *;
+
+.reviews {
+  text-align: left;
+
+  &__header {
+    text-align: center;
+    margin-bottom: var(--spacing-8);
+  }
+
+  &__title {
+    margin-bottom: var(--spacing-3);
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-primary);
+  }
+
+  &__subtitle {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    max-width: 36rem;
+    margin: 0 auto;
+    line-height: var(--line-height-relaxed);
+  }
+
+  &__content {
+    margin-bottom: var(--spacing-8);
+    // Добавляем отступы по бокам для стрелок
+    padding: 0 var(--spacing-20); // Увеличиваем отступы для стрелок
+
+    @include lg-down {
+      padding: 0;
+    }
+  }
+
+  &__slider {
+    position: relative;
+    padding-bottom: 0;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-primary);
+      width: var(--spacing-10); // 40px
+      height: var(--spacing-10); // 40px
+      z-index: 20;
+      margin-top: 0;
+      opacity: 1;
+      visibility: visible;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all var(--duration-base) var(--ease-smooth);
+
+      // Убираем стандартный контент swiper
+      &:after,
+      &:before {
+        display: none;
+      }
+
+      // Стилизуем SVG иконки
+      svg {
+        color: var(--color-text-primary);
+        transition: color var(--duration-base) var(--ease-smooth);
+        width: 20px;
+        height: 20px;
+        pointer-events: none;
+      }
+
+      &:hover {
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+
+        svg {
+          color: var(--color-primary);
+        }
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+
+        &:hover {
+          border-color: var(--color-border);
+          color: var(--color-text-primary);
+
+          svg {
+            color: var(--color-text-primary);
+          }
+        }
+      }
+
+      @include lg-down {
+        display: none;
+      }
+    }
+
+    .swiper-button-prev {
+      left: calc(var(--spacing-20) * -1); // -80px - выносим за пределы content padding
+    }
+
+    .swiper-button-next {
+      right: calc(var(--spacing-20) * -1); // -80px - выносим за пределы content padding
+    }
+  }
+
+  &__slider {
+    .swiper-pagination {
+      position: static !important;
+      margin-top: var(--spacing-6) !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--spacing-2);
+      padding: var(--spacing-1) 0;
+      flex-wrap: wrap;
+      max-width: 100%;
+      overflow: hidden;
+
+      // Адаптивные размеры для большого количества bullets
+      &.swiper-pagination-bullets-dynamic {
+        gap: var(--spacing-1);
+      }
+    }
+
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background: var(--color-border-dark);
+      opacity: 0.5;
+      transition: all var(--duration-base) var(--ease-smooth);
+      margin: 2px;
+      flex-shrink: 0;
+
+      &-active {
+        background: var(--color-accent);
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    // Адаптивные классы для пагинации
+    .swiper-pagination.pagination-medium {
+      gap: calc(var(--spacing-2) * 0.75);
+
+      .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        margin: 1px;
+
+        &-active {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .swiper-pagination.pagination-small {
+      gap: calc(var(--spacing-2) * 0.5);
+
+      .swiper-pagination-bullet {
+        width: 6px;
+        height: 6px;
+        margin: 1px;
+
+        &-active {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    // Альтернативный подход через CSS Container Queries (если поддерживается)
+    @container (max-width: 600px) {
+      .swiper-pagination {
+        gap: calc(var(--spacing-2) * 0.5);
+      }
+
+      .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        margin: 1px;
+      }
+    }
+  }
+
+  &__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-4);
+    padding: var(--spacing-6) var(--spacing-4);
+    background: var(--color-accent-transparent);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    text-align: center;
+
+    @include md-down {
+      padding: var(--spacing-5) var(--spacing-3);
+      gap: var(--spacing-3);
+    }
+  }
+
+  &__cta-text {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: var(--line-height-normal);
+  }
+
+  &__cta-link {
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transition: all var(--duration-base) var(--ease-smooth);
+
+    &:hover {
+      background: var(--color-accent);
+      color: var(--color-text-white);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(196, 158, 94, 0.25);
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+  }
+
+  // Карточка "Загрузить еще"
+  &__load-more-card {
+    background: var(--color-bg-primary);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-8);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--duration-base) var(--ease-smooth);
+
+    &:hover {
+      border-color: var(--color-accent);
+      background: var(--color-accent-transparent);
+    }
+  }
+
+  &__load-more-content {
+    text-align: center;
+    max-width: 200px;
+  }
+
+  &__load-more-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-2);
+    font-family: var(--font-heading);
+  }
+
+  &__load-more-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-4);
+    line-height: var(--line-height-relaxed);
+  }
+
+  &__load-more-btn {
+    width: 100%;
+    font-weight: var(--font-weight-medium);
+    transition: all var(--duration-base) var(--ease-smooth);
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    &:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(196, 158, 94, 0.25);
+    }
+  }
+}
+
+// Адаптивность
+@include md-down {
+  .reviews {
+    &__cta {
+      flex-direction: column;
+      text-align: center;
+
+      &-link {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Анимация появления
+.reviews {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

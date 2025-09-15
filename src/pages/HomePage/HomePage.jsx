@@ -4,6 +4,7 @@ import InfoSection from "@/components/InfoSection/InfoSection.jsx";
 import CallBlock from "@/components/CallBlock/CallBlock.jsx";
 import BenefitBlock from "@/components/BenefitBlock/BenefitBlock.jsx";
 import QuizCalculator from "@/components/QuizCalculator/QuizCalculator.jsx";
+import ReviewsWidget from "@/components/ReviewsWidget/ReviewsWidget.jsx";
 import "./HomePage.scss";
 // Импорт изображений для корректной работы в Vite preview/build
 import hearseWebp from "@/assets/images/transport-and-office/hearse-modern.webp";
@@ -15,12 +16,6 @@ import officeJpg from "@/assets/images/transport-and-office/office-facade.jpg";
 // Иконки (высокое качество, прозрачный фон)
 import phoneIcon from "@/assets/icons/phone-linear-gold.png";
 import benefitIcon from "@/assets/icons/benefit-coin-leaf-gold.png";
-// Swiper для отзывов
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, A11y } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 
 /**
  * Главная страница сайта ритуальной службы "Век"
@@ -480,112 +475,7 @@ const HomePage = () => {
         </section>
 
         {/* Отзывы */}
-        <section className="reviews section">
-          <div className="container">
-            <h2 className="reviews__title">Что о нас говорят</h2>
-            <Swiper
-              className="reviews__slider"
-              modules={[Navigation, Pagination, A11y]}
-              spaceBetween={24}
-              slidesPerView={1}
-              navigation
-              pagination={{ clickable: true }}
-              breakpoints={{
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-              }}
-              a11y={{
-                prevSlideMessage: "Предыдущие отзывы",
-                nextSlideMessage: "Следующие отзывы",
-              }}
-            >
-              <SwiperSlide>
-                <article className="review-card" aria-label="Отзыв клиента">
-                  <header className="review-card__header">
-                    <div className="review-card__author">Анна П.</div>
-                    <div
-                      className="review-card__rating"
-                      aria-label="Оценка 5 из 5"
-                    >
-                      ★★★★★
-                    </div>
-                    <div
-                      className="review-card__verified"
-                      aria-label="Проверенный отзыв"
-                    >
-                      ✔
-                    </div>
-                  </header>
-                  <p className="review-card__text">
-                    Большое спасибо сотрудникам службы «Век» за профессионализм
-                    и деликатность. Помогли во всем, сделали всё достойно.
-                  </p>
-                  <footer className="review-card__footer">
-                    <a href="#" aria-label="Источник: Яндекс.Бизнес">
-                      Источник: Яндекс.Бизнес
-                    </a>
-                  </footer>
-                </article>
-              </SwiperSlide>
-              <SwiperSlide>
-                <article className="review-card" aria-label="Отзыв клиента">
-                  <header className="review-card__header">
-                    <div className="review-card__author">Игорь С.</div>
-                    <div
-                      className="review-card__rating"
-                      aria-label="Оценка 5 из 5"
-                    >
-                      ★★★★★
-                    </div>
-                    <div
-                      className="review-card__verified"
-                      aria-label="Проверенный отзыв"
-                    >
-                      ✔
-                    </div>
-                  </header>
-                  <p className="review-card__text">
-                    Всё организовали быстро и аккуратно. Отдельная благодарность
-                    агенту за внимательность к деталям.
-                  </p>
-                  <footer className="review-card__footer">
-                    <a href="#" aria-label="Источник: Яндекс.Бизнес">
-                      Источник: Яндекс.Бизнес
-                    </a>
-                  </footer>
-                </article>
-              </SwiperSlide>
-              <SwiperSlide>
-                <article className="review-card" aria-label="Отзыв клиента">
-                  <header className="review-card__header">
-                    <div className="review-card__author">Марина К.</div>
-                    <div
-                      className="review-card__rating"
-                      aria-label="Оценка 5 из 5"
-                    >
-                      ★★★★★
-                    </div>
-                    <div
-                      className="review-card__verified"
-                      aria-label="Проверенный отзыв"
-                    >
-                      ✔
-                    </div>
-                  </header>
-                  <p className="review-card__text">
-                    Приятные и тактичные люди. Подсказали все шаги, помогли с
-                    документами.
-                  </p>
-                  <footer className="review-card__footer">
-                    <a href="#" aria-label="Источник: Яндекс.Бизнес">
-                      Источник: Яндекс.Бизнес
-                    </a>
-                  </footer>
-                </article>
-              </SwiperSlide>
-            </Swiper>
-          </div>
-        </section>
+        <ReviewsWidget />
 
         {/* Наш транспорт и офис */}
         <section className="transport-office section bg-light">

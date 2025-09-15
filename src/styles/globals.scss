@@ -304,22 +304,12 @@ figure {
     }
   }
 
-  // Контурный вариант памятника (без заливки) для вторичных сценариев
+  // Контурный вариант кнопки (без заливки) для вторичных сценариев
   &--outline {
     background: #ffffff;
     color: var(--color-accent);
     border: 1.5px solid var(--color-accent);
-
-    // Сохраняем форму памятника
-    -webkit-mask: radial-gradient(32px at left 50%, transparent 31px, #000 32px)
-        left,
-      radial-gradient(32px at right 50%, transparent 31px, #000 32px) right;
-    -webkit-mask-size: 51% 100%;
-    -webkit-mask-repeat: no-repeat;
-    mask: radial-gradient(32px at left 50%, transparent 31px, #000 32px) left,
-      radial-gradient(32px at right 50%, transparent 31px, #000 32px) right;
-    mask-size: 51% 100%;
-    mask-repeat: no-repeat;
+    border-radius: var(--border-radius-md);
 
     box-shadow: none;
 
