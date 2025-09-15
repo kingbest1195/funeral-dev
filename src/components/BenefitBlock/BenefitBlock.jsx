@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./BenefitBlock.scss";
 
 /**
  * Блок с информацией о пособии (сохраняет оригинальную структуру)
