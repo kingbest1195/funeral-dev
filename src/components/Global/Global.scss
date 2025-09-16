@@ -600,7 +600,9 @@ body.no-scroll {
 
   &__mobile-call-text {
     font-size: var(--font-size-base);
-    color: var(--color-bg-primary); // #ffffff - текст на кнопке «Позвонить» всегда белый
+    color: var(
+      --color-bg-primary
+    ); // #ffffff - текст на кнопке «Позвонить» всегда белый
     vertical-align: middle;
   }
 }

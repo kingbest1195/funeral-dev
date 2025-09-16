@@ -58,7 +58,8 @@
       "WebFetch(domain:github.com)",
       "Bash(npm uninstall:*)",
       "Bash(npm run preview:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
