@@ -2,11 +2,11 @@ import React, { useEffect, useState, useId, useRef } from "react";
 import "./PopupNotification.scss";
 import { NOTIFICATION_DATA } from "@/constants/content";
 
-// Импорт иконок
-import successIcon from "@/assets/icons/notification-success.png";
-import errorIcon from "@/assets/icons/notification-error.png";
-import loadingIcon from "@/assets/icons/notification-loading.png";
-import infoIcon from "@/assets/icons/notification-info.png";
+// Импорт оптимизированных иконок
+import successIcon from "@/assets/icons-optimized/notification-success.webp";
+import errorIcon from "@/assets/icons-optimized/notification-error.webp";
+import loadingIcon from "@/assets/icons-optimized/notification-loading.webp";
+import infoIcon from "@/assets/icons-optimized/notification-info.webp";
 
 // Константы
 const ANIMATION_DURATION = 300; // ms
@@ -190,9 +190,9 @@ const PopupNotification = ({
       >
         {/* Иконка */}
         <div className={`${baseClass}__icon`}>
-          <img 
-            src={getIcon()} 
-            alt="" 
+          <img
+            src={getIcon()}
+            alt={`Иконка ${type === 'loading' ? 'загрузки' : type === 'success' ? 'успеха' : type === 'error' ? 'ошибки' : 'информации'}`}
             role="presentation"
             className={`${baseClass}__icon-image ${type === "loading" ? `${baseClass}__icon-image--loading` : ""}`}
           />

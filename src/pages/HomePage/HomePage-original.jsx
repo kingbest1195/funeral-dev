@@ -13,9 +13,9 @@ import busWebp from "@/assets/images/transport-and-office/bus-comfort.webp";
 import busJpg from "@/assets/images/transport-and-office/bus-comfort.jpg";
 import officeWebp from "@/assets/images/transport-and-office/office-facade.webp";
 import officeJpg from "@/assets/images/transport-and-office/office-facade.jpg";
-// Иконки (высокое качество, прозрачный фон)
-import phoneIcon from "@/assets/icons/phone-linear-gold.png";
-import benefitIcon from "@/assets/icons/benefit-coin-leaf-gold.png";
+// Оптимизированные иконки (WebP, высокое качество, прозрачный фон)
+import phoneIcon from "@/assets/icons-optimized/phone-linear-gold.webp";
+import benefitIcon from "@/assets/icons-optimized/benefit-coin-leaf-gold.webp";
 
 /**
  * Главная страница сайта ритуальной службы "Век"

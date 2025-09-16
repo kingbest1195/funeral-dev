@@ -15,6 +15,7 @@ const CallBlock = ({ phone, note, icon, ariaLabel, parentClass = "first-steps" }
             alt="Телефон ритуального агента для круглосуточного вызова в Шуе"
             width="96"
             height="96"
+            loading="lazy"
           />
         </div>
       )}

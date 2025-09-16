@@ -20,9 +20,9 @@ import CTASection from "./components/CTASection/CTASection.jsx";
 import { HOME_SEO_DATA } from "@/constants/content";
 import "./HomePage.scss";
 
-// Импорт изображений для InfoSection и BenefitBlock
-import phoneIcon from "@/assets/icons/phone-linear-gold.png";
-import benefitIcon from "@/assets/icons/benefit-coin-leaf-gold.png";
+// Импорт оптимизированных изображений для InfoSection и BenefitBlock
+import phoneIcon from "@/assets/icons-optimized/phone-linear-gold.webp";
+import benefitIcon from "@/assets/icons-optimized/benefit-coin-leaf-gold.webp";
 
 /**
  * Главная страница сайта ритуальной службы "Век"

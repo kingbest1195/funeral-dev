@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ReviewCard.scss';
-import yandexIcon from '@/assets/icons/yandex-icon.png';
-import googleIcon from '@/assets/icons/google-icon.png';
+import yandexIcon from '@/assets/icons-optimized/yandex-icon.webp';
+import googleIcon from '@/assets/icons-optimized/google-icon.webp';
 
 /**
  * Компонент карточки отзыва с поддержкой аватарок, обрезки текста и источников
@@ -121,6 +121,7 @@ const ReviewCard = ({
                 alt={`Аватар пользователя ${author}`}
                 className="review-card__avatar-image"
                 onError={() => setImageError(true)}
+                loading="lazy"
               />
             ) : (
               <div
@@ -151,6 +152,7 @@ const ReviewCard = ({
                 src={sourceInfo.icon}
                 alt={`Отзыв с ${sourceInfo.name}`}
                 className="review-card__platform-icon"
+                loading="lazy"
               />
             </div>
           )}

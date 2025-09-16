@@ -15,6 +15,7 @@ const BenefitBlock = ({ amount, label, icon, ariaLabel, parentClass = "burial-be
             alt="Пособие на погребение - государственная выплата для ритуальных услуг"
             width="96"
             height="96"
+            loading="lazy"
           />
         </div>
       )}

@@ -52,7 +52,8 @@
       "Bash(do echo \"=== $dir ===\")",
       "Bash(ls:*)",
       "Bash(done)",
-      "Bash(for dir in src/components/*/)"
+      "Bash(for dir in src/components/*/)",
+      "Bash(sort:*)"
     ],
     "deny": [],
     "ask": []

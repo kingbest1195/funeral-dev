@@ -350,7 +350,7 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
               >
                 <img
                   src={iconPhone}
-                  alt=""
+                  alt="Иконка телефона"
                   width="22"
                   height="22"
                   aria-hidden="true"
@@ -615,7 +615,7 @@ const MobileCallButton = () => {
       aria-label={`Позвонить ${COMPANY_INFO.phone}`}
     >
       <span className="global__mobile-call-icon" aria-hidden="true">
-        <img src={iconPhone} alt="" width="24" height="24" />
+        <img src={iconPhone} alt="Иконка телефона" width="24" height="24" />
       </span>
       <span className="global__mobile-call-text">Позвонить</span>
     </a>
