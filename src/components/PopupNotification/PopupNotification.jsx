@@ -3,10 +3,10 @@ import "./PopupNotification.scss";
 import { NOTIFICATION_DATA } from "@/constants/content";
 
 // Импорт оптимизированных иконок
-import successIcon from "@/assets/icons-optimized/notification-success.webp";
-import errorIcon from "@/assets/icons-optimized/notification-error.webp";
-import loadingIcon from "@/assets/icons-optimized/notification-loading.webp";
-import infoIcon from "@/assets/icons-optimized/notification-info.webp";
+import successIcon from "../../assets/icons-optimized/notification-success.webp";
+import errorIcon from "../../assets/icons-optimized/notification-error.webp";
+import loadingIcon from "../../assets/icons-optimized/notification-loading.webp";
+import infoIcon from "../../assets/icons-optimized/notification-info.webp";
 
 // Константы
 const ANIMATION_DURATION = 300; // ms
