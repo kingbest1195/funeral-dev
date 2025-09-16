@@ -1,9 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "./CallBlock.scss";
 
 /**
- * Блок с телефоном для срочных вызовов (сохраняет оригинальную структуру)
+ * Компонент блока с информацией для звонка
+ * @param {Object} props - Параметры компонента
+ * @param {string} props.phone - Номер телефона (обязательный)
+ * @param {string} [props.note] - Дополнительная заметка
+ * @param {string} [props.icon] - Иконка компонента
+ * @param {string} [props.ariaLabel] - ARIA метка для доступности
+ * @param {string} [props.parentClass="first-steps"] - CSS класс родительского элемента
+ * @returns {JSX.Element} React компонент
  */
 const CallBlock = ({ phone, note, icon, ariaLabel, parentClass = "first-steps" }) => {
   return (
@@ -31,12 +37,5 @@ const CallBlock = ({ phone, note, icon, ariaLabel, parentClass = "first-steps" }
   );
 };
 
-CallBlock.propTypes = {
-  phone: PropTypes.string.isRequired,
-  note: PropTypes.string,
-  icon: PropTypes.string,
-  ariaLabel: PropTypes.string,
-  parentClass: PropTypes.string,
-};
 
 export default CallBlock;

@@ -53,7 +53,12 @@
       "Bash(ls:*)",
       "Bash(done)",
       "Bash(for dir in src/components/*/)",
-      "Bash(sort:*)"
+      "Bash(sort:*)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm run preview:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
