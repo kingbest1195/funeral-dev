@@ -8,11 +8,20 @@ Modern React website for "Век" (Vek) funeral service in Shuya, Russia. Built 
 
 ## Development Commands
 
-- `npm run dev` - Start development server (http://localhost:3000)
-- `npm run build` - Build for production
+### Core Development
+- `npm run dev` - Start development server (http://localhost:3001 with API proxy)
+- `npm run build` - **Production build** with automatic image optimization
+- `npm run build:dev` - **Development build** without image optimization (faster)
 - `npm run preview` - Preview production build locally
+
+### Code Quality
 - `npm run lint:scss` - Lint and fix SCSS files with stylelint
 - `npm run lint:js` - Lint and fix JavaScript/JSX files with eslint
+
+### Specialized Tasks
+- `npm run optimize:images` - Run Sharp-based image optimization (auto-runs before production build)
+- `npm run test:quiz` - Test quiz calculator optimizations
+- `npm run test:final` - Test final performance improvements
 
 ## Architecture & Structure
 
@@ -29,22 +38,59 @@ Modern React website for "Век" (Vek) funeral service in Shuya, Russia. Built 
 - Footer with company information
 - Accessibility features and print styles
 
-**SCSS Import Hierarchy**: Strict order in `src/styles/main.scss`:
+**Section-Based Page Architecture**: Large pages (like HomePage) are split into focused section components:
+- `src/pages/HomePage/components/HeroSection/`
+- `src/pages/HomePage/components/ServicesSection/`
+- Each section has co-located `.scss` file and handles specific business logic
+
+**SCSS Import Hierarchy**: **CRITICAL** - Strict order in `src/styles/main.scss` must be maintained:
 1. Variables (CSS custom properties) → Constants (Sass) → Functions → Media mixins → Mixins
 2. Fonts → Normalize → Globals → Utils
+3. Breaking this order causes build failures due to dependency chain
 
-**Business Data Centralization**: `src/helpers/index.js` exports `COMPANY_INFO` constant with all business details (phone, addresses, schedules) and utility functions for validation, formatting, and DOM manipulation.
+**Business Data Centralization**: `src/helpers/index.js` exports:
+- `COMPANY_INFO` constant with phone (+7 920 366-36-36), addresses, schedules
+- Russian localization utilities (phone formatting, transliteration, date formatting)
+- Form validation functions for Cyrillic names and Russian phone numbers
+- DOM manipulation helpers (smooth scrolling, debounce, throttle)
 
-### Image Strategy
-- WebP with JPG/PNG fallbacks using picture elements
-- Vite asset imports for proper bundling and optimization
-- High-quality icons stored in `src/assets/icons/`
+### Advanced Image Optimization System
+**Automated Sharp-based Pipeline** (`scripts/optimize-all-images.cjs`):
+- **Profile-based optimization**: Different settings for quiz-icons, design elements, favicons, etc.
+- **Dual format generation**: Creates both PNG (optimized) and WebP versions
+- **Automatic mapping**: Generates `src/assets/image-mapping.json` for dynamic imports
+- **Production integration**: Runs automatically before `npm run build`
 
-### SEO & Performance
-- JSON-LD structured data for FuneralHome/LocalBusiness
-- Russian language meta tags and OpenGraph
-- Critical CSS inlined to prevent FOUC
-- Print stylesheets and accessibility media queries
+**Picture Element Pattern** (used throughout codebase):
+```jsx
+<picture>
+  <source srcSet={imageWebp} type="image/webp" />
+  <img src={imageJpg} alt="..." loading="lazy" width="800" height="533" />
+</picture>
+```
+
+**Asset Import Strategy**:
+- Vite alias `@` resolves to `./src`
+- Optimized images stored in `src/assets/images-optimized/`
+- Icon assets dynamically imported with mapping system
+
+### SEO & Performance Architecture
+**JSON-LD Structured Data System**:
+- Global `StructuredData.jsx` component provides base FuneralHome/LocalBusiness schema
+- Page-specific schema added via `react-helmet-async` for Services, Products, FAQ
+- Comprehensive coverage: WebPage, Organization, ContactPoint, OpeningHours
+
+**Performance Optimization Features**:
+- **Lazy loading**: 100% coverage with `loading="lazy"` on all images
+- **Critical CSS**: Inlined styles in `main.scss` prevent FOUC
+- **WebP conversion**: 99% size reduction from PNG (10.6MB → 78KB for icons)
+- **Bundle optimization**: Gzip compression (435KB JS → 157KB, 148KB CSS → 25KB)
+
+**Russian Localization & Accessibility**:
+- Cyrillic font optimization with `font-display: swap`
+- Screen reader support with proper ARIA labels in Russian
+- Print stylesheets for funeral service documents
+- High contrast and reduced motion media queries
 
 ## Development Context
 
@@ -61,13 +107,48 @@ Modern React website for "Век" (Vek) funeral service in Shuya, Russia. Built 
 4. Import required business data from helpers
 
 ### Styling Workflow
-- Use CSS custom properties from `variables.scss` for theming
-- Leverage media query mixins from `media.scss` 
-- Follow BEM methodology for component classes
-- Utilize validation/formatting helpers for forms (Russian phone formats)
+- **CSS Custom Properties**: All colors, spacing, fonts defined in `variables.scss`
+- **Media Query Mixins**: Use mixins from `media.scss` for responsive design
+- **BEM Methodology**: Strict `.component__element--modifier` naming
+- **Sass Configuration**: SCSS quietDeps and silenceDeprecations suppress warnings during build
+
+### Advanced Development Configuration
+
+**Vite Configuration** (`vite.config.js`):
+- Custom image optimization plugin integration
+- SCSS preprocessor with deprecation handling
+- API proxy to localhost:8000 for backend integration
+- Source maps enabled for debugging
+
+**Russian Localization Helpers** (`src/helpers/index.js`):
+```js
+// Phone formatting: "+7 (920) 366-36-36"
+formatPhone(phone)
+// Cyrillic transliteration for URLs
+createSlug("Услуги похорон") // → "uslugi-pokhoron"
+// Russian date formatting
+formatDate(date) // → "15 сентября 2024 г."
+```
+
+### Important Notes from Project Rules (.cursorrules)
+
+**Technology Stack Restrictions**:
+- **NO TypeScript** - Project specifically avoids it, use vanilla JavaScript
+- **NO CSS Frameworks** - No Bootstrap, Tailwind, etc. Use custom SCSS with BEM
+- **NO External CDNs** - Bundle everything locally for performance
+- **Font Requirements**: 'Playfair Display' for headings, 'Roboto' for body text
+
+**Performance Requirements**:
+- Google PageSpeed score > 90
+- First Contentful Paint < 2.5s
+- Lazy load all images below the fold
+- Use `font-display: swap` for font loading
 
 Documentation in `docs/` contains original technical specifications and content strategy.
-- #### **Правило №1: Протокол создания нового React-компонента**
+
+## Development Rules & Protocols
+
+#### **Правило №1: Протокол создания нового React-компонента**
 
 Любой новый компонент, добавляемый в проект, должен соответствовать следующим требованиям:
 
