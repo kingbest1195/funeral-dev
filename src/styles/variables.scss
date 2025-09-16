@@ -223,6 +223,96 @@
   --color-active-overlay: rgba(212, 165, 116, 0.2);
   --color-disabled-overlay: rgba(107, 114, 128, 0.5);
 
+  // ДОПОЛНИТЕЛЬНЫЕ ПЕРЕМЕННЫЕ ДЛЯ УСТРАНЕНИЯ ХАРДКОДИНГА
+  // =================
+
+  // Дополнительные размеры контейнеров (rem)
+  --container-3xs: 12.5rem; // 200px
+  --container-2xs: 18rem; // 288px
+  --container-xs-plus: 20rem; // 320px
+  --container-sm-plus: 25rem; // 400px
+  --container-md-plus: 36rem; // 576px
+  --container-lg-plus: 48rem; // 768px
+  --container-xl-plus: 56rem; // 896px
+  --container-2xl-plus: 62.5rem; // 1000px
+
+  // Размеры для специфических элементов
+  --size-icon-xs: var(--spacing-5); // 20px
+  --size-icon-sm: var(--spacing-6); // 24px
+  --size-icon-md: var(--spacing-10); // 40px
+  --size-icon-lg: var(--spacing-12); // 48px
+  --size-icon-xl: 6rem; // 96px
+
+  // Дополнительные отступы
+  --spacing-0-5: calc(var(--spacing-unit) * 0.25); // 2px
+  --spacing-1-5: calc(var(--spacing-unit) * 0.75); // 6px
+  --spacing-7: calc(var(--spacing-unit) * 3.5); // 28px
+  --spacing-9: calc(var(--spacing-unit) * 4.5); // 36px
+  --spacing-11: calc(var(--spacing-unit) * 5.5); // 44px
+  --spacing-14: calc(var(--spacing-unit) * 7); // 56px
+  --spacing-15: calc(var(--spacing-unit) * 7.5); // 60px
+  --spacing-18: calc(var(--spacing-unit) * 9); // 72px
+  --spacing-22: calc(var(--spacing-unit) * 11); // 88px
+  --spacing-28: calc(var(--spacing-unit) * 14); // 112px
+  --spacing-36: calc(var(--spacing-unit) * 18); // 144px
+  --spacing-40: calc(var(--spacing-unit) * 20); // 160px
+  --spacing-44: calc(var(--spacing-unit) * 22); // 176px
+  --spacing-48: calc(var(--spacing-unit) * 24); // 192px
+  --spacing-80: calc(var(--spacing-unit) * 40); // 320px
+  --spacing-160: calc(var(--spacing-unit) * 80); // 640px
+
+  // Дополнительные размеры шрифтов (rem)
+  --font-size-xs-plus: 0.8125rem; // 13px
+  --font-size-sm-plus: 0.9375rem; // 15px
+
+  // Blur эффекты
+  --blur-xs: 0.2px;
+  --blur-sm: 2px;
+  --blur-md: 4px;
+  --blur-lg: 8px;
+
+  // Transform значения
+  --transform-translate-xs: -1px;
+  --transform-translate-sm: -2px;
+  --transform-translate-md: -4px;
+  --transform-translate-lg: -20px;
+  --transform-translate-xl: -30px;
+
+  // Дополнительные высоты
+  --height-divider: 1px;
+  --height-divider-thick: 2px;
+  --height-divider-thicker: 3px;
+  --height-progress-bar: var(--spacing-1); // 4px - но не используем spacing в коде
+  --height-min-touch: 2.75rem; // 44px - WCAG рекомендация
+
+  // Размеры для специфических элементов
+  --size-icon-xl-plus: 6rem; // 96px
+  --size-element-lg: 8.75rem; // 140px
+  --size-element-md: 10rem; // 160px
+  --size-element-sm: 1.75rem; // 28px
+  --size-element-xs: 0.75rem; // 12px
+
+  // Проценты для раскладок
+  --width-30: 30%;
+  --width-70: 70%;
+  --margin-1: 1%;
+
+  // Специфические размеры для макета
+  --layout-hero-padding: calc(var(--spacing-24) + 7.5rem); // 96px + 120px = 216px
+  --layout-section-offset: 7.5rem; // 120px
+  --layout-mobile-offset: 1rem; // 16px
+
+  // Дополнительные скругления
+  --border-radius-xs-plus: 0.1875rem; // 3px
+  --border-radius-md-plus: 0.75rem; // 12px
+  --border-radius-lg-plus: 0.875rem; // 14px
+  --border-radius-xl-plus: 2rem; // 32px
+  --border-radius-pill: 3.125rem; // 50px
+
+  // Ширины контента
+  --content-width-narrow: 20rem; // 320px
+  --content-width-form: 36rem; // 576px
+
   // Градиенты (из референса дизайна)
   --gradient-primary: linear-gradient(
     135deg,

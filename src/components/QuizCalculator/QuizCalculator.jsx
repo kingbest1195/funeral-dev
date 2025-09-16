@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import QuizStep from "./QuizStep";
 import QuizOption from "./QuizOption";
 import QuizProgress from "./QuizProgress";
-import Input from "../Input";
-import PopupNotification from "../PopupNotification/PopupNotification";
+import Input from "@/components/Input";
+import PopupNotification from "@/components/PopupNotification/PopupNotification";
 import { validatePhone } from "@/helpers";
 import "./QuizCalculator.scss";
 

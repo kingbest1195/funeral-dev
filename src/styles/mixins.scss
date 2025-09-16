@@ -20,6 +20,28 @@
   font-display: swap;
 }
 
+// ENHANCED TYPOGRAPHY MIXINS
+// =================
+
+/// Миксин для кастомного усечения текста по количеству строк
+/// @param {number} $lines - Количество строк
+@mixin text-clamp($lines: 3) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/// Миксин для градиентного текста
+/// @param {color} $color1 - Первый цвет градиента
+/// @param {color} $color2 - Второй цвет градиента
+@mixin text-gradient($color1, $color2) {
+  background: linear-gradient(135deg, $color1, $color2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /// Миксин для текста с ограничением количества строк (многоточие)
 /// @param {number} $lines - Количество строк
 @mixin text-ellipsis($lines: 1) {
@@ -470,6 +492,68 @@ $breakpoints: (
   }
 }
 
+// ENHANCED CARD MIXINS
+// =================
+
+/// Базовые стили карточки (объединенный миксин из enhanced)
+@mixin card-base {
+  background: var(--color-bg-primary);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-6);
+  transition: var(--duration-base) var(--ease-smooth);
+}
+
+/// Полные стили карточки с hover эффектом
+@mixin card-full {
+  @include card-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+// SPACING MIXINS
+// =================
+
+/// Вертикальные отступы между дочерними элементами
+/// @param {string} $space - Размер отступа
+@mixin space-y($space) {
+  > * + * {
+    margin-top: $space;
+  }
+}
+
+/// Горизонтальные отступы между дочерними элементами
+/// @param {string} $space - Размер отступа
+@mixin space-x($space) {
+  > * + * {
+    margin-left: $space;
+  }
+}
+
+// ENHANCED GRID MIXINS
+// =================
+
+/// Отзывчивая сетка с автоподбором колонок
+/// @param {string} $min-width - Минимальная ширина колонки
+/// @param {string} $gap - Отступ между элементами
+@mixin grid-responsive($min-width, $gap: var(--spacing-6)) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+/// Фиксированная сетка колонок
+/// @param {number} $columns - Количество колонок
+/// @param {string} $gap - Отступ между элементами
+@mixin grid-columns($columns, $gap: var(--spacing-6)) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
 // КОНТЕЙНЕРЫ И СЕТКИ
 // =================
 
@@ -707,4 +791,92 @@ $breakpoints: (
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+// ДОПОЛНИТЕЛЬНЫЕ МИКСИНЫ ДЛЯ ПРОЕКТА
+// =================
+
+/// Типографические стили для различных размеров заголовков и текста
+@mixin font-display-xl {
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+@mixin font-display-lg {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+@mixin font-display-md {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+@mixin font-heading-lg {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+}
+
+@mixin font-heading-md {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+}
+
+@mixin font-heading-sm {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
+
+@mixin font-heading-xs {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
+
+@mixin font-body-lg {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+}
+
+@mixin font-body-sm {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+@mixin font-button {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+}
+
+/// Миксины для адаптивности - короткие алиасы
+@mixin media-mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin media-tablet {
+  @media (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+/// Миксин для иконок различных размеров
+@mixin icon-size($size) {
+  width: $size;
+  height: $size;
+  flex-shrink: 0;
 }

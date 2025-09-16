@@ -35,7 +35,7 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: var(--z-sticky);
-    background-color: #ffffff;
+    background-color: var(--color-bg-primary); // #ffffff
     border: 1px solid var(--color-border);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     border-radius: 50px; // «пилюля»
@@ -119,8 +119,8 @@
     }
 
     &-img {
-      width: 48px;
-      height: 48px;
+      width: var(--size-icon-lg); // 48px
+      height: var(--size-icon-lg); // 48px
       object-fit: contain;
     }
   }
@@ -170,11 +170,11 @@
   }
 
   &__menu-burger {
-    width: 48px; // возвращаем исходный размер кнопки
-    height: 48px;
+    width: var(--size-icon-lg); // 48px - исходный размер кнопки
+    height: var(--size-icon-lg); // 48px
     border-radius: 50%;
     background: var(--color-accent);
-    color: #fff; // белая иконка «бургер»
+    color: var(--color-bg-primary); // #fff - белая иконка «бургер»
     display: none;
     align-items: center;
     justify-content: center;
@@ -185,10 +185,10 @@
     font-size: 0; // используем SVG-иконку внутри
 
     &:hover {
-      transform: translateY(-1px);
+      transform: translateY(var(--transform-translate-xs)); // translateY(-1px)
     }
     &:focus {
-      outline: 2px solid #fff;
+      outline: 2px solid var(--color-bg-primary); // #fff
       outline-offset: 2px;
     }
 
@@ -198,13 +198,13 @@
 
     // SVG c тремя path и анимацией stroke-dasharray/stroke-dashoffset
     .global__burger-icon {
-      width: 30px;
-      height: 30px;
+      width: var(--size-icon-sm); // 24px - размер SVG иконки внутри кнопки
+      height: var(--size-icon-sm); // 24px - высота SVG иконки
       display: block;
     }
     .global__burger-line {
       fill: none;
-      stroke: #ffffff;
+      stroke: var(--color-bg-primary); // #ffffff
       stroke-width: 6;
       stroke-linecap: round;
       stroke-dasharray: 60 207;
@@ -247,11 +247,11 @@
   }
 
   &__call-circle {
-    width: 48px;
-    height: 48px;
+    width: var(--size-icon-lg); // 48px
+    height: var(--size-icon-lg); // 48px
     border-radius: 50%;
     background: var(--color-accent);
-    color: #fff;
+    color: var(--color-bg-primary); // #fff
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -261,10 +261,10 @@
     transition: transform var(--duration-base) var(--ease-smooth);
 
     &:hover {
-      transform: translateY(-1px);
+      transform: translateY(var(--transform-translate-xs)); // translateY(-1px)
     }
     &:focus {
-      outline: 2px solid #fff;
+      outline: 2px solid var(--color-bg-primary); // #fff
       outline-offset: 2px;
     }
 
@@ -311,7 +311,7 @@
     overflow: hidden;
     visibility: hidden;
     border-top: 1px solid var(--color-border);
-    background: #ffffff;
+    background: var(--color-bg-primary); // #ffffff
     padding: 0 var(--spacing-5) 0;
 
     @media (max-width: 1024px) {
@@ -389,7 +389,7 @@ body.no-scroll {
   // =================
 
   &__footer {
-    background-color: #2d2d2d; // согласно ruleset
+    background-color: var(--color-bg-dark); // #2d2d2d - согласно ruleset
     background-image: none;
     color: var(--color-text-light);
     margin-top: auto;
@@ -522,8 +522,8 @@ body.no-scroll {
     position: fixed;
     bottom: var(--spacing-6);
     right: var(--spacing-6);
-    width: 48px;
-    height: 48px;
+    width: var(--size-icon-lg); // 48px
+    height: var(--size-icon-lg); // 48px
     background-color: var(--color-accent);
     color: var(--color-text-white);
     border: none;
@@ -537,13 +537,13 @@ body.no-scroll {
 
     &:hover {
       background-color: var(--color-accent-dark);
-      transform: translateY(-2px);
+      transform: translateY(var(--transform-translate-sm)); // translateY(-2px)
       box-shadow: var(--shadow-xl);
     }
 
     &:focus {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 2px;
+      outline: var(--blur-sm) solid var(--color-accent); // 2px
+      outline-offset: var(--blur-sm); // 2px
     }
 
     @media (max-width: 767px) {
@@ -551,8 +551,8 @@ body.no-scroll {
         var(--spacing-6) + 70px
       ); // Учитываем мобильную кнопку звонка
       right: var(--spacing-4);
-      width: 40px;
-      height: 40px;
+      width: var(--size-icon-md); // 40px
+      height: var(--size-icon-md); // 40px
       font-size: var(--font-size-lg);
     }
   }
@@ -583,8 +583,8 @@ body.no-scroll {
     }
 
     &:focus {
-      outline: 2px solid var(--color-text-white);
-      outline-offset: -4px;
+      outline: var(--blur-sm) solid var(--color-text-white); // 2px
+      outline-offset: calc(var(--blur-sm) * -2); // -4px
     }
   }
 
@@ -593,14 +593,14 @@ body.no-scroll {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
+    width: var(--size-icon-sm); // 24px
+    height: var(--size-icon-sm); // 24px
     vertical-align: middle;
   }
 
   &__mobile-call-text {
     font-size: var(--font-size-base);
-    color: #ffffff; // текст на кнопке «Позвонить» всегда белый
+    color: var(--color-bg-primary); // #ffffff - текст на кнопке «Позвонить» всегда белый
     vertical-align: middle;
   }
 }
@@ -673,7 +673,7 @@ body.no-scroll {
 
     &__back-to-top,
     &__mobile-call-button {
-      border: 2px solid var(--color-text-white);
+      border: var(--blur-sm) solid var(--color-text-white); // 2px
     }
   }
 }

@@ -3,8 +3,8 @@
 // Использует переменные из variables.scss, следует принципам модульности
 // =================
 
-@use "../../styles/constants.scss" as *;
-@use "../../styles/mixins.scss" as *;
+@use "@/styles/constants.scss" as *;
+@use "@/styles/mixins.scss" as *;
 
 .input {
   width: 100%;

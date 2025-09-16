@@ -233,3 +233,16 @@ export const HOME_SEO_DATA = {
   keywords: "ритуальные услуги Шуя, похоронное бюро Шуя, организация похорон, кремация Шуя, памятники Шуя, ритуальный агент Шуя, груз 200",
   type: "website"
 };
+
+// УВЕДОМЛЕНИЯ И АЛЕРТЫ
+// =================
+export const NOTIFICATION_DATA = {
+  defaultTitles: {
+    success: "Успешно",
+    error: "Ошибка",
+    loading: "Обработка...",
+    info: "Информация"
+  },
+  defaultTitle: "Уведомление",
+  closeButtonAriaLabel: "Закрыть уведомление"
+};

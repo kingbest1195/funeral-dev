@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useId, useRef } from "react";
 import "./PopupNotification.scss";
+import { NOTIFICATION_DATA } from "@/constants/content";
 
 // Импорт иконок
-import successIcon from "../../assets/icons/notification-success.png";
-import errorIcon from "../../assets/icons/notification-error.png";
-import loadingIcon from "../../assets/icons/notification-loading.png";
-import infoIcon from "../../assets/icons/notification-info.png";
+import successIcon from "@/assets/icons/notification-success.png";
+import errorIcon from "@/assets/icons/notification-error.png";
+import loadingIcon from "@/assets/icons/notification-loading.png";
+import infoIcon from "@/assets/icons/notification-info.png";
 
 // Константы
 const ANIMATION_DURATION = 300; // ms
@@ -140,13 +141,7 @@ const PopupNotification = ({
 
   // Получение заголовка по умолчанию
   const getDefaultTitle = () => {
-    const defaultTitles = {
-      success: "Успешно",
-      error: "Ошибка",
-      loading: "Обработка...",
-      info: "Информация"
-    };
-    return title || defaultTitles[type] || "Уведомление";
+    return title || NOTIFICATION_DATA.defaultTitles[type] || NOTIFICATION_DATA.defaultTitle;
   };
 
   // Класс для семантической роли
@@ -264,7 +259,7 @@ const PopupNotification = ({
                   type="button"
                   className={`${baseClass}__close-button ${baseClass}__close-button--secondary`}
                   onClick={handleClose}
-                  aria-label="Закрыть уведомление"
+                  aria-label={NOTIFICATION_DATA.closeButtonAriaLabel}
                 >
                   Понятно, закрыть
                 </button>

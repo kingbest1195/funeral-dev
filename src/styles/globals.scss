@@ -143,8 +143,8 @@ a:not(.btn) {
   }
 
   &:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
+    outline: var(--blur-sm) solid var(--color-accent); // 2px
+    outline-offset: var(--blur-sm); // 2px
     border-radius: var(--border-radius-xs);
   }
 
@@ -286,7 +286,7 @@ figure {
     position: relative;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    border-radius: 12px;
+    border-radius: var(--border-radius-md-plus); // 12px
     color: var(--color-text-white);
     // используем готовый градиент и тени из миксина primary
     background-color: var(--color-accent);
@@ -306,7 +306,7 @@ figure {
 
   // Контурный вариант кнопки (без заливки) для вторичных сценариев
   &--outline {
-    background: #ffffff;
+    background: var(--color-bg-primary); // #ffffff
     color: var(--color-accent);
     border: 1.5px solid var(--color-accent);
     border-radius: var(--border-radius-md);
@@ -323,8 +323,8 @@ figure {
   // Ghost-вариант для акцентных фонов (белая обводка/текст)
   &--ghost {
     background: transparent;
-    color: #ffffff;
-    border: 1.5px solid #ffffff;
+    color: var(--color-bg-primary); // #ffffff
+    border: 1.5px solid var(--color-bg-primary); // #ffffff
     -webkit-mask: radial-gradient(32px at left 50%, transparent 31px, #000 32px)
         left,
       radial-gradient(32px at right 50%, transparent 31px, #000 32px) right;
@@ -336,7 +336,7 @@ figure {
     mask-repeat: no-repeat;
 
     &:hover:not(:disabled) {
-      background: #ffffff;
+      background: var(--color-bg-primary); // #ffffff
       color: var(--color-accent);
     }
   }
@@ -442,8 +442,8 @@ figure {
     cursor: pointer;
 
     &:focus {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 2px;
+      outline: var(--blur-sm) solid var(--color-accent); // 2px
+      outline-offset: var(--blur-sm); // 2px
     }
   }
 
@@ -467,7 +467,7 @@ figure {
   td {
     padding: var(--spacing-3);
     text-align: left;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--height-divider) solid var(--color-border); // 1px
     vertical-align: top;
   }
 
@@ -488,11 +488,11 @@ figure {
   }
 
   &--bordered {
-    border: 1px solid var(--color-border);
+    border: var(--height-divider) solid var(--color-border); // 1px
 
     th,
     td {
-      border: 1px solid var(--color-border);
+      border: var(--height-divider) solid var(--color-border); // 1px
     }
   }
 }
@@ -502,7 +502,7 @@ figure {
 
 .card {
   background-color: var(--color-bg-primary);
-  border: 1px solid #eaeaea;
+  border: var(--height-divider) solid var(--color-border); // 1px solid #eaeaea
   border-radius: var(--border-radius-lg);
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
   overflow: hidden;
@@ -514,7 +514,7 @@ figure {
 
   &__header {
     padding: var(--spacing-5) var(--spacing-6);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--height-divider) solid var(--color-border); // 1px
     background-color: var(--color-bg-secondary);
   }
 
@@ -524,7 +524,7 @@ figure {
 
   &__footer {
     padding: var(--spacing-4) var(--spacing-6);
-    border-top: 1px solid var(--color-border);
+    border-top: var(--height-divider) solid var(--color-border); // 1px
     background-color: var(--color-bg-secondary);
   }
 
@@ -546,7 +546,7 @@ figure {
 .alert {
   padding: var(--spacing-4) var(--spacing-5);
   margin-bottom: var(--spacing-5);
-  border: 1px solid transparent;
+  border: var(--height-divider) solid transparent; // 1px
   border-radius: var(--border-radius-md);
 
   &--success {
@@ -612,19 +612,19 @@ figure {
 // =================
 
 .divider {
-  height: 1px;
+  height: var(--height-divider); // 1px
   background-color: var(--color-border);
   border: none;
   margin: var(--spacing-8) 0;
 
   &--accent {
     background-color: var(--color-accent);
-    height: 2px;
+    height: var(--height-divider-thick); // 2px
   }
 
   &--dashed {
     background: none;
-    border-top: 1px dashed var(--color-border);
+    border-top: var(--height-divider) dashed var(--color-border); // 1px
     height: 0;
   }
 }
@@ -687,7 +687,7 @@ figure {
 
 @keyframes slide-up {
   from {
-    transform: translateY(30px);
+    transform: translateY(var(--spacing-15)); // 30px - используем переменную spacing
     opacity: 0;
   }
   to {
