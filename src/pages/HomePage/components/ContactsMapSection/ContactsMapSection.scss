@@ -1,1 +1,182 @@
-// ContactsMapSection - стили выносятся из основного HomePage.scss
+@import "/src/styles/variables.scss";
+@import "/src/styles/mixins.scss";
+
+// =================
+// CONTACTS MAP SECTION
+// =================
+
+.contacts-map {
+  padding: var(--spacing-12) 0;
+  background-color: var(--color-bg-primary);
+
+  &__title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-4);
+  }
+
+  &__description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin-bottom: var(--spacing-10);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__yandex-map {
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  @include mobile {
+    padding: var(--spacing-8) 0;
+
+    &__title {
+      font-size: var(--font-size-2xl);
+      margin-bottom: var(--spacing-3);
+    }
+
+    &__description {
+      font-size: var(--font-size-base);
+      margin-bottom: var(--spacing-6);
+    }
+  }
+}
+
+// =================
+// CONTACTS CONTENT
+// =================
+
+.contacts-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-10);
+  align-items: start;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+}
+
+// =================
+// CONTACTS INFO
+// =================
+
+.contacts-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.contact-phone {
+  &__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-3);
+  }
+}
+
+.phone-number {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-accent-dark);
+  }
+
+  &--large {
+    font-size: var(--font-size-3xl);
+
+    @include mobile {
+      font-size: var(--font-size-2xl);
+    }
+
+    @include mobile {
+      font-size: var(--font-size-xl);
+    }
+  }
+}
+
+// =================
+// OFFICES LIST
+// =================
+
+.offices-list {
+  &__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-4);
+  }
+}
+
+.office-item {
+  border: var(--spacing-px) solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-bg-secondary);
+  margin-bottom: var(--spacing-3);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__address {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-1);
+  }
+
+  &__note {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-bottom: var(--spacing-1);
+  }
+
+  &__schedule {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-3);
+  }
+
+  &__route {
+    margin-top: var(--spacing-2);
+  }
+}
+
+// =================
+// MAP CONTAINER
+// =================
+
+.map-container {
+  min-height: 400px;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+
+  @include mobile {
+    aspect-ratio: 1 / 1; // Квадратная карта на мобильных
+    min-height: auto;
+    width: 100%;
+    // Карта остается в естественном порядке (под адресами)
+  }
+}
+
+// =================
+// UTILITY CLASSES
+// =================
+
+.d-desktop-none {
+  @include desktop {
+    display: none !important;
+  }
+}

@@ -189,26 +189,32 @@ export const CONTACTS_MAP_DATA = {
     items: [
       {
         id: 1,
+        title: "Главный офис",
         address: "г. Шуя, Ул. Красноармейский переулок, 6",
+        coordinates: [41.376142, 56.846580], // lng, lat для Яндекс.Карт
         note: "(2 минуты от ЦРБ)",
         schedule: "График работы: Пн-Вс, с 8:00 до 17:00",
-        mapUrl: "https://yandex.ru/maps/-/CLUTYXMk",
+        mapUrl: "https://yandex.ru/maps/org/vek/22307782205/?ll=41.376142%2C56.846580&utm_source=share&z=21",
         ariaLabel: "Построить маршрут: Красноармейский пер., 6"
       },
       {
         id: 2,
+        title: "Ритуальный зал",
         address: "г. Шуя, Ул. Фабричная, 27",
+        coordinates: [41.344564, 56.836470], // lng, lat для Яндекс.Карт
         note: "(ритуальный зал)",
         schedule: "График работы: Пн-Вс, с 8:00 до 17:00",
-        mapUrl: "https://yandex.ru/maps/-/CLUTYXkp",
+        mapUrl: "https://yandex.ru/maps/org/vek_funeral_hall/82211087167/?ll=41.344564%2C56.836470&mode=search&sll=91.470550%2C53.736723&sspn=0.017810%2C0.005776&text=%D0%A4%D0%B0%D0%B1%D1%80%D0%B8%D1%87%D0%BD%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2C%2027%20%D1%88%D1%83%D1%8F&utm_source=share&z=15",
         ariaLabel: "Построить маршрут: Фабричная, 27"
       },
       {
         id: 3,
+        title: "Дополнительный офис",
         address: "г. Шуя, Ул. Генерала Белова, 33",
+        coordinates: [41.378828, 56.847504], // lng, lat для Яндекс.Карт
         note: "",
         schedule: "График работы: Пн-Вс, с 8:00 до 17:00",
-        mapUrl: "https://yandex.ru/maps/-/CLUTY2IS",
+        mapUrl: "https://yandex.ru/maps/org/vek/199633794817/?ll=41.378828%2C56.847504&utm_source=share&z=15",
         ariaLabel: "Построить маршрут: Генерала Белова, 33"
       }
     ]

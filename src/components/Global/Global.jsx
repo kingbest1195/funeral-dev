@@ -183,8 +183,8 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     let jsonLdScript = document.querySelector(
       'script[type="application/ld+json"]'
     );
-    if (jsonLdScript) {
-      document.head.removeChild(jsonLdScript);
+    if (jsonLdScript && jsonLdScript.parentNode) {
+      jsonLdScript.parentNode.removeChild(jsonLdScript);
     }
 
     jsonLdScript = document.createElement("script");
@@ -297,7 +297,7 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
                   className="global__logo-img"
                   alt={`${COMPANY_INFO.name} — логотип`}
                   decoding="async"
-                  fetchpriority="high"
+                  fetchPriority="high"
                 />
                 <span className="sr-only">{COMPANY_INFO.name}</span>
               </a>
