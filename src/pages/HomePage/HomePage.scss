@@ -5,7 +5,6 @@
 
 @use "@/styles/mixins" as *;
 
-
 // .home-page {
 //   // Специфические стили только для главной страницы
 // }
@@ -17,9 +16,16 @@
   position: relative;
   background: var(--color-bg-secondary);
   color: var(--color-text-primary);
-  min-height: var(--spacing-160); // 640px из переменных
-  // дополнительный верхний отступ, чтобы на первом экране было видно только шапку и hero
-  padding: var(--layout-hero-padding) 0 var(--spacing-24) 0;
+  min-height: var(
+    --hero-min-height
+  ); // динамическая высота viewport минус header
+  // используем flexbox для управления позиционированием контента
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; // по умолчанию контент к низу для мобильных
+  // динамический верхний отступ равный высоте header + дополнительное пространство
+  padding: calc(var(--hero-padding-top) + var(--spacing-8)) 0 var(--spacing-24)
+    0;
   box-shadow: inset 0 calc(var(--height-divider) * -1) 0 var(--color-border);
 
   // Убираем ангела и любые декоративные фоны
@@ -27,8 +33,25 @@
     display: none;
   }
 
+  // Медиа-запросы для адаптивного выравнивания
   @include md-down {
     padding: var(--spacing-16) 0;
+    justify-content: flex-end; // контент к низу на мобильных
+  }
+
+  // На планшетах и больших экранах центрируем контент
+  @include md-up {
+    justify-content: center;
+  }
+
+  // На очень больших экранах (высокие мониторы) используем центрирование с учетом достаточной высоты
+  @media (min-height: 56.25rem) and (min-width: 75rem) {
+    // 900px и 1200px
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: var(--viewport-height);
+    margin-top: calc(var(--header-height) * -1); // компенсируем высоту header
   }
 
   &__grid {
@@ -110,7 +133,26 @@
 
 // Повышаем специфичность, чтобы переопределить общий .section padding
 .home-page .hero.section {
-  padding: calc(var(--spacing-24) + 120px) 0 var(--spacing-24) 0;
+  padding: calc(var(--hero-padding-top) + var(--spacing-8)) 0 var(--spacing-24)
+    0;
+  min-height: var(--hero-min-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  @include md-up {
+    justify-content: center;
+  }
+
+  // На очень больших экранах применяем полноэкранное центрирование
+  @media (min-height: 56.25rem) and (min-width: 75rem) {
+    // 900px и 1200px
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: var(--viewport-height);
+    margin-top: calc(var(--header-height) * -1);
+  }
 }
 
 // ПЕРВЫЕ ШАГИ
@@ -509,7 +551,10 @@
 .advantages {
   &__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--container-2xs), 1fr)); // 18rem
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(var(--container-2xs), 1fr)
+    ); // 18rem
     gap: var(--grid-gap);
 
     @include md-down {
@@ -730,7 +775,10 @@
 
 .transport-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--container-xs-plus), 1fr)); // 20rem
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--container-xs-plus), 1fr)
+  ); // 20rem
   gap: var(--spacing-8);
 
   @include md-down {
