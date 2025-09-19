@@ -6,12 +6,12 @@ import "./YandexMap.scss";
 const MAP_CONFIG = {
   center: [56.840843, 41.364861],
   zoom: 13,
-  controls: ["zoomControl", "typeSelector"]
+  controls: ["zoomControl", "typeSelector"],
 };
 
 const MARKER_CONFIG = {
   preset: "islands#icon",
-  iconColor: "#c49e5e" // Цвет из CSS переменных --color-accent
+  iconColor: "#c49e5e", // Цвет из CSS переменных --color-accent
 };
 
 /**
@@ -56,7 +56,9 @@ const YandexMap = ({ offices = [], className = "" }) => {
         const script = document.createElement("script");
         // Получаем API ключ из переменных окружения или используем пустой для разработки
         const apiKey = import.meta.env.VITE_YANDEX_API_KEY || "";
-        script.src = `https://api-maps.yandex.ru/2.1/?${apiKey ? `apikey=${apiKey}&` : ''}lang=ru_RU`;
+        script.src = `https://api-maps.yandex.ru/2.1/?${
+          apiKey ? `apikey=${apiKey}&` : ""
+        }lang=ru_RU`;
         script.async = true;
         script.onload = () => {
           resolve();
@@ -182,7 +184,9 @@ const YandexMap = ({ offices = [], className = "" }) => {
           return (
             <article key={office.id} className="office-fallback">
               <h4 className="office-fallback__title">{officeTitle}</h4>
-              <address className="office-fallback__address">{office.address}</address>
+              <address className="office-fallback__address">
+                {office.address}
+              </address>
               {office.note && (
                 <p className="office-fallback__note">{office.note}</p>
               )}
@@ -213,9 +217,7 @@ const YandexMap = ({ offices = [], className = "" }) => {
   );
 
   return (
-    <section
-      className={`yandex-map ${className}`}
-    >
+    <section className={`yandex-map ${className}`}>
       {/* Загрузка */}
       {isLoading && !hasError && (
         <div className="yandex-map__loader">
@@ -243,23 +245,23 @@ const YandexMap = ({ offices = [], className = "" }) => {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Map",
-          "name": `Карта офисов ${COMPANY_INFO.name}`,
-          "description": `Интерактивная карта с ${offices.length} офисами ритуальной службы в городе Шуя`,
-          "provider": {
+          name: `Карта офисов ${COMPANY_INFO.name}`,
+          description: `Интерактивная карта с ${offices.length} офисами ритуальной службы в городе Шуя`,
+          provider: {
             "@type": "Organization",
-            "name": COMPANY_INFO.name,
-            "telephone": COMPANY_INFO.phone
+            name: COMPANY_INFO.name,
+            telephone: COMPANY_INFO.phone,
           },
-          "areaServed": "Шуя, Ивановская область"
+          areaServed: "Шуя, Ивановская область",
         })}
       </script>
 
       {/* Скрытый текст для скрин-ридеров */}
       <div className="sr-only">
         Интерактивная карта показывает расположение {offices.length} офисов
-        ритуальной службы "Век" в городе Шуя. Используйте клавиши стрелок для навигации по карте
-        и Enter для взаимодействия с маркерами. Каждый маркер содержит адрес, график работы
-        и возможности связаться с офисом.
+        ритуальной службы "Век" в городе Шуя. Используйте клавиши стрелок для
+        навигации по карте и Enter для взаимодействия с маркерами. Каждый маркер
+        содержит адрес, график работы и возможности связаться с офисом.
       </div>
     </section>
   );

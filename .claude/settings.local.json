@@ -61,7 +61,8 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "mcp__playwright__browser_snapshot",
-      "WebFetch(domain:yandex.com)"
+      "WebFetch(domain:yandex.com)",
+      "Bash(identify:*)"
     ],
     "deny": [],
     "ask": []
