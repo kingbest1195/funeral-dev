@@ -62,7 +62,8 @@
       "Bash(git commit:*)",
       "mcp__playwright__browser_snapshot",
       "WebFetch(domain:yandex.com)",
-      "Bash(identify:*)"
+      "Bash(identify:*)",
+      "mcp__playwright__browser_type"
     ],
     "deny": [],
     "ask": []

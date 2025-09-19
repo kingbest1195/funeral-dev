@@ -77,7 +77,7 @@ RUSSIAN_MONTHS = {
 
 # API настройки
 API_CONFIG = {
-    "cors_origins": ["http://localhost:3000", "http://localhost:5173"],
+    "cors_origins": ["http://localhost:3000", "http://localhost:3001", "http://localhost:5173"],
     "default_page_size": 10,
     "max_page_size": 100
 }

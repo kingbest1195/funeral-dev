@@ -412,6 +412,7 @@
     background-color: var(--color-accent);
     color: var(--color-text-white);
     border-color: var(--color-accent);
+    @include button-loading(16px, var(--color-text-white));
 
     &:hover:not(:disabled) {
       background-color: var(--color-accent-dark);
