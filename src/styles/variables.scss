@@ -340,11 +340,6 @@
     var(--color-bg-darker) 100%
   );
 
-  // Динамические размеры viewport
-  --vh: 1vh; // будет обновляться через JavaScript
-  --viewport-height: calc(var(--vh, 1vh) * 100);
-  --hero-min-height: calc(var(--viewport-height) - var(--header-height));
-  --hero-padding-top: var(--header-height);
 }
 
 // ТЕМНАЯ ТЕМА — отключена. Дизайн проекта фиксированно светлый по референсу.

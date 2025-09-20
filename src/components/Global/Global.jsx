@@ -214,22 +214,6 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Корректный расчет viewport height для мобильных браузеров
-  React.useEffect(() => {
-    const updateVh = () => {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-    };
-
-    updateVh();
-    window.addEventListener("resize", updateVh);
-    window.addEventListener("orientationchange", updateVh);
-
-    return () => {
-      window.removeEventListener("resize", updateVh);
-      window.removeEventListener("orientationchange", updateVh);
-    };
-  }, []);
 
   // Блокировка скролла и закрытие на Escape / ресайз
   React.useEffect(() => {

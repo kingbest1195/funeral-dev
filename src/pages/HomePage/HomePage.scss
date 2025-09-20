@@ -16,16 +16,16 @@
   position: relative;
   background: var(--color-bg-secondary);
   color: var(--color-text-primary);
-  min-height: var(
-    --hero-min-height
-  ); // динамическая высота viewport минус header
-  // используем flexbox для управления позиционированием контента
+  // Простая система: высота экрана минус header высота с охранной зоной
+  min-height: calc(100vh - var(--header-height) - var(--spacing-12));
+  // Используем flexbox для центрирования контента
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; // по умолчанию контент к низу для мобильных
-  // динамический верхний отступ равный высоте header + дополнительное пространство
-  padding: calc(var(--hero-padding-top) + var(--spacing-8)) 0 var(--spacing-24)
-    0;
+  justify-content: center;
+  // Только стандартные отступы, без компенсации header
+  padding: var(--spacing-16) 0;
+  // Сдвигаем секцию вниз от шапки с охранной зоной
+  margin-top: calc(var(--header-height) + var(--spacing-12));
   box-shadow: inset 0 calc(var(--height-divider) * -1) 0 var(--color-border);
 
   // Убираем ангела и любые декоративные фоны
@@ -33,25 +33,32 @@
     display: none;
   }
 
-  // Медиа-запросы для адаптивного выравнивания
+  // Мобильные устройства: ограничиваем высоту если контент не помещается
   @include md-down {
+    min-height: auto;
+    margin-top: calc(var(--header-height) + var(--spacing-8));
+    padding: var(--spacing-12) 0;
+  }
+
+  // Планшеты: сохраняем охранную зону
+  @media (min-width: 48rem) and (max-width: 64rem) {
+    margin-top: calc(var(--header-height) + var(--spacing-12));
     padding: var(--spacing-16) 0;
-    justify-content: flex-end; // контент к низу на мобильных
   }
 
-  // На планшетах и больших экранах центрируем контент
-  @include md-up {
-    justify-content: center;
+  // Высокие экраны: увеличиваем высоту секции (сначала общее правило)
+  @media (min-height: 60rem) {
+    min-height: calc(100vh - var(--header-height) - var(--spacing-8));
+    margin-top: calc(var(--header-height) + var(--spacing-8));
   }
 
-  // На очень больших экранах (высокие мониторы) используем центрирование с учетом достаточной высоты
-  @media (min-height: 56.25rem) and (min-width: 75rem) {
-    // 900px и 1200px
-    justify-content: center;
-    padding-top: 0;
-    padding-bottom: 0;
-    min-height: var(--viewport-height);
-    margin-top: calc(var(--header-height) * -1); // компенсируем высоту header
+  // Ноутбуки: уменьшаем отступ (более специфичное правило в конце)
+  @media (min-width: 64rem) and (max-height: 50rem) {
+    margin-top: calc(var(--header-height) + var(--spacing-6)) !important;
+    min-height: calc(
+      100vh - var(--header-height) - var(--spacing-6)
+    ) !important;
+    padding: 0 0 var(--spacing-20) 0 !important;
   }
 
   &__grid {
@@ -128,30 +135,6 @@
     @include md-down {
       max-height: var(--content-width-narrow); // 320px
     }
-  }
-}
-
-// Повышаем специфичность, чтобы переопределить общий .section padding
-.home-page .hero.section {
-  padding: calc(var(--hero-padding-top) + var(--spacing-8)) 0 var(--spacing-24)
-    0;
-  min-height: var(--hero-min-height);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  @include md-up {
-    justify-content: center;
-  }
-
-  // На очень больших экранах применяем полноэкранное центрирование
-  @media (min-height: 56.25rem) and (min-width: 75rem) {
-    // 900px и 1200px
-    justify-content: center;
-    padding-top: 0;
-    padding-bottom: 0;
-    min-height: var(--viewport-height);
-    margin-top: calc(var(--header-height) * -1);
   }
 }
 
