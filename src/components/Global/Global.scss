@@ -2,6 +2,8 @@
 // GLOBAL COMPONENT STYLES - Стили глобальной обертки
 // =================
 
+@use "@/styles/mixins" as *;
+
 .global {
   min-height: 100vh;
   display: flex;
@@ -10,8 +12,8 @@
   // Skip link для accessibility
   &__skip-link {
     position: absolute;
-    top: -40px;
-    left: 6px;
+    top: calc(var(--spacing-10) * -1);
+    left: var(--spacing-1);
     background: var(--color-primary);
     color: var(--color-text-white);
     padding: var(--spacing-2) var(--spacing-4);
@@ -21,7 +23,7 @@
     transition: top var(--duration-base) var(--ease-smooth);
 
     &:focus {
-      top: 6px;
+      top: var(--spacing-1);
     }
   }
 
@@ -31,26 +33,26 @@
   &__header {
     // Dynamic Island стиль
     position: fixed;
-    top: 20px;
+    top: var(--spacing-5);
     left: 50%;
     transform: translateX(-50%);
     z-index: var(--z-sticky);
     background-color: var(--color-bg-primary); // #ffffff
-    border: 1px solid var(--color-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    border-radius: 50px; // «пилюля»
+    border: var(--border-width-1) solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--border-radius-full); // «пилюля»
     margin: 0;
-    width: min(1338px, 94%);
+    width: min(var(--container-xl), 94%);
 
-    @media (max-width: 767px) {
-      top: 12px;
-      border-radius: 28px;
-      width: calc(100% - 16px);
+    @include md-down {
+      top: var(--spacing-3);
+      border-radius: var(--border-radius-2xl);
+      width: calc(100% - var(--spacing-4));
     }
   }
 
   &__header--scrolled {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-lg);
     border-bottom-color: var(--color-border);
   }
 
@@ -60,7 +62,7 @@
     justify-content: space-between; // всегда растягиваем
     padding: var(--spacing-3) var(--spacing-5);
 
-    @media (max-width: 767px) {
+    @include md-down {
       flex-direction: row;
       justify-content: space-between;
       text-align: left;
@@ -151,7 +153,7 @@
     align-items: center;
     gap: var(--spacing-4);
 
-    @media (max-width: 767px) {
+    @include md-down {
       align-items: center;
       text-align: left;
     }
@@ -164,7 +166,7 @@
   &__phone-block {
     text-align: right;
 
-    @media (max-width: 767px) {
+    @include md-down {
       text-align: center;
     }
   }
@@ -180,7 +182,7 @@
     justify-content: center;
     border: none;
     cursor: pointer;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-lg);
     transition: transform var(--duration-base) var(--ease-smooth);
     font-size: 0; // используем SVG-иконку внутри
 
@@ -188,8 +190,8 @@
       transform: translateY(var(--transform-translate-xs)); // translateY(-1px)
     }
     &:focus {
-      outline: 2px solid var(--color-bg-primary); // #fff
-      outline-offset: 2px;
+      outline: var(--border-width-2) solid var(--color-bg-primary); // #fff
+      outline-offset: var(--border-width-2);
     }
 
     @media (max-width: 1024px) {
@@ -205,7 +207,7 @@
     .global__burger-line {
       fill: none;
       stroke: var(--color-bg-primary); // #ffffff
-      stroke-width: 6;
+      stroke-width: var(--spacing-2);
       stroke-linecap: round;
       stroke-dasharray: 60 207;
       transition: stroke-dasharray var(--duration-slow)
@@ -257,18 +259,18 @@
     justify-content: center;
     border: none;
     cursor: pointer;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-lg);
     transition: transform var(--duration-base) var(--ease-smooth);
 
     &:hover {
       transform: translateY(var(--transform-translate-xs)); // translateY(-1px)
     }
     &:focus {
-      outline: 2px solid var(--color-bg-primary); // #fff
-      outline-offset: 2px;
+      outline: var(--border-width-2) solid var(--color-bg-primary); // #fff
+      outline-offset: var(--border-width-2);
     }
 
-    @media (max-width: 1200px) {
+    @include xl-down {
       display: none; // скрывать кнопку звонка 1200 и ниже
     }
   }
@@ -279,7 +281,7 @@
     color: var(--color-text-secondary);
     margin-top: var(--spacing-1);
 
-    @media (max-width: 767px) {
+    @include md-down {
       display: none; // на мобильных скрываем круглосуточно
     }
     @media (max-width: 1200px) and (min-width: 1025px) {
@@ -395,8 +397,10 @@ body.no-scroll {
     margin-top: auto;
     padding-bottom: 0;
 
-    @media (max-width: 767px) {
-      padding-bottom: 70px; // чтобы нижняя панель звонка не перекрывала футер
+    @include md-down {
+      padding-bottom: var(
+        --spacing-16
+      ); // чтобы нижняя панель звонка не перекрывала футер
     }
 
     a {
@@ -420,7 +424,7 @@ body.no-scroll {
       gap: var(--spacing-6);
     }
 
-    @media (max-width: 767px) {
+    @include md-down {
       grid-template-columns: 1fr;
       gap: var(--spacing-8);
       text-align: center;
@@ -492,9 +496,7 @@ body.no-scroll {
   &__footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: var(--spacing-6) 0;
-    display: flex;
-    align-items: center;
-    justify-content: center; // по умолчанию центрируем
+    @include center;
     gap: var(--spacing-2);
     flex-direction: column; // две строки одна под другой
 
@@ -546,9 +548,9 @@ body.no-scroll {
       outline-offset: var(--blur-sm); // 2px
     }
 
-    @media (max-width: 767px) {
+    @include md-down {
       bottom: calc(
-        var(--spacing-6) + 70px
+        var(--spacing-6) + var(--spacing-16)
       ); // Учитываем мобильную кнопку звонка
       right: var(--spacing-4);
       width: var(--size-icon-md); // 40px
@@ -610,7 +612,7 @@ body.no-scroll {
 // АДАПТИВНЫЕ СТИЛИ
 // =================
 
-@media (max-width: 767px) {
+@include md-down {
   .global {
     &__header-content {
       padding: var(--spacing-3) 0;
@@ -623,9 +625,9 @@ body.no-scroll {
 }
 
 // Увеличиваем отступ снизу для body на мобильных (для кнопки звонка)
-@media (max-width: 767px) {
+@include md-down {
   body {
-    padding-bottom: 70px; // Высота мобильной кнопки звонка
+    padding-bottom: var(--spacing-16); // Высота мобильной кнопки звонка
   }
 }
 
@@ -658,7 +660,7 @@ body.no-scroll {
 // =================
 
 // Увеличенная область клика для кнопок на мобильных
-@media (max-width: 767px) {
+@include md-down {
   .global__back-to-top,
   .global__mobile-call-button {
     min-height: 44px; // Рекомендуемая WCAG минимальная область касания

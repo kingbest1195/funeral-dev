@@ -8,8 +8,9 @@
 .yandex-map {
   position: relative;
   width: 100%;
-  min-height: 400px; // Минимальная высота для карты
-  border: 1px solid var(--color-border);
+  height: 100%; // Растягиваем на всю высоту родительского контейнера
+  min-height: calc(var(--container-xs) * 0.5);
+  border: var(--border-width-1) solid var(--color-border);
   border-radius: var(--border-radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -56,7 +57,7 @@
     padding: var(--spacing-6);
     min-height: inherit; // Наследуем минимальную высоту
     background-color: var(--color-bg-primary);
-    border: var(--spacing-px) solid var(--color-border);
+    border: var(--border-width-1) solid var(--color-border);
     border-radius: var(--border-radius-md);
     display: flex;
     flex-direction: column;
@@ -76,7 +77,7 @@
   }
 
   // Адаптивность
-  @include mobile {
+  @include md-down {
     // На мобильных карта квадратная
     aspect-ratio: 1 / 1;
     border-radius: var(--border-radius-sm);
@@ -91,7 +92,7 @@
   padding: var(--spacing-4);
   background-color: var(--color-bg-secondary);
   border-radius: var(--border-radius-sm);
-  border: var(--spacing-px) solid var(--color-border);
+  border: var(--border-width-1) solid var(--color-border);
 
   &__title {
     font-size: var(--font-size-base);
@@ -124,7 +125,7 @@
     gap: var(--spacing-3);
     flex-wrap: wrap;
 
-    @media (max-width: 575px) {
+    @media (max-width: var(--breakpoint-sm)) {
       flex-direction: column;
       gap: var(--spacing-2);
     }
@@ -138,7 +139,7 @@
 
 // Global styles for balloon (CSS не SCSS-модули)
 .office-balloon {
-  max-width: 280px;
+  max-width: var(--container-xs);
   font-family: var(--font-body);
 
   .office-balloon__content {
@@ -181,8 +182,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
-    border: var(--spacing-px) solid transparent;
+    transition: all var(--duration-fast) var(--ease-smooth);
+    border: var(--border-width-1) solid transparent;
 
     &.btn--primary {
       background-color: var(--color-accent);
@@ -209,8 +210,8 @@
     }
 
     &.btn--sm {
-      min-width: 80px;
-      height: 28px;
+      min-width: var(--spacing-20);
+      height: var(--spacing-7);
     }
   }
 }
@@ -282,10 +283,10 @@
   // Скрытый текст для скрин-ридеров
   .sr-only {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    width: var(--border-width-1);
+    height: var(--border-width-1);
     padding: 0;
-    margin: -1px;
+    margin: calc(-1 * var(--border-width-1));
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;

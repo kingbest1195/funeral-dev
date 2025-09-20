@@ -833,6 +833,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-12);
+  align-items: stretch; // Колонки будут равны по высоте
 
   @include lg-down {
     grid-template-columns: 1fr; // одна колонка ниже 1000px
