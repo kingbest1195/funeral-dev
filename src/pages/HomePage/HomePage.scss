@@ -41,7 +41,7 @@
   }
 
   // Планшеты: сохраняем охранную зону
-  @media (min-width: 48rem) and (max-width: 64rem) {
+  @include tablet {
     margin-top: calc(var(--header-height) + var(--spacing-12));
     padding: var(--spacing-16) 0;
   }
@@ -53,12 +53,14 @@
   }
 
   // Ноутбуки: уменьшаем отступ (более специфичное правило в конце)
-  @media (min-width: 64rem) and (max-height: 50rem) {
-    margin-top: calc(var(--header-height) + var(--spacing-6)) !important;
-    min-height: calc(
-      100vh - var(--header-height) - var(--spacing-6)
-    ) !important;
-    padding: 0 0 var(--spacing-20) 0 !important;
+  @include desktop {
+    @media (max-height: 50rem) {
+      margin-top: calc(var(--header-height) + var(--spacing-6)) !important;
+      min-height: calc(
+        100vh - var(--header-height) - var(--spacing-6)
+      ) !important;
+      padding: 0 0 var(--spacing-20) 0 !important;
+    }
   }
 
   &__grid {
@@ -210,16 +212,14 @@
 }
 
 .first-steps__call-block {
-  display: flex;
+  @include center;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: var(--spacing-4);
   padding: var(--spacing-8);
-  border: 1px solid var(--color-border);
+  border: var(--border-width-1) solid var(--color-border);
   border-radius: var(--border-radius-md-plus); // 12px
   background: var(--color-bg-primary); // #fff
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-elevated);
 }
 
 .first-steps__icon {
@@ -275,16 +275,14 @@
 
   // Правая колонка с иконкой и суммой — аналог call-блока из first-steps
   &__amount-block {
-    display: flex;
+    @include center;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: var(--spacing-4);
     padding: var(--spacing-8);
-    border: 1px solid var(--color-border);
+    border: var(--border-width-1) solid var(--color-border);
     border-radius: var(--border-radius-md-plus); // 12px
     background: var(--color-bg-primary); // #fff
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-elevated);
   }
 
   &__icon {
@@ -426,7 +424,7 @@
       rgba(0, 0, 0, 0) 70%
     );
     opacity: 0.35;
-    filter: blur(0.2px);
+    filter: blur(var(--blur-xs));
   }
 }
 
@@ -434,9 +432,9 @@
   background-color: var(--color-bg-primary);
   padding: var(--spacing-6);
   border-radius: var(--border-radius-md-plus); // 12px
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-elevated);
   transition: all var(--duration-base) var(--ease-smooth);
-  border: 1px solid var(--color-border); // #eaeaea
+  border: var(--border-width-1) solid var(--color-border); // #eaeaea
   min-height: var(--container-2xs); // 18rem
   display: flex;
   flex-direction: column;
@@ -465,12 +463,12 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--border-radius-lg); // 8px
-    border: 1px solid var(--color-border);
+    border: var(--border-width-1) solid var(--color-border);
     background: var(--color-bg-primary); // #ffffff
     color: var(
       --color-accent
     ); // задаёт цвет линий для внутреннего SVG через currentColor
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-sm);
 
     svg {
       display: block;
@@ -552,8 +550,8 @@
   padding: var(--spacing-6);
   border-radius: var(--border-radius-md-plus); // 12px
   text-align: left;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-  border: 1px solid var(--color-border); // #eaeaea
+  box-shadow: var(--shadow-elevated);
+  border: var(--border-width-1) solid var(--color-border); // #eaeaea
   position: relative;
   overflow: hidden;
 
@@ -689,7 +687,7 @@
   // карточная обёртка задаётся в JSX через .card
   .card {
     border-radius: var(--border-radius-2xl); // 24px - форма «папки»
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-2xl);
     position: relative;
     overflow: hidden;
 
@@ -794,7 +792,7 @@
     .image-placeholder {
       background-color: var(--color-bg-secondary);
       padding: var(--spacing-12);
-      border: 2px dashed var(--color-border);
+      border: var(--border-width-2) dashed var(--color-border);
       border-radius: var(--border-radius-lg);
 
       span {
@@ -923,10 +921,8 @@
     background-color: var(--color-bg-secondary);
     padding: var(--spacing-16);
     border-radius: var(--border-radius-lg);
-    border: 2px dashed var(--color-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: var(--border-width-2) dashed var(--color-border);
+    @include center;
     min-height: var(--container-xs-plus); // 20rem
 
     p {
@@ -1070,7 +1066,7 @@
   .advantage-card {
     break-inside: avoid;
     box-shadow: none !important;
-    border: 1px solid var(--color-border) !important;
+    border: var(--border-width-1) solid var(--color-border) !important;
   }
 
   .stats__grid {
