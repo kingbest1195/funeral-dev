@@ -623,6 +623,10 @@
       grid-template-columns: 1fr;
       gap: var(--spacing-8);
     }
+
+    @include md-down {
+      padding: 0 var(--spacing-4);
+    }
   }
 
   &__intro {
