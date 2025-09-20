@@ -212,7 +212,7 @@ export const CONTACTS_MAP_DATA = {
         note: "(2 минуты от ЦРБ)",
         schedule: "График работы: Пн-Вс, с 8:00 до 17:00",
         mapUrl:
-          "https://yandex.ru/maps/org/vek/22307782205/?ll=41.376142%2C56.846580&utm_source=share&z=21",
+          "https://yandex.ru/maps/org/vek/199633794817/?ll=41.378828%2C56.847504&utm_source=share&z=15",
         ariaLabel: "Построить маршрут: Красноармейский пер., 6",
       },
       {
@@ -234,7 +234,7 @@ export const CONTACTS_MAP_DATA = {
         note: "",
         schedule: "График работы: Пн-Вс, с 8:00 до 17:00",
         mapUrl:
-          "https://yandex.ru/maps/org/vek/199633794817/?ll=41.378828%2C56.847504&utm_source=share&z=15",
+          "https://yandex.ru/maps/org/vek/22307782205/?ll=41.376142%2C56.846580&utm_source=share&z=21",
         ariaLabel: "Построить маршрут: Генерала Белова, 33",
       },
     ],

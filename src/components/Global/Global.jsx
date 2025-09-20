@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { COMPANY_INFO, devLog } from "@/helpers/index.js";
 import iconPhone from "@/assets/icons/icon-phone.svg";
 import logoUrl from "@/assets/icons/logo-vek.svg";
@@ -304,8 +305,8 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
           <div className="global__header-content">
             {/* Логотип */}
             <div className="global__logo">
-              <a
-                href="/"
+              <Link
+                to="/"
                 className="global__logo-link"
                 aria-label={COMPANY_INFO.name}
               >
@@ -317,7 +318,7 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
                   fetchPriority="high"
                 />
                 <span className="sr-only">{COMPANY_INFO.name}</span>
-              </a>
+              </Link>
               <p className="global__tagline" aria-label="Локация">
                 {COMPANY_INFO.city}, {COMPANY_INFO.region}
               </p>
@@ -547,9 +548,9 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
                 {COMPANY_INFO.privacyUrl ? (
                   <>
                     {" · "}
-                    <a href={COMPANY_INFO.privacyUrl}>
+                    <Link to={COMPANY_INFO.privacyUrl}>
                       Политика конфиденциальности
-                    </a>
+                    </Link>
                   </>
                 ) : null}
               </p>
