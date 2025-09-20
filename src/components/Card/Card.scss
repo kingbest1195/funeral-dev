@@ -3,6 +3,8 @@
 // Содержит общие стили согласно плану оптимизации
 // =================
 
+@use "@/styles/mixins" as *;
+
 .card {
   background-color: var(--color-bg-primary);
   border-radius: var(--border-radius-lg);
@@ -10,16 +12,16 @@
   border: var(--border-width-1) solid var(--color-border);
   position: relative;
   overflow: hidden;
-  
+
   // Варианты карточек
   &--default {
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-elevated);
   }
-  
+
   &--elevated {
     box-shadow: var(--shadow-lg);
   }
-  
+
   &--service {
     // Золотая верхняя линия для карточек услуг
     &::before {
@@ -35,71 +37,71 @@
       border-top-right-radius: inherit;
     }
   }
-  
+
   // Варианты отступов
   &--padding-none {
     padding: 0;
   }
-  
+
   &--padding-sm {
     padding: var(--spacing-4);
   }
-  
+
   &--padding-default {
     padding: var(--spacing-6);
   }
-  
+
   &--padding-lg {
     padding: var(--spacing-8);
   }
-  
+
   // Hover эффект
   &--hover {
     transition: all var(--duration-base) var(--ease-smooth);
     cursor: pointer;
-    
+
     &:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-md);
     }
   }
-  
+
   // Структурные элементы
   &__header {
     padding-bottom: var(--spacing-4);
     border-bottom: var(--border-width-1) solid var(--color-border-light);
     margin-bottom: var(--spacing-4);
-    
+
     &:last-child {
       padding-bottom: 0;
       border-bottom: none;
       margin-bottom: 0;
     }
   }
-  
+
   &__body {
     // Основное содержимое карточки
     flex: 1;
   }
-  
+
   &__footer {
     padding-top: var(--spacing-4);
     border-top: var(--border-width-1) solid var(--color-border-light);
     margin-top: var(--spacing-4);
-    
+
     &:first-child {
       padding-top: 0;
       border-top: none;
       margin-top: 0;
     }
   }
-  
+
   // Адаптивность
-  @media (max-width: 767px) {
+  @include sm-down {
     &--padding-default {
       padding: var(--spacing-4);
     }
-    
+
     &--padding-lg {
       padding: var(--spacing-6);
     }
