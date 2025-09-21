@@ -71,7 +71,8 @@
       "Bash(git merge:*)",
       "Bash(ssh:*)",
       "Bash(nslookup:*)",
-      "mcp__sequential-thinking__sequentialthinking"
+      "mcp__sequential-thinking__sequentialthinking",
+      "Bash(npm search:*)"
     ],
     "deny": [],
     "ask": []

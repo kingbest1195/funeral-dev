@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import Global from "@/components/Global/Global.jsx";
 import InfoSection from "@/components/InfoSection/InfoSection.jsx";
 import CallBlock from "@/components/CallBlock/CallBlock.jsx";
 import BenefitBlock from "@/components/BenefitBlock/BenefitBlock.jsx";
-import QuizCalculator from "@/components/QuizCalculator/QuizCalculator.jsx";
-import ReviewsWidget from "@/components/ReviewsWidget/ReviewsWidget.jsx";
+// Динамический импорт тяжелых компонентов для Code Splitting
+const QuizCalculator = React.lazy(() => import("@/components/QuizCalculator/QuizCalculator.jsx"));
+const ReviewsWidget = React.lazy(() => import("@/components/ReviewsWidget/ReviewsWidget.jsx"));
 
 // Импорт новых компонентов секций
 import HeroSection from "./components/HeroSection/HeroSection.jsx";
@@ -115,7 +116,9 @@ const HomePage = () => {
         <CalculatorSection openQuiz={openQuiz} />
 
         {/* Отзывы */}
-        <ReviewsWidget />
+        <Suspense fallback={<div className="reviews-loading">Загружаем отзывы...</div>}>
+          <ReviewsWidget />
+        </Suspense>
 
         {/* Транспорт и офис */}
         <TransportOfficeSection />
@@ -127,7 +130,11 @@ const HomePage = () => {
         <CTASection />
 
         {/* Квиз-калькулятор */}
-        <QuizCalculator isOpen={isQuizOpen} onClose={closeQuiz} />
+        {isQuizOpen && (
+          <Suspense fallback={<div className="quiz-loading">Загружаем калькулятор...</div>}>
+            <QuizCalculator isOpen={isQuizOpen} onClose={closeQuiz} />
+          </Suspense>
+        )}
       </main>
     </Global>
   );

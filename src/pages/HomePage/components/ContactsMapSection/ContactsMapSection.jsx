@@ -1,13 +1,38 @@
-import React from "react";
+import React, { useState, useRef, useEffect, Suspense } from "react";
 import { CONTACTS_MAP_DATA } from "@/constants/content";
-import YandexMap from "@/components/YandexMap";
 import "./ContactsMapSection.scss";
+
+// Динамический импорт карты для оптимизации
+const YandexMap = React.lazy(() => import("@/components/YandexMap"));
 
 /**
  * Секция "Контакты и карта" на главной странице
  * Отображает телефон, адреса офисов и место для карты
  */
 const ContactsMapSection = () => {
+  const [shouldLoadMap, setShouldLoadMap] = useState(false);
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !shouldLoadMap) {
+            setShouldLoadMap(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (mapRef.current) {
+      observer.observe(mapRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [shouldLoadMap]);
+
   return (
     <section id="contacts" className="contacts-map section">
       <div className="container">
@@ -51,12 +76,26 @@ const ContactsMapSection = () => {
             </div>
           </div>
 
-          <div className="map-container">
-            <YandexMap
-              offices={CONTACTS_MAP_DATA.offices.items}
-              height={400}
-              className="contacts-map__yandex-map"
-            />
+          <div className="map-container" ref={mapRef}>
+            {shouldLoadMap ? (
+              <Suspense
+                fallback={
+                  <div className="map-loading" style={{ height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    Загружаем карту...
+                  </div>
+                }
+              >
+                <YandexMap
+                  offices={CONTACTS_MAP_DATA.offices.items}
+                  height={400}
+                  className="contacts-map__yandex-map"
+                />
+              </Suspense>
+            ) : (
+              <div className="map-placeholder" style={{ height: '400px', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span>Карта загрузится при прокрутке</span>
+              </div>
+            )}
           </div>
         </div>
       </div>

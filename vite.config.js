@@ -2,11 +2,13 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import imageOptimizationPlugin from './vite-plugins/image-optimization-plugin.js';
+import criticalCssPlugin from './vite-plugins/critical-css-plugin.js';
 
 export default defineConfig({
   plugins: [
     react(),
-    imageOptimizationPlugin()
+    imageOptimizationPlugin(),
+    criticalCssPlugin()
   ],
   resolve: {
     alias: {

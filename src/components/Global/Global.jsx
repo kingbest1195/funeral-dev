@@ -185,28 +185,29 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     const manifestData = {
       name: "Ритуальная служба Век - Шуя",
       short_name: "Век Шуя",
-      description: "Ритуальные услуги в Шуе - круглосуточно, выезд на дом, полный комплекс",
+      description:
+        "Ритуальные услуги в Шуе - круглосуточно, выезд на дом, полный комплекс",
       icons: [
         {
           src: new URL(androidIcon192, currentOrigin).href,
           sizes: "192x192",
-          type: "image/png"
+          type: "image/png",
         },
         {
           src: new URL(androidIcon512, currentOrigin).href,
           sizes: "512x512",
-          type: "image/png"
-        }
+          type: "image/png",
+        },
       ],
       theme_color: "#c49e5e",
       background_color: "#ffffff",
       display: "standalone",
       start_url: currentOrigin + "/",
-      scope: currentOrigin + "/"
+      scope: currentOrigin + "/",
     };
 
     const manifestBlob = new Blob([JSON.stringify(manifestData)], {
-      type: 'application/manifest+json'
+      type: "application/manifest+json",
     });
     const manifestUrl = URL.createObjectURL(manifestBlob);
     ensureLink("manifest", { href: manifestUrl });
@@ -244,7 +245,6 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
 
   // Блокировка скролла и закрытие на Escape / ресайз
   React.useEffect(() => {

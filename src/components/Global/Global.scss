@@ -385,6 +385,10 @@ body.no-scroll {
   overflow: hidden;
 }
 
+.visually-hidden-focusable {
+  @include visually-hidden-focusable;
+}
+
 // Обертка для следующих BEM-блоков, которые должны быть внутри .global
 .global {
   // FOOTER
