@@ -53,7 +53,9 @@
       "Bash(ls:*)",
       "Bash(done)",
       "Bash(for dir in src/components/*/)",
-      "Bash(sort:*)"
+      "Bash(sort:*)",
+      "Bash(git merge:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
