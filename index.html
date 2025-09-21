@@ -23,10 +23,7 @@
   <!-- DNS prefetch для внешних ресурсов -->
   <link rel="dns-prefetch" href="//api.yandex.ru">
 
-  <!-- Preload critical fonts -->
-  <link rel="preload" href="/assets/fonts/SangBleuSunrise-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/EuclidFlex-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/EuclidFlex-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Critical fonts will be preloaded dynamically via JavaScript -->
 
   <!-- Critical CSS for preventing FOUC -->
   <style>
@@ -69,26 +66,7 @@
       document.getElementById('root').classList.add('js-loaded');
     });
 
-    // Prefetch critical resources on user interaction
-    let prefetched = false;
-    function prefetchResources() {
-      if (prefetched) return;
-      prefetched = true;
-
-      // Prefetch additional font weights
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.href = '/assets/fonts/EuclidFlex-SemiBold.woff2';
-      link.as = 'font';
-      link.type = 'font/woff2';
-      link.crossOrigin = '';
-      document.head.appendChild(link);
-    }
-
-    // Trigger prefetch on first user interaction
-    ['mousedown', 'touchstart', 'keydown'].forEach(event => {
-      document.addEventListener(event, prefetchResources, { once: true, passive: true });
-    });
+    // Resources will be handled by Vite and CSS imports
   </script>
 
   <script type="module" src="/src/main.jsx"></script>

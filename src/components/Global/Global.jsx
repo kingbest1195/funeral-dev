@@ -7,7 +7,8 @@ import logoUrl from "@/assets/icons/logo-vek.svg";
 import favicon32 from "@/assets/favicons-optimized/favicon-32x32.png";
 import favicon16 from "@/assets/favicons-optimized/favicon-16x16.png";
 import appleTouchIcon from "@/assets/favicons-optimized/apple-touch-icon.png";
-import siteManifestUrl from "@/assets/favicons/site.webmanifest";
+import androidIcon192 from "@/assets/favicons-optimized/android-chrome-192x192.png";
+import androidIcon512 from "@/assets/favicons-optimized/android-chrome-512x512.png";
 import faviconIco from "@/assets/favicons/favicon.ico";
 import "./Global.scss";
 
@@ -177,8 +178,37 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     ensureLink("icon", { type: "image/png", sizes: "32x32", href: favicon32 });
     ensureLink("icon", { type: "image/png", sizes: "16x16", href: favicon16 });
     ensureLink("apple-touch-icon", { sizes: "180x180", href: appleTouchIcon });
-    ensureLink("manifest", { href: siteManifestUrl });
     ensureLink("icon", { href: faviconIco });
+
+    // Создаем динамический манифест с правильными путями
+    const manifestData = {
+      name: "Ритуальная служба Век - Шуя",
+      short_name: "Век Шуя",
+      description: "Ритуальные услуги в Шуе - круглосуточно, выезд на дом, полный комплекс",
+      icons: [
+        {
+          src: androidIcon192,
+          sizes: "192x192",
+          type: "image/png"
+        },
+        {
+          src: androidIcon512,
+          sizes: "512x512",
+          type: "image/png"
+        }
+      ],
+      theme_color: "#c49e5e",
+      background_color: "#ffffff",
+      display: "standalone",
+      start_url: "/",
+      scope: "/"
+    };
+
+    const manifestBlob = new Blob([JSON.stringify(manifestData)], {
+      type: 'application/manifest+json'
+    });
+    const manifestUrl = URL.createObjectURL(manifestBlob);
+    ensureLink("manifest", { href: manifestUrl });
 
     // JSON-LD структурированные данные
     let jsonLdScript = document.querySelector(
