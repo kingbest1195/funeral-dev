@@ -23,18 +23,40 @@
   <!-- DNS prefetch для внешних ресурсов -->
   <link rel="dns-prefetch" href="//api.yandex.ru">
 
-  <!-- Critical fonts will be preloaded dynamically via JavaScript -->
+  <!-- Critical font preloads -->
+  <link rel="preload" href="./src/assets/fonts/SangBleuSunrise-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./src/assets/fonts/EuclidFlex-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Critical logo preload -->
+  <link rel="preload" href="./logo-vek.svg" as="image" type="image/svg+xml">
 
   <!-- Critical CSS for preventing FOUC -->
   <style>
+    /* Critical font preload */
+    @font-face {
+      font-family: "SangBleu Sunrise";
+      src: url("./src/assets/fonts/SangBleuSunrise-Regular.woff2") format("woff2");
+      font-display: swap;
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Euclid Flex";
+      src: url("./src/assets/fonts/EuclidFlex-Regular.woff2") format("woff2");
+      font-display: swap;
+      font-weight: 400;
+      font-style: normal;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-family: "Euclid Flex", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       line-height: 1.5;
       margin: 0;
       background-color: #ffffff;
       color: #1a1a1a;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      font-display: swap;
     }
     .container {
       max-width: 1200px;
@@ -52,6 +74,19 @@
     }
     .js-loaded {
       opacity: 1;
+    }
+    /* Critical header styles */
+    .global__header {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background-color: #ffffff;
+      border: 1px solid #e5e5e5;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-radius: 9999px;
+      width: min(1200px, 94%);
     }
   </style>
 </head>

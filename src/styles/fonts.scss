@@ -6,6 +6,7 @@
 @use "sass:map";
 
 // Локальные лицензированные шрифты (SangBleu Sunrise + Euclid Flex)
+// Оптимизированная загрузка - только критические веса
 
 // SangBleu Sunrise (заголовки)
 @font-face {
@@ -16,28 +17,12 @@
   font-style: normal;
 }
 
-// Euclid Flex (текст)
-@font-face {
-  font-family: "Euclid Flex";
-  src: url("../assets/fonts/EuclidFlex-Light.woff2") format("woff2");
-  font-display: swap;
-  font-weight: 300;
-  font-style: normal;
-}
-
+// Euclid Flex - только критические веса (Regular и SemiBold)
 @font-face {
   font-family: "Euclid Flex";
   src: url("../assets/fonts/EuclidFlex-Regular.woff2") format("woff2");
   font-display: swap;
   font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Euclid Flex";
-  src: url("../assets/fonts/EuclidFlex-Medium.woff2") format("woff2");
-  font-display: swap;
-  font-weight: 500;
   font-style: normal;
 }
 
@@ -49,10 +34,27 @@
   font-style: normal;
 }
 
+// Дополнительные веса загружаются асинхронно (если нужны)
 @font-face {
-  font-family: "Euclid Flex";
+  font-family: "Euclid Flex Extended";
+  src: url("../assets/fonts/EuclidFlex-Light.woff2") format("woff2");
+  font-display: optional;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Euclid Flex Extended";
+  src: url("../assets/fonts/EuclidFlex-Medium.woff2") format("woff2");
+  font-display: optional;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Euclid Flex Extended";
   src: url("../assets/fonts/EuclidFlex-Bold.woff2") format("woff2");
-  font-display: swap;
+  font-display: optional;
   font-weight: 700;
   font-style: normal;
 }

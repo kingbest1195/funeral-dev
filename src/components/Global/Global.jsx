@@ -44,13 +44,15 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     telephone: COMPANY_INFO.phone,
     address: {
       "@type": "PostalAddress",
+      streetAddress: COMPANY_INFO.offices[0].address,
       addressLocality: COMPANY_INFO.city,
       addressRegion: COMPANY_INFO.region,
       addressCountry: "RU",
+      postalCode: "155900"
     },
     openingHours: COMPANY_INFO.workSchedule,
     url: typeof window !== "undefined" ? window.location.origin : "",
-    image: image || "",
+    image: image || (typeof window !== "undefined" ? window.location.origin + "/logo-vek.svg" : ""),
     description: description,
     priceRange: "$$",
     areaServed: {
@@ -80,6 +82,15 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
           itemOffered: {
             "@type": "Product",
             name: "Памятники и ограды",
+            description: "Гранитные и мраморные памятники, ограды для мест захоронения",
+            category: "Ритуальные товары",
+            offers: {
+              "@type": "Offer",
+              availability: "https://schema.org/InStock",
+              priceCurrency: "RUB",
+              price: "15000",
+              priceRange: "15000-150000"
+            }
           },
         },
       ],
