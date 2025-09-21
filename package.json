@@ -48,6 +48,7 @@
     "playwright": "^1.55.0",
     "pngjs": "^7.0.0",
     "postcss-pxtorem": "^6.1.0",
-    "sharp": "^0.34.3"
+    "sharp": "^0.34.3",
+    "terser": "^5.44.0"
   }
 }

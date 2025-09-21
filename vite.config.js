@@ -26,7 +26,20 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: true,
+    minify: 'terser',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Выносим React в отдельный чанк для лучшего кеширования
+          react: ['react', 'react-dom'],
+          // Библиотеки маршрутизации
+          router: ['react-router-dom'],
+          // Библиотеки UI
+          ui: ['react-helmet-async', 'swiper', 'imask']
+        }
+      }
+    }
   },
   server: {
     port: 3000,

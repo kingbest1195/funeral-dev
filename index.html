@@ -15,10 +15,25 @@
     content="ритуальные услуги Шуя, похоронное бюро Шуя, организация похорон Шуя, ритуальный агент Шуя, кремация, груз 200"
   />
   
-  <!-- Preload fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Preload critical fonts -->
+  <link rel="preload" href="/src/assets/fonts/SangBleuSunrise-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/src/assets/fonts/EuclidFlex-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Critical CSS for preventing FOUC -->
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.5;
+      margin: 0;
+      background-color: #ffffff;
+      color: #1a1a1a;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+  </style>
 </head>
 <body>
   <div id="root"></div>
