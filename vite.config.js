@@ -26,7 +26,24 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: true,
+    minify: 'terser',
+    target: 'es2018', // Поддержка современных браузеров для меньшего размера
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Выносим React в отдельный чанк для лучшего кеширования
+          react: ['react', 'react-dom'],
+          // Библиотеки маршрутизации
+          router: ['react-router-dom'],
+          // Библиотеки UI
+          ui: ['react-helmet-async', 'swiper', 'imask']
+        }
+      }
+    },
+    // Дополнительные оптимизации
+    chunkSizeWarningLimit: 1000,
+    reportCompressedSize: false // Ускоряет сборку
   },
   server: {
     port: 3000,

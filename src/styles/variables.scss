@@ -16,7 +16,12 @@
   --color-accent: #c49e5e; // Золотой акцент
   --color-accent-light: #d9bb82; // Hover/active светлее
   --color-accent-dark: #a98240; // Акцент темнее
-  --color-accent-transparent: rgba(196, 158, 94, 0.05); // Прозрачный акцентный фон
+  --color-accent-transparent: rgba(
+    196,
+    158,
+    94,
+    0.05
+  ); // Прозрачный акцентный фон
 
   // Текстовые цвета
   --color-text-primary: #444442; // Основной текст
@@ -169,6 +174,7 @@
   --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.2);
   --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.05);
   --shadow-outline: 0 0 0 3px rgba(212, 165, 116, 0.3);
+  --shadow-elevated: 0 10px 25px rgba(0, 0, 0, 0.06);
 
   // Скругления углов
   --border-radius-none: 0;
@@ -282,7 +288,9 @@
   --height-divider: 1px;
   --height-divider-thick: 2px;
   --height-divider-thicker: 3px;
-  --height-progress-bar: var(--spacing-1); // 4px - но не используем spacing в коде
+  --height-progress-bar: var(
+    --spacing-1
+  ); // 4px - но не используем spacing в коде
   --height-min-touch: 2.75rem; // 44px - WCAG рекомендация
 
   // Размеры для специфических элементов
@@ -298,7 +306,9 @@
   --margin-1: 1%;
 
   // Специфические размеры для макета
-  --layout-hero-padding: calc(var(--spacing-24) + 7.5rem); // 96px + 120px = 216px
+  --layout-hero-padding: calc(
+    var(--spacing-24) + 7.5rem
+  ); // 96px + 120px = 216px
   --layout-section-offset: 7.5rem; // 120px
   --layout-mobile-offset: 1rem; // 16px
 

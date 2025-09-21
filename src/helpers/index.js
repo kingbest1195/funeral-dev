@@ -330,12 +330,13 @@ export const generateId = () => {
 
 const COMPANY_INFO = {
   name: "Ритуальная служба Век",
+  nameOfficial: "ИП Шадрина Лариса Геннадьевна",
   phone: "+7 (920) 366-36-36",
   city: "г. Шуя",
   region: "Ивановская область",
   legalName: 'Ритуальная служба "Век"',
-  inn: "3702000000",
-  ogrn: "1203700000000",
+  inn: "370601474199",
+  ogrn: "324370000006824",
   privacyUrl: "/privacy",
   workSchedule: "Пн-Вс, с 8:00 до 17:00",
   phoneSchedule: "Круглосуточно",

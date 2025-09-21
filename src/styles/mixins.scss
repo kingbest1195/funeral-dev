@@ -880,3 +880,55 @@ $breakpoints: (
   height: $size;
   flex-shrink: 0;
 }
+
+// КНОПКИ С СОСТОЯНИЕМ ЗАГРУЗКИ
+// =================
+
+/// Миксин для кнопки с состоянием загрузки
+/// @param {string} $size - Размер спиннера (по умолчанию 16px)
+/// @param {string} $color - Цвет спиннера (по умолчанию белый)
+@mixin button-loading($size: 16px, $color: var(--color-text-white)) {
+  position: relative;
+
+  // Спиннер (скрыт по умолчанию)
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: $size;
+    height: $size;
+    border: 2px solid transparent;
+    border-top: 2px solid $color;
+    border-radius: 50%;
+    opacity: 0;
+    animation: spin 1s linear infinite;
+    transition: opacity var(--duration-base) var(--ease-smooth);
+  }
+
+  // Состояние загрузки
+  &.loading {
+    pointer-events: none;
+
+    // Показываем спиннер
+    &::after {
+      opacity: 1;
+    }
+
+    // Скрываем текст кнопки
+    > * {
+      opacity: 0;
+    }
+  }
+}
+
+/// Анимация вращения для спиннера
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

@@ -67,6 +67,9 @@ const QuizCalculator = ({ isOpen, onClose }) => {
     message: "",
   });
 
+  // Состояние загрузки для кнопки отправки
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   // Ref для поля телефона
   const phoneInputRef = useRef(null);
 
@@ -224,9 +227,36 @@ const QuizCalculator = ({ isOpen, onClose }) => {
     }
   };
 
+  // Функция отправки данных в Telegram
+  const sendToTelegram = async (data) => {
+    try {
+      const response = await fetch("http://localhost:8000/api/quiz/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || "Ошибка отправки заявки");
+      }
+
+      const result = await response.json();
+      return result.success;
+    } catch (error) {
+      console.error("Ошибка отправки в Telegram:", error);
+      throw error;
+    }
+  };
+
   // Обработчик отправки формы
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Предотвращаем повторную отправку
+    if (isSubmitting) return;
 
     // Валидация полей перед отправкой
     if (!formData.name.trim()) {
@@ -257,23 +287,39 @@ const QuizCalculator = ({ isOpen, onClose }) => {
       timestamp: new Date().toISOString(),
     };
 
-    // Здесь будет логика отправки данных на сервер
-    console.log("Quiz data:", finalData);
+    // Начинаем отправку
+    setIsSubmitting(true);
 
-    // Очистить сохраненные данные после успешной отправки
-    clearStorage();
+    try {
+      // Отправляем данные в Telegram
+      await sendToTelegram(finalData);
 
-    // Показать уведомление об успешной отправке
-    showNotification(
-      "success",
-      "Заявка отправлена!",
-      "Спасибо! Наш специалист свяжется с вами в течение 5 минут."
-    );
+      // Очистить сохраненные данные после успешной отправки
+      clearStorage();
 
-    // Закрыть модальное окно через небольшую задержку
-    setTimeout(() => {
-      onClose();
-    }, 3000);
+      // Показать уведомление об успешной отправке
+      showNotification(
+        "success",
+        "Заявка отправлена!",
+        "Спасибо! Наш специалист свяжется с вами в течение 5 минут."
+      );
+
+      // Закрыть модальное окно через небольшую задержку
+      setTimeout(() => {
+        onClose();
+      }, 3000);
+
+    } catch (error) {
+      // Показать уведомление об ошибке
+      showNotification(
+        "error",
+        "Ошибка отправки",
+        "Не удалось отправить заявку. Попробуйте еще раз или позвоните нам."
+      );
+    } finally {
+      // Завершаем состояние загрузки
+      setIsSubmitting(false);
+    }
   };
 
   // Обработчик изменения полей формы
@@ -435,9 +481,12 @@ const QuizCalculator = ({ isOpen, onClose }) => {
 
                       <button
                         type="submit"
-                        className="quiz-btn quiz-btn--primary quiz-btn--large"
+                        className={`quiz-btn quiz-btn--primary quiz-btn--large ${isSubmitting ? 'loading' : ''}`}
+                        disabled={isSubmitting}
                       >
-                        Получить точный расчет
+                        <span>
+                          {isSubmitting ? 'Отправляем...' : 'Получить точный расчет'}
+                        </span>
                       </button>
                     </div>
                   </form>

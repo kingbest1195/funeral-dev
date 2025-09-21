@@ -19,15 +19,15 @@ const OPTIMIZATION_PROFILES = {
   // Иконки квиза - маленькие, высокое сжатие
   'quiz-icons': {
     pattern: 'src/assets/images/quiz-icons/**/*.{png,jpg,jpeg}',
-    resize: { width: 64, height: 64 },
+    resize: { width: 64, fit: 'inside', withoutEnlargement: true },
     png: { quality: 80, compressionLevel: 9, palette: true },
     webp: { quality: 85, effort: 6 }
   },
   
-  // Дизайнерские элементы - средний размер, хорошее качество  
+  // Дизайнерские элементы - средний размер, хорошее качество
   'design': {
     pattern: 'src/assets/images/design/**/*.{png,jpg,jpeg}',
-    resize: { width: 400, height: 400, withoutEnlargement: true },
+    resize: { width: 400, fit: 'inside', withoutEnlargement: true },
     png: { quality: 85, compressionLevel: 8 },
     webp: { quality: 90, effort: 5 }
   },
@@ -43,7 +43,7 @@ const OPTIMIZATION_PROFILES = {
   // Иконки - высокое качество, средний размер
   'icons': {
     pattern: 'src/assets/icons/**/*.{png,jpg,jpeg}',
-    resize: { width: 200, height: 200, withoutEnlargement: true },
+    resize: { width: 200, fit: 'inside', withoutEnlargement: true },
     png: { quality: 88, compressionLevel: 8 },
     webp: { quality: 90, effort: 5 }
   },
@@ -52,7 +52,7 @@ const OPTIMIZATION_PROFILES = {
   'general': {
     pattern: 'src/assets/images/**/*.{png,jpg,jpeg}',
     exclude: ['quiz-icons', 'design'], // Исключаем уже обработанные
-    resize: { width: 800, height: 800, withoutEnlargement: true },
+    resize: { width: 800, fit: 'inside', withoutEnlargement: true },
     png: { quality: 85, compressionLevel: 7 },
     webp: { quality: 88, effort: 5 }
   }

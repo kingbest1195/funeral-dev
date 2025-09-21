@@ -1,11 +1,11 @@
 import React from "react";
 import { TRANSPORT_OFFICE_DATA } from "@/constants/content";
-import hearseWebp from "@/assets/images/transport-and-office/hearse-modern.webp";
-import hearseJpg from "@/assets/images/transport-and-office/hearse-modern.jpg";
-import busWebp from "@/assets/images/transport-and-office/bus-comfort.webp";
-import busJpg from "@/assets/images/transport-and-office/bus-comfort.jpg";
-import officeWebp from "@/assets/images/transport-and-office/office-facade.webp";
-import officeJpg from "@/assets/images/transport-and-office/office-facade.jpg";
+import hearseWebp from "@/assets/images-optimized/transport-and-office/hearse-modern.webp";
+import hearseJpg from "@/assets/images-optimized/transport-and-office/hearse-modern.png";
+import funeralMarketWebp from "@/assets/images-optimized/transport-and-office/funeral-market.webp";
+import funeralMarketJpg from "@/assets/images-optimized/transport-and-office/funeral-market.png";
+import officeWebp from "@/assets/images-optimized/transport-and-office/office-facade-main.webp";
+import officeJpg from "@/assets/images-optimized/transport-and-office/office-facade-main.png";
 import "./TransportOfficeSection.scss";
 
 /**
@@ -16,18 +16,22 @@ const TransportOfficeSection = () => {
   // Маппинг изображений для динамического импорта
   const imageMap = {
     "hearse-modern.webp": hearseWebp,
-    "hearse-modern.jpg": hearseJpg,
-    "bus-comfort.webp": busWebp,
-    "bus-comfort.jpg": busJpg,
-    "office-facade.webp": officeWebp,
-    "office-facade.jpg": officeJpg,
+    "hearse-modern.png": hearseJpg,
+    "funeral-market.webp": funeralMarketWebp,
+    "funeral-market.png": funeralMarketJpg,
+    "office-facade-main.webp": officeWebp,
+    "office-facade-main.png": officeJpg,
   };
 
   return (
     <section className="transport-office section bg-light">
       <div className="container">
-        <h2 className="transport-office__title">{TRANSPORT_OFFICE_DATA.title}</h2>
-        <p className="transport-office__description">{TRANSPORT_OFFICE_DATA.description}</p>
+        <h2 className="transport-office__title">
+          {TRANSPORT_OFFICE_DATA.title}
+        </h2>
+        <p className="transport-office__description">
+          {TRANSPORT_OFFICE_DATA.description}
+        </p>
 
         <div className="transport-gallery">
           {TRANSPORT_OFFICE_DATA.items.map((item) => (

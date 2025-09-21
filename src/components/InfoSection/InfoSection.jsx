@@ -1,10 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "./InfoSection.scss";
 
 /**
  * Переиспользуемый компонент двухколоночной информационной секции
  * Сохраняет оригинальную верстку first-steps и burial-benefit
+ * @param {Object} props - Параметры компонента
+ * @param {string} [props.className=""] - CSS класс для стилизации
+ * @param {string} [props.title] - Заголовок секции
+ * @param {string} [props.heading] - Подзаголовок секции
+ * @param {string} [props.text] - Текст описания
+ * @param {React.ReactNode} props.rightContent - Контент правой колонки (обязательный)
+ * @param {boolean} [props.originalLayout=true] - Использовать оригинальную разметку
+ * @returns {JSX.Element} React компонент
  */
 const InfoSection = ({
   className = "",
@@ -51,13 +58,5 @@ const InfoSection = ({
   );
 };
 
-InfoSection.propTypes = {
-  className: PropTypes.string,
-  title: PropTypes.string,
-  heading: PropTypes.string,
-  text: PropTypes.string,
-  rightContent: PropTypes.node.isRequired,
-  originalLayout: PropTypes.bool,
-};
 
 export default InfoSection;

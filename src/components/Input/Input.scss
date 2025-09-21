@@ -39,7 +39,7 @@
   }
 
   &:disabled {
-    opacity: 0.6;
+    opacity: var(--opacity-60);
     cursor: not-allowed;
     background-color: var(--color-bg-secondary);
   }
@@ -63,17 +63,17 @@
     
     &:focus {
       border-color: var(--color-error);
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+      box-shadow: var(--shadow-outline-error);
     }
   }
 
   // Стили для состояния успеха
   &--success {
-    border-color: var(--color-success, #10b981);
+    border-color: var(--color-success);
     
     &:focus {
-      border-color: var(--color-success, #10b981);
-      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+      border-color: var(--color-success);
+      box-shadow: var(--shadow-outline-success);
     }
   }
 }

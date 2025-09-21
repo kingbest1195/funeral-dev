@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { COMPANY_INFO, devLog } from "@/helpers/index.js";
 import iconPhone from "@/assets/icons/icon-phone.svg";
 import logoUrl from "@/assets/icons/logo-vek.svg";
 // Favicons (импорт для корректной работы Vite с хешированными путями)
-import favicon32 from "@/assets/favicons/favicon-32x32.png";
-import favicon16 from "@/assets/favicons/favicon-16x16.png";
-import appleTouchIcon from "@/assets/favicons/apple-touch-icon.png";
+import favicon32 from "@/assets/favicons-optimized/favicon-32x32.png";
+import favicon16 from "@/assets/favicons-optimized/favicon-16x16.png";
+import appleTouchIcon from "@/assets/favicons-optimized/apple-touch-icon.png";
 import siteManifestUrl from "@/assets/favicons/site.webmanifest";
 import faviconIco from "@/assets/favicons/favicon.ico";
 import "./Global.scss";
@@ -183,8 +184,8 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     let jsonLdScript = document.querySelector(
       'script[type="application/ld+json"]'
     );
-    if (jsonLdScript) {
-      document.head.removeChild(jsonLdScript);
+    if (jsonLdScript && jsonLdScript.parentNode) {
+      jsonLdScript.parentNode.removeChild(jsonLdScript);
     }
 
     jsonLdScript = document.createElement("script");
@@ -212,6 +213,7 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
 
   // Блокировка скролла и закрытие на Escape / ресайз
   React.useEffect(() => {
@@ -287,8 +289,8 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
           <div className="global__header-content">
             {/* Логотип */}
             <div className="global__logo">
-              <a
-                href="/"
+              <Link
+                to="/"
                 className="global__logo-link"
                 aria-label={COMPANY_INFO.name}
               >
@@ -297,10 +299,10 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
                   className="global__logo-img"
                   alt={`${COMPANY_INFO.name} — логотип`}
                   decoding="async"
-                  fetchpriority="high"
+                  fetchPriority="high"
                 />
                 <span className="sr-only">{COMPANY_INFO.name}</span>
-              </a>
+              </Link>
               <p className="global__tagline" aria-label="Локация">
                 {COMPANY_INFO.city}, {COMPANY_INFO.region}
               </p>
@@ -524,15 +526,15 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
           <div className="global__footer-bottom">
             <div className="global__legal">
               <p>
-                {COMPANY_INFO.legalName || COMPANY_INFO.name}
+                {COMPANY_INFO.nameOfficial}
                 {COMPANY_INFO.inn ? ` · ИНН: ${COMPANY_INFO.inn}` : ""}
-                {COMPANY_INFO.ogrn ? ` · ОГРН: ${COMPANY_INFO.ogrn}` : ""}
+                {COMPANY_INFO.ogrn ? ` · ОГРНИП: ${COMPANY_INFO.ogrn}` : ""}
                 {COMPANY_INFO.privacyUrl ? (
                   <>
                     {" · "}
-                    <a href={COMPANY_INFO.privacyUrl}>
+                    <Link to={COMPANY_INFO.privacyUrl}>
                       Политика конфиденциальности
-                    </a>
+                    </Link>
                   </>
                 ) : null}
               </p>

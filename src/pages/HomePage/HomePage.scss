@@ -5,7 +5,6 @@
 
 @use "@/styles/mixins" as *;
 
-
 // .home-page {
 //   // Специфические стили только для главной страницы
 // }
@@ -17,9 +16,16 @@
   position: relative;
   background: var(--color-bg-secondary);
   color: var(--color-text-primary);
-  min-height: var(--spacing-160); // 640px из переменных
-  // дополнительный верхний отступ, чтобы на первом экране было видно только шапку и hero
-  padding: var(--layout-hero-padding) 0 var(--spacing-24) 0;
+  // Простая система: высота экрана минус header высота с охранной зоной
+  min-height: calc(100vh - var(--header-height) - var(--spacing-12));
+  // Используем flexbox для центрирования контента
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // Только стандартные отступы, без компенсации header
+  padding: var(--spacing-16) 0;
+  // Сдвигаем секцию вниз от шапки с охранной зоной
+  margin-top: calc(var(--header-height) + var(--spacing-12));
   box-shadow: inset 0 calc(var(--height-divider) * -1) 0 var(--color-border);
 
   // Убираем ангела и любые декоративные фоны
@@ -27,8 +33,34 @@
     display: none;
   }
 
+  // Мобильные устройства: ограничиваем высоту если контент не помещается
   @include md-down {
+    min-height: auto;
+    margin-top: calc(var(--header-height) + var(--spacing-8));
+    padding: var(--spacing-12) 0;
+  }
+
+  // Планшеты: сохраняем охранную зону
+  @include tablet {
+    margin-top: calc(var(--header-height) + var(--spacing-12));
     padding: var(--spacing-16) 0;
+  }
+
+  // Высокие экраны: увеличиваем высоту секции (сначала общее правило)
+  @media (min-height: 60rem) {
+    min-height: calc(100vh - var(--header-height) - var(--spacing-8));
+    margin-top: calc(var(--header-height) + var(--spacing-8));
+  }
+
+  // Ноутбуки: уменьшаем отступ (более специфичное правило в конце)
+  @include desktop {
+    @media (max-height: 50rem) {
+      margin-top: calc(var(--header-height) + var(--spacing-6)) !important;
+      min-height: calc(
+        100vh - var(--header-height) - var(--spacing-6)
+      ) !important;
+      padding: 0 0 var(--spacing-20) 0 !important;
+    }
   }
 
   &__grid {
@@ -108,11 +140,6 @@
   }
 }
 
-// Повышаем специфичность, чтобы переопределить общий .section padding
-.home-page .hero.section {
-  padding: calc(var(--spacing-24) + 120px) 0 var(--spacing-24) 0;
-}
-
 // ПЕРВЫЕ ШАГИ
 // =================
 
@@ -185,16 +212,14 @@
 }
 
 .first-steps__call-block {
-  display: flex;
+  @include center;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: var(--spacing-4);
   padding: var(--spacing-8);
-  border: 1px solid var(--color-border);
+  border: var(--border-width-1) solid var(--color-border);
   border-radius: var(--border-radius-md-plus); // 12px
   background: var(--color-bg-primary); // #fff
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-elevated);
 }
 
 .first-steps__icon {
@@ -250,16 +275,14 @@
 
   // Правая колонка с иконкой и суммой — аналог call-блока из first-steps
   &__amount-block {
-    display: flex;
+    @include center;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: var(--spacing-4);
     padding: var(--spacing-8);
-    border: 1px solid var(--color-border);
+    border: var(--border-width-1) solid var(--color-border);
     border-radius: var(--border-radius-md-plus); // 12px
     background: var(--color-bg-primary); // #fff
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-elevated);
   }
 
   &__icon {
@@ -401,7 +424,7 @@
       rgba(0, 0, 0, 0) 70%
     );
     opacity: 0.35;
-    filter: blur(0.2px);
+    filter: blur(var(--blur-xs));
   }
 }
 
@@ -409,9 +432,9 @@
   background-color: var(--color-bg-primary);
   padding: var(--spacing-6);
   border-radius: var(--border-radius-md-plus); // 12px
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-elevated);
   transition: all var(--duration-base) var(--ease-smooth);
-  border: 1px solid var(--color-border); // #eaeaea
+  border: var(--border-width-1) solid var(--color-border); // #eaeaea
   min-height: var(--container-2xs); // 18rem
   display: flex;
   flex-direction: column;
@@ -440,12 +463,12 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--border-radius-lg); // 8px
-    border: 1px solid var(--color-border);
+    border: var(--border-width-1) solid var(--color-border);
     background: var(--color-bg-primary); // #ffffff
     color: var(
       --color-accent
     ); // задаёт цвет линий для внутреннего SVG через currentColor
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-sm);
 
     svg {
       display: block;
@@ -509,7 +532,10 @@
 .advantages {
   &__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--container-2xs), 1fr)); // 18rem
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(var(--container-2xs), 1fr)
+    ); // 18rem
     gap: var(--grid-gap);
 
     @include md-down {
@@ -524,8 +550,8 @@
   padding: var(--spacing-6);
   border-radius: var(--border-radius-md-plus); // 12px
   text-align: left;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-  border: 1px solid var(--color-border); // #eaeaea
+  box-shadow: var(--shadow-elevated);
+  border: var(--border-width-1) solid var(--color-border); // #eaeaea
   position: relative;
   overflow: hidden;
 
@@ -577,6 +603,10 @@
     @include lg-down {
       grid-template-columns: 1fr;
       gap: var(--spacing-8);
+    }
+
+    @include md-down {
+      padding: 0 var(--spacing-4);
     }
   }
 
@@ -657,7 +687,7 @@
   // карточная обёртка задаётся в JSX через .card
   .card {
     border-radius: var(--border-radius-2xl); // 24px - форма «папки»
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-2xl);
     position: relative;
     overflow: hidden;
 
@@ -730,7 +760,10 @@
 
 .transport-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--container-xs-plus), 1fr)); // 20rem
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--container-xs-plus), 1fr)
+  ); // 20rem
   gap: var(--spacing-8);
 
   @include md-down {
@@ -759,7 +792,7 @@
     .image-placeholder {
       background-color: var(--color-bg-secondary);
       padding: var(--spacing-12);
-      border: 2px dashed var(--color-border);
+      border: var(--border-width-2) dashed var(--color-border);
       border-radius: var(--border-radius-lg);
 
       span {
@@ -800,6 +833,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-12);
+  align-items: stretch; // Колонки будут равны по высоте
 
   @include lg-down {
     grid-template-columns: 1fr; // одна колонка ниже 1000px
@@ -888,10 +922,8 @@
     background-color: var(--color-bg-secondary);
     padding: var(--spacing-16);
     border-radius: var(--border-radius-lg);
-    border: 2px dashed var(--color-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: var(--border-width-2) dashed var(--color-border);
+    @include center;
     min-height: var(--container-xs-plus); // 20rem
 
     p {
@@ -1035,7 +1067,7 @@
   .advantage-card {
     break-inside: avoid;
     box-shadow: none !important;
-    border: 1px solid var(--color-border) !important;
+    border: var(--border-width-1) solid var(--color-border) !important;
   }
 
   .stats__grid {

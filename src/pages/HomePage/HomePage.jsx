@@ -21,8 +21,10 @@ import { HOME_SEO_DATA } from "@/constants/content";
 import "./HomePage.scss";
 
 // Импорт оптимизированных изображений для InfoSection и BenefitBlock
-import phoneIcon from "@/assets/icons-optimized/phone-linear-gold.webp";
-import benefitIcon from "@/assets/icons-optimized/benefit-coin-leaf-gold.webp";
+import phoneIconWebp from "@/assets/icons-optimized/phone-linear-gold.webp";
+import phoneIconPng from "@/assets/icons-optimized/phone-linear-gold.png";
+import benefitIconWebp from "@/assets/icons-optimized/benefit-coin-leaf-gold.webp";
+import benefitIconPng from "@/assets/icons-optimized/benefit-coin-leaf-gold.png";
 
 /**
  * Главная страница сайта ритуальной службы "Век"
@@ -51,12 +53,12 @@ const HomePage = () => {
             name: "Сколько стоят ритуальные услуги в Шуе?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Стоимость ритуальных услуг зависит от выбранного пакета. Базовые услуги начинаются от 25 000 рублей. Точную стоимость можно рассчитать с помощью нашего калькулятора или уточнить по телефону +7 (920) 366-36-36."
-            }
-          }
-        ]
-      }
-    }
+              text: "Стоимость ритуальных услуг зависит от выбранного пакета. Базовые услуги начинаются от 25 000 рублей. Точную стоимость можно рассчитать с помощью нашего калькулятора или уточнить по телефону +7 (920) 366-36-36.",
+            },
+          },
+        ],
+      },
+    },
   };
 
   return (
@@ -75,7 +77,7 @@ const HomePage = () => {
             <CallBlock
               phone="+7 (920) 366-36-36"
               note="Круглосуточно"
-              icon={phoneIcon}
+              icon={{ webp: phoneIconWebp, png: phoneIconPng }}
               ariaLabel="Связаться по телефону"
               parentClass="first-steps"
             />
@@ -94,7 +96,7 @@ const HomePage = () => {
             <BenefitBlock
               amount="9165 ₽"
               label="Пособие на погребение"
-              icon={benefitIcon}
+              icon={{ webp: benefitIconWebp, png: benefitIconPng }}
               ariaLabel="Размер пособия на погребение"
               parentClass="burial-benefit"
             />

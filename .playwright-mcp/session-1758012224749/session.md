@@ -556,3 +556,21 @@ await page.evaluate('() => {\n  // Анализируем все изображ�
 ```
 - Snapshot: 010.snapshot.yml
 
+
+### Tool call: browser_close
+- Args
+```json
+{}
+```
+- Code
+```js
+await page.close()
+```
+
+
+### Tool call: browser_install
+- Args
+```json
+{}
+```
+

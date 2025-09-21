@@ -9,7 +9,8 @@ from sqlalchemy import desc, func
 from contextlib import asynccontextmanager
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
-from typing import List
+from typing import List, Dict, Any
+from pydantic import BaseModel
 import uvicorn
 import atexit
 
@@ -17,9 +18,21 @@ from database import Review, get_session, init_db
 from parsers.yandex_parser import fetch_and_save_yandex_reviews
 from parsers.google_parser import fetch_and_save_google_reviews
 from config.constants import API_CONFIG, SCHEDULER_CONFIG
+from utils.telegram import send_quiz_notification, test_telegram_connection
 
 # Планировщик задач
 scheduler = BackgroundScheduler()
+
+# Pydantic модели для API
+class QuizSubmission(BaseModel):
+    """Модель для данных из квиза калькулятора."""
+    name: str
+    phone: str
+    step_1: str = None  # Тип захоронения
+    step_2: str = None  # Гроб/урна
+    step_3: List[str] = []  # Принадлежности
+    step_4: str = None  # Транспорт
+    timestamp: str = None
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -209,6 +222,62 @@ async def get_scheduler_status():
         "scheduler_running": scheduler.running,
         "jobs": jobs
     }
+
+@app.post("/api/quiz/submit")
+async def submit_quiz(quiz_data: QuizSubmission):
+    """
+    Обработка заявки из квиза калькулятора.
+    Отправляет уведомление в Telegram группу.
+
+    Args:
+        quiz_data: Данные из квиза калькулятора
+    """
+    try:
+        # Преобразуем Pydantic модель в словарь
+        quiz_dict = quiz_data.model_dump()
+
+        # Отправляем уведомление в Telegram
+        success = await send_quiz_notification(quiz_dict)
+
+        if success:
+            return {
+                "success": True,
+                "message": "Заявка успешно отправлена"
+            }
+        else:
+            raise HTTPException(
+                status_code=500,
+                detail="Ошибка отправки уведомления в Telegram"
+            )
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Ошибка обработки заявки: {str(e)}"
+        )
+
+@app.get("/api/telegram/test")
+async def test_telegram():
+    """Тестирование подключения к Telegram боту."""
+    try:
+        is_connected = test_telegram_connection()
+
+        if is_connected:
+            return {
+                "success": True,
+                "message": "Telegram бот доступен"
+            }
+        else:
+            return {
+                "success": False,
+                "message": "Telegram бот недоступен. Проверьте настройки."
+            }
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Ошибка тестирования Telegram: {str(e)}"
+        )
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -1,0 +1,52 @@
+{
+  "name": "funeral-dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run optimize:images && vite build",
+    "build:dev": "vite build",
+    "preview": "vite preview",
+    "lint:scss": "stylelint 'src/**/*.scss' --fix",
+    "lint:js": "eslint 'src/**/*.{js,jsx}' --fix",
+    "optimize:images": "node scripts/optimize-all-images.cjs",
+    "test:quiz": "node tests/test-optimizations.cjs",
+    "test:final": "node tests/test-final-improvements.cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.0.2",
+    "autoprefixer": "^10.4.21",
+    "imask": "^7.6.1",
+    "minista": "^3.1.12",
+    "normalize.css": "^8.0.1",
+    "postcss": "^8.5.6",
+    "postcss-preset-env": "^9.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
+    "sass": "^1.92.1",
+    "swiper": "^11.2.10",
+    "vite": "^7.1.5"
+  },
+  "devDependencies": {
+    "@squoosh/lib": "^0.3.1",
+    "glob": "^11.0.3",
+    "imagemin": "^9.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^10.0.0",
+    "imagemin-webp": "^8.0.0",
+    "pixelmatch": "^7.1.0",
+    "playwright": "^1.55.0",
+    "pngjs": "^7.0.0",
+    "postcss-pxtorem": "^6.1.0",
+    "sharp": "^0.34.3"
+  }
+}

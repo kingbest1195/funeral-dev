@@ -1,5 +1,6 @@
 import React from "react";
 import { CONTACTS_MAP_DATA } from "@/constants/content";
+import YandexMap from "@/components/YandexMap";
 import "./ContactsMapSection.scss";
 
 /**
@@ -51,9 +52,11 @@ const ContactsMapSection = () => {
           </div>
 
           <div className="map-container">
-            <div className="map-placeholder">
-              <p>{CONTACTS_MAP_DATA.mapPlaceholder}</p>
-            </div>
+            <YandexMap
+              offices={CONTACTS_MAP_DATA.offices.items}
+              height={400}
+              className="contacts-map__yandex-map"
+            />
           </div>
         </div>
       </div>

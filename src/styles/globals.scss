@@ -258,13 +258,6 @@ figure {
 .btn {
   @include button-base;
 
-  // Защищаем цвет кнопки от переопределения ссылочными стилями
-  &,
-  &:link,
-  &:visited {
-    color: inherit;
-  }
-
   &--primary {
     @include button-primary;
   }
@@ -519,7 +512,7 @@ figure {
   }
 
   &__body {
-    padding: var(--spacing-6);
+    padding: var(--spacing-4);
   }
 
   &__footer {
@@ -687,7 +680,9 @@ figure {
 
 @keyframes slide-up {
   from {
-    transform: translateY(var(--spacing-15)); // 30px - используем переменную spacing
+    transform: translateY(
+      var(--spacing-15)
+    ); // 30px - используем переменную spacing
     opacity: 0;
   }
   to {
