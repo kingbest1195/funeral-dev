@@ -64,7 +64,10 @@
       "WebFetch(domain:yandex.com)",
       "Bash(identify:*)",
       "mcp__playwright__browser_type",
-      "Bash(timeout 10 npm run dev)"
+      "Bash(timeout 10 npm run dev)",
+      "mcp__github__get_file_contents",
+      "mcp__github__search_repositories",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
