@@ -6,7 +6,7 @@ import "./CallBlock.scss";
  * @param {Object} props - Параметры компонента
  * @param {string} props.phone - Номер телефона (обязательный)
  * @param {string} [props.note] - Дополнительная заметка
- * @param {string} [props.icon] - Иконка компонента
+ * @param {Object|string} [props.icon] - Иконка компонента (может быть строкой или объектом с webp/png)
  * @param {string} [props.ariaLabel] - ARIA метка для доступности
  * @param {string} [props.parentClass="first-steps"] - CSS класс родительского элемента
  * @returns {JSX.Element} React компонент
@@ -16,13 +16,26 @@ const CallBlock = ({ phone, note, icon, ariaLabel, parentClass = "first-steps" }
     <div className={`${parentClass}__call-block`} role="group" aria-label={ariaLabel}>
       {icon && (
         <div className={`${parentClass}__icon`} aria-hidden="true">
-          <img
-            src={icon}
-            alt="Телефон ритуального агента для круглосуточного вызова в Шуе"
-            width="96"
-            height="96"
-            loading="lazy"
-          />
+          {typeof icon === 'object' ? (
+            <picture>
+              <source srcSet={icon.webp} type="image/webp" />
+              <img
+                src={icon.png}
+                alt="Телефон ритуального агента для круглосуточного вызова в Шуе"
+                width="96"
+                height="96"
+                loading="lazy"
+              />
+            </picture>
+          ) : (
+            <img
+              src={icon}
+              alt="Телефон ритуального агента для круглосуточного вызова в Шуе"
+              width="96"
+              height="96"
+              loading="lazy"
+            />
+          )}
         </div>
       )}
       <a 

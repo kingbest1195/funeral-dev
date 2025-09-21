@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './ReviewCard.scss';
-import yandexIcon from '@/assets/icons-optimized/yandex-icon.webp';
-import googleIcon from '@/assets/icons-optimized/google-icon.webp';
+import yandexIconWebp from '@/assets/icons-optimized/yandex-icon.webp';
+import yandexIconPng from '@/assets/icons-optimized/yandex-icon.png';
+import googleIconWebp from '@/assets/icons-optimized/google-icon.webp';
+import googleIconPng from '@/assets/icons-optimized/google-icon.png';
 
 /**
  * Компонент карточки отзыва с поддержкой аватарок, обрезки текста и источников
@@ -60,12 +62,14 @@ const ReviewCard = ({
     switch (source) {
       case 'yandex':
         return {
-          icon: yandexIcon,
+          iconWebp: yandexIconWebp,
+          iconPng: yandexIconPng,
           name: 'Яндекс.Картах'
         };
       case 'google':
         return {
-          icon: googleIcon,
+          iconWebp: googleIconWebp,
+          iconPng: googleIconPng,
           name: 'Google Картах'
         };
       default:
@@ -146,14 +150,19 @@ const ReviewCard = ({
           <div className="review-card__rating" aria-label={`Оценка ${rating} из 5`}>
             {renderStars()}
           </div>
-          {sourceInfo.icon && (
+          {sourceInfo.iconWebp && (
             <div className="review-card__source-icon">
-              <img
-                src={sourceInfo.icon}
-                alt={`Отзыв с ${sourceInfo.name}`}
-                className="review-card__platform-icon"
-                loading="lazy"
-              />
+              <picture>
+                <source srcSet={sourceInfo.iconWebp} type="image/webp" />
+                <img
+                  src={sourceInfo.iconPng}
+                  alt={`Отзыв с ${sourceInfo.name}`}
+                  className="review-card__platform-icon"
+                  loading="lazy"
+                  width="24"
+                  height="24"
+                />
+              </picture>
             </div>
           )}
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
-import officeWebp from "@/assets/images/transport-and-office/office-facade.webp";
-import officeJpg from "@/assets/images/transport-and-office/office-facade.jpg";
+import officeWebp from "@/assets/images-optimized/transport-and-office/office-facade.webp";
+import officeJpg from "@/assets/images-optimized/transport-and-office/office-facade.png";
 import "./HeroSection.scss";
 
 /**
@@ -39,6 +39,8 @@ const HeroSection = () => {
                 alt="Офис ритуальной службы Век в Шуе по адресу Красноармейский переулок, 6"
                 loading="eager"
                 decoding="async"
+                width="800"
+                height="533"
               />
             </picture>
           </div>

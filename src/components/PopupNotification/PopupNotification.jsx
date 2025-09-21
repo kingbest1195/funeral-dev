@@ -2,11 +2,15 @@ import React, { useEffect, useState, useId, useRef } from "react";
 import "./PopupNotification.scss";
 import { NOTIFICATION_DATA } from "@/constants/content";
 
-// Импорт оптимизированных иконок
-import successIcon from "@/assets/icons-optimized/notification-success.webp";
-import errorIcon from "@/assets/icons-optimized/notification-error.webp";
-import loadingIcon from "@/assets/icons-optimized/notification-loading.webp";
-import infoIcon from "@/assets/icons-optimized/notification-info.webp";
+// Импорт оптимизированных иконок (WebP + PNG fallback)
+import successIconWebp from "@/assets/icons-optimized/notification-success.webp";
+import successIconPng from "@/assets/icons-optimized/notification-success.png";
+import errorIconWebp from "@/assets/icons-optimized/notification-error.webp";
+import errorIconPng from "@/assets/icons-optimized/notification-error.png";
+import loadingIconWebp from "@/assets/icons-optimized/notification-loading.webp";
+import loadingIconPng from "@/assets/icons-optimized/notification-loading.png";
+import infoIconWebp from "@/assets/icons-optimized/notification-info.webp";
+import infoIconPng from "@/assets/icons-optimized/notification-info.png";
 
 // Константы
 const ANIMATION_DURATION = 300; // ms
@@ -128,13 +132,13 @@ const PopupNotification = ({
     }
   }, [isVisible]);
 
-  // Получение иконки по типу
+  // Получение иконки по типу (WebP + PNG fallback)
   const getIcon = () => {
     const icons = {
-      success: successIcon,
-      error: errorIcon,
-      loading: loadingIcon,
-      info: infoIcon
+      success: { webp: successIconWebp, png: successIconPng },
+      error: { webp: errorIconWebp, png: errorIconPng },
+      loading: { webp: loadingIconWebp, png: loadingIconPng },
+      info: { webp: infoIconWebp, png: infoIconPng }
     };
     return icons[type] || icons.info;
   };
@@ -190,12 +194,17 @@ const PopupNotification = ({
       >
         {/* Иконка */}
         <div className={`${baseClass}__icon`}>
-          <img
-            src={getIcon()}
-            alt={`Иконка ${type === 'loading' ? 'загрузки' : type === 'success' ? 'успеха' : type === 'error' ? 'ошибки' : 'информации'}`}
-            role="presentation"
-            className={`${baseClass}__icon-image ${type === "loading" ? `${baseClass}__icon-image--loading` : ""}`}
-          />
+          <picture>
+            <source srcSet={getIcon().webp} type="image/webp" />
+            <img
+              src={getIcon().png}
+              alt={`Иконка ${type === 'loading' ? 'загрузки' : type === 'success' ? 'успеха' : type === 'error' ? 'ошибки' : 'информации'}`}
+              role="presentation"
+              className={`${baseClass}__icon-image ${type === "loading" ? `${baseClass}__icon-image--loading` : ""}`}
+              width="24"
+              height="24"
+            />
+          </picture>
         </div>
 
         {/* Изображение (если указано) */}

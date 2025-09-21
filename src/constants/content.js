@@ -167,14 +167,14 @@ export const TRANSPORT_OFFICE_DATA = {
     {
       id: 1,
       imageWebp: "hearse-modern.webp",
-      imageJpg: "hearse-modern.jpg",
+      imageJpg: "hearse-modern.png",
       alt: "Катафалк ритуальной службы Век в Шуе для достойных проводов",
       caption: "Специализированный транспорт для достойных проводов.",
     },
     {
       id: 2,
       imageWebp: "funeral-market.webp",
-      imageJpg: "funeral-market.jpg",
+      imageJpg: "funeral-market.png",
       alt: "Ритуальный магазин службы Век в Шуе с широким ассортиментом венков, гробов и памятников",
       caption:
         "Ритуальный магазин с полным ассортиментом: гробы, венки, памятники, ритуальные принадлежности и цветы по доступным ценам.",
@@ -182,7 +182,7 @@ export const TRANSPORT_OFFICE_DATA = {
     {
       id: 3,
       imageWebp: "office-facade-main.webp",
-      imageJpg: "office-facade-main.jpg",
+      imageJpg: "office-facade-main.png",
       alt: "Фасад офиса ритуальной службы Век в Шуе на Красноармейском переулке, 6",
       caption:
         "Офис по адресу Ул. Красноармейский переулок, 6. Здесь вы можете получить консультацию и оформить документы в спокойной обстановке.",

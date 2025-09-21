@@ -1,11 +1,11 @@
 import React from "react";
 import { TRANSPORT_OFFICE_DATA } from "@/constants/content";
-import hearseWebp from "@/assets/images/transport-and-office/hearse-modern.webp";
-import hearseJpg from "@/assets/images/transport-and-office/hearse-modern.jpg";
-import funeralMarketWebp from "@/assets/images/transport-and-office/funeral-market.webp";
-import funeralMarketJpg from "@/assets/images/transport-and-office/funeral-market.jpg";
-import officeWebp from "@/assets/images/transport-and-office/office-facade-main.webp";
-import officeJpg from "@/assets/images/transport-and-office/office-facade-main.jpg";
+import hearseWebp from "@/assets/images-optimized/transport-and-office/hearse-modern.webp";
+import hearseJpg from "@/assets/images-optimized/transport-and-office/hearse-modern.png";
+import funeralMarketWebp from "@/assets/images-optimized/transport-and-office/funeral-market.webp";
+import funeralMarketJpg from "@/assets/images-optimized/transport-and-office/funeral-market.png";
+import officeWebp from "@/assets/images-optimized/transport-and-office/office-facade-main.webp";
+import officeJpg from "@/assets/images-optimized/transport-and-office/office-facade-main.png";
 import "./TransportOfficeSection.scss";
 
 /**
@@ -16,11 +16,11 @@ const TransportOfficeSection = () => {
   // Маппинг изображений для динамического импорта
   const imageMap = {
     "hearse-modern.webp": hearseWebp,
-    "hearse-modern.jpg": hearseJpg,
+    "hearse-modern.png": hearseJpg,
     "funeral-market.webp": funeralMarketWebp,
-    "funeral-market.jpg": funeralMarketJpg,
+    "funeral-market.png": funeralMarketJpg,
     "office-facade-main.webp": officeWebp,
-    "office-facade-main.jpg": officeJpg,
+    "office-facade-main.png": officeJpg,
   };
 
   return (
