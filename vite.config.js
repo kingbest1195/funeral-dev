@@ -28,6 +28,7 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
     minify: 'terser',
+    target: 'es2018', // Поддержка современных браузеров для меньшего размера
     rollupOptions: {
       output: {
         manualChunks: {
@@ -39,7 +40,10 @@ export default defineConfig({
           ui: ['react-helmet-async', 'swiper', 'imask']
         }
       }
-    }
+    },
+    // Дополнительные оптимизации
+    chunkSizeWarningLimit: 1000,
+    reportCompressedSize: false // Ускоряет сборку
   },
   server: {
     port: 3000,

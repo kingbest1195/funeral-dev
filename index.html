@@ -5,6 +5,11 @@
   <link rel="icon" type="image/svg+xml" href="/logo-vek.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Performance optimizations -->
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#1a1a1a">
+
   <title>Ритуальная служба Век в Шуе - Круглосуточная помощь</title>
   <meta
     name="description"
@@ -15,9 +20,13 @@
     content="ритуальные услуги Шуя, похоронное бюро Шуя, организация похорон Шуя, ритуальный агент Шуя, кремация, груз 200"
   />
   
+  <!-- DNS prefetch для внешних ресурсов -->
+  <link rel="dns-prefetch" href="//api.yandex.ru">
+
   <!-- Preload critical fonts -->
   <link rel="preload" href="/src/assets/fonts/SangBleuSunrise-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/src/assets/fonts/EuclidFlex-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/src/assets/fonts/EuclidFlex-Medium.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Critical CSS for preventing FOUC -->
   <style>
@@ -27,16 +36,61 @@
       margin: 0;
       background-color: #ffffff;
       color: #1a1a1a;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 16px;
     }
+    /* Prevent layout shift */
+    #root {
+      min-height: 100vh;
+    }
+    /* Hide content until JS loads to prevent FOUC */
+    .js-loading {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .js-loaded {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
-  <div id="root"></div>
+  <div id="root" class="js-loading"></div>
+
+  <!-- Performance optimization script -->
+  <script>
+    // Mark JS as loaded to prevent FOUC
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('root').classList.remove('js-loading');
+      document.getElementById('root').classList.add('js-loaded');
+    });
+
+    // Prefetch critical resources on user interaction
+    let prefetched = false;
+    function prefetchResources() {
+      if (prefetched) return;
+      prefetched = true;
+
+      // Prefetch additional font weights
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.href = '/src/assets/fonts/EuclidFlex-SemiBold.woff2';
+      link.as = 'font';
+      link.type = 'font/woff2';
+      link.crossOrigin = '';
+      document.head.appendChild(link);
+    }
+
+    // Trigger prefetch on first user interaction
+    ['mousedown', 'touchstart', 'keydown'].forEach(event => {
+      document.addEventListener(event, prefetchResources, { once: true, passive: true });
+    });
+  </script>
+
   <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
