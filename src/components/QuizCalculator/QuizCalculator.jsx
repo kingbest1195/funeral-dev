@@ -230,7 +230,7 @@ const QuizCalculator = ({ isOpen, onClose }) => {
   // Функция отправки данных в Telegram
   const sendToTelegram = async (data) => {
     try {
-      const response = await fetch("http://localhost:8000/api/quiz/submit", {
+      const response = await fetch("/api/quiz/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

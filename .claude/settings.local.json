@@ -68,7 +68,9 @@
       "mcp__github__get_file_contents",
       "mcp__github__search_repositories",
       "Bash(git push:*)",
-      "Bash(git merge:*)"
+      "Bash(git merge:*)",
+      "Bash(ssh:*)",
+      "Bash(nslookup:*)"
     ],
     "deny": [],
     "ask": []
