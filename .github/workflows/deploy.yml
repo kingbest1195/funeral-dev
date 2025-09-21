@@ -24,11 +24,12 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Yandex Cloud S3 Upload
-        uses: a-mans-exp/sync-s3-bucket@v1
-        with:
-          aws_access_key_id: ${{ secrets.YC_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.YC_SECRET_KEY }}
-          aws_bucket_name: ${{ secrets.YC_BUCKET_NAME }}
-          local_path: "./dist"
-          endpoint_url: "https://storage.yandexcloud.net" # Эндпоинт S3 Яндекса
+      - name: Configure AWS CLI for Yandex Cloud
+        run: |
+          aws configure set aws_access_key_id ${{ secrets.YC_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ secrets.YC_SECRET_KEY }}
+          aws configure set default.region ru-central1
+
+      - name: Upload to Yandex Cloud Storage
+        run: |
+          aws s3 sync ./dist s3://${{ secrets.YC_BUCKET_NAME }} --endpoint-url=https://storage.yandexcloud.net --delete
