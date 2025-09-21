@@ -181,18 +181,19 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     ensureLink("icon", { href: faviconIco });
 
     // Создаем динамический манифест с правильными путями
+    const currentOrigin = window.location.origin;
     const manifestData = {
       name: "Ритуальная служба Век - Шуя",
       short_name: "Век Шуя",
       description: "Ритуальные услуги в Шуе - круглосуточно, выезд на дом, полный комплекс",
       icons: [
         {
-          src: androidIcon192,
+          src: new URL(androidIcon192, currentOrigin).href,
           sizes: "192x192",
           type: "image/png"
         },
         {
-          src: androidIcon512,
+          src: new URL(androidIcon512, currentOrigin).href,
           sizes: "512x512",
           type: "image/png"
         }
@@ -200,8 +201,8 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
       theme_color: "#c49e5e",
       background_color: "#ffffff",
       display: "standalone",
-      start_url: "/",
-      scope: "/"
+      start_url: currentOrigin + "/",
+      scope: currentOrigin + "/"
     };
 
     const manifestBlob = new Blob([JSON.stringify(manifestData)], {
