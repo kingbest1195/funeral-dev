@@ -53,3 +53,32 @@ await page.getByRole('link', { name: 'failed: deploy 3s' }).click();
 await page.close()
 ```
 
+
+### Tool call: browser_navigate
+- Args
+```json
+{
+  "url": "file:///Users/mac/Documents/funeral-dev/test-api.html"
+}
+```
+- Code
+```js
+await page.goto('file:///Users/mac/Documents/funeral-dev/test-api.html');
+```
+- Snapshot: 005.snapshot.yml
+
+
+### Tool call: browser_click
+- Args
+```json
+{
+  "element": "Тестировать API button",
+  "ref": "e3"
+}
+```
+- Code
+```js
+await page.getByRole('button', { name: 'Тестировать API' }).click();
+```
+- Snapshot: 006.snapshot.yml
+

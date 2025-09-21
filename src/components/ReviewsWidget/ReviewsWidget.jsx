@@ -4,6 +4,7 @@ import { Navigation, Pagination, A11y } from 'swiper/modules';
 import ReviewCard from '@/components/ReviewCard/ReviewCard.jsx';
 import ReviewCardSkeleton from '@/components/ReviewCard/ReviewCardSkeleton.jsx';
 import ReviewsEmptyState from '@/components/ReviewCard/ReviewsEmptyState.jsx';
+import { apiRequest } from '@/utils/api';
 import './ReviewsWidget.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -154,11 +155,8 @@ const ReviewsWidget = () => {
       setError(null);
 
       console.log('📡 Отправляю запрос к /api/reviews');
-      const response = await fetch(`/api/reviews?offset=0&limit=${REVIEWS_CONFIG.ITEMS_PER_PAGE}`, {
+      const response = await apiRequest(`/api/reviews?offset=0&limit=${REVIEWS_CONFIG.ITEMS_PER_PAGE}`, {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
       });
 
       console.log('📨 Получен ответ:', response.status, response.statusText);
@@ -228,11 +226,8 @@ const ReviewsWidget = () => {
       setLoadingMore(true);
       console.log(`🔄 Загружаю дополнительные отзывы, offset: ${currentOffset}`);
 
-      const response = await fetch(`/api/reviews?offset=${currentOffset}&limit=${REVIEWS_CONFIG.ITEMS_PER_PAGE}`, {
+      const response = await apiRequest(`/api/reviews?offset=${currentOffset}&limit=${REVIEWS_CONFIG.ITEMS_PER_PAGE}`, {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
       });
 
       if (!response.ok) {

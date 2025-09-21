@@ -1,0 +1,3 @@
+- generic [active] [ref=e1]:
+  - heading "Тест API подключения" [level=1] [ref=e2]
+  - button "Тестировать API" [ref=e3]

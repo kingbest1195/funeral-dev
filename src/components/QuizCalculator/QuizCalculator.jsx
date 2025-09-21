@@ -5,6 +5,7 @@ import QuizProgress from "./QuizProgress";
 import Input from "@/components/Input";
 import PopupNotification from "@/components/PopupNotification/PopupNotification";
 import { validatePhone } from "@/helpers";
+import { apiRequest } from "@/utils/api";
 import "./QuizCalculator.scss";
 
 /**
@@ -230,11 +231,8 @@ const QuizCalculator = ({ isOpen, onClose }) => {
   // Функция отправки данных в Telegram
   const sendToTelegram = async (data) => {
     try {
-      const response = await fetch("/api/quiz/submit", {
+      const response = await apiRequest("/api/quiz/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
         body: JSON.stringify(data),
       });
 
