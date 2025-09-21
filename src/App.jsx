@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from '@dr.pogodin/react-helmet';
 import HomePage from './pages/HomePage/HomePage.jsx';
 import PrivacyPage from './pages/PrivacyPage/PrivacyPage.jsx';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';

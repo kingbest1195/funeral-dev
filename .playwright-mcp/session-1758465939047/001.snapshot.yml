@@ -1,0 +1,199 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e14]:
+            - list [ref=e15]:
+              - listitem [ref=e16]:
+                - button "Platform" [ref=e17] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e18]
+              - listitem [ref=e20]:
+                - button "Solutions" [ref=e21] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e22]
+              - listitem [ref=e24]:
+                - button "Resources" [ref=e25] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Open Source" [ref=e29] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e30]
+              - listitem [ref=e32]:
+                - button "Enterprise" [ref=e33] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e34]
+              - listitem [ref=e36]:
+                - link "Pricing" [ref=e37] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+          - generic [ref=e38]:
+            - button "Search or jump to…" [ref=e41] [cursor=pointer]:
+              - img [ref=e43]
+              - generic [ref=e45]: Search or jump to...
+              - img [ref=e47]
+            - link "Sign in" [ref=e51] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fkingbest1195%2Ffuneral-dev%2Factions
+            - link "Sign up" [ref=e52] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Factions%2Findex&source=header-repo&source_repo=kingbest1195%2Ffuneral-dev
+            - button "Appearance settings" [ref=e55] [cursor=pointer]:
+              - img
+  - main [ref=e59]:
+    - generic [ref=e60]:
+      - generic [ref=e61]:
+        - generic [ref=e63]:
+          - img [ref=e64]
+          - link "kingbest1195" [ref=e67] [cursor=pointer]:
+            - /url: /kingbest1195
+          - generic [ref=e68]: /
+          - strong [ref=e69]:
+            - link "funeral-dev" [ref=e70] [cursor=pointer]:
+              - /url: /kingbest1195/funeral-dev
+          - generic [ref=e71]: Public
+        - generic [ref=e72]:
+          - list:
+            - listitem [ref=e73]:
+              - link "You must be signed in to change notification settings" [ref=e74] [cursor=pointer]:
+                - /url: /login?return_to=%2Fkingbest1195%2Ffuneral-dev
+                - img [ref=e75]
+                - text: Notifications
+            - listitem [ref=e77]:
+              - link "Fork 0" [ref=e78] [cursor=pointer]:
+                - /url: /login?return_to=%2Fkingbest1195%2Ffuneral-dev
+                - img [ref=e79]
+                - text: Fork
+            - listitem [ref=e82]:
+              - link "You must be signed in to star a repository" [ref=e84] [cursor=pointer]:
+                - /url: /login?return_to=%2Fkingbest1195%2Ffuneral-dev
+                - img [ref=e85]
+                - text: Star
+                - generic "0 users starred this repository" [ref=e87]: "0"
+      - navigation "Repository" [ref=e88]:
+        - list [ref=e89]:
+          - listitem [ref=e90]:
+            - link "Code" [ref=e91] [cursor=pointer]:
+              - /url: /kingbest1195/funeral-dev
+              - img [ref=e92]
+              - generic [ref=e94]: Code
+          - listitem [ref=e95]:
+            - link "Issues" [ref=e96] [cursor=pointer]:
+              - /url: /kingbest1195/funeral-dev/issues
+              - img [ref=e97]
+              - generic [ref=e100]: Issues
+          - listitem [ref=e101]:
+            - link "Pull requests" [ref=e102] [cursor=pointer]:
+              - /url: /kingbest1195/funeral-dev/pulls
+              - img [ref=e103]
+              - generic [ref=e105]: Pull requests
+          - listitem [ref=e106]:
+            - link "Actions" [ref=e107] [cursor=pointer]:
+              - /url: /kingbest1195/funeral-dev/actions
+              - img [ref=e108]
+              - generic [ref=e110]: Actions
+          - listitem [ref=e111]:
+            - link "Projects" [ref=e112] [cursor=pointer]:
+              - /url: /kingbest1195/funeral-dev/projects
+              - img [ref=e113]
+              - generic [ref=e115]: Projects
+          - listitem [ref=e116]:
+            - link "Security" [ref=e117] [cursor=pointer]:
+              - /url: /kingbest1195/funeral-dev/security
+              - img [ref=e118]
+              - generic [ref=e120]: Security
+          - listitem [ref=e121]:
+            - link "Insights" [ref=e122] [cursor=pointer]:
+              - /url: /kingbest1195/funeral-dev/pulse
+              - img [ref=e123]
+              - generic [ref=e125]: Insights
+    - generic [ref=e127]:
+      - 'heading "Actions: kingbest1195/funeral-dev" [level=1] [ref=e128]'
+      - generic [ref=e131]:
+        - generic [ref=e132]:
+          - heading "Actions" [level=2] [ref=e134]
+          - navigation "Actions Workflows" [ref=e138]:
+            - list [ref=e140]:
+              - listitem [ref=e141]:
+                - link "All workflows" [ref=e142] [cursor=pointer]:
+                  - /url: /kingbest1195/funeral-dev/actions
+                  - generic [ref=e143]: All workflows
+              - listitem [ref=e144]
+              - listitem [ref=e145]:
+                - list "Workflows" [ref=e149]:
+                  - listitem [ref=e150]:
+                    - link "Deploy to Yandex Cloud Storage" [ref=e151] [cursor=pointer]:
+                      - /url: /kingbest1195/funeral-dev/actions/workflows/deploy.yml
+                      - generic [ref=e152]: Deploy to Yandex Cloud Storage
+              - listitem [ref=e153]
+              - listitem [ref=e154]:
+                - generic [ref=e157]:
+                  - heading "Management" [level=3] [ref=e159]
+                  - list "Management" [ref=e160]:
+                    - listitem [ref=e161]:
+                      - link "Caches" [ref=e162] [cursor=pointer]:
+                        - /url: /kingbest1195/funeral-dev/actions/caches
+                        - generic:
+                          - img
+                        - generic [ref=e163]: Caches
+        - generic [ref=e166]:
+          - generic [ref=e167]:
+            - generic [ref=e168]:
+              - heading "All workflows" [level=2] [ref=e170]:
+                - generic [ref=e172]: All workflows
+              - search [ref=e176]:
+                - combobox "Filter workflow runs" [ref=e177]
+                - img
+            - generic [ref=e178]: Showing runs from all workflows
+          - generic [ref=e179]:
+            - generic [ref=e180]:
+              - strong [ref=e183]: 1 workflow run
+              - generic [ref=e184]:
+                - button "Event" [ref=e187] [cursor=pointer]:
+                  - generic [ref=e189]: Event
+                  - generic:
+                    - img
+                - button "Status" [ref=e192] [cursor=pointer]:
+                  - generic [ref=e194]: Status
+                  - generic:
+                    - img
+                - button "Branch" [ref=e197] [cursor=pointer]:
+                  - generic [ref=e199]: Branch
+                  - generic:
+                    - img
+                - button "Actor" [ref=e202] [cursor=pointer]:
+                  - generic [ref=e204]: Actor
+                  - generic:
+                    - img
+            - generic [ref=e207]:
+              - generic [ref=e208]:
+                - 'link "failed: Run 1 of Deploy to Yandex Cloud Storage. merge: integrate CI/CD workflow and project improvements" [ref=e209] [cursor=pointer]':
+                  - /url: /kingbest1195/funeral-dev/actions/runs/17895068187
+                  - img "failed:" [ref=e211]
+                  - generic [ref=e213]: "merge: integrate CI/CD workflow and project improvements"
+                - generic [ref=e214]:
+                  - text: "Deploy to Yandex Cloud Storage #1:"
+                  - generic [ref=e215]:
+                    - text: Commit
+                    - link "dfaa00e" [ref=e216] [cursor=pointer]:
+                      - /url: /kingbest1195/funeral-dev/commit/dfaa00eb4454a6bda90176eb7630b6cd91541348
+                    - text: pushed by
+                    - link "kingbest1195" [ref=e217] [cursor=pointer]:
+                      - /url: /kingbest1195
+              - link "main" [ref=e219] [cursor=pointer]:
+                - /url: /kingbest1195/funeral-dev/tree/refs/heads/main
+              - generic [ref=e221]:
+                - generic [ref=e222]:
+                  - generic [ref=e223]:
+                    - img [ref=e225]
+                    - generic "Sep 21, 2025, 6:13 PM GMT+3:30" [ref=e227]: 2 minutes ago
+                  - generic [ref=e228]:
+                    - img "Run duration" [ref=e229]
+                    - text: 8s
+                - group [ref=e232]:
+                  - img "Show options" [ref=e234] [cursor=pointer]

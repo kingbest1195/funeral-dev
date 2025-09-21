@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@dr.pogodin/react-helmet";
 import { COMPANY_INFO, formatDate } from "@/helpers/index.js";
 import Global from "@/components/Global/Global.jsx";
 import "./PrivacyPage.scss";

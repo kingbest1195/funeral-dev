@@ -37,7 +37,7 @@ export default defineConfig({
           // Библиотеки маршрутизации
           router: ['react-router-dom'],
           // Библиотеки UI
-          ui: ['react-helmet-async', 'swiper', 'imask']
+          ui: ['@dr.pogodin/react-helmet', 'swiper', 'imask']
         }
       }
     },

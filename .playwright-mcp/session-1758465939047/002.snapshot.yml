@@ -1,0 +1,245 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e239]:
+    - generic [ref=e240]:
+      - link "Skip to content" [ref=e241] [cursor=pointer]:
+        - /url: "#start-of-content"
+      - banner [ref=e243]:
+        - heading "Navigation Menu" [level=2] [ref=e244]
+        - generic [ref=e245]:
+          - link "Homepage" [ref=e247] [cursor=pointer]:
+            - /url: /
+            - img [ref=e248]
+          - generic [ref=e250]:
+            - navigation "Global" [ref=e251]:
+              - list [ref=e252]:
+                - listitem [ref=e253]:
+                  - button "Platform" [ref=e254] [cursor=pointer]:
+                    - text: Platform
+                    - img [ref=e255]
+                - listitem [ref=e257]:
+                  - button "Solutions" [ref=e258] [cursor=pointer]:
+                    - text: Solutions
+                    - img [ref=e259]
+                - listitem [ref=e261]:
+                  - button "Resources" [ref=e262] [cursor=pointer]:
+                    - text: Resources
+                    - img [ref=e263]
+                - listitem [ref=e265]:
+                  - button "Open Source" [ref=e266] [cursor=pointer]:
+                    - text: Open Source
+                    - img [ref=e267]
+                - listitem [ref=e269]:
+                  - button "Enterprise" [ref=e270] [cursor=pointer]:
+                    - text: Enterprise
+                    - img [ref=e271]
+                - listitem [ref=e273]:
+                  - link "Pricing" [ref=e274] [cursor=pointer]:
+                    - /url: https://github.com/pricing
+            - generic [ref=e275]:
+              - button "Search or jump to…" [ref=e278] [cursor=pointer]:
+                - img [ref=e280]
+                - generic [ref=e282]: Search or jump to...
+                - img [ref=e284]
+              - link "Sign in" [ref=e288] [cursor=pointer]:
+                - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fkingbest1195%2Ffuneral-dev%2Factions%2Fruns%2F17895068187
+              - link "Sign up" [ref=e289] [cursor=pointer]:
+                - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Factions%2Fworkflow_runs%2Fshow&source=header-repo&source_repo=kingbest1195%2Ffuneral-dev
+              - button "Appearance settings" [ref=e292] [cursor=pointer]:
+                - img
+    - main [ref=e296]:
+      - generic [ref=e297]:
+        - generic [ref=e298]:
+          - generic [ref=e299]:
+            - generic [ref=e301]:
+              - img [ref=e302]
+              - link "kingbest1195" [ref=e305] [cursor=pointer]:
+                - /url: /kingbest1195
+              - generic [ref=e306]: /
+              - strong [ref=e307]:
+                - link "funeral-dev" [ref=e308] [cursor=pointer]:
+                  - /url: /kingbest1195/funeral-dev
+              - generic [ref=e309]: Public
+            - generic [ref=e310]:
+              - list:
+                - listitem [ref=e311]:
+                  - link "You must be signed in to change notification settings" [ref=e312] [cursor=pointer]:
+                    - /url: /login?return_to=%2Fkingbest1195%2Ffuneral-dev
+                    - img [ref=e313]
+                    - text: Notifications
+                - listitem [ref=e315]:
+                  - link "Fork 0" [ref=e316] [cursor=pointer]:
+                    - /url: /login?return_to=%2Fkingbest1195%2Ffuneral-dev
+                    - img [ref=e317]
+                    - text: Fork
+                - listitem [ref=e320]:
+                  - link "You must be signed in to star a repository" [ref=e322] [cursor=pointer]:
+                    - /url: /login?return_to=%2Fkingbest1195%2Ffuneral-dev
+                    - img [ref=e323]
+                    - text: Star
+                    - generic "0 users starred this repository" [ref=e325]: "0"
+          - navigation "Repository" [ref=e326]:
+            - list [ref=e327]:
+              - listitem [ref=e328]:
+                - link "Code" [ref=e329] [cursor=pointer]:
+                  - /url: /kingbest1195/funeral-dev
+                  - img [ref=e330]
+                  - generic [ref=e332]: Code
+              - listitem [ref=e333]:
+                - link "Issues" [ref=e334] [cursor=pointer]:
+                  - /url: /kingbest1195/funeral-dev/issues
+                  - img [ref=e335]
+                  - generic [ref=e338]: Issues
+              - listitem [ref=e339]:
+                - link "Pull requests" [ref=e340] [cursor=pointer]:
+                  - /url: /kingbest1195/funeral-dev/pulls
+                  - img [ref=e341]
+                  - generic [ref=e343]: Pull requests
+              - listitem [ref=e344]:
+                - link "Actions" [ref=e345] [cursor=pointer]:
+                  - /url: /kingbest1195/funeral-dev/actions
+                  - img [ref=e346]
+                  - generic [ref=e348]: Actions
+              - listitem [ref=e349]:
+                - link "Projects" [ref=e350] [cursor=pointer]:
+                  - /url: /kingbest1195/funeral-dev/projects
+                  - img [ref=e351]
+                  - generic [ref=e353]: Projects
+              - listitem [ref=e354]:
+                - link "Security" [ref=e355] [cursor=pointer]:
+                  - /url: /kingbest1195/funeral-dev/security
+                  - img [ref=e356]
+                  - generic [ref=e358]: Security
+              - listitem [ref=e359]:
+                - link "Insights" [ref=e360] [cursor=pointer]:
+                  - /url: /kingbest1195/funeral-dev/pulse
+                  - img [ref=e361]
+                  - generic [ref=e363]: Insights
+        - generic [ref=e368]:
+          - generic [ref=e371]:
+            - link "Deploy to Yandex Cloud Storage" [ref=e374] [cursor=pointer]:
+              - /url: /kingbest1195/funeral-dev/actions/workflows/deploy.yml
+              - img [ref=e375]
+              - generic [ref=e377]: Deploy to Yandex Cloud Storage
+            - generic [ref=e378]:
+              - generic [ref=e379]:
+                - img "failed:" [ref=e383]
+                - 'heading "merge: integrate CI/CD workflow and project improvements #1" [level=1] [ref=e385]':
+                  - generic [ref=e386]: "merge: integrate CI/CD workflow and project improvements #1"
+              - link "Sign in to view logs" [ref=e389] [cursor=pointer]:
+                - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fkingbest1195%2Ffuneral-dev%2Factions%2Fruns%2F17895068187
+          - generic [ref=e390]:
+            - navigation "Workflow run" [ref=e393]:
+              - list [ref=e395]:
+                - listitem [ref=e396]:
+                  - link "Summary" [ref=e397] [cursor=pointer]:
+                    - /url: /kingbest1195/funeral-dev/actions/runs/17895068187
+                    - generic:
+                      - img
+                    - generic [ref=e398]: Summary
+                - listitem [ref=e399]
+                - listitem [ref=e400]:
+                  - generic [ref=e403]:
+                    - heading "Jobs" [level=2] [ref=e405]
+                    - list "Jobs" [ref=e406]:
+                      - listitem [ref=e407]:
+                        - 'link "failed: deploy" [ref=e408] [cursor=pointer]':
+                          - /url: /kingbest1195/funeral-dev/actions/runs/17895068187/job/50880599926
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img "failed:"
+                          - generic [ref=e409]: deploy
+                - listitem [ref=e410]
+                - listitem [ref=e411]:
+                  - generic [ref=e414]:
+                    - heading "Run details" [level=2] [ref=e416]
+                    - list "Run details" [ref=e417]:
+                      - listitem [ref=e418]:
+                        - link "Usage" [ref=e419] [cursor=pointer]:
+                          - /url: /kingbest1195/funeral-dev/actions/runs/17895068187/usage
+                          - generic:
+                            - img
+                          - generic [ref=e420]: Usage
+                      - listitem [ref=e421]:
+                        - link "Workflow file" [ref=e422] [cursor=pointer]:
+                          - /url: /kingbest1195/funeral-dev/actions/runs/17895068187/workflow
+                          - generic:
+                            - img
+                          - generic [ref=e423]: Workflow file
+            - generic [ref=e425]:
+              - region "Workflow run summary" [ref=e426]:
+                - generic [ref=e427]:
+                  - generic [ref=e428]:
+                    - generic [ref=e429]: Triggered via push September 21, 2025 14:432 minutes ago
+                    - generic [ref=e430]:
+                      - link "@kingbest1195 kingbest1195" [ref=e431] [cursor=pointer]:
+                        - /url: /kingbest1195
+                        - img "@kingbest1195" [ref=e432]
+                        - text: kingbest1195
+                      - generic [ref=e433]:
+                        - generic [ref=e434]: pushed
+                        - link "dfaa00e" [ref=e435] [cursor=pointer]:
+                          - /url: /kingbest1195/funeral-dev/commit/dfaa00eb4454a6bda90176eb7630b6cd91541348
+                          - img [ref=e436]
+                          - text: dfaa00e
+                      - link "main" [ref=e438] [cursor=pointer]:
+                        - /url: /kingbest1195/funeral-dev/tree/refs/heads/main
+                  - generic [ref=e439]:
+                    - generic [ref=e440]: Status
+                    - text: Failure
+                  - generic [ref=e441]:
+                    - generic [ref=e442]: Total duration
+                    - link "8s" [ref=e443] [cursor=pointer]:
+                      - /url: /kingbest1195/funeral-dev/actions/runs/17895068187/usage
+                  - generic [ref=e444]:
+                    - generic [ref=e445]: Artifacts
+                    - text: –
+              - region "Workflow run graph" [ref=e446]:
+                - generic [ref=e448]:
+                  - generic [ref=e450]:
+                    - heading "deploy.yml" [level=2] [ref=e451]:
+                      - link "deploy.yml" [ref=e452] [cursor=pointer]:
+                        - /url: /kingbest1195/funeral-dev/actions/runs/17895068187/workflow
+                    - generic [ref=e453]: "on: push"
+                  - generic [ref=e455]:
+                    - generic [ref=e456]:
+                      - img
+                      - img
+                      - 'link "failed: deploy 3s" [ref=e460] [cursor=pointer]':
+                        - /url: /kingbest1195/funeral-dev/actions/runs/17895068187/job/50880599926
+                        - generic [ref=e462]:
+                          - img "failed:" [ref=e464]
+                          - generic [ref=e467]: deploy
+                          - generic [ref=e468]: 3s
+                    - generic [ref=e469]:
+                      - paragraph [ref=e470]: Oh hello! Nice to see you.
+                      - paragraph [ref=e471]:
+                        - text: Made with ❤️ by
+                        - link [ref=e472] [cursor=pointer]:
+                          - /url: https://actions.github.io/humans.txt
+                          - text: humans.txt
+                  - generic [ref=e473]:
+                    - button "Fit to window" [disabled] [ref=e474]:
+                      - img
+                    - generic [ref=e475]:
+                      - button "Zoom out" [disabled] [ref=e477]:
+                        - img
+                      - button "Zoom in" [disabled] [ref=e479]:
+                        - img
+              - region "Annotations" [ref=e480]:
+                - generic [ref=e481]:
+                  - generic [ref=e483]:
+                    - heading "Annotations" [level=2] [ref=e484]
+                    - generic [ref=e485]: 1 error
+                  - table [ref=e486]:
+                    - rowgroup [ref=e487]:
+                      - row "deploy Unable to resolve action a-mans-exp/sync-s3-bucket, repository not found" [ref=e488]:
+                        - cell "deploy Unable to resolve action a-mans-exp/sync-s3-bucket, repository not found" [ref=e489]:
+                          - generic [ref=e490]:
+                            - img [ref=e492]
+                            - generic [ref=e494]:
+                              - link "deploy" [ref=e495] [cursor=pointer]:
+                                - /url: /kingbest1195/funeral-dev/actions/runs/17895068187/job/50880599926#step:1:28
+                                - strong [ref=e496]: deploy
+                              - generic [ref=e499]: Unable to resolve action a-mans-exp/sync-s3-bucket, repository not found
+  - generic [ref=e237]: "merge: integrate CI/CD workflow and project improvements · kingbest1195/funeral-dev@dfaa00e · GitHub"
