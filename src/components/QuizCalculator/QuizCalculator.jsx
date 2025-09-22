@@ -237,15 +237,53 @@ const QuizCalculator = ({ isOpen, onClose }) => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || "Ошибка отправки заявки");
+        // Пытаемся прочитать детали ошибки от сервера
+        let errorMessage = "Ошибка обработки заявки";
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.detail || errorData.message || errorMessage;
+        } catch {
+          // Если не можем прочитать JSON, используем статус код
+          errorMessage = `Ошибка сервера: ${response.status}`;
+        }
+        throw new Error(errorMessage);
       }
 
       const result = await response.json();
       return result.success;
     } catch (error) {
       console.error("Ошибка отправки в Telegram:", error);
+
+      // Если ошибка сети или сервера недоступен
+      if (error.name === 'TypeError' || error.message.includes('Failed to fetch')) {
+        throw new Error("Проблемы с подключением к серверу. Проверьте интернет-соединение.");
+      }
+
       throw error;
+    }
+  };
+
+  // Функция повторной отправки неудачных заявок
+  const retryFailedSubmissions = async () => {
+    try {
+      const failedSubmissions = JSON.parse(localStorage.getItem('failedQuizSubmissions') || '[]');
+
+      if (failedSubmissions.length === 0) return;
+
+      for (const submission of failedSubmissions) {
+        try {
+          await sendToTelegram(submission.data);
+          console.log('Повторная отправка успешна для заявки:', submission.timestamp);
+        } catch (error) {
+          console.log('Повторная отправка неудачна:', error.message);
+          break; // Прекращаем попытки если сервер все еще недоступен
+        }
+      }
+
+      // Очищаем успешно отправленные заявки
+      localStorage.removeItem('failedQuizSubmissions');
+    } catch (error) {
+      console.warn('Ошибка при повторной отправке:', error);
     }
   };
 
@@ -292,6 +330,9 @@ const QuizCalculator = ({ isOpen, onClose }) => {
       // Отправляем данные в Telegram
       await sendToTelegram(finalData);
 
+      // Попытка отправить ранее неудачные заявки
+      await retryFailedSubmissions();
+
       // Очистить сохраненные данные после успешной отправки
       clearStorage();
 
@@ -308,11 +349,24 @@ const QuizCalculator = ({ isOpen, onClose }) => {
       }, 3000);
 
     } catch (error) {
-      // Показать уведомление об ошибке
+      // Сохраняем данные локально для попытки отправки позже
+      try {
+        const failedSubmissions = JSON.parse(localStorage.getItem('failedQuizSubmissions') || '[]');
+        failedSubmissions.push({
+          data: finalData,
+          timestamp: new Date().toISOString(),
+          error: error.message
+        });
+        localStorage.setItem('failedQuizSubmissions', JSON.stringify(failedSubmissions));
+      } catch (storageError) {
+        console.warn('Не удалось сохранить данные локально:', storageError);
+      }
+
+      // Показать уведомление об ошибке с конкретным сообщением
       showNotification(
         "error",
         "Ошибка отправки",
-        "Не удалось отправить заявку. Попробуйте еще раз или позвоните нам."
+        `${error.message} Попробуйте еще раз или позвоните нам: +7 (920) 366-36-36`
       );
     } finally {
       // Завершаем состояние загрузки

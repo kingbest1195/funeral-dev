@@ -140,7 +140,7 @@ const YandexMap = ({ offices = [], className = "" }) => {
 
   // Создание HTML-контента для balloon
   const createBalloonContent = (office) => {
-    const telLink = createTelLink(COMPANY_INFO.phone);
+    const telLink = office.phoneOffice || createTelLink(COMPANY_INFO.phone);
     const officeTitle = office.title || "офис";
 
     return `

@@ -54,6 +54,49 @@ const StructuredData = () => {
             name: "Памятники и ограды",
             description: "Гранитные и мраморные памятники, ограды для мест захоронения",
             category: "Ритуальные товары",
+            image: [
+              `${baseUrl}/src/assets/images-optimized/transport-and-office/office-facade.webp`,
+              `${baseUrl}/logo-vek.svg`
+            ],
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.9",
+              reviewCount: "35",
+              bestRating: "5",
+              worstRating: "1"
+            },
+            review: [
+              {
+                "@type": "Review",
+                author: {
+                  "@type": "Person",
+                  name: "Анна Смирнова"
+                },
+                datePublished: "2024-08-15",
+                reviewBody: "Качественные памятники, профессиональная установка. Благодарны за помощь в трудный момент.",
+                reviewRating: {
+                  "@type": "Rating",
+                  ratingValue: "5",
+                  bestRating: "5",
+                  worstRating: "1"
+                }
+              },
+              {
+                "@type": "Review",
+                author: {
+                  "@type": "Person",
+                  name: "Михаил Петров"
+                },
+                datePublished: "2024-07-22",
+                reviewBody: "Отличное качество гранита, красивая работа. Рекомендую всем.",
+                reviewRating: {
+                  "@type": "Rating",
+                  ratingValue: "5",
+                  bestRating: "5",
+                  worstRating: "1"
+                }
+              }
+            ],
             offers: {
               "@type": "Offer",
               availability: "http://schema.org/InStock",

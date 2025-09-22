@@ -43,9 +43,19 @@ export default defineConfig({
         }
       }
     },
-    // Дополнительные оптимизации
-    chunkSizeWarningLimit: 1000,
-    reportCompressedSize: false // Ускоряет сборку
+    // Дополнительные оптимизации для мобильной производительности
+    chunkSizeWarningLimit: 500, // Уменьшаем размер чанков для мобильных
+    reportCompressedSize: false, // Ускоряет сборку
+    terserOptions: {
+      compress: {
+        drop_console: true, // Удаляем console.log в production
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.warn'], // Удаляем дополнительные debug функции
+      },
+      mangle: {
+        safari10: true // Исправляет проблемы с Safari
+      }
+    }
   },
   server: {
     port: 3000,

@@ -7,15 +7,17 @@ import BenefitBlock from "@/components/BenefitBlock/BenefitBlock.jsx";
 const QuizCalculator = React.lazy(() => import("@/components/QuizCalculator/QuizCalculator.jsx"));
 const ReviewsWidget = React.lazy(() => import("@/components/ReviewsWidget/ReviewsWidget.jsx"));
 
-// Импорт новых компонентов секций
+// Динамический импорт тяжелых компонентов для Code Splitting
+const WhyTrustSection = React.lazy(() => import("./components/WhyTrustSection/WhyTrustSection.jsx"));
+const StatsSection = React.lazy(() => import("./components/StatsSection/StatsSection.jsx"));
+const TransportOfficeSection = React.lazy(() => import("./components/TransportOfficeSection/TransportOfficeSection.jsx"));
+const CTASection = React.lazy(() => import("./components/CTASection/CTASection.jsx"));
+
+// Критичные секции загружаются синхронно
 import HeroSection from "./components/HeroSection/HeroSection.jsx";
 import ServicesSection from "./components/ServicesSection/ServicesSection.jsx";
-import WhyTrustSection from "./components/WhyTrustSection/WhyTrustSection.jsx";
-import StatsSection from "./components/StatsSection/StatsSection.jsx";
 import CalculatorSection from "./components/CalculatorSection/CalculatorSection.jsx";
-import TransportOfficeSection from "./components/TransportOfficeSection/TransportOfficeSection.jsx";
 import ContactsMapSection from "./components/ContactsMapSection/ContactsMapSection.jsx";
-import CTASection from "./components/CTASection/CTASection.jsx";
 
 // Импорт констант и стилей
 import { HOME_SEO_DATA } from "@/constants/content";
@@ -106,28 +108,36 @@ const HomePage = () => {
 
         <hr className="divider" aria-hidden="true" />
 
-        {/* Почему доверяют */}
-        <WhyTrustSection />
+        {/* Почему доверяют - ленивая загрузка */}
+        <Suspense fallback={<div className="section-loading" style={{minHeight: '400px'}}></div>}>
+          <WhyTrustSection />
+        </Suspense>
 
-        {/* Статистика компании */}
-        <StatsSection />
+        {/* Статистика компании - ленивая загрузка */}
+        <Suspense fallback={<div className="section-loading" style={{minHeight: '300px'}}></div>}>
+          <StatsSection />
+        </Suspense>
 
         {/* Калькулятор стоимости */}
         <CalculatorSection openQuiz={openQuiz} />
 
         {/* Отзывы */}
-        <Suspense fallback={<div className="reviews-loading">Загружаем отзывы...</div>}>
+        <Suspense fallback={<div className="reviews-loading" style={{minHeight: '400px'}}>Загружаем отзывы...</div>}>
           <ReviewsWidget />
         </Suspense>
 
-        {/* Транспорт и офис */}
-        <TransportOfficeSection />
+        {/* Транспорт и офис - ленивая загрузка */}
+        <Suspense fallback={<div className="section-loading" style={{minHeight: '500px'}}></div>}>
+          <TransportOfficeSection />
+        </Suspense>
 
         {/* Контакты и карта */}
         <ContactsMapSection />
 
-        {/* Призыв к действию */}
-        <CTASection />
+        {/* Призыв к действию - ленивая загрузка */}
+        <Suspense fallback={<div className="section-loading" style={{minHeight: '200px'}}></div>}>
+          <CTASection />
+        </Suspense>
 
         {/* Квиз-калькулятор */}
         {isQuizOpen && (

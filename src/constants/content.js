@@ -34,7 +34,7 @@ export const SERVICES_DATA = {
     },
     {
       id: 3,
-      title: "Груз 200",
+      title: "Перевозка тела",
       description:
         "Помогаем с транспортировкой тела в другие города и регионы с соблюдением всех требований.",
       icon: {
@@ -42,13 +42,13 @@ export const SERVICES_DATA = {
         path: "M3 7V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2M3 7h18M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7M12 16v-6",
       },
       link: "#",
-      ariaLabel: "Подробнее: Груз 200",
+      ariaLabel: "Подробнее: Перевозка тела",
     },
     {
       id: 4,
       title: "Кремация",
       description:
-        "Помогаем с организацией кремации в г. Иваново, предоставляем урны для праха.",
+        "Помогаем с организацией кремации умершего, предоставляем урны для праха.",
       icon: {
         viewBox: "0 0 24 24",
         path: "M12 3v18M19 12a7 7 0 1 1-14 0 7 7 0 0 1 14 0z",
@@ -208,12 +208,13 @@ export const CONTACTS_MAP_DATA = {
         id: 1,
         title: "Главный офис",
         address: "г. Шуя, Ул. Красноармейский переулок, 6",
-        coordinates: [41.376142, 56.84658], // lng, lat для Яндекс.Карт
+        coordinates: [41.378828, 56.847504], // lng, lat для Яндекс.Карт
         note: "(2 минуты от ЦРБ)",
         schedule: "График работы: Пн-Вс, с 8:00 до 17:00",
         mapUrl:
           "https://yandex.ru/maps/org/vek/199633794817/?ll=41.378828%2C56.847504&utm_source=share&z=15",
         ariaLabel: "Построить маршрут: Красноармейский пер., 6",
+        phoneOffice: "tel:+79203533807",
       },
       {
         id: 2,
@@ -225,17 +226,19 @@ export const CONTACTS_MAP_DATA = {
         mapUrl:
           "https://yandex.ru/maps/org/vek_funeral_hall/82211087167/?ll=41.344564%2C56.836470&mode=search&sll=91.470550%2C53.736723&sspn=0.017810%2C0.005776&text=%D0%A4%D0%B0%D0%B1%D1%80%D0%B8%D1%87%D0%BD%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2C%2027%20%D1%88%D1%83%D1%8F&utm_source=share&z=15",
         ariaLabel: "Построить маршрут: Фабричная, 27",
+        phoneOffice: "tel:+79203633805",
       },
       {
         id: 3,
         title: "Дополнительный офис",
         address: "г. Шуя, Ул. Генерала Белова, 33",
-        coordinates: [41.378828, 56.847504], // lng, lat для Яндекс.Карт
+        coordinates: [41.376142, 56.84658], // lng, lat для Яндекс.Карт
         note: "",
         schedule: "График работы: Пн-Вс, с 8:00 до 17:00",
         mapUrl:
           "https://yandex.ru/maps/org/vek/22307782205/?ll=41.376142%2C56.846580&utm_source=share&z=21",
         ariaLabel: "Построить маршрут: Генерала Белова, 33",
+        phoneOffice: "tel:+79203633807",
       },
     ],
   },
