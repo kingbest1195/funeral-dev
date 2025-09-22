@@ -2,20 +2,24 @@ import React from "react";
 import { Helmet } from "@dr.pogodin/react-helmet";
 
 const StructuredData = () => {
-  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://ритуал-век.рф';
+  const baseUrl =
+    typeof window !== "undefined"
+      ? window.location.origin
+      : "https://ритуал-век.рф";
 
   const schemaData = {
     "@context": "https://schema.org",
-    "@type": "FuneralHome",
+    "@type": ["FuneralService", "LocalBusiness"],
     name: "Ритуальная служба Век",
     image: [
       `${baseUrl}/logo-vek.svg`,
-      `${baseUrl}/assets/office-facade-main.jpg`
+      `${baseUrl}/assets/office-facade-main.jpg`,
     ],
     "@id": `${baseUrl}/`,
     url: `${baseUrl}/`,
     telephone: "+7 (920) 366-36-36",
-    description: "Ритуальная служба Век в Шуе. Круглосуточная помощь в организации похорон, кремация, памятники. Профессиональные агенты. Звоните +7 (920) 366-36-36",
+    description:
+      "Ритуальная служба Век в Шуе. Круглосуточная помощь в организации похорон, кремация, памятники. Профессиональные агенты. Звоните +7 (920) 366-36-36",
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
@@ -27,7 +31,7 @@ const StructuredData = () => {
     },
     areaServed: {
       "@type": "City",
-      name: "Шуя"
+      name: "Шуя",
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -37,76 +41,79 @@ const StructuredData = () => {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Организация похорон"
-          }
+            name: "Организация похорон",
+          },
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Кремация"
-          }
+            name: "Кремация",
+          },
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Product",
             name: "Памятники и ограды",
-            description: "Гранитные и мраморные памятники, ограды для мест захоронения",
+            description:
+              "Гранитные и мраморные памятники, ограды для мест захоронения",
             category: "Ритуальные товары",
             image: [
               `${baseUrl}/src/assets/images-optimized/transport-and-office/office-facade.webp`,
-              `${baseUrl}/logo-vek.svg`
+              `${baseUrl}/logo-vek.svg`,
             ],
             aggregateRating: {
               "@type": "AggregateRating",
               ratingValue: "4.9",
               reviewCount: "35",
               bestRating: "5",
-              worstRating: "1"
+              worstRating: "1",
             },
             review: [
               {
                 "@type": "Review",
                 author: {
                   "@type": "Person",
-                  name: "Анна Смирнова"
+                  name: "Анна Смирнова",
                 },
                 datePublished: "2024-08-15",
-                reviewBody: "Качественные памятники, профессиональная установка. Благодарны за помощь в трудный момент.",
+                reviewBody:
+                  "Качественные памятники, профессиональная установка. Благодарны за помощь в трудный момент.",
                 reviewRating: {
                   "@type": "Rating",
                   ratingValue: "5",
                   bestRating: "5",
-                  worstRating: "1"
-                }
+                  worstRating: "1",
+                },
               },
               {
                 "@type": "Review",
                 author: {
                   "@type": "Person",
-                  name: "Михаил Петров"
+                  name: "Михаил Петров",
                 },
                 datePublished: "2024-07-22",
-                reviewBody: "Отличное качество гранита, красивая работа. Рекомендую всем.",
+                reviewBody:
+                  "Отличное качество гранита, красивая работа. Рекомендую всем.",
                 reviewRating: {
                   "@type": "Rating",
                   ratingValue: "5",
                   bestRating: "5",
-                  worstRating: "1"
-                }
-              }
+                  worstRating: "1",
+                },
+              },
             ],
             offers: {
               "@type": "Offer",
               availability: "http://schema.org/InStock",
               priceCurrency: "RUB",
               price: "15000",
-              priceRange: "15000-150000"
-            }
-          }
-        }
-      ]
+              priceRange: "15000-150000",
+            },
+          },
+        },
+      ],
     },
     openingHoursSpecification: [
       {
@@ -121,7 +128,7 @@ const StructuredData = () => {
           "Sunday",
         ],
         opens: "00:00",
-        closes: "23:59",
+        closes: "24:00",
       },
     ],
     aggregateRating: {
@@ -129,15 +136,13 @@ const StructuredData = () => {
       ratingValue: "4.9",
       reviewCount: "35",
       bestRating: "5",
-      worstRating: "1"
+      worstRating: "1",
     },
   };
 
   return (
     <Helmet>
-      <script type="application/ld+json">
-        {JSON.stringify(schemaData)}
-      </script>
+      <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
     </Helmet>
   );
 };

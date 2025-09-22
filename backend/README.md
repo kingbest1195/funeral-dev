@@ -18,9 +18,17 @@ pip install -r requirements.txt
 ```env
 # --- Yandex ---
 YANDEX_URLS="url1,url2"
+YANDEX_API_KEY="your-api-key"
+
+# --- Google ---
+GOOGLE_URLS="url1,url2"
 
 # --- Database ---
 DATABASE_NAME="reviews.db"
+
+# --- Telegram bot ---
+TELEGRAM_BOT_API_KEY="your-bot-token"
+TELEGRAM_SUPERGROUP_ID="your-chat-id"
 ```
 
 ### 3. Инициализация базы данных
@@ -44,6 +52,10 @@ python main.py
 ### Режим production
 
 ```bash
+# Через Gunicorn (рекомендуется)
+gunicorn --config gunicorn_config.py main:app
+
+# Или через uvicorn
 uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
@@ -56,6 +68,8 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 - `GET /api/reviews` - Получение отзывов (с пагинацией и сортировкой)
 - `GET /api/reviews/count` - Количество отзывов
 - `POST /api/reviews/fetch-yandex` - Ручной запуск сбора отзывов
+- `POST /api/quiz/submit` - Отправка заявки из калькулятора (передает данные в Telegram)
+- `GET /api/telegram/test` - Тестирование соединения с Telegram ботом
 
 ### Параметры для `/api/reviews`
 
@@ -142,8 +156,63 @@ backend/
 - Ошибки парсинга
 - Статус планировщика
 
+## Развертывание на продакшн сервере
+
+### Конфигурация сервера
+
+**Адрес:** 217.198.13.70
+**Домен API:** api.xn----7sbhmlqd1btk.xn--p1ai (api.ритуал-век.рф)
+**SSL:** Let's Encrypt автообновление
+
+### Архитектура
+
+```
+Frontend (Yandex Cloud S3) → Nginx (HTTPS) → Gunicorn → FastAPI
+```
+
+### Nginx конфигурация
+
+Файл: `/etc/nginx/sites-available/funeral-api`
+- HTTPS обязателен (HTTP редиректит на HTTPS)
+- Проксирование на localhost:8000
+- SSL сертификаты от Let's Encrypt
+- CORS заголовки для домена сайта
+
+### Gunicorn конфигурация
+
+Файл: `gunicorn_config.py`
+- 4 воркера (CPU cores × 2 + 1)
+- UvicornWorker для async поддержки
+- Логи в `/var/log/gunicorn/`
+- Автоперезагрузка воркеров каждые 1000 запросов
+
+### Служебные команды
+
+```bash
+# Проверка статуса
+ps aux | grep gunicorn
+systemctl status nginx
+
+# Перезапуск
+pkill -f gunicorn
+gunicorn --config gunicorn_config.py main:app --daemon
+
+# Логи
+tail -f /var/log/gunicorn/error.log
+tail -f /var/log/nginx/funeral-api.access.log
+```
+
+### Мониторинг
+
+- **Health check:** `GET /health`
+- **Telegram test:** `GET /api/telegram/test`
+- **Логи ошибок:** `/var/log/gunicorn/error.log`
+- **Доступ к API:** `/var/log/nginx/funeral-api.access.log`
+
 ## Возможные проблемы
 
 1. **ChromeDriver не найден**: Устанавливается автоматически через `webdriver-manager`
 2. **Блокировка Яндексом**: Используется ротация User-Agent и headless режим
 3. **Изменение структуры страниц**: Парсер использует множественные селекторы для устойчивости
+4. **500 ошибки quiz/submit**: Проверить наличие файла `.env` и корректность Telegram переменных
+5. **Проблемы с CORS**: Убедиться что Origin заголовок соответствует разрешенному домену
