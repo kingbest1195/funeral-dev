@@ -1,0 +1,75 @@
+{
+  "rules": [
+    {
+      "description": "HTML файлы - кратковременное кэширование",
+      "condition": {
+        "key_suffix": [".html"]
+      },
+      "actions": {
+        "cache_control": "public, max-age=300, s-maxage=300",
+        "expires": "5 minutes"
+      }
+    },
+    {
+      "description": "Статические ресурсы с хэшем - долгосрочное кэширование",
+      "condition": {
+        "key_regex": "assets/.*-[a-zA-Z0-9]{8,}\\.(js|css|woff2|woff|ttf|png|jpg|jpeg|webp|svg|ico)"
+      },
+      "actions": {
+        "cache_control": "public, max-age=31536000, s-maxage=31536000, immutable",
+        "expires": "1 year"
+      }
+    },
+    {
+      "description": "Шрифты - долгосрочное кэширование",
+      "condition": {
+        "key_suffix": [".woff2", ".woff", ".ttf", ".otf"]
+      },
+      "actions": {
+        "cache_control": "public, max-age=31536000, s-maxage=31536000, immutable",
+        "expires": "1 year",
+        "cross_origin": "anonymous"
+      }
+    },
+    {
+      "description": "Изображения - среднесрочное кэширование",
+      "condition": {
+        "key_suffix": [".png", ".jpg", ".jpeg", ".webp", ".svg", ".gif", ".ico"]
+      },
+      "actions": {
+        "cache_control": "public, max-age=2592000, s-maxage=2592000",
+        "expires": "30 days"
+      }
+    },
+    {
+      "description": "JavaScript и CSS - среднесрочное кэширование",
+      "condition": {
+        "key_suffix": [".js", ".css", ".map"]
+      },
+      "actions": {
+        "cache_control": "public, max-age=86400, s-maxage=86400",
+        "expires": "1 day"
+      }
+    },
+    {
+      "description": "Фавиконы - долгосрочное кэширование",
+      "condition": {
+        "key_regex": "(favicon|android-chrome|apple-touch|mstile)"
+      },
+      "actions": {
+        "cache_control": "public, max-age=31536000, s-maxage=31536000",
+        "expires": "1 year"
+      }
+    },
+    {
+      "description": "Manifest и robots - кратковременное кэширование",
+      "condition": {
+        "key_suffix": [".webmanifest", ".txt", ".xml"]
+      },
+      "actions": {
+        "cache_control": "public, max-age=3600, s-maxage=3600",
+        "expires": "1 hour"
+      }
+    }
+  ]
+}

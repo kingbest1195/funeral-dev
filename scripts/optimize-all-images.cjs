@@ -40,18 +40,26 @@ const OPTIMIZATION_PROFILES = {
     webp: { quality: 95, effort: 4 }
   },
   
-  // Иконки - высокое качество, средний размер
+  // Иконки - высокое качество, средний размер, улучшенное сжатие
   'icons': {
     pattern: 'src/assets/icons/**/*.{png,jpg,jpeg}',
     resize: { width: 200, fit: 'inside', withoutEnlargement: true },
     png: { quality: 88, compressionLevel: 8 },
-    webp: { quality: 90, effort: 5 }
+    webp: { quality: 80, effort: 6 } // Усиливаем сжатие для WebP иконок
   },
   
+  // Транспорт и офис - средний размер для мобильной оптимизации
+  'transport-office': {
+    pattern: 'src/assets/images/transport-and-office/**/*.{png,jpg,jpeg}',
+    resize: { width: 400, fit: 'inside', withoutEnlargement: true }, // Уменьшаем для мобильных
+    png: { quality: 85, compressionLevel: 8 },
+    webp: { quality: 85, effort: 6 } // Увеличиваем сжатие для WebP
+  },
+
   // Остальные изображения - универсальные настройки
   'general': {
     pattern: 'src/assets/images/**/*.{png,jpg,jpeg}',
-    exclude: ['quiz-icons', 'design'], // Исключаем уже обработанные
+    exclude: ['quiz-icons', 'design', 'transport-and-office'], // Исключаем уже обработанные
     resize: { width: 800, fit: 'inside', withoutEnlargement: true },
     png: { quality: 85, compressionLevel: 7 },
     webp: { quality: 88, effort: 5 }
@@ -96,6 +104,7 @@ class ImageOptimizer {
       'src/assets/images-optimized',
       'src/assets/images-optimized/quiz-icons',
       'src/assets/images-optimized/design',
+      'src/assets/images-optimized/transport-and-office',
       'src/assets/favicons-optimized',
       'src/assets/icons-optimized'
     ];

@@ -642,6 +642,26 @@ const BackToTopButton = () => {
 
 // Компонент мобильной кнопки звонка
 const MobileCallButton = () => {
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const toggleVisibility = () => {
+      // Показываем кнопку после того, как пользователь проскроллил больше чем высота экрана
+      // Это означает, что он уже не в Hero секции
+      if (window.pageYOffset > window.innerHeight * 0.8) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+    // Проверяем при загрузке
+    toggleVisibility();
+
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
   const handleClick = () => {
     if (typeof gtag !== "undefined") {
       gtag("event", "mobile_call_button", {
@@ -650,6 +670,10 @@ const MobileCallButton = () => {
       });
     }
   };
+
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <a

@@ -39,6 +39,7 @@ const HeroSection = () => {
                 alt="Офис ритуальной службы Век в Шуе по адресу Красноармейский переулок, 6"
                 loading="eager"
                 decoding="async"
+                fetchpriority="high"
                 width="800"
                 height="533"
               />
