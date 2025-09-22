@@ -354,7 +354,7 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
             <nav className="global__nav" aria-label="Основная навигация">
               <ul className="global__nav-list">
                 <li>
-                  <a href="#services">Услуги</a>
+                  <Link to="/uslugi">Услуги</Link>
                 </li>
                 <li>
                   <a href="#benefits">Почему мы</a>
@@ -467,9 +467,9 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
             <nav className="global__mobile-nav">
               <ul className="global__mobile-nav-list">
                 <li>
-                  <a href="#services" onClick={() => setIsMenuOpen(false)}>
+                  <Link to="/uslugi" onClick={() => setIsMenuOpen(false)}>
                     Услуги
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="#benefits" onClick={() => setIsMenuOpen(false)}>

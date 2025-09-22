@@ -8,12 +8,13 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "npm run optimize:images && vite build",
+    "build": "npm run optimize:images && npm run generate:sitemap && vite build",
     "build:dev": "vite build",
     "preview": "vite preview",
     "lint:scss": "stylelint 'src/**/*.scss' --fix",
     "lint:js": "eslint 'src/**/*.{js,jsx}' --fix",
     "optimize:images": "node scripts/optimize-all-images.cjs",
+    "generate:sitemap": "node scripts/generate-sitemap.cjs",
     "test:quiz": "node tests/test-optimizations.cjs",
     "test:final": "node tests/test-final-improvements.cjs"
   },

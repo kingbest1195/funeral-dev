@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from '@dr.pogodin/react-helmet';
 import HomePage from './pages/HomePage/HomePage.jsx';
+import UslugiPage from './pages/UslugiPage/UslugiPage.jsx';
 import PrivacyPage from './pages/PrivacyPage/PrivacyPage.jsx';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx';
 import StructuredData from './components/StructuredData/StructuredData.jsx';
@@ -27,6 +28,7 @@ const App = () => {
         <div className="app">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/uslugi" element={<UslugiPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             {/* Catch-all route для 404 */}
             <Route path="*" element={<NotFoundPage />} />

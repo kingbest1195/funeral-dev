@@ -48,18 +48,26 @@ const OPTIMIZATION_PROFILES = {
     webp: { quality: 80, effort: 6 } // Усиливаем сжатие для WebP иконок
   },
   
-  // Транспорт и офис - средний размер для мобильной оптимизации
+  // Транспорт и офис - улучшенное качество
   'transport-office': {
     pattern: 'src/assets/images/transport-and-office/**/*.{png,jpg,jpeg}',
-    resize: { width: 400, fit: 'inside', withoutEnlargement: true }, // Уменьшаем для мобильных
-    png: { quality: 85, compressionLevel: 8 },
-    webp: { quality: 85, effort: 6 } // Увеличиваем сжатие для WebP
+    resize: { width: 600, fit: 'inside', withoutEnlargement: true },
+    png: { quality: 90, compressionLevel: 6 },
+    webp: { quality: 88, effort: 4 }
+  },
+
+  // Прощальные залы - высокое качество для презентации услуг
+  'funeral-hall': {
+    pattern: 'src/assets/images/funeral-hall/**/*.{png,jpg,jpeg}',
+    resize: { width: 800, fit: 'inside', withoutEnlargement: true },
+    png: { quality: 92, compressionLevel: 6 },
+    webp: { quality: 90, effort: 4 }
   },
 
   // Остальные изображения - универсальные настройки
   'general': {
     pattern: 'src/assets/images/**/*.{png,jpg,jpeg}',
-    exclude: ['quiz-icons', 'design', 'transport-and-office'], // Исключаем уже обработанные
+    exclude: ['quiz-icons', 'design', 'transport-and-office', 'funeral-hall'], // Исключаем уже обработанные
     resize: { width: 800, fit: 'inside', withoutEnlargement: true },
     png: { quality: 85, compressionLevel: 7 },
     webp: { quality: 88, effort: 5 }
@@ -105,10 +113,11 @@ class ImageOptimizer {
       'src/assets/images-optimized/quiz-icons',
       'src/assets/images-optimized/design',
       'src/assets/images-optimized/transport-and-office',
+      'src/assets/images-optimized/funeral-hall',
       'src/assets/favicons-optimized',
       'src/assets/icons-optimized'
     ];
-    
+
     for (const dir of dirs) {
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
