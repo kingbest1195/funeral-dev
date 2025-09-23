@@ -1,14 +1,21 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import { fileURLToPath, URL } from 'node:url';
 import imageOptimizationPlugin from './vite-plugins/image-optimization-plugin.js';
 import criticalCssPlugin from './vite-plugins/critical-css-plugin.js';
+import { cleanUrlsPlugin } from './vite-plugins/clean-urls-plugin.js';
+import { htmlAssetsPlugin } from './vite-plugins/html-assets-plugin.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [
     react(),
     imageOptimizationPlugin(),
-    criticalCssPlugin()
+    criticalCssPlugin(),
+    cleanUrlsPlugin(),
+    htmlAssetsPlugin()
   ],
   resolve: {
     alias: {
@@ -32,13 +39,17 @@ export default defineConfig({
     minify: 'terser',
     target: 'es2018', // Поддержка современных браузеров для меньшего размера
     rollupOptions: {
+      // Конфигурация для многостраничного приложения (MPA)
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        uslugi: path.resolve(__dirname, 'uslugi.html'),
+        privacy: path.resolve(__dirname, 'privacy.html')
+      },
       output: {
         manualChunks: {
           // Выносим React в отдельный чанк для лучшего кеширования
           react: ['react', 'react-dom'],
-          // Библиотеки маршрутизации
-          router: ['react-router-dom'],
-          // Библиотеки UI
+          // Библиотеки UI (убираем react-router-dom для MPA)
           ui: ['@dr.pogodin/react-helmet', 'swiper', 'imask']
         }
       }
@@ -71,7 +82,7 @@ export default defineConfig({
   preview: {
     port: 3001,
     strictPort: true,
-    // Настройка для SPA - все маршруты направляются на index.html
-    historyApiFallback: true
+    // Настройка для MPA - отключаем historyApiFallback
+    historyApiFallback: false
   }
 });

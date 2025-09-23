@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Helmet } from "@dr.pogodin/react-helmet";
 import { COMPANY_INFO } from "@/helpers/index.js";
 import { SITE_CONFIG, getFullUrl, getOgImageUrl } from "@/constants/content.js";
@@ -87,14 +86,14 @@ const NotFoundPage = () => {
             {/* Действия */}
             <section className="not-found-page__actions">
               <div className="not-found-page__buttons">
-                <Link
-                  to="/"
+                <a
+                  href="/"
                   className="btn btn--primary btn--lg not-found-page__home-btn"
                   aria-label="Вернуться на главную страницу ритуальной службы Век"
                 >
                   <span className="not-found-page__btn-icon" aria-hidden="true">🏠</span>
                   На главную
-                </Link>
+                </a>
 
                 <a
                   href={`tel:${COMPANY_INFO.phone.replace(/\D/g, "")}`}

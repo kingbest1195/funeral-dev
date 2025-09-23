@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { COMPANY_INFO, devLog } from "@/helpers/index.js";
 import iconPhone from "@/assets/icons/icon-phone.svg";
 import logoUrl from "@/assets/icons/logo-vek.svg";
@@ -353,8 +352,8 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
           <div className="global__header-content">
             {/* Логотип */}
             <div className="global__logo">
-              <Link
-                to="/"
+              <a
+                href="/"
                 className="global__logo-link"
                 aria-label={COMPANY_INFO.name}
               >
@@ -366,7 +365,7 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
                   fetchPriority="high"
                 />
                 <span className="sr-only">{COMPANY_INFO.name}</span>
-              </Link>
+              </a>
               <p className="global__tagline" aria-label="Локация">
                 {COMPANY_INFO.city}, {COMPANY_INFO.region}
               </p>
@@ -376,7 +375,7 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
             <nav className="global__nav" aria-label="Основная навигация">
               <ul className="global__nav-list">
                 <li>
-                  <Link to="/uslugi">Услуги</Link>
+                  <a href="/uslugi">Услуги</a>
                 </li>
                 <li>
                   <a href="#benefits">Почему мы</a>
@@ -489,9 +488,9 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
             <nav className="global__mobile-nav">
               <ul className="global__mobile-nav-list">
                 <li>
-                  <Link to="/uslugi" onClick={() => setIsMenuOpen(false)}>
+                  <a href="/uslugi" onClick={() => setIsMenuOpen(false)}>
                     Услуги
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <a href="#benefits" onClick={() => setIsMenuOpen(false)}>
@@ -596,9 +595,9 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
                 {COMPANY_INFO.privacyUrl ? (
                   <>
                     {" · "}
-                    <Link to={COMPANY_INFO.privacyUrl}>
+                    <a href="/privacy">
                       Политика конфиденциальности
-                    </Link>
+                    </a>
                   </>
                 ) : null}
               </p>

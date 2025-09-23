@@ -1,149 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/logo-vek.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Performance optimizations -->
-  <meta http-equiv="x-dns-prefetch-control" content="on">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="theme-color" content="#1a1a1a">
+    <!-- SEO Meta Tags -->
+    <title>Ритуальная служба Век - Помощь в трудную минуту | Шуя</title>
+    <meta name="description" content="Ритуальная служба Век в Шуе. Круглосуточная помощь в организации похорон, кремации, изготовление памятников. Звоните: +7 (920) 366-36-36" />
+    <meta name="keywords" content="ритуальная служба, похороны, Шуя, организация похорон, кремация, памятники, ритуальные услуги" />
+    <link rel="canonical" href="https://ритуал-век.рф/" />
+    <meta name="robots" content="index, follow" />
 
-  <title>Ритуальная служба Век в Шуе - Круглосуточная помощь</title>
-  <meta
-    name="description"
-    content="Круглосуточная ритуальная служба 'Век' в г. Шуя. Полный комплекс похоронных услуг. Бесплатная консультация и выезд агента 24/7. Телефон: +7 (920) 366-36-36."
-  />
-  <meta
-    name="keywords"
-    content="ритуальные услуги Шуя, похоронное бюро Шуя, организация похорон Шуя, ритуальный агент Шуя, кремация, груз 200"
-  />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ритуал-век.рф/" />
+    <meta property="og:title" content="Ритуальная служба Век - Помощь в трудную минуту | Шуя" />
+    <meta property="og:description" content="Круглосуточная ритуальная служба в Шуе. Полный комплекс услуг: организация похорон, кремация, памятники. Бесплатная консультация." />
+    <meta property="og:image" content="https://ритуал-век.рф/assets/office-facade-CENYA-P5.webp" />
+    <meta property="og:site_name" content="Ритуальная служба Век" />
+    <meta property="og:locale" content="ru_RU" />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ритуал-век.рф/">
-  <meta property="og:title" content="Ритуальная служба Век в Шуе - Круглосуточная помощь">
-  <meta property="og:description" content="Круглосуточная ритуальная служба 'Век' в г. Шуя. Полный комплекс похоронных услуг. Бесплатная консультация и выезд агента 24/7. Телефон: +7 (920) 366-36-36.">
-  <meta property="og:image" content="https://ритуал-век.рф/src/assets/images-optimized/transport-and-office/office-facade.webp">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Фасад офиса ритуальной службы Век в Шуе">
-  <meta property="og:site_name" content="Ритуальная служба Век">
-  <meta property="og:locale" content="ru_RU">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ритуал-век.рф/" />
+    <meta property="twitter:title" content="Ритуальная служба Век - Помощь в трудную минуту | Шуя" />
+    <meta property="twitter:description" content="Круглосуточная ритуальная служба в Шуе. Полный комплекс услуг: организация похорон, кремация, памятники. Бесплатная консультация." />
+    <meta property="twitter:image" content="https://ритуал-век.рф/assets/office-facade-CENYA-P5.webp" />
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://ритуал-век.рф/">
-  <meta property="twitter:title" content="Ритуальная служба Век в Шуе - Круглосуточная помощь">
-  <meta property="twitter:description" content="Круглосуточная ритуальная служба 'Век' в г. Шуя. Полный комплекс похоронных услуг. Бесплатная консультация и выезд агента 24/7. Телефон: +7 (920) 366-36-36.">
-  <meta property="twitter:image" content="https://ритуал-век.рф/src/assets/images-optimized/transport-and-office/office-facade.webp">
-  <meta property="twitter:image:alt" content="Фасад офиса ритуальной службы Век в Шуе">
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/src/assets/favicons/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/src/assets/favicons/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/src/assets/favicons/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/src/assets/favicons/apple-touch-icon.png" />
+    <link rel="manifest" href="/src/assets/favicons/site.webmanifest" />
 
-  <!-- DNS prefetch для внешних ресурсов -->
-  <link rel="dns-prefetch" href="//api.yandex.ru">
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Critical font preloads -->
-  <link rel="preload" href="./src/assets/fonts/SangBleuSunrise-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="./src/assets/fonts/EuclidFlex-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
-  <!-- Critical logo preload для хедера -->
-  <link rel="preload" href="./src/assets/icons/logo-vek.svg" as="image" type="image/svg+xml">
-
-  <!-- Critical Hero image preload (только для главной страницы) -->
-  <script>
-    // Предзагружаем hero изображение только для главной страницы
-    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-      const webpLink = document.createElement('link');
-      webpLink.rel = 'preload';
-      webpLink.href = './src/assets/images-optimized/transport-and-office/office-facade.webp';
-      webpLink.as = 'image';
-      webpLink.type = 'image/webp';
-      document.head.appendChild(webpLink);
-
-      const pngLink = document.createElement('link');
-      pngLink.rel = 'preload';
-      pngLink.href = './src/assets/images-optimized/transport-and-office/office-facade.png';
-      pngLink.as = 'image';
-      pngLink.type = 'image/png';
-      document.head.appendChild(pngLink);
-    }
-  </script>
-
-  <!-- Critical CSS for preventing FOUC -->
-  <style>
-    /* Critical font preload */
-    @font-face {
-      font-family: "SangBleu Sunrise";
-      src: url("./src/assets/fonts/SangBleuSunrise-Regular.woff2") format("woff2");
-      font-display: swap;
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: "Euclid Flex";
-      src: url("./src/assets/fonts/EuclidFlex-Regular.woff2") format("woff2");
-      font-display: swap;
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    body {
-      font-family: "Euclid Flex", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      line-height: 1.5;
-      margin: 0;
-      background-color: #ffffff;
-      color: #1a1a1a;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      font-display: swap;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-    /* Prevent layout shift */
-    #root {
-      min-height: 100vh;
-    }
-    /* Hide content until JS loads to prevent FOUC */
-    .js-loading {
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .js-loaded {
-      opacity: 1;
-    }
-    /* Critical header styles */
-    .global__header {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-      background-color: #ffffff;
-      border: 1px solid #e5e5e5;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      border-radius: 9999px;
-      width: min(1200px, 94%);
-    }
-  </style>
-</head>
-<body>
-  <div id="root" class="js-loading"></div>
-
-  <!-- Performance optimization script -->
-  <script>
-    // Mark JS as loaded to prevent FOUC
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('root').classList.remove('js-loading');
-      document.getElementById('root').classList.add('js-loaded');
-    });
-
-    // Resources will be handled by Vite and CSS imports
-  </script>
-
-  <script type="module" src="/src/main.jsx"></script>
-</body>
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    
+    <script>
+      // Предзагрузка hero изображения только для главной страницы
+      if (document.getElementById('root').getAttribute('data-page') === 'home') {
+        const heroImageLink = document.createElement('link');
+        heroImageLink.rel = 'preload';
+        heroImageLink.as = 'image';
+        heroImageLink.href = '/src/assets/images-optimized/hero/hero-main.webp';
+        heroImageLink.type = 'image/webp';
+        document.head.appendChild(heroImageLink);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root" data-page="home"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
