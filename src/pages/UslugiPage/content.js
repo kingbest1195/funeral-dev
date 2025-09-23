@@ -3,6 +3,28 @@
 // Константы и данные для страницы услуг ритуальной службы "Век"
 // =================
 
+// Импорты изображений для ритуального магазина (необходимо для production сборки)
+import coffinStandardWebp from '@/assets/images-optimized/quiz-icons/coffin-standard.webp';
+import coffinStandardPng from '@/assets/images-optimized/quiz-icons/coffin-standard.png';
+import wreathFlowersWebp from '@/assets/images-optimized/quiz-icons/wreath-flowers.webp';
+import wreathFlowersPng from '@/assets/images-optimized/quiz-icons/wreath-flowers.png';
+import crossWoodenWebp from '@/assets/images-optimized/quiz-icons/cross-wooden.webp';
+import crossWoodenPng from '@/assets/images-optimized/quiz-icons/cross-wooden.png';
+import clothesFormalWebp from '@/assets/images-optimized/quiz-icons/clothes-formal.webp';
+import clothesFormalPng from '@/assets/images-optimized/quiz-icons/clothes-formal.png';
+import churchItemsWebp from '@/assets/images-optimized/ritual-icons/church-items.webp';
+import churchItemsPng from '@/assets/images-optimized/ritual-icons/church-items.png';
+import ribbonMourningWebp from '@/assets/images-optimized/quiz-icons/ribbon-mourning.webp';
+import ribbonMourningPng from '@/assets/images-optimized/quiz-icons/ribbon-mourning.png';
+
+// Импорты изображений для залов и магазина
+import funeralHallBigWebp from '@/assets/images-optimized/funeral-hall/funeral-hall-big.webp';
+import funeralHallBigPng from '@/assets/images-optimized/funeral-hall/funeral-hall-big.png';
+import funeralHallSmallWebp from '@/assets/images-optimized/funeral-hall/funeral-hall-small.webp';
+import funeralHallSmallPng from '@/assets/images-optimized/funeral-hall/funeral-hall-small.png';
+import funeralMarketWebp from '@/assets/images-optimized/transport-and-office/funeral-market.webp';
+import funeralMarketPng from '@/assets/images-optimized/transport-and-office/funeral-market.png';
+
 // SEO данные для страницы услуг
 export const USLUGI_SEO_DATA = {
   title: "Ритуальные услуги в Шуе: организация похорон и кремация – Служба \"Век\"",
@@ -115,8 +137,8 @@ export const FUNERAL_HALLS_CONTENT = {
       title: "Большой зал (до 60 человек)",
       description: "Просторный и торжественный зал площадью 200 кв. м, предназначенный для проведения масштабных церемоний прощания. Зал оснащен постаментом для гроба, достаточным количеством сидячих мест и системой кондиционирования, что позволяет с комфортом разместить до 60 гостей.",
       image: {
-        webp: "/src/assets/images-optimized/funeral-hall/funeral-hall-big.webp",
-        jpg: "/src/assets/images-optimized/funeral-hall/funeral-hall-big.jpg",
+        webp: funeralHallBigWebp,
+        png: funeralHallBigPng,
         alt: "Большой прощальный зал ритуальной службы Век в Шуе",
         width: 600,
         height: 400
@@ -127,8 +149,8 @@ export const FUNERAL_HALLS_CONTENT = {
       title: "Малый зал (до 30 человек)",
       description: "Уютный и более камерный зал площадью 80 кв. м. Он идеально подходит для прощания в кругу самых близких людей и рассчитан на комфортное размещение до 30 гостей. Спокойная атмосфера зала позволяет провести церемонию в уединенной обстановке.",
       image: {
-        webp: "/src/assets/images-optimized/funeral-hall/funeral-hall-small.webp",
-        jpg: "/src/assets/images-optimized/funeral-hall/funeral-hall-small.jpg",
+        webp: funeralHallSmallWebp,
+        png: funeralHallSmallPng,
         alt: "Малый зал для прощания в ритуальной службе Век",
         width: 600,
         height: 400
@@ -145,44 +167,62 @@ export const RITUAL_SHOP_CONTENT = {
   items: [
     {
       id: "coffins",
-      icon: "/src/assets/images-optimized/quiz-icons/coffin-standard.webp",
+      icon: {
+        webp: coffinStandardWebp,
+        png: coffinStandardPng
+      },
       alt: "Иконка гроба",
       text: "Гробы (от бюджетных моделей до элитных, обитых тканью и лакированных)"
     },
     {
       id: "wreaths",
-      icon: "/src/assets/images-optimized/quiz-icons/wreath-flowers.webp",
+      icon: {
+        webp: wreathFlowersWebp,
+        png: wreathFlowersPng
+      },
       alt: "Иконка венков",
       text: "Венки, корзины и цветочные композиции из искусственных и живых цветов"
     },
     {
       id: "crosses",
-      icon: "/src/assets/images-optimized/quiz-icons/cross-wooden.webp",
+      icon: {
+        webp: crossWoodenWebp,
+        png: crossWoodenPng
+      },
       alt: "Иконка креста",
       text: "Кресты на могилу из дерева и металла"
     },
     {
       id: "clothes",
-      icon: "/src/assets/images-optimized/quiz-icons/clothes-formal.webp",
+      icon: {
+        webp: clothesFormalWebp,
+        png: clothesFormalPng
+      },
       alt: "Иконка одежды",
       text: "Одежда, обувь и текстиль для усопших"
     },
     {
       id: "church-items",
-      icon: "/src/assets/images-optimized/ritual-icons/church-items.webp",
+      icon: {
+        webp: churchItemsWebp,
+        png: churchItemsPng
+      },
       alt: "Иконка церковных принадлежностей",
       text: "Церковные принадлежности (свечи, лампады, иконы)"
     },
     {
       id: "ribbons",
-      icon: "/src/assets/images-optimized/quiz-icons/ribbon-mourning.webp",
+      icon: {
+        webp: ribbonMourningWebp,
+        png: ribbonMourningPng
+      },
       alt: "Иконка траурной ленты",
       text: "Траурные ленты с индивидуальной надписью"
     }
   ],
   image: {
-    webp: "/src/assets/images-optimized/transport-and-office/funeral-market.webp",
-    jpg: "/src/assets/images-optimized/transport-and-office/funeral-market.jpg",
+    webp: funeralMarketWebp,
+    png: funeralMarketPng,
     alt: "Ритуальный магазин службы Век в Шуе",
     width: 600,
     height: 400

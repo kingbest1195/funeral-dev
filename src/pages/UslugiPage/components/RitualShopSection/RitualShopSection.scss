@@ -66,10 +66,9 @@
     background-color: var(--color-bg-primary);
     border: var(--border-width-1) solid var(--color-border-light);
     border-radius: var(--border-radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
+
+    @include center;
 
     img {
       width: 100%;

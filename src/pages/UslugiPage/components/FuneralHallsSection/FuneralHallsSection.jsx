@@ -21,7 +21,7 @@ const HallCard = ({ hall }) => {
           <picture>
             <source srcSet={image.webp} type="image/webp" />
             <img
-              src={image.jpg}
+              src={image.png}
               alt={image.alt}
               width={image.width}
               height={image.height}

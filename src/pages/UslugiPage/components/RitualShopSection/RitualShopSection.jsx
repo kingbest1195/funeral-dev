@@ -24,7 +24,10 @@ const RitualShopSection = () => {
               {items.map((item) => (
                 <li key={item.id}>
                   <div className="quiz-option__icon">
-                    <img src={item.icon} alt={item.alt} />
+                    <picture>
+                      <source srcSet={item.icon.webp} type="image/webp" />
+                      <img src={item.icon.png} alt={item.alt} loading="lazy" />
+                    </picture>
                   </div>
                   <span>{item.text}</span>
                 </li>
@@ -37,7 +40,7 @@ const RitualShopSection = () => {
               <picture>
                 <source srcSet={image.webp} type="image/webp" />
                 <img
-                  src={image.jpg}
+                  src={image.png}
                   alt={image.alt}
                   width={image.width}
                   height={image.height}
