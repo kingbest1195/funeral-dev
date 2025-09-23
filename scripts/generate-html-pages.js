@@ -28,7 +28,7 @@ const PAGES_CONFIG = {
     keywords: 'ритуальные услуги, организация похорон, кремация, Шуя, перевозка тела, памятники, прощальные залы',
     ogTitle: 'Ритуальные услуги в Шуе – Ритуальная служба Век',
     ogDescription: 'Полный комплекс ритуальных услуг: организация похорон, кремация, памятники, прощальные залы. Деликатная помощь в трудную минуту.',
-    canonicalUrl: 'https://ритуал-век.рф/uslugi',
+    canonicalUrl: 'https://ритуал-век.рф/uslugi/',
     dataPage: 'uslugi',
     preloadHeroImage: false
   },
@@ -38,7 +38,7 @@ const PAGES_CONFIG = {
     keywords: 'политика конфиденциальности, персональные данные, ритуальная служба Век, Шуя',
     ogTitle: 'Политика конфиденциальности – Ритуальная служба Век',
     ogDescription: 'Политика конфиденциальности и обработки персональных данных службы Век.',
-    canonicalUrl: 'https://ритуал-век.рф/privacy',
+    canonicalUrl: 'https://ритуал-век.рф/privacy/',
     dataPage: 'privacy',
     preloadHeroImage: false
   }
@@ -60,14 +60,17 @@ function generateHtmlTemplate(pageConfig) {
   const preloadScript = preloadHeroImage ? `
     <script>
       // Предзагрузка hero изображения только для главной страницы
-      if (document.getElementById('root').getAttribute('data-page') === 'home') {
-        const heroImageLink = document.createElement('link');
-        heroImageLink.rel = 'preload';
-        heroImageLink.as = 'image';
-        heroImageLink.href = '/src/assets/images-optimized/hero/hero-main.webp';
-        heroImageLink.type = 'image/webp';
-        document.head.appendChild(heroImageLink);
-      }
+      document.addEventListener('DOMContentLoaded', function() {
+        const rootElement = document.getElementById('root');
+        if (rootElement && rootElement.getAttribute('data-page') === 'home') {
+          const heroImageLink = document.createElement('link');
+          heroImageLink.rel = 'preload';
+          heroImageLink.as = 'image';
+          heroImageLink.href = '/src/assets/images-optimized/hero/hero-main.webp';
+          heroImageLink.type = 'image/webp';
+          document.head.appendChild(heroImageLink);
+        }
+      });
     </script>` : '';
 
   return `<!doctype html>
@@ -130,12 +133,26 @@ function generateHtmlPages() {
   console.log('🏗️  Генерация HTML страниц...');
 
   Object.entries(PAGES_CONFIG).forEach(([pageName, config]) => {
-    const fileName = pageName === 'index' ? 'index.html' : `${pageName}.html`;
-    const filePath = path.join(ROOT_DIR, fileName);
     const htmlContent = generateHtmlTemplate(config);
 
-    fs.writeFileSync(filePath, htmlContent, 'utf8');
-    console.log(`✅ Создан ${fileName}`);
+    if (pageName === 'index') {
+      // Главная страница остается в корне
+      const filePath = path.join(ROOT_DIR, 'index.html');
+      fs.writeFileSync(filePath, htmlContent, 'utf8');
+      console.log(`✅ Создан index.html`);
+    } else {
+      // Остальные страницы создаем в папках
+      const dirPath = path.join(ROOT_DIR, pageName);
+      const filePath = path.join(dirPath, 'index.html');
+
+      // Создаем папку если не существует
+      if (!fs.existsSync(dirPath)) {
+        fs.mkdirSync(dirPath, { recursive: true });
+      }
+
+      fs.writeFileSync(filePath, htmlContent, 'utf8');
+      console.log(`✅ Создан ${pageName}/index.html`);
+    }
   });
 
   console.log('🎉 Все HTML страницы созданы успешно!');

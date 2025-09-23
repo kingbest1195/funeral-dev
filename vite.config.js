@@ -4,7 +4,6 @@ import path from 'path';
 import { fileURLToPath, URL } from 'node:url';
 import imageOptimizationPlugin from './vite-plugins/image-optimization-plugin.js';
 import criticalCssPlugin from './vite-plugins/critical-css-plugin.js';
-import { cleanUrlsPlugin } from './vite-plugins/clean-urls-plugin.js';
 import { htmlAssetsPlugin } from './vite-plugins/html-assets-plugin.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -14,7 +13,6 @@ export default defineConfig({
     react(),
     imageOptimizationPlugin(),
     criticalCssPlugin(),
-    cleanUrlsPlugin(),
     htmlAssetsPlugin()
   ],
   resolve: {
@@ -42,8 +40,8 @@ export default defineConfig({
       // Конфигурация для многостраничного приложения (MPA)
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        uslugi: path.resolve(__dirname, 'uslugi.html'),
-        privacy: path.resolve(__dirname, 'privacy.html')
+        uslugi: path.resolve(__dirname, 'uslugi/index.html'),
+        privacy: path.resolve(__dirname, 'privacy/index.html')
       },
       output: {
         manualChunks: {

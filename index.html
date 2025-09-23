@@ -47,14 +47,17 @@
     
     <script>
       // Предзагрузка hero изображения только для главной страницы
-      if (document.getElementById('root').getAttribute('data-page') === 'home') {
-        const heroImageLink = document.createElement('link');
-        heroImageLink.rel = 'preload';
-        heroImageLink.as = 'image';
-        heroImageLink.href = '/src/assets/images-optimized/hero/hero-main.webp';
-        heroImageLink.type = 'image/webp';
-        document.head.appendChild(heroImageLink);
-      }
+      document.addEventListener('DOMContentLoaded', function() {
+        const rootElement = document.getElementById('root');
+        if (rootElement && rootElement.getAttribute('data-page') === 'home') {
+          const heroImageLink = document.createElement('link');
+          heroImageLink.rel = 'preload';
+          heroImageLink.as = 'image';
+          heroImageLink.href = '/src/assets/images-optimized/hero/hero-main.webp';
+          heroImageLink.type = 'image/webp';
+          document.head.appendChild(heroImageLink);
+        }
+      });
     </script>
   </head>
   <body>

@@ -33,9 +33,9 @@ export function htmlAssetsPlugin() {
         }
       });
 
-      // Второй проход: обрабатываем HTML файлы
+      // Второй проход: обрабатываем HTML файлы и манифесты
       Object.values(bundle).forEach(file => {
-        if (file.type === 'asset' && file.fileName.endsWith('.html')) {
+        if (file.type === 'asset' && (file.fileName.endsWith('.html') || file.fileName.endsWith('.webmanifest'))) {
           let content = file.source.toString();
 
           // Заменяем все найденные пути
@@ -49,6 +49,8 @@ export function htmlAssetsPlugin() {
               new RegExp(`content="https://ритуал-век\\.рф/${originalPath}"`, 'g'),
               // Также для путей без ведущего слеша в content
               new RegExp(`content="https://ритуал-век\\.рф/${originalPath.replace(/^\//, '')}"`, 'g'),
+              // Для JSON манифеста - заменяем в значениях "src"
+              new RegExp(`"src":\\s*"${originalPath.split('/').pop()}"`, 'g'),
             ];
 
             patterns.forEach(pattern => {
@@ -56,6 +58,11 @@ export function htmlAssetsPlugin() {
                 if (match.includes('https://')) {
                   // Для URL с доменом заменяем только путь
                   return match.replace(new RegExp(originalPath.replace(/\//g, '\\/')), hashedPath);
+                } else if (match.includes('"src":')) {
+                  // Для JSON манифеста заменяем только имя файла
+                  const fileName = originalPath.split('/').pop();
+                  const hashedFileName = hashedPath.split('/').pop();
+                  return match.replace(fileName, hashedFileName);
                 } else {
                   // Для локальных путей заменяем полностью
                   return match.replace(originalPath, hashedPath);
