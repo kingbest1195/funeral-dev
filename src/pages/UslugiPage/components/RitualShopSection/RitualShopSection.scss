@@ -1,0 +1,109 @@
+// =================
+// СЕКЦИЯ РИТУАЛЬНОГО МАГАЗИНА - RitualShopSection.scss
+// =================
+
+@use "@/styles/mixins" as *;
+
+// Ритуальный магазин
+.ritual-shop {
+  padding: var(--spacing-20) 0;
+  background: var(--color-bg-secondary);
+
+  &__title {
+    @include section-title-with-large-margin;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-16);
+    align-items: center;
+
+    @include md-down {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-8);
+    }
+  }
+
+  &__text {
+    p {
+      font-size: var(--font-size-lg);
+      color: var(--color-text-secondary);
+      line-height: var(--line-height-normal);
+      margin-bottom: var(--spacing-6);
+    }
+  }
+
+  &__subtitle {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary); // Исправляем цвет согласно дизайн-системе
+    margin-bottom: var(--spacing-4);
+    margin-top: var(--spacing-2);
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      margin-bottom: var(--spacing-3);
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
+      line-height: var(--line-height-normal);
+    }
+  }
+
+  .quiz-option__icon {
+    flex-shrink: 0;
+    width: var(--spacing-12);
+    height: var(--spacing-12);
+    background-color: var(--color-bg-primary);
+    border: var(--border-width-1) solid var(--color-border-light);
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: var(--border-radius-sm);
+    }
+  }
+
+  &__image {
+    border-radius: var(--border-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    aspect-ratio: 4 / 3; // Фиксированное соотношение 4:3
+
+    @include md-down {
+      order: -1;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover; // Растягиваем изображение по всему контейнеру
+    }
+  }
+}
+
+// Responsive adjustments
+@include md-down {
+  .ritual-shop__content {
+    .ritual-shop__image {
+      margin-bottom: var(--spacing-6);
+    }
+  }
+}

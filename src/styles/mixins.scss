@@ -932,3 +932,37 @@ $breakpoints: (
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
+
+// PROJECT-SPECIFIC SECTION TITLE MIXINS
+// =================
+
+/// Миксин для заголовков секций (как services__title)
+@mixin section-title {
+  text-align: center;
+  margin-bottom: var(--spacing-4);
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-3xl);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-primary);
+
+  @include md-down {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/// Миксин для заголовков секций с большим отступом снизу
+@mixin section-title-with-large-margin {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-3xl);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-primary);
+
+  @include md-down {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-12);
+  }
+}
