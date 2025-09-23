@@ -34,6 +34,17 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     type = "website",
     image = "",
     jsonLd = null,
+    // Open Graph и Twitter мета-теги
+    ogTitle,
+    ogDescription,
+    ogImage,
+    ogUrl,
+    ogType,
+    ogSiteName,
+    twitterCard,
+    twitterTitle,
+    twitterDescription,
+    twitterImage,
   } = seo;
 
   // Структурированные данные для LocalBusiness
@@ -133,22 +144,33 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     updateMetaTag("keywords", keywords);
 
     // Open Graph
-    updateMetaTag("og:title", title, true);
-    updateMetaTag("og:description", description, true);
-    updateMetaTag("og:type", type, true);
+    updateMetaTag("og:title", ogTitle || title, true);
+    updateMetaTag("og:description", ogDescription || description, true);
+    updateMetaTag("og:type", ogType || type, true);
     updateMetaTag("og:locale", "ru_RU", true);
 
-    if (image) {
-      updateMetaTag("og:image", image, true);
+    if (ogUrl) {
+      updateMetaTag("og:url", ogUrl, true);
+    }
+
+    if (ogSiteName) {
+      updateMetaTag("og:site_name", ogSiteName, true);
+    }
+
+    if (ogImage || image) {
+      updateMetaTag("og:image", ogImage || image, true);
+      updateMetaTag("og:image:width", "1200", true);
+      updateMetaTag("og:image:height", "630", true);
+      updateMetaTag("og:image:type", "image/png", true);
     }
 
     // Twitter Card
-    updateMetaTag("twitter:card", "summary_large_image");
-    updateMetaTag("twitter:title", title);
-    updateMetaTag("twitter:description", description);
+    updateMetaTag("twitter:card", twitterCard || "summary_large_image");
+    updateMetaTag("twitter:title", twitterTitle || ogTitle || title);
+    updateMetaTag("twitter:description", twitterDescription || ogDescription || description);
 
-    if (image) {
-      updateMetaTag("twitter:image", image);
+    if (twitterImage || ogImage || image) {
+      updateMetaTag("twitter:image", twitterImage || ogImage || image);
     }
 
     // Canonical URL
@@ -235,7 +257,7 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     jsonLdScript.type = "application/ld+json";
     jsonLdScript.textContent = JSON.stringify(structuredData);
     document.head.appendChild(jsonLdScript);
-  }, [title, description, keywords, canonical, type, image, jsonLd]);
+  }, [title, description, keywords, canonical, type, image, jsonLd, ogTitle, ogDescription, ogImage, ogUrl, ogType, ogSiteName, twitterCard, twitterTitle, twitterDescription, twitterImage]);
 
   // Обработка клика по телефону для аналитики
   const handlePhoneClick = () => {

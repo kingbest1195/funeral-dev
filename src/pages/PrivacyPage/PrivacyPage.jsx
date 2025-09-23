@@ -1,27 +1,39 @@
 import React from "react";
 import { Helmet } from "@dr.pogodin/react-helmet";
 import { COMPANY_INFO, formatDate } from "@/helpers/index.js";
+import { SITE_CONFIG, getFullUrl, getOgImageUrl } from "@/constants/content.js";
 import Global from "@/components/Global/Global.jsx";
 import "./PrivacyPage.scss";
 
 const PrivacyPage = () => {
   const seoData = {
-    title: "Политика конфиденциальности | Ритуальная служба Век",
+    title: `Политика конфиденциальности | ${SITE_CONFIG.SITE_NAME}`,
     description:
-      "Политика конфиденциальности и обработки персональных данных ритуальной службы Век в Шуе. Защита ваших данных и права субъектов персональных данных.",
+      `Политика конфиденциальности и обработки персональных данных ${SITE_CONFIG.SITE_NAME}${SITE_CONFIG.COMMON_TEXTS.LOCATION}. Защита ваших данных и права субъектов персональных данных.`,
     keywords:
-      "политика конфиденциальности, персональные данные, обработка данных, ритуальная служба Век, Шуя",
+      `политика конфиденциальности, персональные данные, обработка данных, ${SITE_CONFIG.SITE_NAME}, Шуя`,
     type: "article",
-    canonical: typeof window !== "undefined" ? `${window.location.origin}/privacy` : "",
+    canonical: getFullUrl("/privacy"),
+    // Open Graph и Twitter Card мета-теги
+    ogTitle: `Политика конфиденциальности${SITE_CONFIG.COMMON_TEXTS.SITE_TITLE_SUFFIX}`,
+    ogDescription: `Политика конфиденциальности и обработки персональных данных службы Век${SITE_CONFIG.COMMON_TEXTS.LOCATION}. Защита ваших данных и права субъектов.`,
+    ogImage: getOgImageUrl(SITE_CONFIG.OG_IMAGES.DEFAULT),
+    ogUrl: getFullUrl("/privacy"),
+    ogType: "article",
+    ogSiteName: SITE_CONFIG.SITE_NAME,
+    twitterCard: "summary_large_image",
+    twitterTitle: `Политика конфиденциальности${SITE_CONFIG.COMMON_TEXTS.SITE_TITLE_SUFFIX}`,
+    twitterDescription: `Политика конфиденциальности и обработки персональных данных службы Век${SITE_CONFIG.COMMON_TEXTS.LOCATION}. Защита ваших данных и права субъектов.`,
+    twitterImage: getOgImageUrl(SITE_CONFIG.OG_IMAGES.DEFAULT),
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "WebPage",
       name: "Политика конфиденциальности",
-      description: "Политика конфиденциальности и обработки персональных данных ритуальной службы Век",
-      url: typeof window !== "undefined" ? `${window.location.origin}/privacy` : "",
+      description: `Политика конфиденциальности и обработки персональных данных ${SITE_CONFIG.SITE_NAME}`,
+      url: getFullUrl("/privacy"),
       publisher: {
         "@type": "Organization",
-        name: COMPANY_INFO.name,
+        name: SITE_CONFIG.SITE_NAME,
         telephone: COMPANY_INFO.phone,
       },
       dateModified: "2025-09-20T00:00:00Z",

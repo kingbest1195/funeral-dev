@@ -2,6 +2,37 @@
 // КОНТЕНТ И КОНСТАНТЫ ДЛЯ СТРАНИЦ
 // =================
 
+// ГЛОБАЛЬНЫЕ SEO КОНСТАНТЫ
+// =================
+export const SITE_CONFIG = {
+  // Основной домен (Punycode для кириллического домена)
+  DOMAIN: "https://xn----7sbhmlqd1btk.xn--p1ai",
+  SITE_NAME: "Ритуальная служба Век",
+
+  // Базовые шаблоны для Open Graph
+  OG_IMAGES: {
+    DEFAULT: "/images/og/hero-main.png",
+    SERVICES: "/images/og/funeral-hall.png",
+  },
+
+  // Повторяющиеся текстовые блоки
+  COMMON_TEXTS: {
+    SITE_TITLE_SUFFIX: " – Ритуальная служба Век",
+    DESCRIPTION_SUFFIX: " +7 (920) 366-36-36",
+    LOCATION: " в Шуе",
+  }
+};
+
+// Функция для генерации полного URL
+export const getFullUrl = (path = "") => {
+  return `${SITE_CONFIG.DOMAIN}${path}`;
+};
+
+// Функция для генерации полного пути к OG изображению
+export const getOgImageUrl = (imageName) => {
+  return `${SITE_CONFIG.DOMAIN}${imageName}`;
+};
+
 // УСЛУГИ - данные для секции услуг
 // =================
 export const SERVICES_DATA = {
@@ -259,12 +290,21 @@ export const CTA_DATA = {
 // SEO ДАННЫЕ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ
 // =================
 export const HOME_SEO_DATA = {
-  title: "Ритуальная служба Век - Помощь в трудную минуту | Шуя",
-  description:
-    "Ритуальная служба Век в Шуе. Круглосуточная помощь в организации похорон, кремация, памятники. Профессиональные агенты. Звоните +7 (920) 366-36-36",
-  keywords:
-    "ритуальные услуги Шуя, похоронное бюро Шуя, организация похорон, кремация Шуя, памятники Шуя, ритуальный агент Шуя, груз 200",
+  title: `${SITE_CONFIG.SITE_NAME} - Помощь в трудную минуту | Шуя`,
+  description: `${SITE_CONFIG.SITE_NAME}${SITE_CONFIG.COMMON_TEXTS.LOCATION}. Круглосуточная помощь в организации похорон, кремация, памятники. Профессиональные агенты. Звоните${SITE_CONFIG.COMMON_TEXTS.DESCRIPTION_SUFFIX}`,
+  keywords: "ритуальные услуги Шуя, похоронное бюро Шуя, организация похорон, кремация Шуя, памятники Шуя, ритуальный агент Шуя, груз 200",
   type: "website",
+  // Open Graph и Twitter Card мета-теги
+  ogTitle: `${SITE_CONFIG.SITE_NAME} - Помощь в трудную минуту | Шуя`,
+  ogDescription: `Круглосуточная помощь в организации похорон${SITE_CONFIG.COMMON_TEXTS.LOCATION}. Кремация, памятники, полный спектр ритуальных услуг. Профессиональные агенты.${SITE_CONFIG.COMMON_TEXTS.DESCRIPTION_SUFFIX}`,
+  ogImage: getOgImageUrl(SITE_CONFIG.OG_IMAGES.DEFAULT),
+  ogUrl: getFullUrl("/"),
+  ogType: "website",
+  ogSiteName: SITE_CONFIG.SITE_NAME,
+  twitterCard: "summary_large_image",
+  twitterTitle: `${SITE_CONFIG.SITE_NAME} - Помощь в трудную минуту | Шуя`,
+  twitterDescription: `Круглосуточная помощь в организации похорон${SITE_CONFIG.COMMON_TEXTS.LOCATION}. Кремация, памятники, полный спектр ритуальных услуг.${SITE_CONFIG.COMMON_TEXTS.DESCRIPTION_SUFFIX}`,
+  twitterImage: getOgImageUrl(SITE_CONFIG.OG_IMAGES.DEFAULT),
 };
 
 // УВЕДОМЛЕНИЯ И АЛЕРТЫ

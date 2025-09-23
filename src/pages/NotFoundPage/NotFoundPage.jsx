@@ -2,18 +2,30 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "@dr.pogodin/react-helmet";
 import { COMPANY_INFO } from "@/helpers/index.js";
+import { SITE_CONFIG, getFullUrl, getOgImageUrl } from "@/constants/content.js";
 import Global from "@/components/Global/Global.jsx";
 import "./NotFoundPage.scss";
 
 const NotFoundPage = () => {
   const seoData = {
-    title: "Страница не найдена | Ритуальная служба Век",
+    title: `Страница не найдена | ${SITE_CONFIG.SITE_NAME}`,
     description:
-      "Запрашиваемая страница не найдена. Свяжитесь с ритуальной службой Век в Шуе по телефону +7 (920) 366-36-36 или вернитесь на главную страницу.",
+      `Запрашиваемая страница не найдена. Свяжитесь с ${SITE_CONFIG.SITE_NAME}${SITE_CONFIG.COMMON_TEXTS.LOCATION} по телефону${SITE_CONFIG.COMMON_TEXTS.DESCRIPTION_SUFFIX} или вернитесь на главную страницу.`,
     keywords:
-      "страница не найдена, 404, ритуальная служба Век, Шуя, контакты",
+      `страница не найдена, 404, ${SITE_CONFIG.SITE_NAME}, Шуя, контакты`,
     type: "webpage",
-    canonical: typeof window !== "undefined" ? `${window.location.origin}/404` : "",
+    canonical: getFullUrl("/404"),
+    // Open Graph и Twitter Card мета-теги
+    ogTitle: `Страница не найдена${SITE_CONFIG.COMMON_TEXTS.SITE_TITLE_SUFFIX}`,
+    ogDescription: `Запрашиваемая страница не найдена. Свяжитесь с службой Век${SITE_CONFIG.COMMON_TEXTS.LOCATION}:${SITE_CONFIG.COMMON_TEXTS.DESCRIPTION_SUFFIX} или вернитесь на главную.`,
+    ogImage: getOgImageUrl(SITE_CONFIG.OG_IMAGES.DEFAULT),
+    ogUrl: typeof window !== "undefined" ? window.location.href : "",
+    ogType: "website",
+    ogSiteName: SITE_CONFIG.SITE_NAME,
+    twitterCard: "summary_large_image",
+    twitterTitle: `Страница не найдена${SITE_CONFIG.COMMON_TEXTS.SITE_TITLE_SUFFIX}`,
+    twitterDescription: `Запрашиваемая страница не найдена. Свяжитесь с службой Век${SITE_CONFIG.COMMON_TEXTS.LOCATION}:${SITE_CONFIG.COMMON_TEXTS.DESCRIPTION_SUFFIX}`,
+    twitterImage: getOgImageUrl(SITE_CONFIG.OG_IMAGES.DEFAULT),
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -22,7 +34,7 @@ const NotFoundPage = () => {
       url: typeof window !== "undefined" ? window.location.href : "",
       publisher: {
         "@type": "Organization",
-        name: COMPANY_INFO.name,
+        name: SITE_CONFIG.SITE_NAME,
         telephone: COMPANY_INFO.phone,
       },
       inLanguage: "ru-RU",
