@@ -50,9 +50,25 @@
   <!-- Critical logo preload для хедера -->
   <link rel="preload" href="./src/assets/icons/logo-vek.svg" as="image" type="image/svg+xml">
 
-  <!-- Critical Hero image preload -->
-  <link rel="preload" href="./src/assets/images-optimized/transport-and-office/office-facade.webp" as="image" type="image/webp">
-  <link rel="preload" href="./src/assets/images-optimized/transport-and-office/office-facade.png" as="image" type="image/png">
+  <!-- Critical Hero image preload (только для главной страницы) -->
+  <script>
+    // Предзагружаем hero изображение только для главной страницы
+    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+      const webpLink = document.createElement('link');
+      webpLink.rel = 'preload';
+      webpLink.href = './src/assets/images-optimized/transport-and-office/office-facade.webp';
+      webpLink.as = 'image';
+      webpLink.type = 'image/webp';
+      document.head.appendChild(webpLink);
+
+      const pngLink = document.createElement('link');
+      pngLink.rel = 'preload';
+      pngLink.href = './src/assets/images-optimized/transport-and-office/office-facade.png';
+      pngLink.as = 'image';
+      pngLink.type = 'image/png';
+      document.head.appendChild(pngLink);
+    }
+  </script>
 
   <!-- Critical CSS for preventing FOUC -->
   <style>

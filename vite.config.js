@@ -67,5 +67,11 @@ export default defineConfig({
         secure: false,
       }
     }
+  },
+  preview: {
+    port: 3001,
+    strictPort: true,
+    // Настройка для SPA - все маршруты направляются на index.html
+    historyApiFallback: true
   }
 });
