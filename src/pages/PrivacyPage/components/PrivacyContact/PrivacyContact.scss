@@ -1,0 +1,70 @@
+// =================
+// СТИЛИ КОМПОНЕНТА CONTACT - PrivacyContact.scss
+// Оригинальные стили .privacy-page__contact
+// =================
+
+.privacy-contact {
+  margin-top: var(--spacing-32);
+  padding: var(--spacing-16);
+  background: var(--color-bg-secondary);
+  border-radius: var(--border-radius-md);
+  border: var(--border-width-1) solid var(--color-border);
+
+  // Заголовки внутри контактной секции
+  h2 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+    margin: 0 0 var(--spacing-8) 0;
+    padding-bottom: var(--spacing-4);
+    border-bottom: var(--border-width-2) solid var(--color-accent);
+  }
+
+  // Параграфы в контактной секции
+  p {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-4) 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Списки в контактной секции
+  ul {
+    margin: 0 0 var(--spacing-4) 0;
+    padding-left: var(--spacing-6);
+    list-style-type: disc;
+
+    li {
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-normal);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-3);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      strong {
+        color: var(--color-text-primary);
+        font-weight: var(--font-weight-semibold);
+      }
+
+      a {
+        color: var(--color-accent);
+        text-decoration: none;
+        font-weight: var(--font-weight-medium);
+
+        &:hover {
+          color: var(--color-accent-light);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

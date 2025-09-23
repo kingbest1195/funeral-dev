@@ -1,0 +1,77 @@
+// =================
+// HERO СЕКЦИЯ СТРАНИЦЫ ПОЛИТИКИ КОНФИДЕНЦИАЛЬНОСТИ - PrivacyHeroSection.scss
+// =================
+
+@use "@/styles/mixins" as *;
+
+.privacy-hero {
+  // Используем ту же систему отступов от шапки, что и в UslugiPage
+  padding: var(--spacing-16) 0 var(--spacing-20);
+  margin-top: calc(var(--header-height) + var(--spacing-12));
+
+  & > .container {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--spacing-20);
+  }
+
+  @include md-down {
+    margin-top: calc(var(--header-height) + var(--spacing-8));
+    padding: var(--spacing-12) 0;
+  }
+
+  &__header {
+    margin-bottom: var(--spacing-4);
+  }
+
+  &__title {
+    color: var(--color-text-primary);
+    letter-spacing: var(--letter-spacing-tight);
+    margin-bottom: var(--spacing-4);
+    text-align: center;
+
+    @include md-down {
+      margin-bottom: var(--spacing-4);
+    }
+  }
+
+  &__date {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    text-align: center;
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--spacing-8);
+
+    strong {
+      color: var(--color-text-primary);
+      font-weight: var(--font-weight-medium);
+    }
+  }
+
+  &__intro {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    text-align: center;
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--spacing-8);
+    max-width: var(--container-lg);
+    margin-left: auto;
+    margin-right: auto;
+
+    p {
+      margin-bottom: var(--spacing-6);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    code {
+      background-color: var(--color-bg-secondary);
+      padding: 0.125rem 0.25rem;
+      border-radius: var(--border-radius-sm);
+      font-family: var(--font-monospace);
+      font-size: 0.875em;
+    }
+  }
+}

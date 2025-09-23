@@ -1,0 +1,31 @@
+// =================
+// СТИЛИ КОМПОНЕНТА CALLOUT - PrivacyCallout.scss
+// Оригинальные стили .privacy-page__intro
+// =================
+
+.privacy-callout {
+  padding: var(--spacing-16);
+  background: var(--color-accent-transparent);
+  border-radius: var(--border-radius-md);
+  border-left: var(--border-width-4) solid var(--color-accent);
+
+  p {
+    margin: 0 0 var(--spacing-4) 0;
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    code {
+      background-color: var(--color-bg-secondary);
+      padding: 0.125rem 0.25rem;
+      border-radius: var(--border-radius-sm);
+      font-family: var(--font-monospace);
+      font-size: 0.875em;
+      color: var(--color-text-primary);
+    }
+  }
+}

@@ -1,0 +1,248 @@
+// =================
+// ОСНОВНАЯ СЕКЦИЯ КОНТЕНТА ПОЛИТИКИ КОНФИДЕНЦИАЛЬНОСТИ - PrivacyContentSection.scss
+// =================
+
+@use "@/styles/mixins" as *;
+
+.privacy-content {
+  padding: var(--spacing-20) 0;
+  background: var(--color-bg-primary);
+
+  &__section {
+    margin-bottom: var(--spacing-20);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__section-title {
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-8);
+    color: var(--color-text-primary);
+
+    padding-bottom: var(--spacing-4);
+    border-bottom: var(--border-width-2) solid var(--color-accent);
+  }
+
+  &__subsection {
+    margin-bottom: var(--spacing-6);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__subsection-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
+    color: var(--color-text-primary);
+  }
+
+  &__description {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--spacing-6);
+    color: var(--color-text-secondary);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__conclusion {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-normal);
+    margin-top: var(--spacing-6);
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+
+  // Списки определений
+  &__definition-list {
+    @include list-reset;
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-normal);
+  }
+
+  &__definition-item {
+    margin-bottom: var(--spacing-6);
+    line-height: var(--line-height-relaxed);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__term {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  // Информационные списки
+  &__info-list {
+    @include list-reset;
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-normal);
+  }
+
+  &__info-item {
+    margin-bottom: var(--spacing-4);
+    padding: var(--spacing-2) 0;
+    border-bottom: 1px solid var(--color-border-light);
+
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+
+    strong {
+      color: var(--color-text-primary);
+      font-weight: var(--font-weight-medium);
+      display: inline-block;
+      min-width: 180px;
+
+      @include md-down {
+        display: block;
+        min-width: auto;
+        margin-bottom: var(--spacing-2);
+      }
+    }
+  }
+
+  // Обычные списки
+  &__list {
+    list-style: disc;
+    padding-left: var(--spacing-6);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-normal);
+
+    li {
+      margin-bottom: var(--spacing-4);
+      line-height: var(--line-height-relaxed);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Таблица
+  &__table-wrapper {
+    overflow-x: auto;
+    margin: var(--spacing-12) 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    background: var(--color-bg-primary);
+
+    @include md-down {
+      margin-left: calc(-1 * var(--spacing-6));
+      margin-right: calc(-1 * var(--spacing-6));
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+
+    th {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      background: var(--color-bg-secondary);
+      padding: var(--spacing-6);
+      text-align: left;
+      border-bottom: 2px solid var(--color-border);
+
+      &:first-child {
+        width: 40%;
+      }
+    }
+
+    td {
+      padding: var(--spacing-6);
+      border-bottom: 1px solid var(--color-border-light);
+      vertical-align: top;
+      line-height: var(--line-height-relaxed);
+    }
+
+    tr {
+      &:last-child td {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background: var(--color-bg-secondary);
+      }
+    }
+  }
+
+  // Контактная информация
+  &__contact {
+    margin-top: var(--spacing-20);
+    padding-top: var(--spacing-20);
+    border-top: 2px solid var(--color-border);
+  }
+
+  &__contact-list {
+    @include list-reset;
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-normal);
+  }
+
+  &__contact-item {
+    margin-bottom: var(--spacing-4);
+    line-height: var(--line-height-relaxed);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__contact-link {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+
+    &:hover {
+      color: var(--color-accent-light);
+      text-decoration: underline;
+    }
+  }
+
+  // Инлайн код
+  &__code {
+    background-color: var(--color-bg-secondary);
+    padding: 0.125rem 0.25rem;
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-monospace);
+    font-size: 0.875em;
+  }
+
+  // Общие параграфы
+  p {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-3);
+    color: var(--color-text-secondary);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    code {
+      background-color: var(--color-bg-secondary);
+      padding: 0.125rem 0.25rem;
+      border-radius: var(--border-radius-sm);
+      font-family: var(--font-monospace);
+      font-size: 0.875em;
+    }
+  }
+}

@@ -74,7 +74,9 @@
       "mcp__sequential-thinking__sequentialthinking",
       "Bash(npm search:*)",
       "Bash(npm run generate:sitemap:*)",
-      "Bash(npx sharp-cli:*)"
+      "Bash(npx sharp-cli:*)",
+      "WebFetch(domain:www.opengraph.xyz)",
+      "WebFetch(domain:xn----7sbhmlqd1btk.xn--p1ai)"
     ],
     "deny": [],
     "ask": []

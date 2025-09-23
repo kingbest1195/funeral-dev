@@ -9,10 +9,10 @@ export const SITE_CONFIG = {
   DOMAIN: "https://xn----7sbhmlqd1btk.xn--p1ai",
   SITE_NAME: "Ритуальная служба Век",
 
-  // Базовые шаблоны для Open Graph
+  // Базовые шаблоны для Open Graph (абсолютные URL для соцсетей)
   OG_IMAGES: {
-    DEFAULT: "/images/og/hero-main.png",
-    SERVICES: "/images/og/funeral-hall.png",
+    DEFAULT: "https://xn----7sbhmlqd1btk.xn--p1ai/images/og/hero-main.png",
+    SERVICES: "https://xn----7sbhmlqd1btk.xn--p1ai/images/og/funeral-hall.png",
   },
 
   // Повторяющиеся текстовые блоки
@@ -29,8 +29,13 @@ export const getFullUrl = (path = "") => {
 };
 
 // Функция для генерации полного пути к OG изображению
-export const getOgImageUrl = (imageName) => {
-  return `${SITE_CONFIG.DOMAIN}${imageName}`;
+export const getOgImageUrl = (imageUrl) => {
+  // Если URL уже содержит домен, возвращаем как есть
+  if (imageUrl.startsWith('http')) {
+    return imageUrl;
+  }
+  // Иначе добавляем домен
+  return `${SITE_CONFIG.DOMAIN}${imageUrl}`;
 };
 
 // УСЛУГИ - данные для секции услуг
