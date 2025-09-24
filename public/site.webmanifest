@@ -1,0 +1,22 @@
+{
+  "name": "Ритуальная служба Век - Шуя",
+  "short_name": "Век Шуя",
+  "description": "Ритуальные услуги в Шуе - круглосуточно, выезд на дом, полный комплекс",
+  "icons": [
+    {
+      "src": "/assets/android-chrome-192x192-CGHmMOki.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/android-chrome-512x512-Cfp7G19M.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#c49e5e",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}

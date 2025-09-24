@@ -74,6 +74,44 @@ export function htmlAssetsPlugin() {
           file.source = content;
         }
       });
+
+      // Копируем favicon.ico в корень без хеша
+      const faviconAsset = Object.values(bundle).find(file =>
+        file.type === 'asset' && file.fileName.includes('favicon') && file.fileName.endsWith('.ico')
+      );
+      if (faviconAsset) {
+        bundle['favicon.ico'] = {
+          type: 'asset',
+          fileName: 'favicon.ico',
+          source: faviconAsset.source,
+        };
+      }
+
+      // Копируем и обновляем site.webmanifest в корень
+      const manifestAsset = Object.values(bundle).find(file =>
+        file.type === 'asset' && file.fileName.includes('site.webmanifest')
+      );
+      if (manifestAsset) {
+        let manifestContent = manifestAsset.source.toString();
+
+        // Заменяем пути в манифесте на актуальные хеши
+        assetMap.forEach((hashedPath, originalPath) => {
+          if (originalPath.includes('android-chrome')) {
+            const originalFileName = originalPath.split('/').pop();
+            const hashedFileName = hashedPath.split('/').pop();
+            manifestContent = manifestContent.replace(
+              new RegExp(`"src":\\s*"/[^"]*${originalFileName}"`, 'g'),
+              `"src": "/assets/${hashedFileName}"`
+            );
+          }
+        });
+
+        bundle['site.webmanifest'] = {
+          type: 'asset',
+          fileName: 'site.webmanifest',
+          source: manifestContent,
+        };
+      }
     }
   };
 }

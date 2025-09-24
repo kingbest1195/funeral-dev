@@ -1,53 +1,216 @@
 /**
  * Генератор HTML страниц для MPA
  * Автоматически создает HTML файлы на основе конфигурации страниц
+ * Следует принципам: модульность, переиспользуемость, отсутствие хардкода
  */
 
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { COMPANY_INFO } from '../src/helpers/index.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..');
 
-// Конфигурация страниц
-const PAGES_CONFIG = {
-  index: {
-    title: 'Ритуальная служба Век - Помощь в трудную минуту | Шуя',
-    description: 'Ритуальная служба Век в Шуе. Круглосуточная помощь в организации похорон, кремации, изготовление памятников. Звоните: +7 (920) 366-36-36',
-    keywords: 'ритуальная служба, похороны, Шуя, организация похорон, кремация, памятники, ритуальные услуги',
-    ogTitle: 'Ритуальная служба Век - Помощь в трудную минуту | Шуя',
-    ogDescription: 'Круглосуточная ритуальная служба в Шуе. Полный комплекс услуг: организация похорон, кремация, памятники. Бесплатная консультация.',
-    ogImage: 'https://ритуал-век.рф/images/og/hero-main.png',
-    canonicalUrl: 'https://ритуал-век.рф/',
-    dataPage: 'home',
-    preloadHeroImage: true
-  },
-  uslugi: {
-    title: 'Ритуальные услуги в Шуе: организация похорон и кремация – Ритуальная служба Век',
-    description: 'Полный комплекс ритуальных услуг в Шуе: организация похорон, кремация, перевозка тела, памятники. Круглосуточная служба Век. Звоните: +7 (920) 366-36-36',
-    keywords: 'ритуальные услуги, организация похорон, кремация, Шуя, перевозка тела, памятники, прощальные залы',
-    ogTitle: 'Ритуальные услуги в Шуе – Ритуальная служба Век',
-    ogDescription: 'Полный комплекс ритуальных услуг: организация похорон, кремация, памятники, прощальные залы. Деликатная помощь в трудную минуту.',
-    ogImage: 'https://ритуал-век.рф/images/og/funeral-hall.png',
-    canonicalUrl: 'https://ритуал-век.рф/uslugi/',
-    dataPage: 'uslugi',
-    preloadHeroImage: false
-  },
-  privacy: {
-    title: 'Политика конфиденциальности | Ритуальная служба Век',
-    description: 'Политика конфиденциальности и обработки персональных данных ритуальной службы Век в Шуе. Информация о защите персональных данных.',
-    keywords: 'политика конфиденциальности, персональные данные, ритуальная служба Век, Шуя',
-    ogTitle: 'Политика конфиденциальности – Ритуальная служба Век',
-    ogDescription: 'Политика конфиденциальности и обработки персональных данных службы Век.',
-    ogImage: 'https://ритуал-век.рф/assets/office-facade-CENYA-P5.webp',
-    canonicalUrl: 'https://ритуал-век.рф/privacy/',
-    dataPage: 'privacy',
-    preloadHeroImage: false
-  }
+// КОНСТАНТЫ ПРОЕКТА
+// =================
+
+// Базовые мета-теги и настройки
+const BASE_CONFIG = {
+  charset: 'UTF-8',
+  viewport: 'width=device-width, initial-scale=1.0',
+  robots: 'index, follow',
+  siteName: COMPANY_INFO.name,
+  locale: 'ru_RU',
+  companyPhone: COMPANY_INFO.phone,
 };
 
-// Базовый шаблон HTML
+// Структура favicon'ов (пути генерируются Vite автоматически)
+const FAVICON_ASSETS = [
+  { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+  { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/assets/favicon-16x16.png' },
+  { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/assets/favicon-32x32.png' },
+  { rel: 'apple-touch-icon', sizes: '180x180', href: '/assets/apple-touch-icon.png' },
+  { rel: 'manifest', href: '/site.webmanifest' },
+];
+
+// Внешние подключения (fonts, DNS prefetch)
+const EXTERNAL_RESOURCES = {
+  preconnect: [
+    'https://fonts.googleapis.com',
+    { href: 'https://fonts.gstatic.com', crossorigin: true },
+  ],
+  fonts: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap',
+  dnsPrefetch: [
+    '//www.google-analytics.com',
+    '//www.googletagmanager.com',
+  ],
+};
+
+// Изображения для Open Graph (пути обрабатываются htmlAssetsPlugin)
+const OG_IMAGES = {
+  heroMain: '/images/og/hero-main.png',
+  funeralHall: '/images/og/funeral-hall.png',
+  officeFacade: '/assets/office-facade-CENYA-P5.webp',
+};
+
+// Критически важные изображения для preload
+const CRITICAL_IMAGES = [
+  // Убраны неиспользуемые изображения office-facade для устранения warning в консоли
+];
+
+// КОНФИГУРАЦИЯ СТРАНИЦ
+// ===================
+
+const PAGES_CONFIG = {
+  index: {
+    title: `${COMPANY_INFO.name} - Помощь в трудную минуту | ${COMPANY_INFO.city}`,
+    description: `${COMPANY_INFO.name} в ${COMPANY_INFO.city}. Круглосуточная помощь в организации похорон, кремации, изготовление памятников. Звоните: ${COMPANY_INFO.phone}`,
+    keywords: 'ритуальная служба, похороны, Шуя, организация похорон, кремация, памятники, ритуальные услуги',
+    ogTitle: `${COMPANY_INFO.name} - Помощь в трудную минуту | ${COMPANY_INFO.city}`,
+    ogDescription: `Круглосуточная ритуальная служба в ${COMPANY_INFO.city}. Полный комплекс услуг: организация похорон, кремация, памятники. Бесплатная консультация.`,
+    ogImage: `https://ритуал-век.рф${OG_IMAGES.heroMain}`,
+    canonicalUrl: 'https://ритуал-век.рф/',
+    dataPage: 'home',
+    preloadHeroImage: true,
+  },
+  uslugi: {
+    title: `Ритуальные услуги в ${COMPANY_INFO.city}: организация похорон и кремация – ${COMPANY_INFO.name}`,
+    description: `Полный комплекс ритуальных услуг в ${COMPANY_INFO.city}: организация похорон, кремация, перевозка тела, памятники. Круглосуточная служба Век. Звоните: ${COMPANY_INFO.phone}`,
+    keywords: 'ритуальные услуги, организация похорон, кремация, Шуя, перевозка тела, памятники, прощальные залы',
+    ogTitle: `Ритуальные услуги в ${COMPANY_INFO.city} – ${COMPANY_INFO.name}`,
+    ogDescription: 'Полный комплекс ритуальных услуг: организация похорон, кремация, памятники, прощальные залы. Деликатная помощь в трудную минуту.',
+    ogImage: `https://ритуал-век.рф${OG_IMAGES.funeralHall}`,
+    canonicalUrl: 'https://ритуал-век.рф/uslugi/',
+    dataPage: 'uslugi',
+    preloadHeroImage: false,
+  },
+  privacy: {
+    title: `Политика конфиденциальности | ${COMPANY_INFO.name}`,
+    description: `Политика конфиденциальности и обработки персональных данных ${COMPANY_INFO.legalName} в ${COMPANY_INFO.city}. Информация о защите персональных данных.`,
+    keywords: `политика конфиденциальности, персональные данные, ${COMPANY_INFO.name}, ${COMPANY_INFO.city}`,
+    ogTitle: `Политика конфиденциальности – ${COMPANY_INFO.name}`,
+    ogDescription: `Политика конфиденциальности и обработки персональных данных ${COMPANY_INFO.legalName}.`,
+    ogImage: `https://ритуал-век.рф${OG_IMAGES.officeFacade}`,
+    canonicalUrl: 'https://ритуал-век.рф/privacy/',
+    dataPage: 'privacy',
+    preloadHeroImage: false,
+  },
+};
+
+// ГЕНЕРАЦИЯ HTML КОМПОНЕНТОВ
+// ==========================
+
+/**
+ * Создает мета-теги для SEO
+ * @param {Object} seoData - Данные для SEO
+ * @returns {string} - HTML строка с мета-тегами
+ */
+const generateSeoMetaTags = (seoData) => {
+  const { title, description, keywords, canonicalUrl } = seoData;
+
+  return `<!-- SEO Meta Tags -->
+    <title>${title}</title>
+    <meta name="description" content="${description}" />
+    <meta name="keywords" content="${keywords}" />
+    <link rel="canonical" href="${canonicalUrl}" />
+    <meta name="robots" content="${BASE_CONFIG.robots}" />`;
+};
+
+/**
+ * Создает Open Graph мета-теги
+ * @param {Object} ogData - Данные для Open Graph
+ * @returns {string} - HTML строка с OG тегами
+ */
+const generateOpenGraphTags = (ogData) => {
+  const { ogTitle, ogDescription, ogImage, canonicalUrl } = ogData;
+
+  return `<!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${canonicalUrl}" />
+    <meta property="og:title" content="${ogTitle}" />
+    <meta property="og:description" content="${ogDescription}" />
+    <meta property="og:image" content="${ogImage}" />
+    <meta property="og:site_name" content="${BASE_CONFIG.siteName}" />
+    <meta property="og:locale" content="${BASE_CONFIG.locale}" />`;
+};
+
+/**
+ * Создает Twitter мета-теги
+ * @param {Object} twitterData - Данные для Twitter
+ * @returns {string} - HTML строка с Twitter тегами
+ */
+const generateTwitterTags = (twitterData) => {
+  const { ogTitle, ogDescription, ogImage, canonicalUrl } = twitterData;
+
+  return `<!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="${canonicalUrl}" />
+    <meta property="twitter:title" content="${ogTitle}" />
+    <meta property="twitter:description" content="${ogDescription}" />
+    <meta property="twitter:image" content="${ogImage}" />`;
+};
+
+/**
+ * Создает ссылки на favicon'ы
+ * @returns {string} - HTML строка с favicon ссылками
+ */
+const generateFaviconLinks = () => {
+  return `<!-- Favicons -->
+    ${FAVICON_ASSETS.map(favicon =>
+      `<link rel="${favicon.rel}" ${favicon.type ? `type="${favicon.type}"` : ''} ${favicon.sizes ? `sizes="${favicon.sizes}"` : ''} href="${favicon.href}" />`
+    ).join('\n    ')}`;
+};
+
+/**
+ * Создает ссылки на внешние ресурсы
+ * @returns {string} - HTML строка с внешними ресурсами
+ */
+const generateExternalResources = () => {
+  const preconnectLinks = EXTERNAL_RESOURCES.preconnect.map(resource => {
+    if (typeof resource === 'string') {
+      return `<link rel="preconnect" href="${resource}" />`;
+    }
+    return `<link rel="preconnect" href="${resource.href}" ${resource.crossorigin ? 'crossorigin' : ''} />`;
+  }).join('\n    ');
+
+  const dnsPrefetchLinks = EXTERNAL_RESOURCES.dnsPrefetch.map(url =>
+    `<link rel="dns-prefetch" href="${url}" />`
+  ).join('\n    ');
+
+  return `<!-- Preconnect to external domains -->
+    ${preconnectLinks}
+
+    <!-- Google Fonts -->
+    <link href="${EXTERNAL_RESOURCES.fonts}" rel="stylesheet" />
+
+    <!-- DNS Prefetch -->
+    ${dnsPrefetchLinks}`;
+};
+
+/**
+ * Создает preload теги для критически важных изображений
+ * @param {boolean} shouldPreload - Нужно ли добавлять preload
+ * @returns {string} - HTML строка с preload тегами
+ */
+const generateImagePreload = (shouldPreload) => {
+  if (!shouldPreload) return '';
+
+  return `
+    <!-- Preload critical images -->
+    ${CRITICAL_IMAGES.map(image =>
+      `<link rel="preload" href="${image.href}" as="image" type="${image.type}" />`
+    ).join('\n    ')}`;
+};
+
+// ОСНОВНАЯ ФУНКЦИЯ ГЕНЕРАЦИИ
+// =========================
+
+/**
+ * Генерирует полный HTML шаблон для страницы
+ * @param {Object} pageConfig - Конфигурация страницы
+ * @returns {string} - Полный HTML шаблон
+ */
 function generateHtmlTemplate(pageConfig) {
   const {
     title,
@@ -58,61 +221,29 @@ function generateHtmlTemplate(pageConfig) {
     ogImage,
     canonicalUrl,
     dataPage,
-    preloadHeroImage
+    preloadHeroImage,
   } = pageConfig;
 
-  const preloadScript = preloadHeroImage ? `
-    <!-- Preload critical images -->
-    <link rel="preload" href="/assets/office-facade-CENYA-P5.webp" as="image" type="image/webp" />
-    <link rel="preload" href="/assets/office-facade-CENYA-P5.png" as="image" type="image/png" />` : '';
+  // Подготавливаем данные для генерации
+  const seoData = { title, description, keywords, canonicalUrl };
+  const ogData = { ogTitle, ogDescription, ogImage, canonicalUrl };
 
   return `<!doctype html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="${BASE_CONFIG.charset}" />
+    <meta name="viewport" content="${BASE_CONFIG.viewport}" />
 
-    <!-- SEO Meta Tags -->
-    <title>${title}</title>
-    <meta name="description" content="${description}" />
-    <meta name="keywords" content="${keywords}" />
-    <link rel="canonical" href="${canonicalUrl}" />
-    <meta name="robots" content="index, follow" />
+    ${generateSeoMetaTags(seoData)}
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="${canonicalUrl}" />
-    <meta property="og:title" content="${ogTitle}" />
-    <meta property="og:description" content="${ogDescription}" />
-    <meta property="og:image" content="${ogImage}" />
-    <meta property="og:site_name" content="Ритуальная служба Век" />
-    <meta property="og:locale" content="ru_RU" />
+    ${generateOpenGraphTags(ogData)}
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="${canonicalUrl}" />
-    <meta property="twitter:title" content="${ogTitle}" />
-    <meta property="twitter:description" content="${ogDescription}" />
-    <meta property="twitter:image" content="${ogImage}" />
+    ${generateTwitterTags(ogData)}
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
-    <link rel="manifest" href="/assets/site.webmanifest" />
+    ${generateFaviconLinks()}
 
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-
-    <!-- DNS Prefetch -->
-    <link rel="dns-prefetch" href="//www.google-analytics.com" />
-    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-    ${preloadScript}
+    ${generateExternalResources()}
+    ${generateImagePreload(preloadHeroImage)}
   </head>
   <body>
     <div id="root" data-page="${dataPage}"></div>
@@ -121,7 +252,9 @@ function generateHtmlTemplate(pageConfig) {
 </html>`;
 }
 
-// Генерация HTML файлов
+/**
+ * Основная функция генерации всех HTML страниц
+ */
 function generateHtmlPages() {
   console.log('🏗️  Генерация HTML страниц...');
 
@@ -156,4 +289,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   generateHtmlPages();
 }
 
-export { generateHtmlPages, PAGES_CONFIG };
+export { generateHtmlPages, PAGES_CONFIG, BASE_CONFIG };

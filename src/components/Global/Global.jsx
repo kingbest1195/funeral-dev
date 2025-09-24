@@ -49,7 +49,7 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
   // Структурированные данные для LocalBusiness
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
-    "@type": "FuneralHome",
+    "@type": "LocalBusiness",
     name: COMPANY_INFO.name,
     telephone: COMPANY_INFO.phone,
     address: {
