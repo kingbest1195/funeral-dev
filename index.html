@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://ритуал-век.рф/" />
     <meta property="og:title" content="Ритуальная служба Век - Помощь в трудную минуту | Шуя" />
     <meta property="og:description" content="Круглосуточная ритуальная служба в Шуе. Полный комплекс услуг: организация похорон, кремация, памятники. Бесплатная консультация." />
-    <meta property="og:image" content="https://ритуал-век.рф/assets/office-facade-CENYA-P5.webp" />
+    <meta property="og:image" content="https://ритуал-век.рф/images/og/hero-main.png" />
     <meta property="og:site_name" content="Ритуальная служба Век" />
     <meta property="og:locale" content="ru_RU" />
 
@@ -25,14 +25,14 @@
     <meta property="twitter:url" content="https://ритуал-век.рф/" />
     <meta property="twitter:title" content="Ритуальная служба Век - Помощь в трудную минуту | Шуя" />
     <meta property="twitter:description" content="Круглосуточная ритуальная служба в Шуе. Полный комплекс услуг: организация похорон, кремация, памятники. Бесплатная консультация." />
-    <meta property="twitter:image" content="https://ритуал-век.рф/assets/office-facade-CENYA-P5.webp" />
+    <meta property="twitter:image" content="https://ритуал-век.рф/images/og/hero-main.png" />
 
     <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="/src/assets/favicons/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/src/assets/favicons/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/src/assets/favicons/favicon-32x32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/src/assets/favicons/apple-touch-icon.png" />
-    <link rel="manifest" href="/src/assets/favicons/site.webmanifest" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
 
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,20 +45,9 @@
     <link rel="dns-prefetch" href="//www.google-analytics.com" />
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
     
-    <script>
-      // Предзагрузка hero изображения только для главной страницы
-      document.addEventListener('DOMContentLoaded', function() {
-        const rootElement = document.getElementById('root');
-        if (rootElement && rootElement.getAttribute('data-page') === 'home') {
-          const heroImageLink = document.createElement('link');
-          heroImageLink.rel = 'preload';
-          heroImageLink.as = 'image';
-          heroImageLink.href = '/src/assets/images-optimized/hero/hero-main.webp';
-          heroImageLink.type = 'image/webp';
-          document.head.appendChild(heroImageLink);
-        }
-      });
-    </script>
+    <!-- Preload critical images -->
+    <link rel="preload" href="/assets/office-facade-CENYA-P5.webp" as="image" type="image/webp" />
+    <link rel="preload" href="/assets/office-facade-CENYA-P5.png" as="image" type="image/png" />
   </head>
   <body>
     <div id="root" data-page="home"></div>

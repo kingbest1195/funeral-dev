@@ -18,6 +18,7 @@ const PAGES_CONFIG = {
     keywords: 'ритуальная служба, похороны, Шуя, организация похорон, кремация, памятники, ритуальные услуги',
     ogTitle: 'Ритуальная служба Век - Помощь в трудную минуту | Шуя',
     ogDescription: 'Круглосуточная ритуальная служба в Шуе. Полный комплекс услуг: организация похорон, кремация, памятники. Бесплатная консультация.',
+    ogImage: 'https://ритуал-век.рф/images/og/hero-main.png',
     canonicalUrl: 'https://ритуал-век.рф/',
     dataPage: 'home',
     preloadHeroImage: true
@@ -28,6 +29,7 @@ const PAGES_CONFIG = {
     keywords: 'ритуальные услуги, организация похорон, кремация, Шуя, перевозка тела, памятники, прощальные залы',
     ogTitle: 'Ритуальные услуги в Шуе – Ритуальная служба Век',
     ogDescription: 'Полный комплекс ритуальных услуг: организация похорон, кремация, памятники, прощальные залы. Деликатная помощь в трудную минуту.',
+    ogImage: 'https://ритуал-век.рф/images/og/funeral-hall.png',
     canonicalUrl: 'https://ритуал-век.рф/uslugi/',
     dataPage: 'uslugi',
     preloadHeroImage: false
@@ -38,6 +40,7 @@ const PAGES_CONFIG = {
     keywords: 'политика конфиденциальности, персональные данные, ритуальная служба Век, Шуя',
     ogTitle: 'Политика конфиденциальности – Ритуальная служба Век',
     ogDescription: 'Политика конфиденциальности и обработки персональных данных службы Век.',
+    ogImage: 'https://ритуал-век.рф/assets/office-facade-CENYA-P5.webp',
     canonicalUrl: 'https://ритуал-век.рф/privacy/',
     dataPage: 'privacy',
     preloadHeroImage: false
@@ -52,26 +55,16 @@ function generateHtmlTemplate(pageConfig) {
     keywords,
     ogTitle,
     ogDescription,
+    ogImage,
     canonicalUrl,
     dataPage,
     preloadHeroImage
   } = pageConfig;
 
   const preloadScript = preloadHeroImage ? `
-    <script>
-      // Предзагрузка hero изображения только для главной страницы
-      document.addEventListener('DOMContentLoaded', function() {
-        const rootElement = document.getElementById('root');
-        if (rootElement && rootElement.getAttribute('data-page') === 'home') {
-          const heroImageLink = document.createElement('link');
-          heroImageLink.rel = 'preload';
-          heroImageLink.as = 'image';
-          heroImageLink.href = '/src/assets/images-optimized/hero/hero-main.webp';
-          heroImageLink.type = 'image/webp';
-          document.head.appendChild(heroImageLink);
-        }
-      });
-    </script>` : '';
+    <!-- Preload critical images -->
+    <link rel="preload" href="/assets/office-facade-CENYA-P5.webp" as="image" type="image/webp" />
+    <link rel="preload" href="/assets/office-facade-CENYA-P5.png" as="image" type="image/png" />` : '';
 
   return `<!doctype html>
 <html lang="ru">
@@ -91,7 +84,7 @@ function generateHtmlTemplate(pageConfig) {
     <meta property="og:url" content="${canonicalUrl}" />
     <meta property="og:title" content="${ogTitle}" />
     <meta property="og:description" content="${ogDescription}" />
-    <meta property="og:image" content="https://ритуал-век.рф/assets/office-facade-CENYA-P5.webp" />
+    <meta property="og:image" content="${ogImage}" />
     <meta property="og:site_name" content="Ритуальная служба Век" />
     <meta property="og:locale" content="ru_RU" />
 
@@ -100,14 +93,14 @@ function generateHtmlTemplate(pageConfig) {
     <meta property="twitter:url" content="${canonicalUrl}" />
     <meta property="twitter:title" content="${ogTitle}" />
     <meta property="twitter:description" content="${ogDescription}" />
-    <meta property="twitter:image" content="https://ритуал-век.рф/assets/office-facade-CENYA-P5.webp" />
+    <meta property="twitter:image" content="${ogImage}" />
 
     <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="/src/assets/favicons/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/src/assets/favicons/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/src/assets/favicons/favicon-32x32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/src/assets/favicons/apple-touch-icon.png" />
-    <link rel="manifest" href="/src/assets/favicons/site.webmanifest" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
 
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

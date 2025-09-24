@@ -9,26 +9,29 @@ Modern React website for "Век" (Vek) funeral service in Shuya, Russia. Built 
 ## Development Commands
 
 ### Core Development
-- `npm run dev` - Start development server (http://localhost:3001 with API proxy)
-- `npm run build` - **Production build** with automatic image optimization
+- `npm run dev` - Start development server (http://localhost:3000 with API proxy)
+- `npm run build` - **Production build** with automatic HTML generation, image optimization, and sitemap
 - `npm run build:dev` - **Development build** without image optimization (faster)
-- `npm run preview` - Preview production build locally
+- `npm run preview` - Preview production build locally (http://localhost:3001)
 
 ### Code Quality
 - `npm run lint:scss` - Lint and fix SCSS files with stylelint
 - `npm run lint:js` - Lint and fix JavaScript/JSX files with eslint
 
 ### Specialized Tasks
+- `npm run generate:html` - Generate HTML pages from templates
 - `npm run optimize:images` - Run Sharp-based image optimization (auto-runs before production build)
+- `npm run generate:sitemap` - Generate XML sitemap (auto-runs before production build)
 - `npm run test:quiz` - Test quiz calculator optimizations
 - `npm run test:final` - Test final performance improvements
 
 ## Architecture & Structure
 
 ### Core Stack
-- **React 18** with Vite bundler and hot reload
-- **SCSS** with modular architecture and CSS custom properties
-- **Single-page application** with Global layout wrapper pattern
+- **React 19** with Vite bundler and hot reload
+- **SCSS** with modular architecture, CSS custom properties, and dual design token system
+- **Multi-page application (MPA)** with Global layout wrapper pattern
+- **Custom Vite plugins** for image optimization, critical CSS, and HTML asset processing
 
 ### Key Technical Patterns
 
@@ -43,10 +46,16 @@ Modern React website for "Век" (Vek) funeral service in Shuya, Russia. Built 
 - `src/pages/HomePage/components/ServicesSection/`
 - Each section has co-located `.scss` file and handles specific business logic
 
+**Dual Design Token System**: **CRITICAL** - Project uses both CSS custom properties and Sass variables:
+- `src/styles/variables.scss` - CSS custom properties (:root) for runtime values and responsiveness
+- `src/styles/constants.scss` - Sass variables ($) for build-time calculations and complex operations
+- **All hardcoded values forbidden** - Use design tokens from these files exclusively
+
 **SCSS Import Hierarchy**: **CRITICAL** - Strict order in `src/styles/main.scss` must be maintained:
 1. Variables (CSS custom properties) → Constants (Sass) → Functions → Media mixins → Mixins
 2. Fonts → Normalize → Globals → Utils
 3. Breaking this order causes build failures due to dependency chain
+4. SCSS preprocessor configured with `quietDeps: true` and `silenceDeprecations: ['import']` to suppress warnings
 
 **Business Data Centralization**: `src/helpers/index.js` exports:
 - `COMPANY_INFO` constant with phone (+7 920 366-36-36), addresses, schedules
@@ -115,10 +124,13 @@ Modern React website for "Век" (Vek) funeral service in Shuya, Russia. Built 
 ### Advanced Development Configuration
 
 **Vite Configuration** (`vite.config.js`):
-- Custom image optimization plugin integration
-- SCSS preprocessor with deprecation handling
-- API proxy to localhost:8000 for backend integration
-- Source maps enabled for debugging
+- **Custom plugins**: imageOptimizationPlugin, criticalCssPlugin, htmlAssetsPlugin
+- **Multi-page setup**: main, uslugi, privacy pages with separate entry points
+- **Build optimization**: Manual chunks (react, ui libraries), Terser compression
+- **Development server**: Port 3000 with API proxy to localhost:8000
+- **Preview server**: Port 3001 with historyApiFallback disabled for MPA
+- **SCSS preprocessor**: quietDeps and silenceDeprecations configured
+- **Production optimizations**: Console removal, Safari10 compatibility, chunkSizeWarning at 500KB
 
 **Russian Localization Helpers** (`src/helpers/index.js`):
 ```js
@@ -136,7 +148,8 @@ formatDate(date) // → "15 сентября 2024 г."
 - **NO TypeScript** - Project specifically avoids it, use vanilla JavaScript
 - **NO CSS Frameworks** - No Bootstrap, Tailwind, etc. Use custom SCSS with BEM
 - **NO External CDNs** - Bundle everything locally for performance
-- **Font Requirements**: 'Playfair Display' for headings, 'Roboto' for body text
+- **Font Requirements**: 'SangBleu Sunrise' for headings, 'Euclid Flex' for body text (custom commercial fonts)
+- **NO hardcoded values** - All spacing, colors, fonts must come from design token files
 
 **Performance Requirements**:
 - Google PageSpeed score > 90
@@ -145,6 +158,15 @@ formatDate(date) // → "15 сентября 2024 г."
 - Use `font-display: swap` for font loading
 
 Documentation in `docs/` contains original technical specifications and content strategy.
+
+## CRITICAL Variable Usage Rules
+
+### Modular Design System Enforcement
+- **Строгое следование модульной концепции** - Agent must prioritize existing architecture and design system
+- **NO hardcoding**: Forbidden to use "magic numbers" for spacing, colors, font sizes. All values for `gap`, `padding`, `margin`, `color` must come from `src/styles/variables.scss`
+  - **Wrong**: `gap: 30px;`
+  - **Correct**: `gap: var(--spacing-8);` (where `--spacing-8` is from variables.scss)
+- **Use mixins**: If a mixin exists in `_mixins.scss` (e.g. for centering), agent MUST use it instead of writing CSS properties manually
 
 ## Development Rules & Protocols
 

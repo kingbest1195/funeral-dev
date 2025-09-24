@@ -77,7 +77,8 @@
       "Bash(npx sharp-cli:*)",
       "WebFetch(domain:www.opengraph.xyz)",
       "WebFetch(domain:xn----7sbhmlqd1btk.xn--p1ai)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(npm run generate:html:*)"
     ],
     "deny": [],
     "ask": []

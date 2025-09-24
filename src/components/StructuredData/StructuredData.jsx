@@ -9,11 +9,11 @@ const StructuredData = () => {
 
   const schemaData = {
     "@context": "https://schema.org",
-    "@type": ["FuneralService", "LocalBusiness"],
+    "@type": "LocalBusiness",
     name: "Ритуальная служба Век",
     image: [
-      `${baseUrl}/logo-vek.svg`,
-      `${baseUrl}/assets/office-facade-main.jpg`,
+      `${baseUrl}/assets/logo-vek.svg`,
+      `${baseUrl}/assets/office-facade-CENYA-P5.webp`,
     ],
     "@id": `${baseUrl}/`,
     url: `${baseUrl}/`,
@@ -60,8 +60,8 @@ const StructuredData = () => {
               "Гранитные и мраморные памятники, ограды для мест захоронения",
             category: "Ритуальные товары",
             image: [
-              `${baseUrl}/src/assets/images-optimized/transport-and-office/office-facade.webp`,
-              `${baseUrl}/logo-vek.svg`,
+              `${baseUrl}/assets/office-facade-CENYA-P5.webp`,
+              `${baseUrl}/assets/logo-vek.svg`,
             ],
             aggregateRating: {
               "@type": "AggregateRating",

@@ -9,7 +9,6 @@ import appleTouchIcon from "@/assets/favicons-optimized/apple-touch-icon.png";
 import androidIcon192 from "@/assets/favicons-optimized/android-chrome-192x192.png";
 import androidIcon512 from "@/assets/favicons-optimized/android-chrome-512x512.png";
 import faviconIco from "@/assets/favicons/favicon.ico";
-import StructuredData from "@/components/StructuredData/StructuredData.jsx";
 import "./Global.scss";
 
 /**
@@ -619,8 +618,6 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
       {/* Виджет быстрого звонка для мобильных */}
       <MobileCallButton />
 
-      {/* Структурированные данные для SEO */}
-      <StructuredData />
     </div>
   );
 };
