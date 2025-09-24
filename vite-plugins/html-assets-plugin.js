@@ -21,8 +21,8 @@ export function htmlAssetsPlugin() {
           file.fileName.endsWith('.ico') ||
           file.fileName.endsWith('.webmanifest')
         )) {
-          // Извлекаем оригинальный путь без хеша
-          const originalPath = file.fileName.replace(/\.[a-f0-9]{8}\./, '.');
+          // Извлекаем оригинальный путь без хеша (поддержка форматов с дефисами и точками)
+          const originalPath = file.fileName.replace(/[-\.]([a-f0-9A-Z]{8})[-.]/i, '.');
           assetMap.set(originalPath, file.fileName);
 
           // Также создаем маппинг для src/assets/ префикса

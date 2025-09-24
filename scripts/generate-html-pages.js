@@ -34,13 +34,8 @@ const FAVICON_ASSETS = [
   { rel: 'manifest', href: '/site.webmanifest' },
 ];
 
-// Внешние подключения (fonts, DNS prefetch)
+// Внешние подключения (только DNS prefetch для аналитики)
 const EXTERNAL_RESOURCES = {
-  preconnect: [
-    'https://fonts.googleapis.com',
-    { href: 'https://fonts.gstatic.com', crossorigin: true },
-  ],
-  fonts: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap',
   dnsPrefetch: [
     '//www.google-analytics.com',
     '//www.googletagmanager.com',
@@ -164,27 +159,14 @@ const generateFaviconLinks = () => {
 
 /**
  * Создает ссылки на внешние ресурсы
- * @returns {string} - HTML строка с внешними ресурсами
+ * @returns {string} - HTML строка с внешними ресурсами  
  */
 const generateExternalResources = () => {
-  const preconnectLinks = EXTERNAL_RESOURCES.preconnect.map(resource => {
-    if (typeof resource === 'string') {
-      return `<link rel="preconnect" href="${resource}" />`;
-    }
-    return `<link rel="preconnect" href="${resource.href}" ${resource.crossorigin ? 'crossorigin' : ''} />`;
-  }).join('\n    ');
-
   const dnsPrefetchLinks = EXTERNAL_RESOURCES.dnsPrefetch.map(url =>
     `<link rel="dns-prefetch" href="${url}" />`
   ).join('\n    ');
 
-  return `<!-- Preconnect to external domains -->
-    ${preconnectLinks}
-
-    <!-- Google Fonts -->
-    <link href="${EXTERNAL_RESOURCES.fonts}" rel="stylesheet" />
-
-    <!-- DNS Prefetch -->
+  return `<!-- DNS Prefetch для аналитики -->
     ${dnsPrefetchLinks}`;
 };
 
