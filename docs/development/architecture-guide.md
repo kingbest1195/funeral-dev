@@ -3,15 +3,17 @@
 ## 🏗️ Общая архитектура
 
 ### Технологический стек
+
 - **Frontend**: React 19.1.1 + Vite 7.1.5 + SCSS
 - **Язык**: JavaScript (без TypeScript)
 - **Стили**: SCSS с BEM методологией + CSS Custom Properties
-- **Оптимизация**: Sharp 0.34.3 для изображений, Vite для бандлинга
-- **SEO**: JSON-LD структурированные данные + react-helmet-async 2.0.5
+- **Оптимизация**: Sharp 0.34.3 для изображений, кастомные Vite плагины (critical-css, image-optimization, html-assets)
+- **SEO**: JSON-LD структурированные данные + `@dr.pogodin/react-helmet`
 
 ### Принципы архитектуры
 
 #### 1. **Модульная структура**
+
 ```
 src/
 ├── components/          # Переиспользуемые UI компоненты
@@ -23,7 +25,9 @@ src/
 ```
 
 #### 2. **Component Co-location**
+
 Каждый компонент содержит все связанные файлы:
+
 ```
 ComponentName/
 ├── ComponentName.jsx   # Логика компонента
@@ -32,7 +36,9 @@ ComponentName/
 ```
 
 #### 3. **Секционная архитектура страниц**
+
 Крупные страницы разбиваются на секции:
+
 ```
 HomePage/
 ├── HomePage.jsx
@@ -46,6 +52,7 @@ HomePage/
 ## 🔄 Потоки данных
 
 ### Централизация бизнес-данных
+
 ```javascript
 // constants/content.js - все тексты и настройки
 export const SERVICES_DATA = { ... }
@@ -60,6 +67,7 @@ export const COMPANY_INFO = {
 ```
 
 ### Паттерн глобального обертывания
+
 ```javascript
 // Global.jsx оборачивает все страницы
 <Global seoData={seoData}>
@@ -70,29 +78,31 @@ export const COMPANY_INFO = {
 ## 🎨 Система стилей
 
 ### Иерархия SCSS импортов (КРИТИЧЕСКИ ВАЖНО)
+
 ```scss
 // main.scss - строгий порядок импортов
-@import './variables.scss';      // 1. CSS переменные
-@import './constants.scss';      // 2. Sass константы
-@import './functions.scss';      // 3. Функции
-@import './media.scss';          // 4. Медиа-миксины
-@import './mixins.scss';         // 5. Миксины
-@import './fonts.scss';          // 6. Шрифты
-@import './normalize.scss';      // 7. Нормализация
+@import "./variables.scss"; // 1. CSS переменные
+@import "./constants.scss"; // 2. Sass константы
+@import "./functions.scss"; // 3. Функции
+@import "./media.scss"; // 4. Медиа-миксины
+@import "./mixins.scss"; // 5. Миксины
+@import "./fonts.scss"; // 6. Шрифты
+@import "./normalize.scss"; // 7. Нормализация
 // ...
 ```
 
 ### CSS Custom Properties система
+
 ```scss
 :root {
-  // Цвета из UI-гайда
+  // Цвета из нового UI-гайда
   --color-primary: #444442;
   --color-accent: #c49e5e;
   --color-bg-primary: #ffffff;
 
-  // Типографика
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Roboto', sans-serif;
+  // Типографика (актуальные шрифты)
+  --font-heading: "SangBleu Sunrise", serif;
+  --font-body: "Euclid Flex", sans-serif;
 
   // Размеры и отступы
   --spacing-xs: 0.25rem;
@@ -104,6 +114,7 @@ export const COMPANY_INFO = {
 ## 🖼️ Система изображений
 
 ### Автоматическая оптимизация
+
 ```javascript
 // scripts/optimize-all-images.cjs
 // Профили оптимизации по типам изображений
@@ -115,6 +126,7 @@ OPTIMIZATION_PROFILES = {
 ```
 
 ### Picture Element Pattern
+
 ```jsx
 // Стандартный паттерн для всех изображений
 <picture>
@@ -132,6 +144,7 @@ OPTIMIZATION_PROFILES = {
 ## 🔍 SEO архитектура
 
 ### Структурированные данные
+
 ```jsx
 // Глобальные данные в StructuredData.jsx
 const funeralServiceSchema = {
@@ -149,6 +162,7 @@ const funeralServiceSchema = {
 ```
 
 ### Мета-теги и производительность
+
 - Уникальные title/description для каждой страницы
 - OpenGraph и Twitter Cards
 - 100% lazy loading изображений
@@ -157,30 +171,34 @@ const funeralServiceSchema = {
 ## 🌐 Русская локализация
 
 ### Утилиты локализации
+
 ```javascript
 // helpers/index.js
-formatPhone("+79203663636") // "+7 (920) 366-36-36"
-createSlug("Услуги похорон") // "uslugi-pokhoron"
-formatPrice(30000) // "30 000 ₽"
-formatDate(date) // "15 сентября 2024 г."
+formatPhone("+79203663636"); // "+7 (920) 366-36-36"
+createSlug("Услуги похорон"); // "uslugi-pokhoron"
+formatPrice(30000); // "30 000 ₽"
+formatDate(date); // "15 сентября 2024 г."
 ```
 
 ### Валидация русских данных
+
 ```javascript
 // Валидация кириллицы
-validateName("Иван Петров") // true
-validatePhone("+7 920 366-36-36") // true
+validateName("Иван Петров"); // true
+validatePhone("+7 920 366-36-36"); // true
 ```
 
 ## ⚡ Производительность
 
 ### Метрики
+
 - PageSpeed > 90
 - FCP < 2.5s
 - WebP экономия: 10.6MB → 78KB (99.3%)
 - Gzip: JS 435KB → 157KB, CSS 148KB → 25KB
 
 ### Оптимизации
+
 - Автоматическая оптимизация изображений при сборке
 - Критический CSS инлайн
 - Lazy loading 100% покрытие
@@ -189,20 +207,27 @@ validatePhone("+7 920 366-36-36") // true
 ## 🔧 Конфигурация
 
 ### Vite настройки
+
 ```javascript
 // vite.config.js
 export default defineConfig({
-  plugins: [react(), imageOptimizationPlugin()],
-  resolve: { alias: { '@': path.resolve(__dirname, './src') } },
+  plugins: [
+    react(),
+    imageOptimizationPlugin(),
+    criticalCssPlugin(),
+    htmlAssetsPlugin(),
+  ],
+  resolve: { alias: { "@": path.resolve(__dirname, "./src") } },
   css: {
     preprocessorOptions: {
-      scss: { quietDeps: true, silenceDeprecations: ['import'] }
-    }
-  }
-})
+      scss: { quietDeps: true, silenceDeprecations: ["import"] },
+    },
+  },
+});
 ```
 
 ### Proxy для API
+
 ```javascript
 server: {
   proxy: {
@@ -230,11 +255,13 @@ Global (SEO + Layout)
 ## 🆕 Обновление до React 19 (Декабрь 2024)
 
 ### Изменения в архитектуре
+
 - **PropTypes удалены** - заменены на JSDoc типизацию
 - **Алиасы импортов** - восстановлены после решения кэш-проблем
 - **PWA манифест** - обновлен с корректными путями к иконкам
 
 ### Миграция JSDoc вместо PropTypes
+
 ```javascript
 /**
  * @param {Object} props - Параметры компонента
@@ -245,12 +272,19 @@ Global (SEO + Layout)
  * @param {string} [props.parentClass="first-steps"] - CSS класс родительского элемента
  * @returns {JSX.Element} React компонент
  */
-const CallBlock = ({ phone, note, icon, ariaLabel, parentClass = "first-steps" }) => {
+const CallBlock = ({
+  phone,
+  note,
+  icon,
+  ariaLabel,
+  parentClass = "first-steps",
+}) => {
   // ...
 };
 ```
 
 ### Решение проблем при обновлении
+
 1. **Кэш очистка** - при проблемах с импортами перезапустить dev сервер
 2. **Алиасы работают** - `@/` корректно резолвится в Vite 7 + React 19
 3. **PWA иконки** - добавлены в `public/` для корректной работы манифеста

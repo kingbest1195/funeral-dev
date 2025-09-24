@@ -3,11 +3,13 @@
 ## 🎨 Философия стилизации
 
 ### Принципы
+
 1. **Система переменных** - все значения через CSS Custom Properties
 2. **BEM методология** - структурированное именование классов
 3. **Модульность** - каждый компонент имеет свои стили
 4. **Никакого хардкода** - все размеры, цвета, отступы из переменных
 5. **Accessibility-first** - стили поддерживают доступность
+6. **Performance-first** - критические стили инлайнит отдельный Vite-плагин
 
 ## 📂 Структура стилей
 
@@ -22,7 +24,7 @@ src/styles/
 ├── fonts.scss            # Шрифты
 ├── normalize.scss        # CSS сброс
 ├── globals.scss          # Глобальные стили
-├── utils.scss            # Утилитарные классы
+├── utils.scss            # Утилитарные классы (используются точечно)
 ├── abstracts/            # Продвинутые миксины
 ├── layout/               # Лэйаут компоненты
 └── components/           # Глобальные компоненты
@@ -35,32 +37,32 @@ src/styles/
 // Нарушение порядка приводит к ошибкам сборки
 
 // 1. CSS переменные (должны быть первыми)
-@import './variables.scss';
+@import "./variables.scss";
 
 // 2. Sass константы
-@import './constants.scss';
+@import "./constants.scss";
 
 // 3. Функции
-@import './functions.scss';
+@import "./functions.scss";
 
 // 4. Медиа-миксины
-@import './media.scss';
+@import "./media.scss";
 
 // 5. Миксины (зависят от функций и медиа-миксинов)
-@import './mixins.scss';
-@import './abstracts/mixins-enhanced';
+@import "./mixins.scss";
+@import "./abstracts/mixins-enhanced";
 
 // 6. Шрифты
-@import './fonts.scss';
+@import "./fonts.scss";
 
 // 7. Нормализация
-@import './normalize.scss';
+@import "./normalize.scss";
 
 // 8. Глобальные стили
-@import './globals.scss';
+@import "./globals.scss";
 
-// 9. Утилитарные классы
-@import './utils.scss';
+// 9. Утилитарные классы (подключать только при необходимости)
+// @import './utils.scss';
 ```
 
 ## 🎯 CSS Custom Properties система
@@ -74,12 +76,12 @@ src/styles/
   // =================
 
   // Основные цвета
-  --color-primary: #444442;           // Основной текст
+  --color-primary: #444442; // Основной текст
   --color-primary-light: #5a5a58;
   --color-primary-dark: #2e2e2d;
 
-  --color-secondary: #888888;         // Вторичный текст
-  --color-accent: #c49e5e;           // Золотой акцент
+  --color-secondary: #888888; // Вторичный текст
+  --color-accent: #c49e5e; // Золотой акцент
   --color-accent-light: #d9bb82;
   --color-accent-dark: #a98240;
   --color-accent-transparent: rgba(196, 158, 94, 0.05);
@@ -92,19 +94,19 @@ src/styles/
   --color-text-light: #f7fafc;
 
   // Фоновые цвета
-  --color-bg-primary: #ffffff;        // Белые карточки
-  --color-bg-secondary: #f6f6f6;      // Светло-серый фон страницы
+  --color-bg-primary: #ffffff; // Белые карточки
+  --color-bg-secondary: #f6f6f6; // Светло-серый фон страницы
   --color-bg-dark: #2d3748;
   --color-bg-overlay: rgba(26, 26, 26, 0.85);
 
   // Служебные цвета
-  --color-success: #10b981;           // Зеленый
-  --color-error: #ef4444;             // Красный
-  --color-warning: #f59e0b;           // Оранжевый
-  --color-info: #3b82f6;              // Синий
+  --color-success: #10b981; // Зеленый
+  --color-error: #ef4444; // Красный
+  --color-warning: #f59e0b; // Оранжевый
+  --color-info: #3b82f6; // Синий
 
   // Границы и разделители
-  --color-border: #eaeaea;            // Едва заметные границы
+  --color-border: #eaeaea; // Едва заметные границы
   --color-border-dark: #d1d5db;
   --color-border-light: #f3f4f6;
 
@@ -112,20 +114,20 @@ src/styles/
   // =================
 
   // Семейства шрифтов
-  --font-heading: 'Playfair Display', serif;    // Заголовки
-  --font-body: 'Roboto', sans-serif;            // Основной текст
-  --font-mono: 'Monaco', monospace;             // Код
+  --font-heading: "SangBleu Sunrise", serif; // Заголовки
+  --font-body: "Euclid Flex", sans-serif; // Основной текст
+  --font-mono: "Monaco", monospace; // Код
 
   // Размеры шрифтов (система)
-  --font-size-xs: 0.75rem;           // 12px
-  --font-size-sm: 0.875rem;          // 14px
-  --font-size-base: 1rem;            // 16px
-  --font-size-lg: 1.125rem;          // 18px
-  --font-size-xl: 1.25rem;           // 20px
-  --font-size-2xl: 1.5rem;           // 24px
-  --font-size-3xl: 1.875rem;         // 30px
-  --font-size-4xl: 2.25rem;          // 36px
-  --font-size-5xl: 3rem;             // 48px
+  --font-size-xs: 0.75rem; // 12px
+  --font-size-sm: 0.875rem; // 14px
+  --font-size-base: 1rem; // 16px
+  --font-size-lg: 1.125rem; // 18px
+  --font-size-xl: 1.25rem; // 20px
+  --font-size-2xl: 1.5rem; // 24px
+  --font-size-3xl: 1.875rem; // 30px
+  --font-size-4xl: 2.25rem; // 36px
+  --font-size-5xl: 3rem; // 48px
 
   // Интерлиньяж
   --line-height-tight: 1.25;
@@ -145,42 +147,42 @@ src/styles/
   // =================
 
   // Система отступов (0.25rem base)
-  --spacing-xs: 0.25rem;              // 4px
-  --spacing-sm: 0.5rem;               // 8px
-  --spacing-md: 1rem;                 // 16px
-  --spacing-lg: 1.5rem;               // 24px
-  --spacing-xl: 2rem;                 // 32px
-  --spacing-2xl: 3rem;                // 48px
-  --spacing-3xl: 4rem;                // 64px
+  --spacing-xs: 0.25rem; // 4px
+  --spacing-sm: 0.5rem; // 8px
+  --spacing-md: 1rem; // 16px
+  --spacing-lg: 1.5rem; // 24px
+  --spacing-xl: 2rem; // 32px
+  --spacing-2xl: 3rem; // 48px
+  --spacing-3xl: 4rem; // 64px
 
   // Специальные отступы
-  --spacing-section: var(--spacing-3xl);      // Между секциями
-  --spacing-component: var(--spacing-lg);     // Внутри компонентов
-  --spacing-element: var(--spacing-md);       // Между элементами
+  --spacing-section: var(--spacing-3xl); // Между секциями
+  --spacing-component: var(--spacing-lg); // Внутри компонентов
+  --spacing-element: var(--spacing-md); // Между элементами
 
   // Размеры контейнеров
-  --container-xs: 20rem;              // 320px
-  --container-sm: 30rem;              // 480px
-  --container-md: 48rem;              // 768px
-  --container-lg: 64rem;              // 1024px
-  --container-xl: 80rem;              // 1280px
-  --container-2xl: 96rem;             // 1536px
+  --container-xs: 20rem; // 320px
+  --container-sm: 30rem; // 480px
+  --container-md: 48rem; // 768px
+  --container-lg: 64rem; // 1024px
+  --container-xl: 80rem; // 1280px
+  --container-2xl: 96rem; // 1536px
   --container-padding: var(--spacing-md);
 
   // КОМПОНЕНТЫ
   // =================
 
   // Высоты элементов
-  --input-height: 2.75rem;            // 44px
-  --button-height: 2.75rem;           // 44px
-  --header-height: 4rem;              // 64px
+  --input-height: 2.75rem; // 44px
+  --button-height: 2.75rem; // 44px
+  --header-height: 4rem; // 64px
 
   // Радиусы скругления
-  --border-radius-sm: 0.25rem;        // 4px
-  --border-radius-base: 0.5rem;       // 8px
-  --border-radius-lg: 0.75rem;        // 12px
-  --border-radius-xl: 1rem;           // 16px
-  --border-radius-full: 9999px;       // Полный радиус
+  --border-radius-sm: 0.25rem; // 4px
+  --border-radius-base: 0.5rem; // 8px
+  --border-radius-lg: 0.75rem; // 12px
+  --border-radius-xl: 1rem; // 16px
+  --border-radius-full: 9999px; // Полный радиус
 
   // Толщины границ
   --border-width-1: 1px;
@@ -195,7 +197,7 @@ src/styles/
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --shadow-outline: 0 0 0 3px rgba(196, 158, 94, 0.3);    // Фокус
+  --shadow-outline: 0 0 0 3px rgba(196, 158, 94, 0.3); // Фокус
   --shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
 
   // АНИМАЦИИ
@@ -216,9 +218,9 @@ src/styles/
 
   // Готовые переходы
   --transition-base: all var(--duration-base) var(--ease-smooth);
-  --transition-colors: color var(--duration-base) var(--ease-smooth),
-                      background-color var(--duration-base) var(--ease-smooth),
-                      border-color var(--duration-base) var(--ease-smooth);
+  --transition-colors: color var(--duration-base) var(--ease-smooth), background-color
+      var(--duration-base) var(--ease-smooth),
+    border-color var(--duration-base) var(--ease-smooth);
   --transition-transform: transform var(--duration-base) var(--ease-smooth);
 
   // Z-INDEX
@@ -342,7 +344,7 @@ src/styles/
   position: relative;
 
   &::before {
-    content: '';
+    content: "";
     display: block;
     width: 100%;
     padding-top: calc(#{$height} / #{$width} * 100%);
@@ -369,7 +371,7 @@ $breakpoints: (
   md: 768px,
   lg: 1024px,
   xl: 1280px,
-  2xl: 1536px
+  2xl: 1536px,
 );
 
 // Mobile-first подход
@@ -433,6 +435,7 @@ $breakpoints: (
 ## 🏷️ BEM Методология
 
 ### Структура именования
+
 ```
 .block
 .block__element
@@ -501,6 +504,7 @@ $breakpoints: (
 ## 📱 Адаптивная система
 
 ### Mobile-first подход
+
 ```scss
 .component {
   // Базовые стили для мобильных
@@ -522,6 +526,7 @@ $breakpoints: (
 ```
 
 ### Адаптивная сетка
+
 ```scss
 .grid {
   display: grid;
@@ -574,32 +579,68 @@ $breakpoints: (
 // utils.scss
 
 // Отображение
-.hidden { display: none !important; }
-.block { display: block !important; }
-.inline-block { display: inline-block !important; }
-.flex { display: flex !important; }
-.grid { display: grid !important; }
+.hidden {
+  display: none !important;
+}
+.block {
+  display: block !important;
+}
+.inline-block {
+  display: inline-block !important;
+}
+.flex {
+  display: flex !important;
+}
+.grid {
+  display: grid !important;
+}
 
 // Позиционирование
-.relative { position: relative !important; }
-.absolute { position: absolute !important; }
-.fixed { position: fixed !important; }
+.relative {
+  position: relative !important;
+}
+.absolute {
+  position: absolute !important;
+}
+.fixed {
+  position: fixed !important;
+}
 
 // Отступы (только для экстренных случаев)
-.mt-0 { margin-top: 0 !important; }
-.mt-xs { margin-top: var(--spacing-xs) !important; }
-.mt-sm { margin-top: var(--spacing-sm) !important; }
-.mt-md { margin-top: var(--spacing-md) !important; }
+.mt-0 {
+  margin-top: 0 !important;
+}
+.mt-xs {
+  margin-top: var(--spacing-xs) !important;
+}
+.mt-sm {
+  margin-top: var(--spacing-sm) !important;
+}
+.mt-md {
+  margin-top: var(--spacing-md) !important;
+}
 
 // Текст
-.text-center { text-align: center !important; }
-.text-left { text-align: left !important; }
-.text-right { text-align: right !important; }
+.text-center {
+  text-align: center !important;
+}
+.text-left {
+  text-align: left !important;
+}
+.text-right {
+  text-align: right !important;
+}
 
 // Цвета текста
-.text-primary { color: var(--color-text-primary) !important; }
-.text-secondary { color: var(--color-text-secondary) !important; }
-.text-accent { color: var(--color-accent) !important; }
+.text-primary {
+  color: var(--color-text-primary) !important;
+}
+.text-secondary {
+  color: var(--color-text-secondary) !important;
+}
+.text-accent {
+  color: var(--color-accent) !important;
+}
 
 // Доступность
 .sr-only {
@@ -614,6 +655,7 @@ $breakpoints: (
 ## ✅ Правила и best practices
 
 ### Обязательные правила
+
 1. **Всегда используй переменные** - никаких магических чисел
 2. **Соблюдай иерархию импортов** - она критична для работы сборки
 3. **Используй BEM** - для структурированности и избежания конфликтов
@@ -621,6 +663,7 @@ $breakpoints: (
 5. **Semantic HTML** - стили должны дополнять, а не заменять семантику
 
 ### Что нельзя делать
+
 ```scss
 // ❌ Хардкод значений
 .component {
@@ -646,12 +689,14 @@ $breakpoints: (
 }
 
 // ❌ Нарушение BEM
-.componentName {  // camelCase не BEM
+.componentName {
+  // camelCase не BEM
   color: red;
 }
 ```
 
 ### Что нужно делать
+
 ```scss
 // ✅ Использование переменных
 .component {
