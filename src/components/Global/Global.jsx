@@ -9,6 +9,7 @@ import appleTouchIcon from "@/assets/favicons-optimized/apple-touch-icon.png";
 import androidIcon192 from "@/assets/favicons-optimized/android-chrome-192x192.png";
 import androidIcon512 from "@/assets/favicons-optimized/android-chrome-512x512.png";
 import faviconIco from "@/assets/favicons/favicon.ico";
+import funeralMarketImage from "@/assets/images-optimized/transport-and-office/funeral-market.png";
 import "./Global.scss";
 
 /**
@@ -47,6 +48,21 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
   } = seo;
 
   // Структурированные данные для LocalBusiness
+  const getAbsoluteUrl = (assetPath = "") => {
+    if (!assetPath) {
+      return "";
+    }
+
+    if (typeof window !== "undefined") {
+      return new URL(assetPath, window.location.origin).href;
+    }
+
+    const normalizedPath = assetPath.startsWith("/")
+      ? assetPath
+      : `/${assetPath}`;
+    return `https://xn----7sbhmlqd1btk.xn--p1ai${normalizedPath}`;
+  };
+
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -58,11 +74,11 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
       addressLocality: COMPANY_INFO.city,
       addressRegion: COMPANY_INFO.region,
       addressCountry: "RU",
-      postalCode: "155900"
+      postalCode: "155900",
     },
     openingHours: COMPANY_INFO.workSchedule,
     url: typeof window !== "undefined" ? window.location.origin : "",
-    image: image || (typeof window !== "undefined" ? window.location.origin + "/logo-vek.svg" : ""),
+    image: image || getAbsoluteUrl("/logo-vek.svg"),
     description: description,
     priceRange: "$$",
     areaServed: {
@@ -92,15 +108,17 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
           itemOffered: {
             "@type": "Product",
             name: "Памятники и ограды",
-            description: "Гранитные и мраморные памятники, ограды для мест захоронения",
+            description:
+              "Гранитные и мраморные памятники, ограды для мест захоронения",
             category: "Ритуальные товары",
+            image: getAbsoluteUrl(funeralMarketImage),
             offers: {
               "@type": "Offer",
               availability: "https://schema.org/InStock",
               priceCurrency: "RUB",
               price: "15000",
-              priceRange: "15000-150000"
-            }
+              priceRange: "15000-150000",
+            },
           },
         },
       ],
@@ -166,7 +184,10 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     // Twitter Card
     updateMetaTag("twitter:card", twitterCard || "summary_large_image");
     updateMetaTag("twitter:title", twitterTitle || ogTitle || title);
-    updateMetaTag("twitter:description", twitterDescription || ogDescription || description);
+    updateMetaTag(
+      "twitter:description",
+      twitterDescription || ogDescription || description
+    );
 
     if (twitterImage || ogImage || image) {
       updateMetaTag("twitter:image", twitterImage || ogImage || image);
@@ -256,7 +277,25 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     jsonLdScript.type = "application/ld+json";
     jsonLdScript.textContent = JSON.stringify(structuredData);
     document.head.appendChild(jsonLdScript);
-  }, [title, description, keywords, canonical, type, image, jsonLd, ogTitle, ogDescription, ogImage, ogUrl, ogType, ogSiteName, twitterCard, twitterTitle, twitterDescription, twitterImage]);
+  }, [
+    title,
+    description,
+    keywords,
+    canonical,
+    type,
+    image,
+    jsonLd,
+    ogTitle,
+    ogDescription,
+    ogImage,
+    ogUrl,
+    ogType,
+    ogSiteName,
+    twitterCard,
+    twitterTitle,
+    twitterDescription,
+    twitterImage,
+  ]);
 
   // Обработка клика по телефону для аналитики
   const handlePhoneClick = () => {
@@ -595,9 +634,7 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
                 {COMPANY_INFO.privacyUrl ? (
                   <>
                     {" · "}
-                    <a href="/privacy/">
-                      Политика конфиденциальности
-                    </a>
+                    <a href="/privacy/">Политика конфиденциальности</a>
                   </>
                 ) : null}
               </p>
@@ -617,7 +654,6 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
 
       {/* Виджет быстрого звонка для мобильных */}
       <MobileCallButton />
-
     </div>
   );
 };
