@@ -15,6 +15,16 @@ const ROOT_DIR = path.resolve(__dirname, "..");
 // КОНСТАНТЫ ПРОЕКТА
 // =================
 
+// Хелперы для экранирования значений
+const toStringSafe = (value = "") => String(value ?? "");
+const escapeHtml = (value = "") =>
+  toStringSafe(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+const escapeAttribute = (value = "") =>
+  escapeHtml(value).replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+
 // Базовые мета-теги и настройки
 const BASE_CONFIG = {
   charset: "UTF-8",
@@ -119,11 +129,11 @@ const generateSeoMetaTags = (seoData) => {
   const { title, description, keywords, canonicalUrl } = seoData;
 
   return `<!-- SEO Meta Tags -->
-    <title>${title}</title>
-    <meta name="description" content="${description}" />
-    <meta name="keywords" content="${keywords}" />
-    <link rel="canonical" href="${canonicalUrl}" />
-    <meta name="robots" content="${BASE_CONFIG.robots}" />`;
+    <title>${escapeHtml(title)}</title>
+    <meta name="description" content="${escapeAttribute(description)}" />
+    <meta name="keywords" content="${escapeAttribute(keywords)}" />
+    <link rel="canonical" href="${escapeAttribute(canonicalUrl)}" />
+    <meta name="robots" content="${escapeAttribute(BASE_CONFIG.robots)}" />`;
 };
 
 /**
@@ -136,12 +146,18 @@ const generateOpenGraphTags = (ogData) => {
 
   return `<!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="${canonicalUrl}" />
-    <meta property="og:title" content="${ogTitle}" />
-    <meta property="og:description" content="${ogDescription}" />
-    <meta property="og:image" content="${ogImage}" />
-    <meta property="og:site_name" content="${BASE_CONFIG.siteName}" />
-    <meta property="og:locale" content="${BASE_CONFIG.locale}" />`;
+    <meta property="og:url" content="${escapeAttribute(canonicalUrl)}" />
+    <meta property="og:title" content="${escapeAttribute(ogTitle)}" />
+    <meta property="og:description" content="${escapeAttribute(
+      ogDescription
+    )}" />
+    <meta property="og:image" content="${escapeAttribute(ogImage)}" />
+    <meta property="og:site_name" content="${escapeAttribute(
+      BASE_CONFIG.siteName
+    )}" />
+    <meta property="og:locale" content="${escapeAttribute(
+      BASE_CONFIG.locale
+    )}" />`;
 };
 
 /**
@@ -154,10 +170,12 @@ const generateTwitterTags = (twitterData) => {
 
   return `<!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="${canonicalUrl}" />
-    <meta property="twitter:title" content="${ogTitle}" />
-    <meta property="twitter:description" content="${ogDescription}" />
-    <meta property="twitter:image" content="${ogImage}" />`;
+    <meta property="twitter:url" content="${escapeAttribute(canonicalUrl)}" />
+    <meta property="twitter:title" content="${escapeAttribute(ogTitle)}" />
+    <meta property="twitter:description" content="${escapeAttribute(
+      ogDescription
+    )}" />
+    <meta property="twitter:image" content="${escapeAttribute(ogImage)}" />`;
 };
 
 /**
