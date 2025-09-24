@@ -4,49 +4,60 @@
  * Следует принципам: модульность, переиспользуемость, отсутствие хардкода
  */
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { COMPANY_INFO } from '../src/helpers/index.js';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import { COMPANY_INFO } from "../src/helpers/index.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT_DIR = path.resolve(__dirname, '..');
+const ROOT_DIR = path.resolve(__dirname, "..");
 
 // КОНСТАНТЫ ПРОЕКТА
 // =================
 
 // Базовые мета-теги и настройки
 const BASE_CONFIG = {
-  charset: 'UTF-8',
-  viewport: 'width=device-width, initial-scale=1.0',
-  robots: 'index, follow',
+  charset: "UTF-8",
+  viewport: "width=device-width, initial-scale=1.0",
+  robots: "index, follow",
   siteName: COMPANY_INFO.name,
-  locale: 'ru_RU',
+  locale: "ru_RU",
   companyPhone: COMPANY_INFO.phone,
 };
 
 // Структура favicon'ов (пути генерируются Vite автоматически)
 const FAVICON_ASSETS = [
-  { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-  { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/assets/favicon-16x16.png' },
-  { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/assets/favicon-32x32.png' },
-  { rel: 'apple-touch-icon', sizes: '180x180', href: '/assets/apple-touch-icon.png' },
-  { rel: 'manifest', href: '/site.webmanifest' },
+  { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+  {
+    rel: "icon",
+    type: "image/png",
+    sizes: "16x16",
+    href: "/assets/favicon-16x16.png",
+  },
+  {
+    rel: "icon",
+    type: "image/png",
+    sizes: "32x32",
+    href: "/assets/favicon-32x32.png",
+  },
+  {
+    rel: "apple-touch-icon",
+    sizes: "180x180",
+    href: "/assets/apple-touch-icon.png",
+  },
+  { rel: "manifest", href: "/site.webmanifest" },
 ];
 
 // Внешние подключения (только DNS prefetch для аналитики)
 const EXTERNAL_RESOURCES = {
-  dnsPrefetch: [
-    '//www.google-analytics.com',
-    '//www.googletagmanager.com',
-  ],
+  dnsPrefetch: ["//www.google-analytics.com", "//www.googletagmanager.com"],
 };
 
 // Изображения для Open Graph (пути обрабатываются htmlAssetsPlugin)
 const OG_IMAGES = {
-  heroMain: '/images/og/hero-main.png',
-  funeralHall: '/images/og/funeral-hall.png',
-  officeFacade: '/assets/office-facade-CENYA-P5.webp',
+  heroMain: "/images/og/hero-main.png",
+  funeralHall: "/images/og/funeral-hall.png",
+  officeFacade: "/images/og/hero-main.png",
 };
 
 // Критически важные изображения для preload
@@ -61,23 +72,26 @@ const PAGES_CONFIG = {
   index: {
     title: `${COMPANY_INFO.name} - Помощь в трудную минуту | ${COMPANY_INFO.city}`,
     description: `${COMPANY_INFO.name} в ${COMPANY_INFO.city}. Круглосуточная помощь в организации похорон, кремации, изготовление памятников. Звоните: ${COMPANY_INFO.phone}`,
-    keywords: 'ритуальная служба, похороны, Шуя, организация похорон, кремация, памятники, ритуальные услуги',
+    keywords:
+      "ритуальная служба, похороны, Шуя, организация похорон, кремация, памятники, ритуальные услуги",
     ogTitle: `${COMPANY_INFO.name} - Помощь в трудную минуту | ${COMPANY_INFO.city}`,
     ogDescription: `Круглосуточная ритуальная служба в ${COMPANY_INFO.city}. Полный комплекс услуг: организация похорон, кремация, памятники. Бесплатная консультация.`,
     ogImage: `https://ритуал-век.рф${OG_IMAGES.heroMain}`,
-    canonicalUrl: 'https://ритуал-век.рф/',
-    dataPage: 'home',
+    canonicalUrl: "https://ритуал-век.рф/",
+    dataPage: "home",
     preloadHeroImage: true,
   },
   uslugi: {
     title: `Ритуальные услуги в ${COMPANY_INFO.city}: организация похорон и кремация – ${COMPANY_INFO.name}`,
     description: `Полный комплекс ритуальных услуг в ${COMPANY_INFO.city}: организация похорон, кремация, перевозка тела, памятники. Круглосуточная служба Век. Звоните: ${COMPANY_INFO.phone}`,
-    keywords: 'ритуальные услуги, организация похорон, кремация, Шуя, перевозка тела, памятники, прощальные залы',
+    keywords:
+      "ритуальные услуги, организация похорон, кремация, Шуя, перевозка тела, памятники, прощальные залы",
     ogTitle: `Ритуальные услуги в ${COMPANY_INFO.city} – ${COMPANY_INFO.name}`,
-    ogDescription: 'Полный комплекс ритуальных услуг: организация похорон, кремация, памятники, прощальные залы. Деликатная помощь в трудную минуту.',
+    ogDescription:
+      "Полный комплекс ритуальных услуг: организация похорон, кремация, памятники, прощальные залы. Деликатная помощь в трудную минуту.",
     ogImage: `https://ритуал-век.рф${OG_IMAGES.funeralHall}`,
-    canonicalUrl: 'https://ритуал-век.рф/uslugi/',
-    dataPage: 'uslugi',
+    canonicalUrl: "https://ритуал-век.рф/uslugi/",
+    dataPage: "uslugi",
     preloadHeroImage: false,
   },
   privacy: {
@@ -87,8 +101,8 @@ const PAGES_CONFIG = {
     ogTitle: `Политика конфиденциальности – ${COMPANY_INFO.name}`,
     ogDescription: `Политика конфиденциальности и обработки персональных данных ${COMPANY_INFO.legalName}.`,
     ogImage: `https://ритуал-век.рф${OG_IMAGES.officeFacade}`,
-    canonicalUrl: 'https://ритуал-век.рф/privacy/',
-    dataPage: 'privacy',
+    canonicalUrl: "https://ритуал-век.рф/privacy/",
+    dataPage: "privacy",
     preloadHeroImage: false,
   },
 };
@@ -152,19 +166,24 @@ const generateTwitterTags = (twitterData) => {
  */
 const generateFaviconLinks = () => {
   return `<!-- Favicons -->
-    ${FAVICON_ASSETS.map(favicon =>
-      `<link rel="${favicon.rel}" ${favicon.type ? `type="${favicon.type}"` : ''} ${favicon.sizes ? `sizes="${favicon.sizes}"` : ''} href="${favicon.href}" />`
-    ).join('\n    ')}`;
+    ${FAVICON_ASSETS.map(
+      (favicon) =>
+        `<link rel="${favicon.rel}" ${
+          favicon.type ? `type="${favicon.type}"` : ""
+        } ${favicon.sizes ? `sizes="${favicon.sizes}"` : ""} href="${
+          favicon.href
+        }" />`
+    ).join("\n    ")}`;
 };
 
 /**
  * Создает ссылки на внешние ресурсы
- * @returns {string} - HTML строка с внешними ресурсами  
+ * @returns {string} - HTML строка с внешними ресурсами
  */
 const generateExternalResources = () => {
-  const dnsPrefetchLinks = EXTERNAL_RESOURCES.dnsPrefetch.map(url =>
-    `<link rel="dns-prefetch" href="${url}" />`
-  ).join('\n    ');
+  const dnsPrefetchLinks = EXTERNAL_RESOURCES.dnsPrefetch
+    .map((url) => `<link rel="dns-prefetch" href="${url}" />`)
+    .join("\n    ");
 
   return `<!-- DNS Prefetch для аналитики -->
     ${dnsPrefetchLinks}`;
@@ -176,13 +195,14 @@ const generateExternalResources = () => {
  * @returns {string} - HTML строка с preload тегами
  */
 const generateImagePreload = (shouldPreload) => {
-  if (!shouldPreload) return '';
+  if (!shouldPreload) return "";
 
   return `
     <!-- Preload critical images -->
-    ${CRITICAL_IMAGES.map(image =>
-      `<link rel="preload" href="${image.href}" as="image" type="${image.type}" />`
-    ).join('\n    ')}`;
+    ${CRITICAL_IMAGES.map(
+      (image) =>
+        `<link rel="preload" href="${image.href}" as="image" type="${image.type}" />`
+    ).join("\n    ")}`;
 };
 
 // ОСНОВНАЯ ФУНКЦИЯ ГЕНЕРАЦИИ
@@ -238,32 +258,32 @@ function generateHtmlTemplate(pageConfig) {
  * Основная функция генерации всех HTML страниц
  */
 function generateHtmlPages() {
-  console.log('🏗️  Генерация HTML страниц...');
+  console.log("🏗️  Генерация HTML страниц...");
 
   Object.entries(PAGES_CONFIG).forEach(([pageName, config]) => {
     const htmlContent = generateHtmlTemplate(config);
 
-    if (pageName === 'index') {
+    if (pageName === "index") {
       // Главная страница остается в корне
-      const filePath = path.join(ROOT_DIR, 'index.html');
-      fs.writeFileSync(filePath, htmlContent, 'utf8');
+      const filePath = path.join(ROOT_DIR, "index.html");
+      fs.writeFileSync(filePath, htmlContent, "utf8");
       console.log(`✅ Создан index.html`);
     } else {
       // Остальные страницы создаем в папках
       const dirPath = path.join(ROOT_DIR, pageName);
-      const filePath = path.join(dirPath, 'index.html');
+      const filePath = path.join(dirPath, "index.html");
 
       // Создаем папку если не существует
       if (!fs.existsSync(dirPath)) {
         fs.mkdirSync(dirPath, { recursive: true });
       }
 
-      fs.writeFileSync(filePath, htmlContent, 'utf8');
+      fs.writeFileSync(filePath, htmlContent, "utf8");
       console.log(`✅ Создан ${pageName}/index.html`);
     }
   });
 
-  console.log('🎉 Все HTML страницы созданы успешно!');
+  console.log("🎉 Все HTML страницы созданы успешно!");
 }
 
 // Запуск генерации
