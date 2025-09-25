@@ -12,7 +12,9 @@ html {
   scroll-behavior: smooth;
 
   @include mobile {
-    font-size: 14px; // Уменьшенный базовый размер для мобильных
+    * :not(input, select, textarea) {
+      font-size: 14px; // Уменьшенный базовый размер для мобильных
+    }
   }
 }
 
