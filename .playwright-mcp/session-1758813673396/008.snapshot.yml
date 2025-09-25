@@ -1,0 +1,1060 @@
+- generic [active] [ref=e1]:
+  - navigation "Global" [ref=e2]:
+    - generic [ref=e3]:
+      - search
+      - list [ref=e4]:
+        - listitem [ref=e5]:
+          - link "Apple Developer" [ref=e6] [cursor=pointer]:
+            - /url: https://developer.apple.com/
+            - generic [ref=e7]: Apple Developer
+        - listitem [ref=e8]:
+          - link "News" [ref=e9] [cursor=pointer]:
+            - /url: https://developer.apple.com/news/
+            - generic [ref=e10]: News
+        - listitem [ref=e11]:
+          - link "Discover" [ref=e12] [cursor=pointer]:
+            - /url: https://developer.apple.com/discover/
+            - generic [ref=e13]: Discover
+        - listitem [ref=e14]:
+          - link "Design" [ref=e15] [cursor=pointer]:
+            - /url: https://developer.apple.com/design/
+            - generic [ref=e16]: Design
+        - listitem [ref=e17]:
+          - link "Develop" [ref=e18] [cursor=pointer]:
+            - /url: https://developer.apple.com/develop/
+            - generic [ref=e19]: Develop
+        - listitem [ref=e20]:
+          - link "Distribute" [ref=e21] [cursor=pointer]:
+            - /url: https://developer.apple.com/distribute/
+            - generic [ref=e22]: Distribute
+        - listitem [ref=e23]:
+          - link "Support" [ref=e24] [cursor=pointer]:
+            - /url: https://developer.apple.com/support/
+            - generic [ref=e25]: Support
+        - listitem [ref=e26]:
+          - link "Account" [ref=e27] [cursor=pointer]:
+            - /url: https://developer.apple.com/account/
+            - generic [ref=e28]: Account
+        - search [ref=e29]:
+          - button "Search" [ref=e30] [cursor=pointer]
+  - navigation "Local" [ref=e31]:
+    - generic [ref=e34]:
+      - link "Developer Forums" [ref=e36] [cursor=pointer]:
+        - /url: /forums/
+        - generic [ref=e37]: Developer
+        - text: Forums
+      - search "Developer Forums" [ref=e41]:
+        - generic [ref=e42]: Search for a topic, subtopic, or tag
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - textbox "Search" [ref=e45]:
+              - /placeholder: Search for a topic, subtopic, or tag
+            - button "Submit search" [ref=e46] [cursor=pointer]
+          - status [ref=e47]
+      - generic [ref=e48]:
+        - generic:
+          - list
+        - generic [ref=e49]:
+          - link "Post" [ref=e51] [cursor=pointer]:
+            - /url: /forums/post/question
+          - button "Profile" [ref=e54] [cursor=pointer]:
+            - generic [ref=e55]: Profile
+  - main [ref=e57]:
+    - generic [ref=e58]:
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - heading "barTintColor not working in iOS 15" [level=1] [ref=e61]
+          - generic [ref=e63]:
+            - generic [ref=e64]:
+              - link "UI Frameworks" [ref=e66] [cursor=pointer]:
+                - /url: /forums/topics/ui-frameworks-topic
+              - link "UIKit" [ref=e68] [cursor=pointer]:
+                - /url: /forums/topics/ui-frameworks-topic/ui-frameworks-topic-uikit
+            - link "UIKit" [ref=e70] [cursor=pointer]:
+              - /url: /forums/tags/uikit
+            - link "WWDC21" [ref=e72] [cursor=pointer]:
+              - /url: /forums/tags/wwdc21
+          - text:  
+        - article "Thread post" [ref=e74]:
+          - text: 
+          - generic [ref=e75]:
+            - generic [ref=e76]:
+              - link [ref=e77] [cursor=pointer]:
+                - /url: /forums/profile/tamadeveloper
+                - img [ref=e79]
+              - link "tamadeveloper" [ref=e82] [cursor=pointer]:
+                - /url: /forums/profile/tamadeveloper
+            - generic [ref=e84]:
+              - generic [ref=e85]:
+                - generic [ref=e86]: Created
+                - generic [ref=e87]: Jun ’21
+              - generic [ref=e88]:
+                - generic [ref=e89]: Replies
+                - generic [ref=e90]: "24"
+              - generic [ref=e91]:
+                - generic [ref=e92]: Boosts
+                - generic [ref=e93]: "0"
+              - generic [ref=e94]:
+                - generic [ref=e95]: Views
+                - generic [ref=e96]: 85k
+              - generic [ref=e97]:
+                - generic [ref=e98]: Participants
+                - generic [ref=e99]: "48"
+          - generic [ref=e100]:
+            - generic [ref=e101]:
+              - generic [ref=e102]:
+                - paragraph [ref=e103]: Hi,
+                - paragraph [ref=e104]:
+                  - text: When I run the following code in
+                  - code [ref=e105]: application(_ :didFinishLaunchingWithOptions)
+                  - text: "in iOS 15, the bar color turns transparent (thus, showing the black background underneath), while the same code works fine in iOS 14.5:"
+                - code [ref=e109]:
+                  - table [ref=e110]:
+                    - rowgroup [ref=e111]:
+                      - row "1 UINavigationBar.appearance().isTranslucent = false" [ref=e112]:
+                        - cell "1" [ref=e113]:
+                          - generic: "1"
+                        - cell "UINavigationBar.appearance().isTranslucent = false" [ref=e114]
+                      - row "2 UINavigationBar.appearance().barTintColor = .red" [ref=e115]:
+                        - cell "2" [ref=e116]:
+                          - generic: "2"
+                        - cell "UINavigationBar.appearance().barTintColor = .red" [ref=e117]
+                - paragraph [ref=e118]: "Here's the screenshots of Simulators running iOS 14.5 and iOS 15:"
+                - paragraph [ref=e119]:
+                  - img "bartint.png" [ref=e120]
+                - paragraph [ref=e121]: I'm using Xcode 13 on macOS Big Sur 11.4.
+                - paragraph [ref=e122]: Thanks!
+              - generic [ref=e123]:
+                - generic [ref=e124]:
+                  - generic [ref=e125]:
+                    - generic [ref=e127]: Answered by
+                    - generic [ref=e128]: Frameworks Engineer
+                    - generic [ref=e129]: in
+                    - link "678641022" [ref=e130] [cursor=pointer]:
+                      - /url: /forums/thread/682420?answerId=678641022#678641022
+                  - link "View in context" [ref=e131] [cursor=pointer]:
+                    - /url: /forums/thread/682420?answerId=678641022#678641022
+                - generic [ref=e132]:
+                  - paragraph [ref=e133]:
+                    - text: In iOS 15, UIKit has extended the usage of the
+                    - code [ref=e134]: scrollEdgeAppearance
+                    - text: ", which by default produces a transparent background, to all navigation bars. The background is controlled by when your scroll view scrolls content behind the navigation bar. Your screenshots indicate that you are scrolled to the top, and so the navigation bar has selected its"
+                    - code [ref=e135]: scrollEdgeAppearance
+                    - text: over the
+                    - code [ref=e136]: standardAppearance
+                    - text: that it would use when scrolled, and on previous versions of iOS.
+                  - paragraph [ref=e137]:
+                    - text: To restore the old look, you must adopt the new
+                    - code [ref=e138]: UINavigationBar
+                    - text: appearance APIs,
+                    - code [ref=e139]: UINavigationBarAppearance
+                    - text: ". Remove your existing customizations and do something like this:"
+                  - code [ref=e143]:
+                    - table [ref=e144]:
+                      - rowgroup [ref=e145]:
+                        - row "1 let appearance = UINavigationBarAppearance()" [ref=e146]:
+                          - cell "1" [ref=e147]:
+                            - generic: "1"
+                          - cell "let appearance = UINavigationBarAppearance()" [ref=e148]
+                        - row "2 appearance.configureWithOpaqueBackground()" [ref=e149]:
+                          - cell "2" [ref=e150]:
+                            - generic: "2"
+                          - cell "appearance.configureWithOpaqueBackground()" [ref=e151]
+                        - row "3 appearance.backgroundColor = <your tint color>" [ref=e152]:
+                          - cell "3" [ref=e153]:
+                            - generic: "3"
+                          - cell "appearance.backgroundColor = <your tint color>" [ref=e154]:
+                            - text: appearance.backgroundColor =
+                            - generic [ref=e156]: <your tint color>
+                        - row "4 navigationBar.standardAppearance = appearance;" [ref=e157]:
+                          - cell "4" [ref=e158]:
+                            - generic: "4"
+                          - cell "navigationBar.standardAppearance = appearance;" [ref=e159]
+                        - row "5 navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance" [ref=e160]:
+                          - cell "5" [ref=e161]:
+                            - generic: "5"
+                          - cell "navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance" [ref=e162]
+                        - row "6" [ref=e163]:
+                          - cell "6" [ref=e164]:
+                            - generic: "6"
+                          - cell [ref=e165]
+                  - paragraph [ref=e166]:
+                    - text: In the general case, it is the last line
+                    - code [ref=e167]: navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+                    - text: ", which resolves the issue by having the"
+                    - code [ref=e168]: UINavigationBar
+                    - text: use the same appearance for both its standard and edge states. Also note that this will cause the scroll view to underlap the navigation bar – we recommend against setting
+                    - code [ref=e169]: UINavigationBar.isTranslucent = true
+                    - text: .
+                  - paragraph [ref=e170]:
+                    - text: You can also use the appearance proxy with the code above, but substituting
+                    - code [ref=e171]: navigationBar.appearance().scrollEdgeAppearance = appearance
+                    - text: for the last line (as you are constructing your own appearance object – the idea is to just make sure both scrollEdge and standard appearances are the same).
+            - generic [ref=e173]:
+              - link "Boost" [ref=e175] [cursor=pointer]:
+                - /url: /forums/login
+                - text: Boost
+              - link "Reply" [ref=e177] [cursor=pointer]:
+                - /url: /forums/login
+              - button "Copy tamadeveloper question" [ref=e181] [cursor=pointer]:
+                - generic [ref=e182]:
+                  - img [ref=e183]
+                  - generic [ref=e189]: 􀈂
+                - generic [ref=e190]: Copy tamadeveloper question
+        - region [ref=e191]:
+          - article [ref=e192]:
+            - text: 
+            - generic [ref=e193]:
+              - generic [ref=e194]:
+                - img [ref=e196]
+                - generic [ref=e198]:
+                  - generic [ref=e200]: Frameworks Engineer
+                  - generic [ref=e201]: Apple
+              - generic [ref=e204]: Jun ’21
+            - generic [ref=e205]:
+              - generic [ref=e207]: Accepted Answer
+              - generic [ref=e210]:
+                - paragraph [ref=e211]:
+                  - text: In iOS 15, UIKit has extended the usage of the
+                  - code [ref=e212]: scrollEdgeAppearance
+                  - text: ", which by default produces a transparent background, to all navigation bars. The background is controlled by when your scroll view scrolls content behind the navigation bar. Your screenshots indicate that you are scrolled to the top, and so the navigation bar has selected its"
+                  - code [ref=e213]: scrollEdgeAppearance
+                  - text: over the
+                  - code [ref=e214]: standardAppearance
+                  - text: that it would use when scrolled, and on previous versions of iOS.
+                - paragraph [ref=e215]:
+                  - text: To restore the old look, you must adopt the new
+                  - code [ref=e216]: UINavigationBar
+                  - text: appearance APIs,
+                  - code [ref=e217]: UINavigationBarAppearance
+                  - text: ". Remove your existing customizations and do something like this:"
+                - code [ref=e221]:
+                  - table [ref=e222]:
+                    - rowgroup [ref=e223]:
+                      - row "1 let appearance = UINavigationBarAppearance()" [ref=e224]:
+                        - cell "1" [ref=e225]:
+                          - generic: "1"
+                        - cell "let appearance = UINavigationBarAppearance()" [ref=e226]
+                      - row "2 appearance.configureWithOpaqueBackground()" [ref=e227]:
+                        - cell "2" [ref=e228]:
+                          - generic: "2"
+                        - cell "appearance.configureWithOpaqueBackground()" [ref=e229]
+                      - row "3 appearance.backgroundColor = <your tint color>" [ref=e230]:
+                        - cell "3" [ref=e231]:
+                          - generic: "3"
+                        - cell "appearance.backgroundColor = <your tint color>" [ref=e232]:
+                          - text: appearance.backgroundColor =
+                          - generic [ref=e234]: <your tint color>
+                      - row "4 navigationBar.standardAppearance = appearance;" [ref=e235]:
+                        - cell "4" [ref=e236]:
+                          - generic: "4"
+                        - cell "navigationBar.standardAppearance = appearance;" [ref=e237]
+                      - row "5 navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance" [ref=e238]:
+                        - cell "5" [ref=e239]:
+                          - generic: "5"
+                        - cell "navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance" [ref=e240]
+                      - row "6" [ref=e241]:
+                        - cell "6" [ref=e242]:
+                          - generic: "6"
+                        - cell [ref=e243]
+                - paragraph [ref=e244]:
+                  - text: In the general case, it is the last line
+                  - code [ref=e245]: navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+                  - text: ", which resolves the issue by having the"
+                  - code [ref=e246]: UINavigationBar
+                  - text: use the same appearance for both its standard and edge states. Also note that this will cause the scroll view to underlap the navigation bar – we recommend against setting
+                  - code [ref=e247]: UINavigationBar.isTranslucent = true
+                  - text: .
+                - paragraph [ref=e248]:
+                  - text: You can also use the appearance proxy with the code above, but substituting
+                  - code [ref=e249]: navigationBar.appearance().scrollEdgeAppearance = appearance
+                  - text: for the last line (as you are constructing your own appearance object – the idea is to just make sure both scrollEdge and standard appearances are the same).
+              - generic [ref=e251]:
+                - button "11 comments" [ref=e252] [cursor=pointer]:
+                  - generic [ref=e253]: "11"
+                  - generic [ref=e254]: comments
+                - generic [ref=e256]:
+                  - link "Upvote after login" [ref=e257] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e259]: "66"
+                  - link "down vote after login" [ref=e260] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e262] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy to clipboard" [ref=e266] [cursor=pointer]:
+                  - generic [ref=e267]:
+                    - img [ref=e268]
+                    - generic [ref=e274]: 􀈂
+                  - generic [ref=e275]: Copy to clipboard
+          - article [ref=e276]:
+            - text: 
+            - generic [ref=e277]:
+              - generic [ref=e278]:
+                - link [ref=e279] [cursor=pointer]:
+                  - /url: /forums/profile/tamadeveloper
+                  - img [ref=e281]
+                - generic [ref=e283]:
+                  - link "tamadeveloper" [ref=e284] [cursor=pointer]:
+                    - /url: /forums/profile/tamadeveloper
+                  - generic [ref=e285]: OP
+              - generic [ref=e288]: Jun ’21
+            - generic [ref=e289]:
+              - paragraph [ref=e292]: It worked like a charm! Thank you!
+              - generic [ref=e294]:
+                - button "2 comments" [ref=e295] [cursor=pointer]:
+                  - generic [ref=e296]: "2"
+                  - generic [ref=e297]: comments
+                - generic [ref=e299]:
+                  - link "Upvote after login" [ref=e300] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e302]: "0"
+                  - link "down vote after login" [ref=e303] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e305] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy tamadeveloper answer" [ref=e309] [cursor=pointer]:
+                  - generic [ref=e310]:
+                    - img [ref=e311]
+                    - generic [ref=e317]: 􀈂
+                  - generic [ref=e318]: Copy tamadeveloper answer
+          - article [ref=e319]:
+            - text: 
+            - generic [ref=e320]:
+              - generic [ref=e321]:
+                - link [ref=e322] [cursor=pointer]:
+                  - /url: /forums/profile/TomBraze
+                  - img [ref=e324]
+                - link "TomBraze" [ref=e327] [cursor=pointer]:
+                  - /url: /forums/profile/TomBraze
+              - generic [ref=e330]: Jul ’21
+            - generic [ref=e331]:
+              - paragraph [ref=e334]: I'm seeing this issue too. I'm surprised that the default behavior is this and that it requires configuration now? I also had to set it for all appearance types to make it look better, but there are still cases where the appearance is strange especially in the transitions between view controllers.
+              - generic [ref=e336]:
+                - button "1 comments" [ref=e337] [cursor=pointer]:
+                  - generic [ref=e338]: "1"
+                  - generic [ref=e339]: comments
+                - generic [ref=e341]:
+                  - link "Upvote after login" [ref=e342] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e344]: "3"
+                  - link "down vote after login" [ref=e345] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e347] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy TomBraze answer" [ref=e351] [cursor=pointer]:
+                  - generic [ref=e352]:
+                    - img [ref=e353]
+                    - generic [ref=e359]: 􀈂
+                  - generic [ref=e360]: Copy TomBraze answer
+          - article [ref=e361]:
+            - text: 
+            - generic [ref=e362]:
+              - generic [ref=e363]:
+                - link [ref=e364] [cursor=pointer]:
+                  - /url: /forums/profile/TN-T
+                  - img [ref=e366]
+                - link "TN-T" [ref=e369] [cursor=pointer]:
+                  - /url: /forums/profile/TN-T
+              - generic [ref=e372]: Jul ’21
+            - generic [ref=e373]:
+              - paragraph [ref=e376]: deleted
+              - generic [ref=e378]:
+                - generic [ref=e379]:
+                  - link "Upvote after login" [ref=e380] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e382]: "0"
+                  - link "down vote after login" [ref=e383] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e385] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy TN-T answer" [ref=e389] [cursor=pointer]:
+                  - generic [ref=e390]:
+                    - img [ref=e391]
+                    - generic [ref=e397]: 􀈂
+                  - generic [ref=e398]: Copy TN-T answer
+          - article [ref=e399]:
+            - text: 
+            - generic [ref=e400]:
+              - generic [ref=e401]:
+                - link [ref=e402] [cursor=pointer]:
+                  - /url: /forums/profile/TN-T
+                  - img [ref=e404]
+                - link "TN-T" [ref=e407] [cursor=pointer]:
+                  - /url: /forums/profile/TN-T
+              - generic [ref=e410]: Jul ’21
+            - generic [ref=e411]:
+              - generic [ref=e413]:
+                - paragraph [ref=e414]: I have the same problem. The code has to be inserted in each controller and the transitions between the controllers is buggy (Xcode Beta 2, iOS 15 Beta 2).
+                - paragraph [ref=e415]: "My problem is the missing top line in the TabBar. I can solve it only by adding a frame. But the frame would have to be visible only at the top. Does anyone have any ideas? Here is my current solution:"
+                - code [ref=e419]:
+                  - table [ref=e420]:
+                    - rowgroup [ref=e421]:
+                      - row "1 tabBarController?.tabBar.tintColor = \"myTintColor\"" [ref=e422]:
+                        - cell "1" [ref=e423]:
+                          - generic: "1"
+                        - cell "tabBarController?.tabBar.tintColor = \"myTintColor\"" [ref=e424]
+                      - row "2 tabBarController?.tabBar.clipsToBounds = true" [ref=e425]:
+                        - cell "2" [ref=e426]:
+                          - generic: "2"
+                        - cell "tabBarController?.tabBar.clipsToBounds = true" [ref=e427]
+                      - row "3 tabBarController?.tabBar.layer.borderWidth = 0.5" [ref=e428]:
+                        - cell "3" [ref=e429]:
+                          - generic: "3"
+                        - cell "tabBarController?.tabBar.layer.borderWidth = 0.5" [ref=e430]
+                      - row "4 tabBarController?.tabBar.layer.borderColor = UIColor.lightGray.cgColor" [ref=e431]:
+                        - cell "4" [ref=e432]:
+                          - generic: "4"
+                        - cell "tabBarController?.tabBar.layer.borderColor = UIColor.lightGray.cgColor" [ref=e433]
+                - paragraph [ref=e434]: thanks!
+              - generic [ref=e436]:
+                - generic [ref=e437]:
+                  - link "Upvote after login" [ref=e438] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e440]: "0"
+                  - link "down vote after login" [ref=e441] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e443] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy TN-T answer" [ref=e447] [cursor=pointer]:
+                  - generic [ref=e448]:
+                    - img [ref=e449]
+                    - generic [ref=e455]: 􀈂
+                  - generic [ref=e456]: Copy TN-T answer
+          - article [ref=e457]:
+            - text: 
+            - generic [ref=e458]:
+              - generic [ref=e459]:
+                - link [ref=e460] [cursor=pointer]:
+                  - /url: /forums/profile/TN-T
+                  - img [ref=e462]
+                - link "TN-T" [ref=e465] [cursor=pointer]:
+                  - /url: /forums/profile/TN-T
+              - generic [ref=e468]: Jul ’21
+            - generic [ref=e469]:
+              - generic [ref=e471]:
+                - paragraph [ref=e472]: "*** Update iOS15 Beta 3 / Xcode Beta 3 ***"
+                - paragraph [ref=e473]: Since beta 3 the problem seems to be solved in the main controller. But when I switch to a subcontroller, the separator line disappears. It no longer appears when I switch back to the main controller. This is definitely a bug!
+              - generic [ref=e475]:
+                - generic [ref=e476]:
+                  - link "Upvote after login" [ref=e477] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e479]: "1"
+                  - link "down vote after login" [ref=e480] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e482] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy TN-T answer" [ref=e486] [cursor=pointer]:
+                  - generic [ref=e487]:
+                    - img [ref=e488]
+                    - generic [ref=e494]: 􀈂
+                  - generic [ref=e495]: Copy TN-T answer
+          - article [ref=e496]:
+            - text: 
+            - generic [ref=e497]:
+              - generic [ref=e498]:
+                - link [ref=e499] [cursor=pointer]:
+                  - /url: /forums/profile/TomBraze
+                  - img [ref=e501]
+                - link "TomBraze" [ref=e504] [cursor=pointer]:
+                  - /url: /forums/profile/TomBraze
+              - generic [ref=e507]: Jul ’21
+            - generic [ref=e508]:
+              - generic [ref=e510]:
+                - paragraph [ref=e511]: We faced a similar problem and are considering resolving it with making sure that we always set the background of the view of our view controllers to something other than clear such as systembackgroundcolor, and ensuring that all of our view controllers use UIRectEdgeAll. Previously some view controllers and especially WKWebViews had a clear background and UIRectEdgeNone.
+                - paragraph [ref=e512]: I'd be curious to hear if this helps for anyone else. I like this approach more as it feels less invasive than changing the appearance of the navigation bar.
+              - generic [ref=e514]:
+                - generic [ref=e515]:
+                  - link "Upvote after login" [ref=e516] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e518]: "0"
+                  - link "down vote after login" [ref=e519] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e521] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy TomBraze answer" [ref=e525] [cursor=pointer]:
+                  - generic [ref=e526]:
+                    - img [ref=e527]
+                    - generic [ref=e533]: 􀈂
+                  - generic [ref=e534]: Copy TomBraze answer
+          - article [ref=e535]:
+            - text: 
+            - generic [ref=e536]:
+              - generic [ref=e537]:
+                - link [ref=e538] [cursor=pointer]:
+                  - /url: /forums/profile/IatroCom
+                  - img [ref=e540]
+                - link "IatroCom" [ref=e543] [cursor=pointer]:
+                  - /url: /forums/profile/IatroCom
+              - generic [ref=e546]: Aug ’21
+            - generic [ref=e547]:
+              - paragraph [ref=e550]: This Navigation Bar Transparency problem began when Apple made Dark Mode. I told them about it and Apple fixed it but they have broken the Nav Bar again in iOS 15.
+              - generic [ref=e552]:
+                - generic [ref=e553]:
+                  - link "Upvote after login" [ref=e554] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e556]: "0"
+                  - link "down vote after login" [ref=e557] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e559] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy IatroCom answer" [ref=e563] [cursor=pointer]:
+                  - generic [ref=e564]:
+                    - img [ref=e565]
+                    - generic [ref=e571]: 􀈂
+                  - generic [ref=e572]: Copy IatroCom answer
+          - article [ref=e573]:
+            - text: 
+            - generic [ref=e574]:
+              - generic [ref=e575]:
+                - link [ref=e576] [cursor=pointer]:
+                  - /url: /forums/profile/buriedalive
+                  - img [ref=e578]
+                - link "buriedalive" [ref=e581] [cursor=pointer]:
+                  - /url: /forums/profile/buriedalive
+              - generic [ref=e584]: Sep ’21
+            - generic [ref=e585]:
+              - paragraph [ref=e588]: The issue persists on iOS 15 Beta 8. Tried on both light/dark theme.
+              - generic [ref=e590]:
+                - generic [ref=e591]:
+                  - link "Upvote after login" [ref=e592] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e594]: "0"
+                  - link "down vote after login" [ref=e595] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e597] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy buriedalive answer" [ref=e601] [cursor=pointer]:
+                  - generic [ref=e602]:
+                    - img [ref=e603]
+                    - generic [ref=e609]: 􀈂
+                  - generic [ref=e610]: Copy buriedalive answer
+          - article [ref=e611]:
+            - text: 
+            - generic [ref=e612]:
+              - generic [ref=e613]:
+                - link [ref=e614] [cursor=pointer]:
+                  - /url: /forums/profile/darkpaw
+                  - img [ref=e616]
+                - link "darkpaw" [ref=e619] [cursor=pointer]:
+                  - /url: /forums/profile/darkpaw
+              - generic [ref=e622]: Sep ’21
+            - generic [ref=e623]:
+              - generic [ref=e625]:
+                - paragraph [ref=e626]: This doesn't seem to work at all with the iOS 15 RC.
+                - paragraph [ref=e627]: VC1 shows VC2. VC1 and VC2 are fine. Their navigation bars are the correct colour.
+                - paragraph [ref=e628]: VC2 presents an image picker (of your library photos). Nothing I do seems to make the image picker use the right colours.
+                - paragraph [ref=e629]: I've tried to use Rincewind's code to style the picker, but it just shows as light grey, with the nav bar buttons in white. I've implemented navigationController:willShowViewController:animated, but whatever I put in there is completely ignored.
+                - paragraph [ref=e630]: It does seem that Apple decide to change the fundamental behaviour of something, and just assume that developers will change their apps to cope with it How about you give us a heads-up before you break our apps?
+              - generic [ref=e632]:
+                - button "1 comments" [ref=e633] [cursor=pointer]:
+                  - generic [ref=e634]: "1"
+                  - generic [ref=e635]: comments
+                - generic [ref=e637]:
+                  - link "Upvote after login" [ref=e638] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e640]: "3"
+                  - link "down vote after login" [ref=e641] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e643] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy darkpaw answer" [ref=e647] [cursor=pointer]:
+                  - generic [ref=e648]:
+                    - img [ref=e649]
+                    - generic [ref=e655]: 􀈂
+                  - generic [ref=e656]: Copy darkpaw answer
+          - article [ref=e657]:
+            - text: 
+            - generic [ref=e658]:
+              - generic [ref=e659]:
+                - link [ref=e660] [cursor=pointer]:
+                  - /url: /forums/profile/Banck
+                  - img [ref=e662]
+                - link "Banck" [ref=e665] [cursor=pointer]:
+                  - /url: /forums/profile/Banck
+              - generic [ref=e668]: Sep ’21
+            - generic [ref=e669]:
+              - paragraph [ref=e672]: I've changed .barTintColor to UINavigationBarAppearance backgroundColor, set to standardAppearance and scrollEdgeAppearance and it works. But if present new ViewController modally with modalPresentationStyle == .fullscreen and dismiss, navigationBar's background color on the first one changed to default.
+              - generic [ref=e674]:
+                - button "3 comments" [ref=e675] [cursor=pointer]:
+                  - generic [ref=e676]: "3"
+                  - generic [ref=e677]: comments
+                - generic [ref=e679]:
+                  - link "Upvote after login" [ref=e680] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e682]: "1"
+                  - link "down vote after login" [ref=e683] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e685] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy Banck answer" [ref=e689] [cursor=pointer]:
+                  - generic [ref=e690]:
+                    - img [ref=e691]
+                    - generic [ref=e697]: 􀈂
+                  - generic [ref=e698]: Copy Banck answer
+          - article [ref=e699]:
+            - text: 
+            - generic [ref=e700]:
+              - generic [ref=e701]:
+                - link [ref=e702] [cursor=pointer]:
+                  - /url: /forums/profile/wlixcc
+                  - img [ref=e704]
+                - link "wlixcc" [ref=e707] [cursor=pointer]:
+                  - /url: /forums/profile/wlixcc
+              - generic [ref=e710]: Sep ’21
+            - generic [ref=e711]:
+              - generic [ref=e713]:
+                - paragraph [ref=e714]: In my case， when I update to xcode13 and iOS15。 I have found that navigationBar and tabBar turns transparent。 My viewController is embed in UINavigationController
+                - paragraph [ref=e715]:
+                  - img "Simulator Screen Shot - iPhone 13 Pro Max - 2021-09-24 at 09.57.25.png" [ref=e716]
+                - paragraph [ref=e717]: After a series of tests, I found the Settings the backgroundColor of navigationController is best Way to fix this
+                - blockquote [ref=e718]:
+                  - paragraph [ref=e719]: navigationController?.view.backgroundColor = .yourColor
+                - paragraph [ref=e720]: Once the color is set, everything is fine
+                - paragraph [ref=e721]:
+                  - img "Simulator Screen Shot - iPhone 13 Pro Max - 2021-09-24 at 10.00.42.png" [ref=e722]
+              - generic [ref=e724]:
+                - button "4 comments" [ref=e725] [cursor=pointer]:
+                  - generic [ref=e726]: "4"
+                  - generic [ref=e727]: comments
+                - generic [ref=e729]:
+                  - link "Upvote after login" [ref=e730] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e732]: "8"
+                  - link "down vote after login" [ref=e733] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e735] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy wlixcc answer" [ref=e739] [cursor=pointer]:
+                  - generic [ref=e740]:
+                    - img [ref=e741]
+                    - generic [ref=e747]: 􀈂
+                  - generic [ref=e748]: Copy wlixcc answer
+          - article [ref=e749]:
+            - text: 
+            - generic [ref=e750]:
+              - generic [ref=e751]:
+                - link [ref=e752] [cursor=pointer]:
+                  - /url: /forums/profile/Mathias_
+                  - img [ref=e754]
+                - link "Mathias_" [ref=e757] [cursor=pointer]:
+                  - /url: /forums/profile/Mathias_
+              - generic [ref=e760]: Sep ’21
+            - generic [ref=e761]:
+              - generic [ref=e763]:
+                - paragraph [ref=e764]: Hi, little bit late to the game, but i just got this in my app after compiling with xcode 13.
+                - paragraph [ref=e765]:
+                  - text: I followed the advice from
+                  - link "@Rincewind" [ref=e766] [cursor=pointer]:
+                    - /url: https://developer.apple.com/forums/profile/Rincewind
+                  - text: "and got it working, with one exception: When you change the appearances, the navigation text, is then black, not white. The back arrow is still white though."
+                - paragraph [ref=e767]:
+                  - text: "I managed to sort this out by doing the \"largeTextAttributes\"-dance :"
+                  - code [ref=e768]: "coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white] coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]"
+                - paragraph [ref=e769]: However, i am surprised that this is not mentioned by anyone in this thread. Howcome i am the only one having this color issue? Am i missing something?
+                - paragraph [ref=e770]: Pointers appreciated.
+              - generic [ref=e772]:
+                - generic [ref=e773]:
+                  - link "Upvote after login" [ref=e774] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e776]: "0"
+                  - link "down vote after login" [ref=e777] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e779] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy Mathias_ answer" [ref=e783] [cursor=pointer]:
+                  - generic [ref=e784]:
+                    - img [ref=e785]
+                    - generic [ref=e791]: 􀈂
+                  - generic [ref=e792]: Copy Mathias_ answer
+          - article [ref=e793]:
+            - text: 
+            - generic [ref=e794]:
+              - generic [ref=e795]:
+                - link [ref=e796] [cursor=pointer]:
+                  - /url: /forums/profile/Mathias_
+                  - img [ref=e798]
+                - link "Mathias_" [ref=e801] [cursor=pointer]:
+                  - /url: /forums/profile/Mathias_
+              - generic [ref=e804]: Sep ’21
+            - generic [ref=e805]:
+              - generic [ref=e807]:
+                - paragraph [ref=e808]:
+                  - link "@cblaze22" [ref=e809] [cursor=pointer]:
+                    - /url: https://developer.apple.com/forums/profile/cblaze22
+                  - text: "asked for an Objective-C version. Here:"
+                - code [ref=e813]:
+                  - table [ref=e814]:
+                    - rowgroup [ref=e815]:
+                      - row "1 UINavigationBarAppearance *navBarAppearance = [[UINavigationBarAppearance alloc] init];" [ref=e816]:
+                        - cell "1" [ref=e817]:
+                          - generic: "1"
+                        - cell "UINavigationBarAppearance *navBarAppearance = [[UINavigationBarAppearance alloc] init];" [ref=e818]
+                      - row "2 [navBarAppearance configureWithOpaqueBackground];" [ref=e819]:
+                        - cell "2" [ref=e820]:
+                          - generic: "2"
+                        - cell "[navBarAppearance configureWithOpaqueBackground];" [ref=e821]
+                      - row "3 navBarAppearance.backgroundColor = [UIColor blueColor];" [ref=e822]:
+                        - cell "3" [ref=e823]:
+                          - generic: "3"
+                        - cell "navBarAppearance.backgroundColor = [UIColor blueColor];" [ref=e824]
+                      - row "4 [navBarAppearance setTitleTextAttributes:" [ref=e825]:
+                        - cell "4" [ref=e826]:
+                          - generic: "4"
+                        - cell "[navBarAppearance setTitleTextAttributes:" [ref=e827]
+                      - 'row "5 @{NSForegroundColorAttributeName:[UIColor whiteColor]}];" [ref=e828]':
+                        - cell "5" [ref=e829]:
+                          - generic: "5"
+                        - 'cell "@{NSForegroundColorAttributeName:[UIColor whiteColor]}];" [ref=e830]'
+                      - row "6" [ref=e831]:
+                        - cell "6" [ref=e832]:
+                          - generic: "6"
+                        - cell [ref=e833]
+                      - row "7 navBar.standardAppearance = navBarAppearance;" [ref=e834]:
+                        - cell "7" [ref=e835]:
+                          - generic: "7"
+                        - cell "navBar.standardAppearance = navBarAppearance;" [ref=e836]
+                      - row "8 navBar.scrollEdgeAppearance = navBarAppearance;" [ref=e837]:
+                        - cell "8" [ref=e838]:
+                          - generic: "8"
+                        - cell "navBar.scrollEdgeAppearance = navBarAppearance;" [ref=e839]
+                      - 'row "9 [navBarAppearance release];`" [ref=e840]':
+                        - cell "9" [ref=e841]:
+                          - generic: "9"
+                        - 'cell "[navBarAppearance release];`" [ref=e842]'
+                      - 'row "10 ```" [ref=e843]':
+                        - cell "10" [ref=e844]:
+                          - generic: "10"
+                        - 'cell "```" [ref=e845]'
+                      - row "11" [ref=e846]:
+                        - cell "11" [ref=e847]:
+                          - generic: "11"
+                        - cell [ref=e848]
+              - generic [ref=e850]:
+                - generic [ref=e851]:
+                  - link "Upvote after login" [ref=e852] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e854]: "1"
+                  - link "down vote after login" [ref=e855] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e857] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy Mathias_ answer" [ref=e861] [cursor=pointer]:
+                  - generic [ref=e862]:
+                    - img [ref=e863]
+                    - generic [ref=e869]: 􀈂
+                  - generic [ref=e870]: Copy Mathias_ answer
+          - article [ref=e871]:
+            - text: 
+            - generic [ref=e872]:
+              - generic [ref=e873]:
+                - link [ref=e874] [cursor=pointer]:
+                  - /url: /forums/profile/atka
+                  - img [ref=e876]
+                - link "atka" [ref=e879] [cursor=pointer]:
+                  - /url: /forums/profile/atka
+              - generic [ref=e882]: Oct ’21
+            - generic [ref=e883]:
+              - generic [ref=e885]:
+                - paragraph [ref=e886]: "After going through all the answers so far and trial and error in interface builder the problem is sorted for me after the following steps: (xcode 13 , iOS 13)"
+                - list [ref=e887]:
+                  - listitem [ref=e888]: choose standard and scroll edge appearances for the navigation bar.
+                - paragraph [ref=e889]:
+                  - img "Screenshot 2021-10-03 at 19.02.38.png" [ref=e890]
+                - list [ref=e891]:
+                  - listitem [ref=e892]: set both appearances to be the same.
+                - paragraph [ref=e893]:
+                  - img "Screenshot 2021-10-03 at 19.03.02.png" [ref=e894]
+                  - img "Screenshot 2021-10-03 at 19.03.36.png" [ref=e895]
+                - paragraph [ref=e896]: Good luck
+              - generic [ref=e898]:
+                - button "7 comments" [ref=e899] [cursor=pointer]:
+                  - generic [ref=e900]: "7"
+                  - generic [ref=e901]: comments
+                - generic [ref=e903]:
+                  - link "Upvote after login" [ref=e904] [cursor=pointer]:
+                    - /url: /forums/login
+                  - generic [ref=e906]: "5"
+                  - link "down vote after login" [ref=e907] [cursor=pointer]:
+                    - /url: /forums/login
+                - link "comments" [ref=e909] [cursor=pointer]:
+                  - /url: /forums/login
+                - button "Copy atka answer" [ref=e913] [cursor=pointer]:
+                  - generic [ref=e914]:
+                    - img [ref=e915]
+                    - generic [ref=e921]: 􀈂
+                  - generic [ref=e922]: Copy atka answer
+        - navigation "Pagination" [ref=e923]:
+          - generic "Page 1 of 2" [ref=e924]
+          - link "Next page" [ref=e925] [cursor=pointer]:
+            - /url: "?page=2"
+            - generic [ref=e926]:
+              - img [ref=e927]
+              - generic [ref=e931]: 􀆊
+          - link "Last page" [ref=e932] [cursor=pointer]:
+            - /url: "?page=2"
+            - text: Last
+      - generic [ref=e933]:
+        - text:  
+        - generic [ref=e934]: Jun 2021
+        - generic [ref=e937] [cursor=pointer]:
+          - generic [ref=e938]:
+            - generic [ref=e939]: "1"
+            - text: /
+            - generic [ref=e940]: "25"
+          - generic [ref=e941]: Jun 2021
+        - generic [ref=e942]: Mar 2022
+        - link "Reply" [ref=e945] [cursor=pointer]:
+          - /url: /forums/login
+      - text:  
+  - contentinfo "Developer Footer" [ref=e947]:
+    - generic [ref=e948]:
+      - heading "Developer Footer" [level=2] [ref=e949]
+      - generic [ref=e950]:
+        - text: This site contains user submitted content, comments and opinions and is for informational purposes only. Apple disclaims any and all liability for the acts, omissions and conduct of any third parties in connection with or related to your use of the site. All postings and use of the content on this site are subject to the
+        - link "Apple Developer Forums Participation Agreement (Opens in new window)" [ref=e951] [cursor=pointer]:
+          - /url: https://developer.apple.com/support/downloads/terms/apple-developer-forums/Apple-Developer-Forums-Agreement-20250602-English.pdf
+          - text: Apple Developer Forums Participation Agreement
+        - text: and Apple provided code is subject to the
+        - link "Apple Sample Code License" [ref=e952] [cursor=pointer]:
+          - /url: https://developer.apple.com/support/downloads/terms/apple-sample-code/Apple-Sample-Code-License.pdf
+        - text: .
+      - navigation "Breadcrumbs" [ref=e954]:
+        - link "Apple" [ref=e955] [cursor=pointer]:
+          - /url: https://www.apple.com/
+          - generic [ref=e956]: 
+          - generic [ref=e957]: Apple
+        - generic [ref=e958]:
+          - list:
+            - listitem [ref=e959]:
+              - link "Developer" [ref=e960] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e961]: Forums
+      - navigation "Apple Developer Directory" [ref=e962]:
+        - generic [ref=e963]:
+          - generic:
+            - generic:
+              - heading "Platforms" [level=3]
+            - list:
+              - listitem [ref=e964]:
+                - link "iOS" [ref=e965] [cursor=pointer]:
+                  - /url: https://developer.apple.com/ios/
+              - listitem [ref=e966]:
+                - link "iPadOS" [ref=e967] [cursor=pointer]:
+                  - /url: https://developer.apple.com/ipados/
+              - listitem [ref=e968]:
+                - link "macOS" [ref=e969] [cursor=pointer]:
+                  - /url: https://developer.apple.com/macos/
+              - listitem [ref=e970]:
+                - link "tvOS" [ref=e971] [cursor=pointer]:
+                  - /url: https://developer.apple.com/tvos/
+              - listitem [ref=e972]:
+                - link "watchOS" [ref=e973] [cursor=pointer]:
+                  - /url: https://developer.apple.com/watchos/
+              - listitem [ref=e974]:
+                - link "visionOS" [ref=e975] [cursor=pointer]:
+                  - /url: https://developer.apple.com/visionos/
+          - generic:
+            - generic:
+              - heading "Tools" [level=3]
+            - list:
+              - listitem [ref=e976]:
+                - link "Swift" [ref=e977] [cursor=pointer]:
+                  - /url: https://developer.apple.com/swift/
+              - listitem [ref=e978]:
+                - link "SwiftUI" [ref=e979] [cursor=pointer]:
+                  - /url: https://developer.apple.com/swiftui/
+              - listitem [ref=e980]:
+                - link "SF Symbols" [ref=e981] [cursor=pointer]:
+                  - /url: https://developer.apple.com/sf-symbols/
+              - listitem [ref=e982]:
+                - link "Swift Playground" [ref=e983] [cursor=pointer]:
+                  - /url: https://developer.apple.com/swift-playground/
+              - listitem [ref=e984]:
+                - link "TestFlight" [ref=e985] [cursor=pointer]:
+                  - /url: https://developer.apple.com/testflight/
+              - listitem [ref=e986]:
+                - link "Xcode" [ref=e987] [cursor=pointer]:
+                  - /url: https://developer.apple.com/xcode/
+              - listitem [ref=e988]:
+                - link "Xcode Cloud" [ref=e989] [cursor=pointer]:
+                  - /url: https://developer.apple.com/xcode-cloud/
+        - generic [ref=e990]:
+          - generic:
+            - generic:
+              - heading "Topics & Technologies" [level=3]
+            - list:
+              - listitem [ref=e991]:
+                - link "Accessibility" [ref=e992] [cursor=pointer]:
+                  - /url: https://developer.apple.com/accessibility/
+              - listitem [ref=e993]:
+                - link "Accessories" [ref=e994] [cursor=pointer]:
+                  - /url: https://developer.apple.com/accessories/
+              - listitem [ref=e995]:
+                - link "App Extensions" [ref=e996] [cursor=pointer]:
+                  - /url: https://developer.apple.com/app-extensions/
+              - listitem [ref=e997]:
+                - link "App Store" [ref=e998] [cursor=pointer]:
+                  - /url: https://developer.apple.com/app-store/
+              - listitem [ref=e999]:
+                - link "Audio & Video" [ref=e1000] [cursor=pointer]:
+                  - /url: https://developer.apple.com/audio/
+              - listitem [ref=e1001]:
+                - link "Augmented Reality" [ref=e1002] [cursor=pointer]:
+                  - /url: https://developer.apple.com/augmented-reality/
+              - listitem [ref=e1003]:
+                - link "Design" [ref=e1004] [cursor=pointer]:
+                  - /url: https://developer.apple.com/design/
+              - listitem [ref=e1005]:
+                - link "Distribution" [ref=e1006] [cursor=pointer]:
+                  - /url: https://developer.apple.com/distribute/
+              - listitem [ref=e1007]:
+                - link "Education" [ref=e1008] [cursor=pointer]:
+                  - /url: https://developer.apple.com/education/
+              - listitem [ref=e1009]:
+                - link "Fonts" [ref=e1010] [cursor=pointer]:
+                  - /url: https://developer.apple.com/fonts/
+              - listitem [ref=e1011]:
+                - link "Games" [ref=e1012] [cursor=pointer]:
+                  - /url: https://developer.apple.com/games/
+              - listitem [ref=e1013]:
+                - link "Health & Fitness" [ref=e1014] [cursor=pointer]:
+                  - /url: https://developer.apple.com/health-fitness/
+              - listitem [ref=e1015]:
+                - link "In-App Purchase" [ref=e1016] [cursor=pointer]:
+                  - /url: https://developer.apple.com/in-app-purchase/
+              - listitem [ref=e1017]:
+                - link "Localization" [ref=e1018] [cursor=pointer]:
+                  - /url: https://developer.apple.com/localization/
+              - listitem [ref=e1019]:
+                - link "Maps & Location" [ref=e1020] [cursor=pointer]:
+                  - /url: https://developer.apple.com/maps/
+              - listitem [ref=e1021]:
+                - link "Machine Learning" [ref=e1022] [cursor=pointer]:
+                  - /url: https://developer.apple.com/machine-learning/
+              - listitem [ref=e1023]:
+                - link "Open Source" [ref=e1024] [cursor=pointer]:
+                  - /url: https://opensource.apple.com
+              - listitem [ref=e1025]:
+                - link "Security" [ref=e1026] [cursor=pointer]:
+                  - /url: https://developer.apple.com/security/
+              - listitem [ref=e1027]:
+                - link "Safari & Web" [ref=e1028] [cursor=pointer]:
+                  - /url: https://developer.apple.com/safari/
+        - generic [ref=e1029]:
+          - generic:
+            - generic:
+              - heading "Resources" [level=3]
+            - list:
+              - listitem [ref=e1030]:
+                - link "Documentation" [ref=e1031] [cursor=pointer]:
+                  - /url: https://developer.apple.com/documentation/
+              - listitem [ref=e1032]:
+                - link "Tutorials" [ref=e1033] [cursor=pointer]:
+                  - /url: https://developer.apple.com/learn/
+              - listitem [ref=e1034]:
+                - link "Downloads" [ref=e1035] [cursor=pointer]:
+                  - /url: https://developer.apple.com/download/
+              - listitem [ref=e1036]:
+                - link "Forums" [ref=e1037] [cursor=pointer]:
+                  - /url: https://developer.apple.com/forums/
+              - listitem [ref=e1038]:
+                - link "Videos" [ref=e1039] [cursor=pointer]:
+                  - /url: https://developer.apple.com/videos/
+          - generic:
+            - generic:
+              - heading "Support" [level=3]
+            - list:
+              - listitem [ref=e1040]:
+                - link "Support Articles" [ref=e1041] [cursor=pointer]:
+                  - /url: https://developer.apple.com/support/articles/
+              - listitem [ref=e1042]:
+                - link "Contact Us" [ref=e1043] [cursor=pointer]:
+                  - /url: https://developer.apple.com/contact/
+              - listitem [ref=e1044]:
+                - link "Bug Reporting" [ref=e1045] [cursor=pointer]:
+                  - /url: https://developer.apple.com/bug-reporting/
+              - listitem [ref=e1046]:
+                - link "System Status" [ref=e1047] [cursor=pointer]:
+                  - /url: https://developer.apple.com/system-status/
+          - generic:
+            - generic:
+              - heading "Account" [level=3]
+            - list:
+              - listitem [ref=e1048]:
+                - link "Apple Developer" [ref=e1049] [cursor=pointer]:
+                  - /url: https://developer.apple.com/account/
+              - listitem [ref=e1050]:
+                - link "App Store Connect" [ref=e1051] [cursor=pointer]:
+                  - /url: https://appstoreconnect.apple.com/
+              - listitem [ref=e1052]:
+                - link "Certificates, IDs, & Profiles" [ref=e1053] [cursor=pointer]:
+                  - /url: https://developer.apple.com/account/ios/certificate/
+              - listitem [ref=e1054]:
+                - link "Feedback Assistant" [ref=e1055] [cursor=pointer]:
+                  - /url: https://feedbackassistant.apple.com/
+        - generic [ref=e1056]:
+          - generic:
+            - generic:
+              - heading "Programs" [level=3]
+            - list:
+              - listitem [ref=e1057]:
+                - link "Apple Developer Program" [ref=e1058] [cursor=pointer]:
+                  - /url: https://developer.apple.com/programs/
+              - listitem [ref=e1059]:
+                - link "Apple Developer Enterprise Program" [ref=e1060] [cursor=pointer]:
+                  - /url: https://developer.apple.com/programs/enterprise/
+              - listitem [ref=e1061]:
+                - link "App Store Small Business Program" [ref=e1062] [cursor=pointer]:
+                  - /url: https://developer.apple.com/app-store/small-business-program/
+              - listitem [ref=e1063]:
+                - link "MFi Program" [ref=e1064] [cursor=pointer]:
+                  - /url: https://mfi.apple.com/
+              - listitem [ref=e1065]:
+                - link "News Partner Program" [ref=e1066] [cursor=pointer]:
+                  - /url: https://developer.apple.com/programs/news-partner/
+              - listitem [ref=e1067]:
+                - link "Video Partner Program" [ref=e1068] [cursor=pointer]:
+                  - /url: https://developer.apple.com/programs/video-partner/
+              - listitem [ref=e1069]:
+                - link "Security Bounty Program" [ref=e1070] [cursor=pointer]:
+                  - /url: https://developer.apple.com/security-bounty/
+              - listitem [ref=e1071]:
+                - link "Security Research Device Program" [ref=e1072] [cursor=pointer]:
+                  - /url: https://developer.apple.com/programs/security-research-device/
+          - generic:
+            - generic:
+              - heading "Events" [level=3]
+            - list:
+              - listitem [ref=e1073]:
+                - link "Meet with Apple" [ref=e1074] [cursor=pointer]:
+                  - /url: https://developer.apple.com/events/
+              - listitem [ref=e1075]:
+                - link "Apple Developer Centers" [ref=e1076] [cursor=pointer]:
+                  - /url: https://developer.apple.com/events/developer-centers/
+              - listitem [ref=e1077]:
+                - link "App Store Awards" [ref=e1078] [cursor=pointer]:
+                  - /url: https://developer.apple.com/app-store/app-store-awards/
+              - listitem [ref=e1079]:
+                - link "Apple Design Awards" [ref=e1080] [cursor=pointer]:
+                  - /url: https://developer.apple.com/design/awards/
+              - listitem [ref=e1081]:
+                - link "Apple Developer Academies" [ref=e1082] [cursor=pointer]:
+                  - /url: https://developer.apple.com/learn/experts/#academies
+              - listitem [ref=e1083]:
+                - link "WWDC" [ref=e1084] [cursor=pointer]:
+                  - /url: https://developer.apple.com/wwdc/
+      - generic [ref=e1085]:
+        - generic [ref=e1086]:
+          - text: To view the latest developer news, visit
+          - link "News and Updates" [ref=e1087] [cursor=pointer]:
+            - /url: https://developer.apple.com/news/
+          - text: .
+        - generic [ref=e1088]:
+          - generic [ref=e1089]: Copyright © 2025 Apple Inc. All rights reserved.
+          - generic [ref=e1090]:
+            - link "Terms of Use" [ref=e1091] [cursor=pointer]:
+              - /url: https://www.apple.com/legal/internet-services/terms/site.html
+            - link "Privacy Policy" [ref=e1092] [cursor=pointer]:
+              - /url: https://www.apple.com/legal/privacy/en-ww/
+            - link "License Agreements" [ref=e1093] [cursor=pointer]:
+              - /url: https://developer.apple.com/terms/

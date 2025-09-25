@@ -95,3 +95,28 @@ await page.locator('iframe[name="trustarc_cm"]').contentFrame().getByRole('butto
 await page.close()
 ```
 
+
+### Tool call: browser_navigate
+- Args
+```json
+{
+  "url": "https://developer.apple.com/forums/thread/682420"
+}
+```
+- Code
+```js
+await page.goto('https://developer.apple.com/forums/thread/682420');
+```
+- Snapshot: 008.snapshot.yml
+
+
+### Tool call: browser_close
+- Args
+```json
+{}
+```
+- Code
+```js
+await page.close()
+```
+
