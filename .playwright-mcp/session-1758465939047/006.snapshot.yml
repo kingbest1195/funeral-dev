@@ -1,6 +1,0 @@
-- generic [ref=e1]:
-  - heading "Тест API подключения" [level=1] [ref=e2]
-  - button "Тестировать API" [active] [ref=e3]
-  - generic [ref=e4]:
-    - heading "❌ Ошибка сети" [level=3] [ref=e5]
-    - paragraph [ref=e6]: Failed to fetch
