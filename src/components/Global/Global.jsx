@@ -112,6 +112,79 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
               "Гранитные и мраморные памятники, ограды для мест захоронения",
             category: "Ритуальные товары",
             image: getAbsoluteUrl(funeralMarketImage),
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: 4.89,
+              reviewCount: 38,
+              bestRating: 5,
+              worstRating: 1,
+            },
+            review: [
+              {
+                "@type": "Review",
+                author: {
+                  "@type": "Person",
+                  name: "Николай П.",
+                },
+                datePublished: "2023-05-04",
+                reviewBody:
+                  "Спасибо, за помощь с обрядом погребения. Ваше внимание и забота достойна уважения.",
+                reviewRating: {
+                  "@type": "Rating",
+                  ratingValue: 5,
+                  bestRating: 5,
+                  worstRating: 1,
+                },
+              },
+              {
+                "@type": "Review",
+                author: {
+                  "@type": "Person",
+                  name: "Алена Горбунова",
+                },
+                datePublished: "2023-04-17",
+                reviewBody:
+                  "Спасибо ребятам. Они проезжали мимо и помогли поднять упавшую плиту на могиле. Побольше бы таких отзывчивых людей!",
+                reviewRating: {
+                  "@type": "Rating",
+                  ratingValue: 5,
+                  bestRating: 5,
+                  worstRating: 1,
+                },
+              },
+              {
+                "@type": "Review",
+                author: {
+                  "@type": "Person",
+                  name: "Таня П.",
+                },
+                datePublished: "2023-04-03",
+                reviewBody:
+                  "Спасибо большое всему коллективу! Помогли во всём по приемлемым ценам и поддержали в трудный момент.",
+                reviewRating: {
+                  "@type": "Rating",
+                  ratingValue: 5,
+                  bestRating: 5,
+                  worstRating: 1,
+                },
+              },
+              {
+                "@type": "Review",
+                author: {
+                  "@type": "Person",
+                  name: "Наталья Алексеевна Окунькова",
+                },
+                datePublished: "2023-03-20",
+                reviewBody:
+                  'Благодарю коллектив ритуальной службы "Век" за отзывчивость и профессионализм. Помогли достойно устроить похороны близкого человека.',
+                reviewRating: {
+                  "@type": "Rating",
+                  ratingValue: 5,
+                  bestRating: 5,
+                  worstRating: 1,
+                },
+              },
+            ],
             offers: {
               "@type": "Offer",
               availability: "https://schema.org/InStock",
@@ -123,6 +196,79 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
         },
       ],
     },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: 4.89,
+      reviewCount: 38,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    review: [
+      {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "Николай П.",
+        },
+        datePublished: "2023-05-04",
+        reviewBody:
+          "Спасибо, за помощь с обрядом погребения. Ваше внимание и забота достойна уважения.",
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: 5,
+          bestRating: 5,
+          worstRating: 1,
+        },
+      },
+      {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "Алена Горбунова",
+        },
+        datePublished: "2023-04-17",
+        reviewBody:
+          "Спасибо ребятам. Они проезжали мимо и помогли поднять упавшую плиту на могиле. Побольше бы таких отзывчивых людей!",
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: 5,
+          bestRating: 5,
+          worstRating: 1,
+        },
+      },
+      {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "Таня П.",
+        },
+        datePublished: "2023-04-03",
+        reviewBody:
+          "Спасибо большое всему коллективу! Помогли во всём по приемлемым ценам и поддержали в трудный момент.",
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: 5,
+          bestRating: 5,
+          worstRating: 1,
+        },
+      },
+      {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "Наталья Алексеевна Окунькова",
+        },
+        datePublished: "2023-03-20",
+        reviewBody:
+          'Благодарю коллектив ритуальной службы "Век" за отзывчивость и профессионализм. Помогли достойно устроить похороны близкого человека.',
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: 5,
+          bestRating: 5,
+          worstRating: 1,
+        },
+      },
+    ],
   };
 
   // Объединяем структурированные данные (поддержка массива)
