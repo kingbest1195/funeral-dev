@@ -22,6 +22,11 @@
   min-height: 100vh;
   min-height: 100dvh; // Динамическая высота viewport
 
+  @supports (height: 100lvh) {
+    min-height: 100vh;
+    min-height: 100lvh;
+  }
+
   &__overlay {
     position: absolute;
     top: 0;
@@ -45,6 +50,16 @@
     display: flex;
     flex-direction: column;
     animation: modalSlideIn var(--duration-base) var(--ease-smooth);
+
+    @supports (height: 90lvh) {
+      max-height: 90vh;
+      max-height: 90lvh;
+    }
+
+    @include md-down {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
   }
 
   &__close {
@@ -95,7 +110,11 @@
 .quiz-header {
   padding: var(--spacing-10) var(--spacing-8) var(--spacing-6); // Увеличили верхний отступ
   text-align: center;
-  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-primary) 0%,
+    var(--color-bg-secondary) 100%
+  );
   border-bottom: var(--border-width-1) solid var(--color-border);
   flex-shrink: 0;
 
@@ -156,15 +175,24 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+      );
       animation: progressShimmer 2s ease-in-out infinite;
     }
   }
 }
 
 @keyframes progressShimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 // ТЕЛО КВИЗА
@@ -176,15 +204,15 @@
   flex-direction: column;
   overflow-y: auto;
   flex: 1; // Позволяет телу занимать оставшееся место
-  
+
   // Скрытие scrollbar
   scrollbar-width: none; // Firefox
   -ms-overflow-style: none; // IE and Edge
-  
+
   &::-webkit-scrollbar {
     display: none; // Chrome, Safari, Opera
   }
-  
+
   // Для экранов с малой высотой - обеспечиваем скролл
   @media (max-height: 600px) {
     min-height: auto;
@@ -243,7 +271,9 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-4);
-    min-height: calc(var(--spacing-16) + var(--spacing-2)); // 72px -> считаем через переменные
+    min-height: calc(
+      var(--spacing-16) + var(--spacing-2)
+    ); // 72px -> считаем через переменные
     transition: inherit;
   }
 
@@ -470,8 +500,6 @@
     margin-bottom: var(--spacing-2);
   }
 
-
-
   &__actions {
     display: flex;
     justify-content: space-between;
@@ -490,7 +518,7 @@
   .quiz-modal {
     padding: var(--spacing-2);
     // Убираем align-items: center - используем миксин center
-    
+
     // Специальная логика для мобильных устройств
     // Обеспечиваем правильное центрирование на iPhone и других мобильных
     min-height: 100vh;
@@ -502,14 +530,14 @@
       max-height: 85vh; // Уменьшили с 90vh для лучшего отображения
       max-height: 85dvh;
       margin: 0;
-      
+
       // Убираем фиксированную высоту, позволяем контенту определять размер
       height: auto;
     }
 
     &__close {
       top: var(--spacing-6); // Ещё больше отступ для мобильных
-      right: var(--spacing-6); // Ещё больше отступ для мобильных  
+      right: var(--spacing-6); // Ещё больше отступ для мобильных
       width: var(--spacing-8);
       height: var(--spacing-8);
     }
