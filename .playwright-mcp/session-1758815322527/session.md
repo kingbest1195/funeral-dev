@@ -688,3 +688,532 @@ await page.evaluate('() => {\n  const nameInput = document.querySelector(\'input
 await page.close()
 ```
 
+
+### Tool call: browser_navigate
+- Args
+```json
+{
+  "url": "http://localhost:3000"
+}
+```
+- Code
+```js
+await page.goto('http://localhost:3000');
+```
+- Snapshot: 032.snapshot.yml
+
+
+### Tool call: browser_resize
+- Args
+```json
+{
+  "width": 375,
+  "height": 667
+}
+```
+- Code
+```js
+await page.setViewportSize({ width: 375, height: 667 });
+```
+
+
+### Tool call: browser_evaluate
+- Args
+```json
+{
+  "function": "() => {\n  // Проверим основные элементы страницы\n  const elements = [\n    { selector: 'h1', name: 'h1 заголовок' },\n    { selector: 'h2', name: 'h2 заголовок' },\n    { selector: 'h3', name: 'h3 заголовок' },\n    { selector: 'p', name: 'параграф' },\n    { selector: 'button', name: 'кнопка' },\n    { selector: 'body', name: 'body' }\n  ];\n  \n  const results = {};\n  \n  elements.forEach(({ selector, name }) => {\n    const element = document.querySelector(selector);\n    if (element) {\n      const styles = window.getComputedStyle(element);\n      results[name] = {\n        fontSize: styles.fontSize,\n        lineHeight: styles.lineHeight\n      };\n    }\n  });\n  \n  return {\n    htmlFontSize: window.getComputedStyle(document.documentElement).fontSize,\n    viewportWidth: window.innerWidth,\n    elements: results\n  };\n}"
+}
+```
+- Result
+```
+{
+  "htmlFontSize": "14px",
+  "viewportWidth": 375,
+  "elements": {
+    "h1 заголовок": {
+      "fontSize": "28px",
+      "lineHeight": "33.6px"
+    },
+    "h2 заголовок": {
+      "fontSize": "24.5px",
+      "lineHeight": "29.4px"
+    },
+    "h3 заголовок": {
+      "fontSize": "21px",
+      "lineHeight": "34.02px"
+    },
+    "параграф": {
+      "fontSize": "12.25px",
+      "lineHeight": "20.825px"
+    },
+    "кнопка": {
+      "fontSize": "14px",
+      "lineHeight": "16.1px"
+    },
+    "body": {
+      "fontSize": "14px",
+      "lineHeight": "23.8px"
+    }
+  }
+}
+```
+- Code
+```js
+await page.evaluate('() => {\n  // Проверим основные элементы страницы\n  const elements = [\n    { selector: \'h1\', name: \'h1 заголовок\' },\n    { selector: \'h2\', name: \'h2 заголовок\' },\n    { selector: \'h3\', name: \'h3 заголовок\' },\n    { selector: \'p\', name: \'параграф\' },\n    { selector: \'button\', name: \'кнопка\' },\n    { selector: \'body\', name: \'body\' }\n  ];\n  \n  const results = {};\n  \n  elements.forEach(({ selector, name }) => {\n    const element = document.querySelector(selector);\n    if (element) {\n      const styles = window.getComputedStyle(element);\n      results[name] = {\n        fontSize: styles.fontSize,\n        lineHeight: styles.lineHeight\n      };\n    }\n  });\n  \n  return {\n    htmlFontSize: window.getComputedStyle(document.documentElement).fontSize,\n    viewportWidth: window.innerWidth,\n    elements: results\n  };\n}');
+```
+- Snapshot: 034.snapshot.yml
+
+
+### Tool call: browser_click
+- Args
+```json
+{
+  "element": "кнопка \"Открыть калькулятор стоимости похорон\"",
+  "ref": "e171"
+}
+```
+- Code
+```js
+await page.getByRole('button', { name: 'Открыть калькулятор стоимости похорон' }).click();
+```
+- Snapshot: 035.snapshot.yml
+
+
+### Tool call: browser_click
+- Args
+```json
+{
+  "element": "радио кнопка \"Похороны\"",
+  "ref": "e300"
+}
+```
+- Code
+```js
+await page.getByRole('radio', { name: 'Похороны' }).click();
+```
+- Snapshot: 036.snapshot.yml
+
+
+### Tool call: browser_click
+- Args
+```json
+{
+  "element": "радио кнопка \"Стандарт / Деревянный\"",
+  "ref": "e330"
+}
+```
+- Code
+```js
+await page.getByRole('radio', { name: 'Стандарт / Деревянный' }).click();
+```
+- Snapshot: 037.snapshot.yml
+
+
+### Tool call: browser_click
+- Args
+```json
+{
+  "element": "чекбокс \"Венок\"",
+  "ref": "e350"
+}
+```
+- Code
+```js
+await page.getByRole('checkbox', { name: 'Венок' }).click();
+```
+- Snapshot: 038.snapshot.yml
+
+
+### Tool call: browser_click
+- Args
+```json
+{
+  "element": "кнопка \"Далее\"",
+  "ref": "e382"
+}
+```
+- Code
+```js
+await page.getByRole('button', { name: 'Далее' }).click();
+```
+- Snapshot: 039.snapshot.yml
+
+
+### Tool call: browser_click
+- Args
+```json
+{
+  "element": "радио кнопка \"Нет, не нужен\"",
+  "ref": "e393"
+}
+```
+- Code
+```js
+await page.getByRole('radio', { name: 'Нет, не нужен' }).click();
+```
+- Snapshot: 040.snapshot.yml
+
+
+### Tool call: browser_evaluate
+- Args
+```json
+{
+  "function": "() => {\n  // Проверяем размеры шрифтов для инпутов и других элементов\n  const results = {};\n  \n  // Проверяем инпуты в форме\n  const nameInput = document.querySelector('input[placeholder=\"Ваше имя\"]');\n  const phoneInput = document.querySelector('input[placeholder=\"Ваш номер телефона\"]');\n  \n  if (nameInput) {\n    const computedStyle = window.getComputedStyle(nameInput);\n    results.nameInputFontSize = computedStyle.fontSize;\n  }\n  \n  if (phoneInput) {\n    const computedStyle = window.getComputedStyle(phoneInput);\n    results.phoneInputFontSize = computedStyle.fontSize;\n  }\n  \n  // Проверяем другие текстовые элементы (не инпуты)\n  const heading = document.querySelector('h2, h3');\n  if (heading) {\n    const computedStyle = window.getComputedStyle(heading);\n    results.headingFontSize = computedStyle.fontSize;\n    results.headingTag = heading.tagName;\n  }\n  \n  // Проверяем обычный текст (параграфы, лейблы)\n  const textElements = document.querySelectorAll('p, span, label, div:not(.input)');\n  if (textElements.length > 0) {\n    const sampleText = textElements[0];\n    const computedStyle = window.getComputedStyle(sampleText);\n    results.regularTextFontSize = computedStyle.fontSize;\n    results.regularTextElement = sampleText.tagName + (sampleText.className ? '.' + sampleText.className : '');\n  }\n  \n  // Проверяем кнопки\n  const button = document.querySelector('button');\n  if (button) {\n    const computedStyle = window.getComputedStyle(button);\n    results.buttonFontSize = computedStyle.fontSize;\n  }\n  \n  return results;\n}"
+}
+```
+- Result
+```
+{
+  "headingFontSize": "24.5px",
+  "headingTag": "H2",
+  "regularTextFontSize": "14px",
+  "regularTextElement": "DIV",
+  "buttonFontSize": "14px"
+}
+```
+- Code
+```js
+await page.evaluate('() => {\n  // Проверяем размеры шрифтов для инпутов и других элементов\n  const results = {};\n  \n  // Проверяем инпуты в форме\n  const nameInput = document.querySelector(\'input[placeholder="Ваше имя"]\');\n  const phoneInput = document.querySelector(\'input[placeholder="Ваш номер телефона"]\');\n  \n  if (nameInput) {\n    const computedStyle = window.getComputedStyle(nameInput);\n    results.nameInputFontSize = computedStyle.fontSize;\n  }\n  \n  if (phoneInput) {\n    const computedStyle = window.getComputedStyle(phoneInput);\n    results.phoneInputFontSize = computedStyle.fontSize;\n  }\n  \n  // Проверяем другие текстовые элементы (не инпуты)\n  const heading = document.querySelector(\'h2, h3\');\n  if (heading) {\n    const computedStyle = window.getComputedStyle(heading);\n    results.headingFontSize = computedStyle.fontSize;\n    results.headingTag = heading.tagName;\n  }\n  \n  // Проверяем обычный текст (параграфы, лейблы)\n  const textElements = document.querySelectorAll(\'p, span, label, div:not(.input)\');\n  if (textElements.length > 0) {\n    const sampleText = textElements[0];\n    const computedStyle = window.getComputedStyle(sampleText);\n    results.regularTextFontSize = computedStyle.fontSize;\n    results.regularTextElement = sampleText.tagName + (sampleText.className ? \'.\' + sampleText.className : \'\');\n  }\n  \n  // Проверяем кнопки\n  const button = document.querySelector(\'button\');\n  if (button) {\n    const computedStyle = window.getComputedStyle(button);\n    results.buttonFontSize = computedStyle.fontSize;\n  }\n  \n  return results;\n}');
+```
+- Snapshot: 041.snapshot.yml
+
+
+### Tool call: browser_evaluate
+- Args
+```json
+{
+  "function": "() => {\n  // Ищем инпуты более конкретно\n  const nameInput = document.querySelector('input[placeholder*=\"имя\"], input[name*=\"name\"], .quiz-form input:first-of-type');\n  const phoneInput = document.querySelector('input[placeholder*=\"телефон\"], input[name*=\"phone\"], .quiz-form input:last-of-type');\n  \n  const results = {\n    foundInputs: 0,\n    allInputs: []\n  };\n  \n  // Проверяем все инпуты на странице\n  const allInputs = document.querySelectorAll('input');\n  results.totalInputsFound = allInputs.length;\n  \n  allInputs.forEach((input, index) => {\n    const computedStyle = window.getComputedStyle(input);\n    results.allInputs.push({\n      index: index,\n      placeholder: input.placeholder,\n      fontSize: computedStyle.fontSize,\n      className: input.className,\n      type: input.type\n    });\n  });\n  \n  return results;\n}"
+}
+```
+- Result
+```
+{
+  "foundInputs": 0,
+  "allInputs": [
+    {
+      "index": 0,
+      "placeholder": "Введите ваше имя",
+      "fontSize": "14px",
+      "className": "input quiz-form__input",
+      "type": "text"
+    },
+    {
+      "index": 1,
+      "placeholder": "+7 (___) ___-__-__",
+      "fontSize": "14px",
+      "className": "input quiz-form__input",
+      "type": "tel"
+    }
+  ],
+  "totalInputsFound": 2
+}
+```
+- Code
+```js
+await page.evaluate('() => {\n  // Ищем инпуты более конкретно\n  const nameInput = document.querySelector(\'input[placeholder*="имя"], input[name*="name"], .quiz-form input:first-of-type\');\n  const phoneInput = document.querySelector(\'input[placeholder*="телефон"], input[name*="phone"], .quiz-form input:last-of-type\');\n  \n  const results = {\n    foundInputs: 0,\n    allInputs: []\n  };\n  \n  // Проверяем все инпуты на странице\n  const allInputs = document.querySelectorAll(\'input\');\n  results.totalInputsFound = allInputs.length;\n  \n  allInputs.forEach((input, index) => {\n    const computedStyle = window.getComputedStyle(input);\n    results.allInputs.push({\n      index: index,\n      placeholder: input.placeholder,\n      fontSize: computedStyle.fontSize,\n      className: input.className,\n      type: input.type\n    });\n  });\n  \n  return results;\n}');
+```
+- Snapshot: 042.snapshot.yml
+
+
+### Tool call: browser_evaluate
+- Args
+```json
+{
+  "function": "() => {\n  // Проверим, какие CSS правила применяются к инпутам\n  const input = document.querySelector('.quiz-form__input');\n  if (!input) return { error: 'Input not found' };\n  \n  // Получаем все CSS правила для этого элемента\n  const computedStyle = window.getComputedStyle(input);\n  \n  // Проверяем медиа-запросы\n  const windowWidth = window.innerWidth;\n  \n  return {\n    windowWidth: windowWidth,\n    fontSize: computedStyle.fontSize,\n    className: input.className,\n    // Проверяем, работает ли медиа-запрос mobile\n    matchesMedia768: window.matchMedia('(max-width: 767px)').matches,\n    matchesMedia767: window.matchMedia('(max-width: 767px)').matches,\n    matchesMedia991: window.matchMedia('(max-width: 991px)').matches\n  };\n}"
+}
+```
+- Result
+```
+{
+  "windowWidth": 375,
+  "fontSize": "14px",
+  "className": "input quiz-form__input",
+  "matchesMedia768": true,
+  "matchesMedia767": true,
+  "matchesMedia991": true
+}
+```
+- Code
+```js
+await page.evaluate('() => {\n  // Проверим, какие CSS правила применяются к инпутам\n  const input = document.querySelector(\'.quiz-form__input\');\n  if (!input) return { error: \'Input not found\' };\n  \n  // Получаем все CSS правила для этого элемента\n  const computedStyle = window.getComputedStyle(input);\n  \n  // Проверяем медиа-запросы\n  const windowWidth = window.innerWidth;\n  \n  return {\n    windowWidth: windowWidth,\n    fontSize: computedStyle.fontSize,\n    className: input.className,\n    // Проверяем, работает ли медиа-запрос mobile\n    matchesMedia768: window.matchMedia(\'(max-width: 767px)\').matches,\n    matchesMedia767: window.matchMedia(\'(max-width: 767px)\').matches,\n    matchesMedia991: window.matchMedia(\'(max-width: 991px)\').matches\n  };\n}');
+```
+- Snapshot: 043.snapshot.yml
+
+
+### Tool call: browser_evaluate
+- Args
+```json
+{
+  "function": "() => {\n  // Проверим размер шрифта инпутов после исправления CSS конфликта\n  const results = {};\n  \n  const allInputs = document.querySelectorAll('input');\n  results.totalInputs = allInputs.length;\n  \n  allInputs.forEach((input, index) => {\n    const computedStyle = window.getComputedStyle(input);\n    results[`input${index}`] = {\n      fontSize: computedStyle.fontSize,\n      className: input.className,\n      placeholder: input.placeholder\n    };\n  });\n  \n  // Также проверим другие элементы, чтобы убедиться, что они остались прежними\n  const heading = document.querySelector('h2');\n  if (heading) {\n    const computedStyle = window.getComputedStyle(heading);\n    results.headingFontSize = computedStyle.fontSize;\n  }\n  \n  const paragraph = document.querySelector('p');\n  if (paragraph) {\n    const computedStyle = window.getComputedStyle(paragraph);\n    results.paragraphFontSize = computedStyle.fontSize;\n  }\n  \n  return results;\n}"
+}
+```
+- Result
+```
+{
+  "totalInputs": 2,
+  "input0": {
+    "fontSize": "14px",
+    "className": "input quiz-form__input",
+    "placeholder": "Введите ваше имя"
+  },
+  "input1": {
+    "fontSize": "14px",
+    "className": "input quiz-form__input",
+    "placeholder": "+7 (___) ___-__-__"
+  },
+  "headingFontSize": "24.5px",
+  "paragraphFontSize": "12.25px"
+}
+```
+- Code
+```js
+await page.evaluate('() => {\n  // Проверим размер шрифта инпутов после исправления CSS конфликта\n  const results = {};\n  \n  const allInputs = document.querySelectorAll(\'input\');\n  results.totalInputs = allInputs.length;\n  \n  allInputs.forEach((input, index) => {\n    const computedStyle = window.getComputedStyle(input);\n    results[`input${index}`] = {\n      fontSize: computedStyle.fontSize,\n      className: input.className,\n      placeholder: input.placeholder\n    };\n  });\n  \n  // Также проверим другие элементы, чтобы убедиться, что они остались прежними\n  const heading = document.querySelector(\'h2\');\n  if (heading) {\n    const computedStyle = window.getComputedStyle(heading);\n    results.headingFontSize = computedStyle.fontSize;\n  }\n  \n  const paragraph = document.querySelector(\'p\');\n  if (paragraph) {\n    const computedStyle = window.getComputedStyle(paragraph);\n    results.paragraphFontSize = computedStyle.fontSize;\n  }\n  \n  return results;\n}');
+```
+- Snapshot: 044.snapshot.yml
+
+
+### User action: navigate
+- Args
+```json
+{
+  "name": "navigate",
+  "url": "http://localhost:3000/"
+}
+```
+- Code
+```js
+await page.goto('http://localhost:3000/');
+```
+- Snapshot: 045.snapshot.yml
+
+
+### Tool call: browser_wait_for
+- Args
+```json
+{
+  "time": 3
+}
+```
+- Result
+```
+Waited for 3
+```
+- Code
+```js
+await new Promise(f => setTimeout(f, 3 * 1000));
+```
+- Snapshot: 046.snapshot.yml
+
+
+### Tool call: browser_click
+- Args
+```json
+{
+  "element": "Открыть калькулятор стоимости похорон",
+  "ref": "e161"
+}
+```
+- Code
+```js
+await page.getByRole('button', { name: 'Открыть калькулятор стоимости похорон' }).click();
+```
+- Snapshot: 047.snapshot.yml
+
+
+### Tool call: browser_evaluate
+- Args
+```json
+{
+  "function": "() => {\n  // Проверяем размеры шрифтов после исправлений\n  const results = {};\n  \n  // Проверяем инпуты в квизе\n  const nameInput = document.querySelector('input[placeholder=\"Введите ваше имя\"]');\n  const phoneInput = document.querySelector('input[placeholder=\"+7 (___) ___-__-__\"]');\n  \n  if (nameInput) {\n    const computedStyle = window.getComputedStyle(nameInput);\n    results.nameInputFontSize = computedStyle.fontSize;\n    results.nameInputClasses = nameInput.className;\n  }\n  \n  if (phoneInput) {\n    const computedStyle = window.getComputedStyle(phoneInput);\n    results.phoneInputFontSize = computedStyle.fontSize;\n    results.phoneInputClasses = phoneInput.className;\n  }\n  \n  // Проверяем другие текстовые элементы для сравнения\n  const heading = document.querySelector('h2');\n  if (heading) {\n    const computedStyle = window.getComputedStyle(heading);\n    results.headingFontSize = computedStyle.fontSize;\n  }\n  \n  const paragraph = document.querySelector('p');\n  if (paragraph) {\n    const computedStyle = window.getComputedStyle(paragraph);\n    results.paragraphFontSize = computedStyle.fontSize;\n  }\n  \n  // Проверяем медиа-запросы\n  results.windowWidth = window.innerWidth;\n  results.mobileMediaMatch = window.matchMedia('(max-width: 767px)').matches;\n  \n  return results;\n}"
+}
+```
+- Result
+```
+{
+  "nameInputFontSize": "14px",
+  "nameInputClasses": "input quiz-form__input",
+  "phoneInputFontSize": "14px",
+  "phoneInputClasses": "input quiz-form__input",
+  "headingFontSize": "24.5px",
+  "paragraphFontSize": "12.25px",
+  "windowWidth": 375,
+  "mobileMediaMatch": true
+}
+```
+- Code
+```js
+await page.evaluate('() => {\n  // Проверяем размеры шрифтов после исправлений\n  const results = {};\n  \n  // Проверяем инпуты в квизе\n  const nameInput = document.querySelector(\'input[placeholder="Введите ваше имя"]\');\n  const phoneInput = document.querySelector(\'input[placeholder="+7 (___) ___-__-__"]\');\n  \n  if (nameInput) {\n    const computedStyle = window.getComputedStyle(nameInput);\n    results.nameInputFontSize = computedStyle.fontSize;\n    results.nameInputClasses = nameInput.className;\n  }\n  \n  if (phoneInput) {\n    const computedStyle = window.getComputedStyle(phoneInput);\n    results.phoneInputFontSize = computedStyle.fontSize;\n    results.phoneInputClasses = phoneInput.className;\n  }\n  \n  // Проверяем другие текстовые элементы для сравнения\n  const heading = document.querySelector(\'h2\');\n  if (heading) {\n    const computedStyle = window.getComputedStyle(heading);\n    results.headingFontSize = computedStyle.fontSize;\n  }\n  \n  const paragraph = document.querySelector(\'p\');\n  if (paragraph) {\n    const computedStyle = window.getComputedStyle(paragraph);\n    results.paragraphFontSize = computedStyle.fontSize;\n  }\n  \n  // Проверяем медиа-запросы\n  results.windowWidth = window.innerWidth;\n  results.mobileMediaMatch = window.matchMedia(\'(max-width: 767px)\').matches;\n  \n  return results;\n}');
+```
+- Snapshot: 048.snapshot.yml
+
+
+### Tool call: browser_evaluate
+- Args
+```json
+{
+  "function": "() => {\n  // Проверим все стили, применяемые к инпуту\n  const input = document.querySelector('.quiz-form__input');\n  if (!input) return { error: 'Input not found' };\n  \n  const computedStyles = window.getComputedStyle(input);\n  const allRules = [];\n  \n  // Получаем все CSS правила документа\n  for (let i = 0; i < document.styleSheets.length; i++) {\n    const sheet = document.styleSheets[i];\n    try {\n      const rules = sheet.cssRules || sheet.rules;\n      for (let j = 0; j < rules.length; j++) {\n        const rule = rules[j];\n        if (rule.selectorText && rule.selectorText.includes('input')) {\n          allRules.push({\n            selector: rule.selectorText,\n            cssText: rule.cssText,\n            priority: rule.style.getPropertyPriority('font-size')\n          });\n        }\n      }\n    } catch (e) {\n      // CORS или другие ограничения\n    }\n  }\n  \n  return {\n    className: input.className,\n    computedFontSize: computedStyles.fontSize,\n    matchedRules: allRules.filter(rule => \n      rule.selector.includes('.input') || \n      rule.selector.includes('input') || \n      rule.selector.includes('.quiz-form__input')\n    )\n  };\n}"
+}
+```
+- Result
+```
+{
+  "className": "input quiz-form__input",
+  "computedFontSize": "14px",
+  "matchedRules": [
+    {
+      "selector": "input, textarea, select",
+      "cssText": "input, textarea, select { font-family: inherit; font-size: inherit; line-height: inherit; color: inherit; background: transparent; border: none; outline: none; }",
+      "priority": ""
+    },
+    {
+      "selector": "input:focus, textarea:focus, select:focus",
+      "cssText": "input:focus, textarea:focus, select:focus { outline: none; }",
+      "priority": ""
+    },
+    {
+      "selector": "input[type=\"search\"]",
+      "cssText": "input[type=\"search\"] { appearance: none; }",
+      "priority": ""
+    },
+    {
+      "selector": "input[type=\"number\"]",
+      "cssText": "input[type=\"number\"] { }",
+      "priority": ""
+    },
+    {
+      "selector": "input[type=\"number\"]::-webkit-outer-spin-button, input[type=\"number\"]::-webkit-inner-spin-button",
+      "cssText": "input[type=\"number\"]::-webkit-outer-spin-button, input[type=\"number\"]::-webkit-inner-spin-button { appearance: none; margin: 0px; }",
+      "priority": ""
+    },
+    {
+      "selector": ".form-check input[type=\"checkbox\"], .form-check input[type=\"radio\"]",
+      "cssText": ".form-check input[type=\"checkbox\"], .form-check input[type=\"radio\"] { margin: 0px; width: 1rem; height: 1rem; flex-shrink: 0; cursor: pointer; }",
+      "priority": ""
+    },
+    {
+      "selector": ".form-check input[type=\"checkbox\"]:focus, .form-check input[type=\"radio\"]:focus",
+      "cssText": ".form-check input[type=\"checkbox\"]:focus, .form-check input[type=\"radio\"]:focus { outline: var(--blur-sm) solid var(--color-accent); outline-offset: var(--blur-sm); }",
+      "priority": ""
+    },
+    {
+      "selector": "button, input, optgroup, select, textarea",
+      "cssText": "button, input, optgroup, select, textarea { font-family: inherit; font-size: 100%; line-height: 1.15; margin: 0px; }",
+      "priority": ""
+    },
+    {
+      "selector": "button, input",
+      "cssText": "button, input { overflow: visible; }",
+      "priority": ""
+    },
+    {
+      "selector": ".input",
+      "cssText": ".input { width: 100%; height: var(--input-height); padding: var(--spacing-4) var(--spacing-4); font-size: var(--font-size-base); font-family: var(--font-body); color: var(--color-text-primary); background-color: var(--color-bg-primary); border: var(--border-width-2) solid var(--color-border); border-radius: var(--border-radius-lg); outline: none; transition: all var(--duration-base) var(--ease-smooth); }",
+      "priority": ""
+    },
+    {
+      "selector": ".input::placeholder",
+      "cssText": ".input::placeholder { color: var(--color-text-muted); }",
+      "priority": ""
+    },
+    {
+      "selector": ".input:hover",
+      "cssText": ".input:hover { border-color: var(--color-border-dark); }",
+      "priority": ""
+    },
+    {
+      "selector": ".input:focus",
+      "cssText": ".input:focus { border-color: var(--color-accent); box-shadow: var(--shadow-outline); }",
+      "priority": ""
+    },
+    {
+      "selector": ".input:invalid[data-touched=\"true\"]",
+      "cssText": ".input:invalid[data-touched=\"true\"] { border-color: var(--color-error); }",
+      "priority": ""
+    },
+    {
+      "selector": ".input:disabled",
+      "cssText": ".input:disabled { opacity: var(--opacity-60); cursor: not-allowed; background-color: var(--color-bg-secondary); }",
+      "priority": ""
+    },
+    {
+      "selector": ".input--small",
+      "cssText": ".input--small { height: calc(var(--input-height) - var(--spacing-2)); padding: var(--spacing-2) var(--spacing-3); font-size: var(--font-size-sm); }",
+      "priority": ""
+    },
+    {
+      "selector": ".input--large",
+      "cssText": ".input--large { height: calc(var(--input-height) + var(--spacing-2)); padding: var(--spacing-5) var(--spacing-5); font-size: var(--font-size-lg); }",
+      "priority": ""
+    },
+    {
+      "selector": ".input--error",
+      "cssText": ".input--error { border-color: var(--color-error); }",
+      "priority": ""
+    },
+    {
+      "selector": ".input--error:focus",
+      "cssText": ".input--error:focus { border-color: var(--color-error); box-shadow: var(--shadow-outline-error); }",
+      "priority": ""
+    },
+    {
+      "selector": ".input--success",
+      "cssText": ".input--success { border-color: var(--color-success); }",
+      "priority": ""
+    },
+    {
+      "selector": ".input--success:focus",
+      "cssText": ".input--success:focus { border-color: var(--color-success); box-shadow: var(--shadow-outline-success); }",
+      "priority": ""
+    },
+    {
+      "selector": ".quiz-option__checkbox input[type=\"checkbox\"], .quiz-option__checkbox input[type=\"radio\"], .quiz-option__radio input[type=\"checkbox\"], .quiz-option__radio input[type=\"radio\"]",
+      "cssText": ".quiz-option__checkbox input[type=\"checkbox\"], .quiz-option__checkbox input[type=\"radio\"], .quiz-option__radio input[type=\"checkbox\"], .quiz-option__radio input[type=\"radio\"] { position: absolute; opacity: 0; width: 0px; height: 0px; }",
+      "priority": ""
+    }
+  ]
+}
+```
+- Code
+```js
+await page.evaluate('() => {\n  // Проверим все стили, применяемые к инпуту\n  const input = document.querySelector(\'.quiz-form__input\');\n  if (!input) return { error: \'Input not found\' };\n  \n  const computedStyles = window.getComputedStyle(input);\n  const allRules = [];\n  \n  // Получаем все CSS правила документа\n  for (let i = 0; i < document.styleSheets.length; i++) {\n    const sheet = document.styleSheets[i];\n    try {\n      const rules = sheet.cssRules || sheet.rules;\n      for (let j = 0; j < rules.length; j++) {\n        const rule = rules[j];\n        if (rule.selectorText && rule.selectorText.includes(\'input\')) {\n          allRules.push({\n            selector: rule.selectorText,\n            cssText: rule.cssText,\n            priority: rule.style.getPropertyPriority(\'font-size\')\n          });\n        }\n      }\n    } catch (e) {\n      // CORS или другие ограничения\n    }\n  }\n  \n  return {\n    className: input.className,\n    computedFontSize: computedStyles.fontSize,\n    matchedRules: allRules.filter(rule => \n      rule.selector.includes(\'.input\') || \n      rule.selector.includes(\'input\') || \n      rule.selector.includes(\'.quiz-form__input\')\n    )\n  };\n}');
+```
+- Snapshot: 049.snapshot.yml
+
+
+### Tool call: browser_evaluate
+- Args
+```json
+{
+  "function": "() => {\n  // Проверяем размер шрифта инпутов после прямого медиа-запроса\n  const nameInput = document.querySelector('input[placeholder=\"Введите ваше имя\"]');\n  const phoneInput = document.querySelector('input[placeholder=\"+7 (___) ___-__-__\"]');\n  \n  const results = {\n    windowWidth: window.innerWidth,\n    mediaQuery767: window.matchMedia('(max-width: 767px)').matches\n  };\n  \n  if (nameInput) {\n    const computedStyle = window.getComputedStyle(nameInput);\n    results.nameInputFontSize = computedStyle.fontSize;\n    results.nameInputClasses = nameInput.className;\n  }\n  \n  if (phoneInput) {\n    const computedStyle = window.getComputedStyle(phoneInput);\n    results.phoneInputFontSize = computedStyle.fontSize;\n    results.phoneInputClasses = phoneInput.className;\n  }\n  \n  // Для сравнения проверим другие элементы\n  const heading = document.querySelector('h2');\n  if (heading) {\n    results.headingFontSize = window.getComputedStyle(heading).fontSize;\n  }\n  \n  const paragraph = document.querySelector('p');\n  if (paragraph) {\n    results.paragraphFontSize = window.getComputedStyle(paragraph).fontSize;\n  }\n  \n  return results;\n}"
+}
+```
+- Result
+```
+{
+  "windowWidth": 375,
+  "mediaQuery767": true,
+  "nameInputFontSize": "14px",
+  "nameInputClasses": "input quiz-form__input",
+  "phoneInputFontSize": "14px",
+  "phoneInputClasses": "input quiz-form__input",
+  "headingFontSize": "24.5px",
+  "paragraphFontSize": "12.25px"
+}
+```
+- Code
+```js
+await page.evaluate('() => {\n  // Проверяем размер шрифта инпутов после прямого медиа-запроса\n  const nameInput = document.querySelector(\'input[placeholder="Введите ваше имя"]\');\n  const phoneInput = document.querySelector(\'input[placeholder="+7 (___) ___-__-__"]\');\n  \n  const results = {\n    windowWidth: window.innerWidth,\n    mediaQuery767: window.matchMedia(\'(max-width: 767px)\').matches\n  };\n  \n  if (nameInput) {\n    const computedStyle = window.getComputedStyle(nameInput);\n    results.nameInputFontSize = computedStyle.fontSize;\n    results.nameInputClasses = nameInput.className;\n  }\n  \n  if (phoneInput) {\n    const computedStyle = window.getComputedStyle(phoneInput);\n    results.phoneInputFontSize = computedStyle.fontSize;\n    results.phoneInputClasses = phoneInput.className;\n  }\n  \n  // Для сравнения проверим другие элементы\n  const heading = document.querySelector(\'h2\');\n  if (heading) {\n    results.headingFontSize = window.getComputedStyle(heading).fontSize;\n  }\n  \n  const paragraph = document.querySelector(\'p\');\n  if (paragraph) {\n    results.paragraphFontSize = window.getComputedStyle(paragraph).fontSize;\n  }\n  \n  return results;\n}');
+```
+- Snapshot: 050.snapshot.yml
+
+
+### Tool call: browser_close
+- Args
+```json
+{}
+```
+- Code
+```js
+await page.close()
+```
+

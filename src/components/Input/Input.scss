@@ -82,16 +82,16 @@
 @include md-down {
   .input {
     padding: var(--spacing-3) var(--spacing-4);
-    font-size: var(--font-size-base);
+    // font-size убран - теперь используется глобальное правило для предотвращения iOS zoom
 
     &--small {
       padding: var(--spacing-2) var(--spacing-3);
-      font-size: var(--font-size-sm);
+      // font-size: var(--font-size-sm); - убран для iOS zoom fix
     }
 
     &--large {
       padding: var(--spacing-4) var(--spacing-5);
-      font-size: var(--font-size-lg);
+      // font-size: var(--font-size-lg); - убран для iOS zoom fix
     }
   }
 }
