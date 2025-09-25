@@ -56,6 +56,14 @@ const OPTIMIZATION_PROFILES = {
     webp: { quality: 88, effort: 4 }
   },
 
+  // Захоронения - качество как у транспорта, но размер меньше
+  'graves': {
+    pattern: 'src/assets/images/graves/**/*.{png,jpg,jpeg}',
+    resize: { width: 500, fit: 'inside', withoutEnlargement: true },
+    png: { quality: 90, compressionLevel: 6 },
+    webp: { quality: 88, effort: 4 }
+  },
+
   // Прощальные залы - высокое качество для презентации услуг
   'funeral-hall': {
     pattern: 'src/assets/images/funeral-hall/**/*.{png,jpg,jpeg}',
@@ -67,7 +75,7 @@ const OPTIMIZATION_PROFILES = {
   // Остальные изображения - универсальные настройки
   'general': {
     pattern: 'src/assets/images/**/*.{png,jpg,jpeg}',
-    exclude: ['quiz-icons', 'design', 'transport-and-office', 'funeral-hall'], // Исключаем уже обработанные
+    exclude: ['quiz-icons', 'design', 'transport-and-office', 'funeral-hall', 'graves'], // Исключаем уже обработанные
     resize: { width: 800, fit: 'inside', withoutEnlargement: true },
     png: { quality: 85, compressionLevel: 7 },
     webp: { quality: 88, effort: 5 }
@@ -114,6 +122,7 @@ class ImageOptimizer {
       'src/assets/images-optimized/design',
       'src/assets/images-optimized/transport-and-office',
       'src/assets/images-optimized/funeral-hall',
+      'src/assets/images-optimized/graves',
       'src/assets/favicons-optimized',
       'src/assets/icons-optimized'
     ];
