@@ -133,7 +133,7 @@ p {
 
 .ios-zoom-fix {
   @include md-down {
-    font-size: 16px !important; // 16px без хардкодинга
+    font-size: calc(1rem * (16 / 14)) !important;
     transform: scale(1);
   }
 }
