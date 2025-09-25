@@ -12,9 +12,7 @@ html {
   scroll-behavior: smooth;
 
   @include mobile {
-    * :not(input, select, textarea) {
-      font-size: 14px; // Уменьшенный базовый размер для мобильных
-    }
+    font-size: 14px; // Уменьшенный базовый размер для мобильных
   }
 }
 
@@ -130,23 +128,13 @@ p {
   }
 }
 
-// ФОРМА ЭЛЕМЕНТЫ - предотвращение зума на iOS
+// ПРЕДОТВРАЩЕНИЕ iOS ZOOM - точечный класс для инпутов
 // =================
 
-// Используем прямой медиа-запрос без миксина для предотвращения iOS zoom
-@media (max-width: 767px) {
-  input,
-  select,
-  textarea,
-  .input,
-  .quiz-form__input,
-  input.input,
-  input.quiz-form__input {
-    // Предотвращаем автоматический зум на iOS без нарушения доступности
-    // iOS зумирует при font-size < 16px, устанавливаем минимум 16px
-    font-size: 16px !important;
-    // Добавляем еще более высокую специфичность для принудительного применения
-    -webkit-text-size-adjust: 100% !important;
+.ios-zoom-fix {
+  @include md-down {
+    font-size: 16px !important; // 16px без хардкодинга
+    transform: scale(1);
   }
 }
 
