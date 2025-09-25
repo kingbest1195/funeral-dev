@@ -173,3 +173,51 @@ await page.evaluate('() => {\n  return Array.from(document.querySelectorAll(\'sc
 ```
 - Snapshot: 010.snapshot.yml
 
+
+### Tool call: browser_navigate
+- Args
+```json
+{
+  "url": "https://ritual-vek-frontend.website.yandexcloud.net/"
+}
+```
+- Code
+```js
+await page.goto('https://ritual-vek-frontend.website.yandexcloud.net/');
+```
+- Snapshot: 011.snapshot.yml
+
+
+### Tool call: browser_evaluate
+- Args
+```json
+{
+  "function": "() => {\n  return Array.from(document.querySelectorAll('script[type=\"application/ld+json\"]')).map((el, index) => ({\n    index,\n    content: el.innerText\n  }));\n}"
+}
+```
+- Result
+```
+[
+  {
+    "index": 0,
+    "content": "[{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"name\":\"Ритуальная служба Век\",\"telephone\":\"+7 (920) 366-36-36\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ул. Красноармейский переулок, 6\",\"addressLocality\":\"г. Шуя\",\"addressRegion\":\"Ивановская область\",\"addressCountry\":\"RU\",\"postalCode\":\"155900\"},\"openingHours\":\"Пн-Вс, с 8:00 до 17:00\",\"url\":\"https://ritual-vek-frontend.website.yandexcloud.net\",\"image\":\"https://ritual-vek-frontend.website.yandexcloud.net/logo-vek.svg\",\"description\":\"Ритуальная служба Век в Шуе. Круглосуточная помощь в организации похорон, кремация, памятники. Профессиональные агенты. Звоните +7 (920) 366-36-36\",\"priceRange\":\"$$\",\"areaServed\":{\"@type\":\"City\",\"name\":\"Шуя\"},\"hasOfferCatalog\":{\"@type\":\"OfferCatalog\",\"name\":\"Ритуальные услуги\",\"itemListElement\":[{\"@type\":\"Offer\",\"itemOffered\":{\"@type\":\"Service\",\"name\":\"Организация похорон\"}},{\"@type\":\"Offer\",\"itemOffered\":{\"@type\":\"Service\",\"name\":\"Кремация\"}},{\"@type\":\"Offer\",\"itemOffered\":{\"@type\":\"Product\",\"name\":\"Памятники и ограды\",\"description\":\"Гранитные и мраморные памятники, ограды для мест захоронения\",\"category\":\"Ритуальные товары\",\"image\":\"https://ritual-vek-frontend.website.yandexcloud.net/assets/funeral-market-DAabEYKC.png\",\"aggregateRating\":{\"@type\":\"AggregateRating\",\"ratingValue\":4.89,\"reviewCount\":38,\"bestRating\":5,\"worstRating\":1},\"review\":[{\"@type\":\"Review\",\"author\":{\"@type\":\"Person\",\"name\":\"Николай П.\"},\"datePublished\":\"2023-05-04\",\"reviewBody\":\"Спасибо, за помощь с обрядом погребения. Ваше внимание и забота достойна уважения.\",\"reviewRating\":{\"@type\":\"Rating\",\"ratingValue\":5,\"bestRating\":5,\"worstRating\":1}},{\"@type\":\"Review\",\"author\":{\"@type\":\"Person\",\"name\":\"Алена Горбунова\"},\"datePublished\":\"2023-04-17\",\"reviewBody\":\"Спасибо ребятам. Они проезжали мимо и помогли поднять упавшую плиту на могиле. Побольше бы таких отзывчивых людей!\",\"reviewRating\":{\"@type\":\"Rating\",\"ratingValue\":5,\"bestRating\":5,\"worstRating\":1}},{\"@type\":\"Review\",\"author\":{\"@type\":\"Person\",\"name\":\"Таня П.\"},\"datePublished\":\"2023-04-03\",\"reviewBody\":\"Спасибо большое всему коллективу! Помогли во всём по приемлемым ценам и поддержали в трудный момент.\",\"reviewRating\":{\"@type\":\"Rating\",\"ratingValue\":5,\"bestRating\":5,\"worstRating\":1}},{\"@type\":\"Review\",\"author\":{\"@type\":\"Person\",\"name\":\"Наталья Алексеевна Окунькова\"},\"datePublished\":\"2023-03-20\",\"reviewBody\":\"Благодарю коллектив ритуальной службы \\\"Век\\\" за отзывчивость и профессионализм. Помогли достойно устроить похороны близкого человека.\",\"reviewRating\":{\"@type\":\"Rating\",\"ratingValue\":5,\"bestRating\":5,\"worstRating\":1}}],\"offers\":{\"@type\":\"Offer\",\"availability\":\"https://schema.org/InStock\",\"priceCurrency\":\"RUB\",\"price\":\"15000\",\"priceRange\":\"15000-150000\"}}}]},\"aggregateRating\":{\"@type\":\"AggregateRating\",\"ratingValue\":4.89,\"reviewCount\":38,\"bestRating\":5,\"worstRating\":1},\"review\":[{\"@type\":\"Review\",\"author\":{\"@type\":\"Person\",\"name\":\"Николай П.\"},\"datePublished\":\"2023-05-04\",\"reviewBody\":\"Спасибо, за помощь с обрядом погребения. Ваше внимание и забота достойна уважения.\",\"reviewRating\":{\"@type\":\"Rating\",\"ratingValue\":5,\"bestRating\":5,\"worstRating\":1}},{\"@type\":\"Review\",\"author\":{\"@type\":\"Person\",\"name\":\"Алена Горбунова\"},\"datePublished\":\"2023-04-17\",\"reviewBody\":\"Спасибо ребятам. Они проезжали мимо и помогли поднять упавшую плиту на могиле. Побольше бы таких отзывчивых людей!\",\"reviewRating\":{\"@type\":\"Rating\",\"ratingValue\":5,\"bestRating\":5,\"worstRating\":1}},{\"@type\":\"Review\",\"author\":{\"@type\":\"Person\",\"name\":\"Таня П.\"},\"datePublished\":\"2023-04-03\",\"reviewBody\":\"Спасибо большое всему коллективу! Помогли во всём по приемлемым ценам и поддержали в трудный момент.\",\"reviewRating\":{\"@type\":\"Rating\",\"ratingValue\":5,\"bestRating\":5,\"worstRating\":1}},{\"@type\":\"Review\",\"author\":{\"@type\":\"Person\",\"name\":\"Наталья Алексеевна Окунькова\"},\"datePublished\":\"2023-03-20\",\"reviewBody\":\"Благодарю коллектив ритуальной службы \\\"Век\\\" за отзывчивость и профессионализм. Помогли достойно устроить похороны близкого человека.\",\"reviewRating\":{\"@type\":\"Rating\",\"ratingValue\":5,\"bestRating\":5,\"worstRating\":1}}]},{\"@context\":\"https://schema.org\",\"@type\":\"WebPage\",\"name\":\"Главная страница - Ритуальная служба Век\",\"description\":\"Ритуальная служба Век в Шуе. Круглосуточная помощь в организации похорон, кремация, памятники. Профессиональные агенты. Звоните +7 (920) 366-36-36\",\"mainEntity\":{\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Сколько стоят ритуальные услуги в Шуе?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Стоимость ритуальных услуг зависит от выбранного пакета. Базовые услуги начинаются от 25 000 рублей. Точную стоимость можно рассчитать с помощью нашего калькулятора или уточнить по телефону +7 (920) 366-36-36.\"}}]}}]"
+  }
+]
+```
+- Code
+```js
+await page.evaluate('() => {\n  return Array.from(document.querySelectorAll(\'script[type="application/ld+json"]\')).map((el, index) => ({\n    index,\n    content: el.innerText\n  }));\n}');
+```
+- Snapshot: 012.snapshot.yml
+
+
+### Tool call: browser_close
+- Args
+```json
+{}
+```
+- Code
+```js
+await page.close()
+```
+

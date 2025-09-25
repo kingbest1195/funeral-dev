@@ -2,13 +2,13 @@
 // ОСНОВНАЯ СЕКЦИЯ КОНТЕНТА ПОЛИТИКИ КОНФИДЕНЦИАЛЬНОСТИ
 // =================
 
-import React from 'react';
-import { PRIVACY_CONTENT_SECTIONS, PRIVACY_CONTACT_INFO } from '../../content';
-import PrivacyCallout from '../PrivacyCallout/PrivacyCallout';
-import PrivacyParagraph from '../PrivacyParagraph/PrivacyParagraph';
-import PrivacyTable from '../PrivacyTable/PrivacyTable';
-import PrivacyContact from '../PrivacyContact/PrivacyContact';
-import './PrivacyContentSection.scss';
+import React from "react";
+import { PRIVACY_CONTENT_SECTIONS, PRIVACY_CONTACT_INFO } from "../../content";
+import PrivacyCallout from "../PrivacyCallout/PrivacyCallout";
+import Paragraph from "@/components/Paragraph";
+import DataTable from "@/components/DataTable";
+import PrivacyContact from "../PrivacyContact/PrivacyContact";
+import "./PrivacyContentSection.scss";
 
 /**
  * Основная секция с контентом политики конфиденциальности
@@ -23,7 +23,7 @@ const PrivacyContentSection = () => {
     processingConditions,
     userRights,
     cookies,
-    finalProvisions
+    finalProvisions,
   } = PRIVACY_CONTENT_SECTIONS;
 
   /**
@@ -32,7 +32,7 @@ const PrivacyContentSection = () => {
   const renderBasicTerms = () => (
     <section className="privacy-content__section" id={basicTerms.id}>
       <h2 className="privacy-content__section-title">{basicTerms.title}</h2>
-      <PrivacyParagraph>
+      <Paragraph>
         <ul>
           {basicTerms.items.map((item, index) => (
             <li key={index}>
@@ -40,7 +40,7 @@ const PrivacyContentSection = () => {
             </li>
           ))}
         </ul>
-      </PrivacyParagraph>
+      </Paragraph>
     </section>
   );
 
@@ -50,7 +50,7 @@ const PrivacyContentSection = () => {
   const renderOperatorData = () => (
     <section className="privacy-content__section" id={operatorData.id}>
       <h2 className="privacy-content__section-title">{operatorData.title}</h2>
-      <PrivacyParagraph>
+      <Paragraph>
         <ul>
           {operatorData.items.map((item, index) => (
             <li key={index}>
@@ -58,7 +58,7 @@ const PrivacyContentSection = () => {
             </li>
           ))}
         </ul>
-      </PrivacyParagraph>
+      </Paragraph>
     </section>
   );
 
@@ -66,17 +66,30 @@ const PrivacyContentSection = () => {
    * Рендеринг секции с целями обработки данных
    */
   const renderDataProcessingPurposes = () => (
-    <section className="privacy-content__section" id={dataProcessingPurposes.id}>
-      <h2 className="privacy-content__section-title">{dataProcessingPurposes.title}</h2>
-      <PrivacyParagraph>
+    <section
+      className="privacy-content__section"
+      id={dataProcessingPurposes.id}
+    >
+      <h2 className="privacy-content__section-title">
+        {dataProcessingPurposes.title}
+      </h2>
+      <Paragraph>
         <p>{dataProcessingPurposes.description}</p>
-      </PrivacyParagraph>
+      </Paragraph>
 
-      <PrivacyTable data={dataProcessingPurposes.table.rows} />
+      <DataTable
+        headers={dataProcessingPurposes.table.headers}
+        rows={dataProcessingPurposes.table.rows.map(({ category, purpose }) => [
+          category,
+          purpose,
+        ])}
+      />
 
-      <PrivacyParagraph>
-        <p><em>{dataProcessingPurposes.conclusion}</em></p>
-      </PrivacyParagraph>
+      <Paragraph>
+        <p>
+          <em>{dataProcessingPurposes.conclusion}</em>
+        </p>
+      </Paragraph>
     </section>
   );
 
@@ -86,14 +99,14 @@ const PrivacyContentSection = () => {
   const renderLegalBasis = () => (
     <section className="privacy-content__section" id={legalBasis.id}>
       <h2 className="privacy-content__section-title">{legalBasis.title}</h2>
-      <PrivacyParagraph>
+      <Paragraph>
         <p>{legalBasis.description}</p>
         <ul>
           {legalBasis.items.map((item, index) => (
             <li key={index}>{item}</li>
           ))}
         </ul>
-      </PrivacyParagraph>
+      </Paragraph>
     </section>
   );
 
@@ -102,14 +115,18 @@ const PrivacyContentSection = () => {
    */
   const renderProcessingConditions = () => (
     <section className="privacy-content__section" id={processingConditions.id}>
-      <h2 className="privacy-content__section-title">{processingConditions.title}</h2>
+      <h2 className="privacy-content__section-title">
+        {processingConditions.title}
+      </h2>
 
       {processingConditions.subsections.map((subsection, index) => (
         <div key={index} className="privacy-content__subsection">
-          <h3 className="privacy-content__subsection-title">{subsection.title}</h3>
-          <PrivacyParagraph>
+          <h3 className="privacy-content__subsection-title">
+            {subsection.title}
+          </h3>
+          <Paragraph>
             <p>{subsection.content}</p>
-          </PrivacyParagraph>
+          </Paragraph>
         </div>
       ))}
     </section>
@@ -121,14 +138,14 @@ const PrivacyContentSection = () => {
   const renderUserRights = () => (
     <section className="privacy-content__section" id={userRights.id}>
       <h2 className="privacy-content__section-title">{userRights.title}</h2>
-      <PrivacyParagraph>
+      <Paragraph>
         <p>{userRights.description}</p>
         <ul>
           {userRights.items.map((item, index) => (
             <li key={index}>{item}</li>
           ))}
         </ul>
-      </PrivacyParagraph>
+      </Paragraph>
     </section>
   );
 
@@ -138,9 +155,9 @@ const PrivacyContentSection = () => {
   const renderCookies = () => (
     <section className="privacy-content__section" id={cookies.id}>
       <h2 className="privacy-content__section-title">{cookies.title}</h2>
-      <PrivacyParagraph>
+      <Paragraph>
         <p>{cookies.content}</p>
-      </PrivacyParagraph>
+      </Paragraph>
     </section>
   );
 
@@ -149,12 +166,16 @@ const PrivacyContentSection = () => {
    */
   const renderFinalProvisions = () => (
     <section className="privacy-content__section" id={finalProvisions.id}>
-      <h2 className="privacy-content__section-title">{finalProvisions.title}</h2>
+      <h2 className="privacy-content__section-title">
+        {finalProvisions.title}
+      </h2>
 
       {finalProvisions.subsections.map((subsection, index) => (
         <div key={index} className="privacy-content__subsection">
-          <h3 className="privacy-content__subsection-title">{subsection.title}</h3>
-          <PrivacyParagraph>
+          <h3 className="privacy-content__subsection-title">
+            {subsection.title}
+          </h3>
+          <Paragraph>
             <p>
               {subsection.content}
               {subsection.policyUrl && (
@@ -164,7 +185,7 @@ const PrivacyContentSection = () => {
                 </>
               )}
             </p>
-          </PrivacyParagraph>
+          </Paragraph>
         </div>
       ))}
     </section>
@@ -180,9 +201,10 @@ const PrivacyContentSection = () => {
       <ul>
         {PRIVACY_CONTACT_INFO.items.map((item, index) => (
           <li key={index}>
-            {item.type === 'tel' ? (
+            {item.type === "tel" ? (
               <>
-                <strong>{item.label}</strong> <a href={item.href}>{item.value}</a>
+                <strong>{item.label}</strong>{" "}
+                <a href={item.href}>{item.value}</a>
               </>
             ) : (
               <>

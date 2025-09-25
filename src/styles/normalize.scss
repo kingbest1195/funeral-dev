@@ -43,7 +43,12 @@ body {
 }
 
 // ЗАГОЛОВКИ
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $font-heading;
   font-weight: inherit;
   line-height: inherit;
@@ -54,14 +59,15 @@ h1, h2, h3, h4, h5, h6 {
 // ПАРАГРАФЫ
 p {
   margin: 0 0 $margin-md 0;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
 }
 
 // СПИСКИ
-ul, ol {
+ul,
+ol {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -78,11 +84,11 @@ a {
   text-decoration: none;
   background-color: transparent;
   transition: color $duration-base $ease-smooth;
-  
+
   &:hover {
     text-decoration: none;
   }
-  
+
   &:focus {
     @include focus-visible;
   }
@@ -92,11 +98,11 @@ a {
 button {
   @include button-reset;
   cursor: pointer;
-  
+
   &:focus {
     @include focus-visible;
   }
-  
+
   &:disabled {
     cursor: not-allowed;
     opacity: 0.6;
@@ -114,9 +120,17 @@ select {
   background: transparent;
   border: none;
   outline: none;
-  
+
   &:focus {
     outline: none;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  input,
+  select,
+  textarea {
+    font-size: max(16px, inherit);
   }
 }
 
@@ -127,7 +141,7 @@ input[type="search"] {
 
 input[type="number"] {
   -moz-appearance: textfield;
-  
+
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -262,7 +276,7 @@ nav {
 ::-webkit-scrollbar-thumb {
   background: $color-border-dark;
   border-radius: $border-radius-sm;
-  
+
   &:hover {
     background: $color-primary;
   }
@@ -296,7 +310,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+  font-family: "Monaco", "Menlo", "Consolas", monospace;
   font-size: 0.9em;
 }
 
@@ -311,7 +325,7 @@ pre {
   padding: $padding-md;
   background-color: $color-bg-secondary;
   border-radius: $border-radius-md;
-  
+
   code {
     padding: 0;
     background: transparent;
@@ -328,7 +342,7 @@ details {
 summary {
   display: list-item;
   cursor: pointer;
-  
+
   &:focus {
     @include focus-visible;
   }

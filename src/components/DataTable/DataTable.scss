@@ -1,0 +1,91 @@
+@use "@/styles/mixins" as *;
+
+.data-table__wrapper {
+  overflow: hidden;
+  overflow-x: auto;
+  margin: var(--spacing-8) 0;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--color-bg-primary);
+
+  @include md-down {
+    margin: var(--spacing-6) 0;
+    padding: var(--spacing-4);
+    border-radius: var(--border-radius-md);
+  }
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-bg-primary);
+  font-size: var(--font-size-base);
+}
+
+.data-table__caption {
+  padding: var(--spacing-4) var(--spacing-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-align: left;
+}
+
+.data-table__head {
+  background: var(--color-accent);
+}
+
+.data-table__header-cell {
+  background: var(--color-accent);
+  color: var(--color-text-white);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--spacing-4) var(--spacing-6);
+  text-align: left;
+  font-size: var(--font-size-base);
+
+  &:first-child {
+    width: 40%;
+  }
+}
+
+.data-table__row {
+  transition: background-color var(--duration-base) var(--ease-smooth);
+
+  &:hover {
+    background: rgba(196, 158, 94, 0.1);
+  }
+}
+
+.data-table__cell {
+  padding: var(--spacing-4) var(--spacing-6);
+  vertical-align: top;
+  border-bottom: var(--border-width-1) solid var(--color-border-light);
+  line-height: var(--line-height-normal);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+}
+
+.data-table--striped-row .data-table__row:nth-child(even) {
+  background: var(--color-bg-secondary);
+}
+
+.data-table--striped-column .data-table__cell:nth-child(even) {
+  background: var(--color-bg-secondary);
+}
+
+.data-table--striped-none {
+  .data-table__row,
+  .data-table__cell {
+    background: transparent;
+  }
+}
+
+@include md-down {
+  .data-table__header-cell {
+    padding: var(--spacing-3) var(--spacing-4);
+    font-size: var(--font-size-sm);
+  }
+
+  .data-table__cell {
+    padding: var(--spacing-3) var(--spacing-4);
+    font-size: var(--font-size-sm);
+  }
+}

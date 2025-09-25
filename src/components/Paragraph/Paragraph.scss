@@ -1,10 +1,4 @@
-// =================
-// СТИЛИ КОМПОНЕНТА PARAGRAPH - PrivacyParagraph.scss
-// Оригинальные стили .privacy-page__section
-// =================
-
-.privacy-paragraph {
-  // Стили для заголовков h2 (как в оригинальном .privacy-page__section h2)
+.paragraph {
   h2 {
     font-family: var(--font-heading);
     font-size: var(--font-size-2xl);
@@ -16,7 +10,6 @@
     border-bottom: var(--border-width-2) solid var(--color-accent);
   }
 
-  // Стили для заголовков h3
   h3 {
     font-family: var(--font-heading);
     font-size: var(--font-size-xl);
@@ -26,7 +19,6 @@
     margin: var(--spacing-8) 0 var(--spacing-6) 0;
   }
 
-  // Обычные параграфы
   p {
     font-size: var(--font-size-base);
     line-height: var(--line-height-normal);
@@ -37,7 +29,6 @@
       margin-bottom: 0;
     }
 
-    // Инлайн код
     code {
       background-color: var(--color-bg-secondary);
       padding: 0.125rem 0.25rem;
@@ -47,14 +38,12 @@
       color: var(--color-text-primary);
     }
 
-    // Курсив
     em {
       font-style: italic;
       color: var(--color-text-primary);
     }
   }
 
-  // Списки (как в оригинальном .privacy-page__section ul li)
   ul {
     margin: 0 0 var(--spacing-4) 0;
     padding-left: var(--spacing-6);
@@ -70,7 +59,6 @@
         margin-bottom: 0;
       }
 
-      // Жирный текст в списках
       strong {
         color: var(--color-text-primary);
         font-weight: var(--font-weight-semibold);
@@ -100,7 +88,6 @@
     }
   }
 
-  // Общие стили для выделенного текста
   strong {
     color: var(--color-text-primary);
     font-weight: var(--font-weight-semibold);
