@@ -12,7 +12,7 @@ html {
   scroll-behavior: smooth;
 
   @include mobile {
-    font-size: 14px; // Уменьшенный базовый размер для мобильных
+    font-size: 16px; // Исправлено: был 14px, что вызывало zoom на iOS
   }
 }
 
@@ -131,15 +131,6 @@ p {
 // ФОРМА ЭЛЕМЕНТЫ - предотвращение зума на iOS
 // =================
 
-@include mobile {
-  input,
-  select,
-  textarea {
-    // Предотвращаем автоматический зум на iOS без нарушения доступности
-    // iOS зумирует при font-size < 16px, устанавливаем минимум 16px
-    font-size: max(16px, 1rem) !important;
-  }
-}
 
 // ССЫЛКИ
 // =================

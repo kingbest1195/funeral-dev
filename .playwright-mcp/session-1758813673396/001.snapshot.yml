@@ -1,0 +1,486 @@
+- generic [ref=e1]:
+  - heading [level=1] [ref=e2]: Links zur Barrierefreiheit
+  - link [ref=e3] [cursor=pointer]: Zu den Hauptinhalten springen
+  - link [ref=e4] [cursor=pointer]:
+    - /url: https://support.google.com/websearch/answer/181196?hl=de
+    - text: Hilfe zur Barrierefreiheit
+  - link [ref=e5] [cursor=pointer]: Feedback zur Barrierefreiheit
+  - dialog "Bevor Sie zur Google Suche weitergehen" [active]:
+    - generic [ref=e12]:
+      - generic [ref=e14]:
+        - img "Google" [ref=e15]
+        - generic [ref=e16]:
+          - 'button "Sprache: ‪Deutsch‬" [ref=e18] [cursor=pointer]':
+            - generic [ref=e19]:
+              - img
+              - generic [ref=e20]: de
+          - link "Anmelden" [ref=e21] [cursor=pointer]
+      - generic [ref=e22]:
+        - heading "Bevor Sie zu Google weitergehen" [level=1] [ref=e23]
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - text: Wir verwenden
+            - link "Cookies" [ref=e26] [cursor=pointer]:
+              - /url: https://policies.google.com/technologies/cookies?utm_source=ucbs&hl=de
+            - text: und Daten, um
+            - list [ref=e27]:
+              - listitem [ref=e28]: Google-Dienste zu erbringen und zu betreiben
+              - listitem [ref=e29]: Ausfälle zu prüfen und Maßnahmen gegen Spam, Betrug und Missbrauch zu ergreifen
+              - listitem [ref=e30]: Daten zu Zielgruppeninteraktionen und Websitestatistiken zu erheben. Mit den gewonnenen Informationen möchten wir verstehen, wie unsere Dienste verwendet werden, und die Qualität dieser Dienste verbessern.
+          - generic [ref=e31]:
+            - text: Wenn Sie „Alle akzeptieren“ auswählen, verwenden wir Cookies und Daten auch, um
+            - list [ref=e32]:
+              - listitem [ref=e33]: neue Dienste zu entwickeln und zu verbessern
+              - listitem [ref=e34]: Werbung auszuliefern und ihre Wirkung zu messen
+              - listitem [ref=e35]: je nach Ihren Einstellungen personalisierte Inhalte anzuzeigen
+              - listitem [ref=e36]: personalisierte Werbung anzuzeigen, abhängig von Ihren Einstellungen
+            - generic [ref=e37]: Wenn Sie „Alle ablehnen“ auswählen, verwenden wir Cookies nicht für diese zusätzlichen Zwecke.
+          - generic [ref=e38]: Nicht personalisierte Inhalte werden u. a. von Inhalten, die Sie sich gerade ansehen, Aktivitäten in Ihrer aktiven Suchsitzung und Ihrem Standort beeinflusst. Nicht personalisierte Werbung wird von den Inhalten, die Sie sich gerade ansehen, und Ihrem allgemeinen Standort beeinflusst. Personalisierte Inhalte und Werbung können auch relevantere Ergebnisse, Empfehlungen und individuelle Werbung enthalten, die auf früheren Aktivitäten in diesem Browser, etwa Suchanfragen bei Google, beruhen. Sofern relevant, verwenden wir Cookies und Daten außerdem, um Inhalte und Werbung altersgerecht zu gestalten.
+          - generic [ref=e39]: Wählen Sie „Weitere Optionen“ aus, um sich zusätzliche Informationen anzusehen, einschließlich Details zum Verwalten Ihrer Datenschutzeinstellungen. Sie können auch jederzeit g.co/privacytools besuchen.
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - button "Alle ablehnen" [ref=e42] [cursor=pointer]
+          - button "Alle akzeptieren" [ref=e43] [cursor=pointer]
+        - link "Weitere Optionen für Personalisierungseinstellungen und Cookies" [ref=e45] [cursor=pointer]:
+          - generic "Weitere Optionen für Personalisierungseinstellungen und Cookies" [ref=e46]: Weitere Optionen
+      - generic [ref=e47]:
+        - link "Datenschutz" [ref=e48] [cursor=pointer]:
+          - /url: https://policies.google.com/privacy?hl=de&fg=1&utm_source=ucbs
+        - generic [ref=e49]: ·
+        - link "Nutzungsbedingungen" [ref=e50] [cursor=pointer]:
+          - /url: https://policies.google.com/terms?hl=de&fg=1&utm_source=ucbs
+  - generic [ref=e53]:
+    - search [ref=e54]:
+      - generic [ref=e56]:
+        - link [ref=e58] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=de&sa=X&ved=0ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQPAho
+          - img [ref=e59]
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - combobox [ref=e70]: prevent ios input focus zoom best practices prevent ios input focus zoom best practices
+            - generic [ref=e71]:
+              - button [ref=e73] [cursor=pointer]:
+                - img [ref=e75]
+              - generic [ref=e78]:
+                - button [ref=e79] [cursor=pointer]:
+                  - img [ref=e80]
+                - button [ref=e82] [cursor=pointer]:
+                  - img [ref=e83]
+          - button [ref=e85] [cursor=pointer]:
+            - img [ref=e88]
+    - generic [ref=e90]:
+      - button [ref=e92] [cursor=pointer]
+      - generic [ref=e93]:
+        - button [ref=e95] [cursor=pointer]:
+          - img [ref=e96]
+        - link [ref=e100] [cursor=pointer]:
+          - /url: https://accounts.google.com/ServiceLogin?hl=de&passive=true&continue=https://www.google.com/search%3Fq%3Dprevent%2Bios%2Binput%2Bfocus%2Bzoom%2Bbest%2Bpractices%26sei%3D9l3VaJLQFMHoi-gP9MGZoA0&ec=futura_srp_og_si_72236_p
+          - text: Anmelden
+  - generic [ref=e102]:
+    - generic [ref=e107]:
+      - heading [level=1] [ref=e108]: Filter und Themen
+      - navigation [ref=e109]:
+        - list [ref=e114]:
+          - listitem [ref=e115]:
+            - link [disabled] [ref=e116]:
+              - generic [ref=e118]: Alle
+          - listitem [ref=e119]:
+            - link [ref=e120] [cursor=pointer]:
+              - /url: /search?sca_esv=96401a4aa5f3e59e&udm=39&fbs=AIIjpHw2KGh6wpocn18KLjPMw8n5L__fSZ5xMqACoEMoiTZ1jzalJr6IshNp6oImZL-8o5N-T88Q25Jtu-p9zbfXGkN1tt1yCNdr5AuILBZmVX09-g1C0jOV0wtOleDfm4yGyg_MUoh2mfTuJXT38XzUViQJ7S0eijScknEZrGpYAbIBMI6cwSbeTGIE5W2n5v57D2C6TNeN&q=prevent+ios+input+focus+zoom+best+practices&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQs6gLegQIIBAB
+              - generic [ref=e122]: Kurze Videos
+          - listitem [ref=e123]:
+            - link [ref=e124] [cursor=pointer]:
+              - /url: /search?sca_esv=96401a4aa5f3e59e&udm=7&fbs=AIIjpHw2KGh6wpocn18KLjPMw8n5L__fSZ5xMqACoEMoiTZ1jzalJr6IshNp6oImZL-8o5N-T88Q25Jtu-p9zbfXGkN1tt1yCNdr5AuILBZmVX09-g1C0jOV0wtOleDfm4yGyg_MUoh2mfTuJXT38XzUViQJ7S0eijScknEZrGpYAbIBMI6cwSbeTGIE5W2n5v57D2C6TNeN&q=prevent+ios+input+focus+zoom+best+practices&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQtKgLegQIHRAB
+              - generic [ref=e126]: Videos
+          - listitem [ref=e127]:
+            - link [ref=e128] [cursor=pointer]:
+              - /url: /search?sca_esv=96401a4aa5f3e59e&udm=2&fbs=AIIjpHw2KGh6wpocn18KLjPMw8n5L__fSZ5xMqACoEMoiTZ1jzalJr6IshNp6oImZL-8o5N-T88Q25Jtu-p9zbfXGkN1tt1yCNdr5AuILBZmVX09-g1C0jOV0wtOleDfm4yGyg_MUoh2mfTuJXT38XzUViQJ7S0eijScknEZrGpYAbIBMI6cwSbeTGIE5W2n5v57D2C6TNeN&q=prevent+ios+input+focus+zoom+best+practices&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQtKgLegQIFhAB
+              - generic [ref=e130]: Bilder
+          - listitem [ref=e131]:
+            - link [ref=e132] [cursor=pointer]:
+              - /url: /search?sca_esv=96401a4aa5f3e59e&q=prevent+ios+input+focus+zoom+best+practices&tbm=nws&source=lnms&fbs=AIIjpHw2KGh6wpocn18KLjPMw8n5L__fSZ5xMqACoEMoiTZ1jzalJr6IshNp6oImZL-8o5N-T88Q25Jtu-p9zbfXGkN1tt1yCNdr5AuILBZmVX09-g1C0jOV0wtOleDfm4yGyg_MUoh2mfTuJXT38XzUViQJ7S0eijScknEZrGpYAbIBMI6cwSbeTGIE5W2n5v57D2C6TNeN&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ0pQJegQIDBAB
+              - generic [ref=e134]: News
+          - listitem [ref=e135]:
+            - link [ref=e136] [cursor=pointer]:
+              - /url: /search?sca_esv=96401a4aa5f3e59e&udm=14&fbs=AIIjpHw2KGh6wpocn18KLjPMw8n5L__fSZ5xMqACoEMoiTZ1jzalJr6IshNp6oImZL-8o5N-T88Q25Jtu-p9zbfXGkN1tt1yCNdr5AuILBZmVX09-g1C0jOV0wtOleDfm4yGyg_MUoh2mfTuJXT38XzUViQJ7S0eijScknEZrGpYAbIBMI6cwSbeTGIE5W2n5v57D2C6TNeN&q=prevent+ios+input+focus+zoom+best+practices&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQs6gLegQIDRAB
+              - generic [ref=e138]: Web
+          - listitem [ref=e139]:
+            - link [ref=e140] [cursor=pointer]:
+              - /url: /search?sca_esv=96401a4aa5f3e59e&q=prevent+ios+input+focus+zoom+best+practices&udm=36&source=lnms&fbs=AIIjpHw2KGh6wpocn18KLjPMw8n5L__fSZ5xMqACoEMoiTZ1jzalJr6IshNp6oImZL-8o5N-T88Q25Jtu-p9zbfXGkN1tt1yCNdr5AuILBZmVX09-g1C0jOV0wtOleDfm4yGyg_MUoh2mfTuJXT38XzUViQJ7S0eijScknEZrGpYAbIBMI6cwSbeTGIE5W2n5v57D2C6TNeN&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ0pQJegQIDhAB
+              - generic [ref=e142]: Bücher
+          - listitem [ref=e143]:
+            - button [ref=e144] [cursor=pointer]:
+              - generic [ref=e146]:
+                - generic [ref=e147]: Mehr
+                - img [ref=e149]
+    - generic [ref=e157]:
+      - generic [ref=e158]: Looking for results in English?
+      - link [ref=e159] [cursor=pointer]:
+        - /url: "#"
+        - img [ref=e161]
+      - link [ref=e163] [cursor=pointer]:
+        - /url: /setprefs?sig=0_SOKZdjpopdGMB2GL4ndT_yFeizU%3D&source=en_ignored_notification&prev=https://www.google.com/search?q%3Dprevent%2Bios%2Binput%2Bfocus%2Bzoom%2Bbest%2Bpractices%26sei%3D9l3VaJLQFMHoi-gP9MGZoA0&hl=en&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQhoQCKAF6BAgaEAQ
+        - text: Change to English
+      - link [ref=e164] [cursor=pointer]:
+        - /url: "#"
+        - text: Weiter auf Deutsch anzeigen
+      - link [ref=e166] [cursor=pointer]:
+        - /url: /preferences?lang=1&hl=de&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQiIQCKAN6BAgaEAY#languages
+        - text: Spracheinstellungen
+    - main [ref=e168]:
+      - generic [ref=e171]:
+        - heading [level=1] [ref=e172]: Suchergebnisse
+        - generic [ref=e173]:
+          - generic [ref=e178]:
+            - generic [ref=e184]:
+              - heading [level=2] [ref=e185]: Hervorgehobenes Snippet aus dem Web
+              - generic [ref=e189]:
+                - generic [ref=e193]: "Solution. The auto zooming feature only affects input fields with font size of less than 16px so using font size of 16px or greater will prevent the auto zoom. What these properties in the meta tag mean: width=device-width sets the width of the page to the same as the width of the device's screen."
+                - generic [ref=e198]:
+                  - link [ref=e200] [cursor=pointer]:
+                    - /url: https://www.telerik.com/products/aspnet-ajax/documentation/knowledge-base/common-disable-autozoom-input-safari-iphone#:~:text=Solution,will%20prevent%20the%20auto%20zoom.&text=What%20these%20properties%20in%20the,width%20of%20the%20device's%20screen.
+                    - heading [level=3] [ref=e201]: Disable Auto Zoom for Input Controls on iPhone Safari Browser
+                    - generic [ref=e206]:
+                      - generic [ref=e208]: Telerik.com
+                      - generic [ref=e210]: https://www.telerik.com › aspnet-ajax › knowledge-base
+                  - button [ref=e211] [cursor=pointer]:
+                    - img [ref=e214]
+            - generic [ref=e220]:
+              - generic [ref=e221]:
+                - link [ref=e222] [cursor=pointer]:
+                  - /url: /url?url=https://support.google.com/websearch?p%3Dfeatured_snippets%26hl%3Dde-DE&rct=j&q=&esrc=s&opi=89978449&usg=AOvVaw3a4MSIBC0bGRXxX53sgMFS&hl=de&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQrpwBegQIHhAB
+                  - img [ref=e224]
+                - link [ref=e227] [cursor=pointer]:
+                  - /url: /url?url=https://support.google.com/websearch?p%3Dfeatured_snippets%26hl%3Dde-DE&rct=j&q=&esrc=s&opi=89978449&usg=AOvVaw3a4MSIBC0bGRXxX53sgMFS&hl=de&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQrpwBegQIHhAC
+                  - text: Informationen zu hervorgehobenen Snippets
+                - generic [ref=e228]: •
+              - generic [ref=e231]:
+                - img [ref=e233] [cursor=pointer]
+                - button [ref=e235] [cursor=pointer]:
+                  - generic [ref=e237]: Feedback
+          - generic [ref=e241]:
+            - generic [ref=e244]:
+              - link [ref=e246] [cursor=pointer]:
+                - /url: https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone
+                - heading [level=3] [ref=e247]: Disable Auto Zoom in Input "Text" tag - Safari on iPhone
+                - generic [ref=e252]:
+                  - generic [ref=e254]: Stack Overflow
+                  - generic [ref=e256]: Ca. 40 Antworten · vor 15 Jahren
+              - button [ref=e257] [cursor=pointer]:
+                - img [ref=e260]
+            - generic [ref=e264]:
+              - text: You can
+              - emphasis [ref=e265]: prevent Safari from automatically zooming in on text fields during user input
+              - text: without disabling the user's ability to pinch zoom.
+            - generic [ref=e270]:
+              - link [ref=e271] [cursor=pointer]:
+                - /url: https://stackoverflow.com/a/46254706
+                - text: 47 Antworten
+              - generic [ref=e272]: ·
+              - generic [ref=e273]: "Top-Antwort:"
+              - generic [ref=e274]: You can prevent Safari from automatically zooming in on text fields during user input ...
+            - generic [ref=e277]:
+              - generic [ref=e278]:
+                - link [ref=e281] [cursor=pointer]:
+                  - /url: https://stackoverflow.com/questions/64076385/input-zoom-on-iphone-safari-not-prevented-with-16px
+                  - generic [ref=e282]:
+                    - emphasis [ref=e283]: input zoom
+                    - text: "on"
+                    - emphasis [ref=e284]: iPhone
+                    - text: /Safari not prevented with ...
+                - generic [ref=e286]: 6 Antworten
+                - generic [ref=e288]: 26. Sept. 2020
+              - generic [ref=e289]:
+                - link [ref=e292] [cursor=pointer]:
+                  - /url: https://stackoverflow.com/questions/11064237/prevent-iphone-from-zooming-form
+                  - generic [ref=e293]:
+                    - emphasis [ref=e294]: Prevent iPhone
+                    - text: from zooming form? [duplicate ...
+                - generic [ref=e296]: 12 Antworten
+                - generic [ref=e298]: 16. Juni 2012
+              - link [ref=e302] [cursor=pointer]:
+                - /url: /search?q=prevent+ios+input+focus+zoom+best+practices+site:stackoverflow.com&sca_esv=96401a4aa5f3e59e&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQrQIoAnoECBsQAw
+                - text: Weitere Ergebnisse von stackoverflow.com
+          - generic [ref=e306]:
+            - generic [ref=e309]:
+              - link [ref=e311] [cursor=pointer]:
+                - /url: https://forum.bubble.io/t/how-to-make-auto-zoom-stop-on-mobile-ios-when-using-input/333844
+                - heading [level=3] [ref=e312]: How to make Auto Zoom stop on Mobile (iOS) when using ...
+                - generic [ref=e317]:
+                  - generic [ref=e319]: Bubble Forum
+                  - generic [ref=e321]: https://forum.bubble.io › how-t...
+              - generic [ref=e322]:
+                - generic [ref=e323]: ·
+                - link [ref=e324] [cursor=pointer]:
+                  - /url: https://translate.google.com/translate?u=https://forum.bubble.io/t/how-to-make-auto-zoom-stop-on-mobile-ios-when-using-input/333844&hl=de&sl=en&tl=de&client=search
+                  - text: Diese Seite übersetzen
+              - button [ref=e325] [cursor=pointer]:
+                - img [ref=e328]
+            - generic [ref=e331]:
+              - generic [ref=e332]: 02.08.2024 —
+              - generic [ref=e333]:
+                - text: Just tried this option (“
+                - emphasis [ref=e334]: prevent
+                - text: "user from zooming”) and it is exactly as I always thought: it adds user-scalable=no to the viewport meta tag."
+            - generic [ref=e337]:
+              - generic [ref=e338]:
+                - link [ref=e341] [cursor=pointer]:
+                  - /url: https://forum.bubble.io/t/how-to-prevent-mobile-screen-zooming-when-input-field-is-clicked/293676
+                  - generic [ref=e342]:
+                    - text: How to
+                    - emphasis [ref=e343]: prevent
+                    - text: mobile screen zooming when
+                    - emphasis [ref=e344]: Input
+                    - text: field is ...
+                - generic [ref=e346]: 17. Nov. 2023
+              - generic [ref=e347]:
+                - link [ref=e350] [cursor=pointer]:
+                  - /url: https://forum.bubble.io/t/ios-mobile-zooming-focus-prevention-tip/56748
+                  - generic [ref=e351]:
+                    - emphasis [ref=e352]: iOS
+                    - text: Mobile Zooming /
+                    - emphasis [ref=e353]: Focus
+                    - text: Prevention - TIP - Bubble Forum
+                - generic [ref=e355]: 14. Mai 2019
+              - link [ref=e359] [cursor=pointer]:
+                - /url: /search?q=prevent+ios+input+focus+zoom+best+practices+site:forum.bubble.io&sca_esv=96401a4aa5f3e59e&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQrQIoAnoECBkQAw
+                - text: Weitere Ergebnisse von forum.bubble.io
+          - generic [ref=e363]:
+            - generic [ref=e366]:
+              - link [ref=e368] [cursor=pointer]:
+                - /url: https://medium.com/@rares.popescu/2-ways-to-avoid-the-automatic-zoom-in-on-input-fields-8a71479e542e
+                - heading [level=3] [ref=e369]: 2 ways to avoid the automatic zoom-in on input fields
+                - generic [ref=e374]:
+                  - generic [ref=e376]: Medium · Rareș Popescu
+                  - generic [ref=e378]: Ca. 150 „Gefällt mir“-Angaben · vor 1 Jahr
+              - button [ref=e379] [cursor=pointer]:
+                - img [ref=e382]
+            - generic [ref=e386]:
+              - text: "1."
+              - emphasis [ref=e387]: Setting a maximum viewport scale
+              - text: . If you're keen on your layout, there is an option which will deny the browser to zoom-in on a given focused field.
+          - generic [ref=e391]:
+            - generic [ref=e394]:
+              - link [ref=e396] [cursor=pointer]:
+                - /url: https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Textbox-Auto-Zooming-and-ViewPort-Sizing
+                - heading [level=3] [ref=e397]: Preventing iOS Textbox Auto Zooming and ViewPort Sizing
+                - generic [ref=e402]:
+                  - generic [ref=e404]: Rick Strahl's Web Log
+                  - generic [ref=e406]: https://weblog.west-wind.com › ...
+              - generic [ref=e407]:
+                - generic [ref=e408]: ·
+                - link [ref=e409] [cursor=pointer]:
+                  - /url: https://translate.google.com/translate?u=https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Textbox-Auto-Zooming-and-ViewPort-Sizing&hl=de&sl=en&tl=de&client=search
+                  - text: Diese Seite übersetzen
+              - button [ref=e410] [cursor=pointer]:
+                - img [ref=e413]
+            - generic [ref=e416]:
+              - generic [ref=e417]: 17.04.2023 —
+              - generic [ref=e418]:
+                - text: With either maximum-scale hack or the 16px minimum
+                - emphasis [ref=e419]: input
+                - text: field font-size in place, you now get a fixed view without any auto UI zooming on ...
+          - generic [ref=e423]:
+            - generic [ref=e426]:
+              - link [ref=e428] [cursor=pointer]:
+                - /url: https://defensivecss.dev/tip/input-zoom-safari/
+                - heading [level=3] [ref=e429]: Input zoom on iOS Safari
+                - generic [ref=e434]:
+                  - generic [ref=e436]: Defensive CSS
+                  - generic [ref=e438]: https://defensivecss.dev › tip › in...
+              - generic [ref=e439]:
+                - generic [ref=e440]: ·
+                - link [ref=e441] [cursor=pointer]:
+                  - /url: https://translate.google.com/translate?u=https://defensivecss.dev/tip/input-zoom-safari/&hl=de&sl=en&tl=de&client=search
+                  - text: Diese Seite übersetzen
+              - button [ref=e442] [cursor=pointer]:
+                - img [ref=e445]
+            - generic [ref=e449]:
+              - text: When zooming the page, it won't zoom out as the input is no longer focused. The solution is fairly simple, which is to
+              - emphasis [ref=e450]: "add font-size: 16px to the input"
+              - text: .
+          - generic [ref=e454]:
+            - generic [ref=e457]:
+              - link [ref=e459] [cursor=pointer]:
+                - /url: https://github.com/heroui-inc/heroui/issues/5326
+                - heading [level=3] [ref=e460]: "[BUG] - Input font-size causes iOS zoom issue on focus ..."
+                - generic [ref=e465]:
+                  - generic [ref=e467]: GitHub
+                  - generic [ref=e469]: https://github.com › issues
+              - generic [ref=e470]:
+                - generic [ref=e471]: ·
+                - link [ref=e472] [cursor=pointer]:
+                  - /url: https://translate.google.com/translate?u=https://github.com/heroui-inc/heroui/issues/5326&hl=de&sl=en&tl=de&client=search
+                  - text: Diese Seite übersetzen
+              - button [ref=e473] [cursor=pointer]:
+                - img [ref=e476]
+            - generic [ref=e479]:
+              - generic [ref=e480]: 27.05.2025 —
+              - generic [ref=e481]:
+                - emphasis [ref=e482]: Input fields should use at least 16px font-size on mobile devices
+                - text: to prevent auto-zoom. · This should be achieved without requiring developers to ...
+          - generic [ref=e486]:
+            - generic [ref=e489]:
+              - link [ref=e491] [cursor=pointer]:
+                - /url: https://blog.stackademic.com/preventing-auto-zoom-on-ios-input-fields-best-practices-for-textarea-and-inputs-80bb4440febe
+                - heading [level=3] [ref=e492]: "Preventing Auto-Zoom on iOS Input Fields: Best Practices ..."
+                - generic [ref=e497]:
+                  - generic [ref=e499]: Stackademic
+                  - generic [ref=e501]: https://blog.stackademic.com › ...
+              - generic [ref=e502]:
+                - generic [ref=e503]: ·
+                - link [ref=e504] [cursor=pointer]:
+                  - /url: https://translate.google.com/translate?u=https://blog.stackademic.com/preventing-auto-zoom-on-ios-input-fields-best-practices-for-textarea-and-inputs-80bb4440febe&hl=de&sl=en&tl=de&client=search
+                  - text: Diese Seite übersetzen
+              - button [ref=e505] [cursor=pointer]:
+                - img [ref=e508]
+            - generic [ref=e511]:
+              - generic [ref=e512]: 07.01.2025 —
+              - generic [ref=e513]:
+                - text: iOS automatically zooms in on input fields when their font size is less than 16px. To prevent this,
+                - emphasis [ref=e514]: set the font size to 16px or more
+                - text: .
+          - generic [ref=e518]:
+            - generic [ref=e521]:
+              - link [ref=e523] [cursor=pointer]:
+                - /url: https://css-tricks.com/16px-or-larger-text-prevents-ios-form-zoom/
+                - heading [level=3] [ref=e524]: 16px or Larger Text Prevents iOS Form Zoom
+                - generic [ref=e529]:
+                  - generic [ref=e531]: CSS-Tricks
+                  - generic [ref=e533]: https://css-tricks.com › 16px-or-...
+              - generic [ref=e534]:
+                - generic [ref=e535]: ·
+                - link [ref=e536] [cursor=pointer]:
+                  - /url: https://translate.google.com/translate?u=https://css-tricks.com/16px-or-larger-text-prevents-ios-form-zoom/&hl=de&sl=en&tl=de&client=search
+                  - text: Diese Seite übersetzen
+              - button [ref=e537] [cursor=pointer]:
+                - img [ref=e540]
+            - generic [ref=e543]:
+              - generic [ref=e544]: 04.05.2021 —
+              - generic [ref=e545]:
+                - text: If the font-size of an <
+                - emphasis [ref=e546]: input
+                - text: "> is 16px or larger, Safari on"
+                - emphasis [ref=e547]: iOS
+                - text: will
+                - emphasis [ref=e548]: focus
+                - text: into the
+                - emphasis [ref=e549]: input
+                - text: normally. But as soon as the font-size is 15px or less, the viewport ...
+          - generic [ref=e553]:
+            - generic [ref=e556]:
+              - link [ref=e558] [cursor=pointer]:
+                - /url: https://www.reddit.com/r/webdev/comments/7pbkty/prevent_ios_safari_zooming_in_on_input_field_focus/
+                - heading [level=3] [ref=e559]: Prevent iOS Safari Zooming In on Input Field Focus
+                - generic [ref=e564]:
+                  - generic [ref=e566]: Reddit · r/webdev
+                  - generic [ref=e568]: 5 Kommentare · vor 7 Jahren
+              - button [ref=e569] [cursor=pointer]:
+                - img [ref=e572]
+            - generic [ref=e576]:
+              - emphasis [ref=e577]: Create a media query that targets the device size
+              - text: and change the font size to 16px (or equivalent in your preferred unit measurements).
+            - generic [ref=e580]:
+              - generic [ref=e581]:
+                - link [ref=e584] [cursor=pointer]:
+                  - /url: https://www.reddit.com/r/csshelp/comments/os9w42/suppress_auto_zoom_on_mobile_browsers/
+                  - generic [ref=e585]:
+                    - text: Suppress auto
+                    - emphasis [ref=e586]: zoom
+                    - text: "on mobile browsers : r/csshelp - Reddit"
+                - generic [ref=e588]: 2 Posts
+                - generic [ref=e590]: 27. Juli 2021
+              - generic [ref=e591]:
+                - link [ref=e594] [cursor=pointer]:
+                  - /url: https://www.reddit.com/r/PowerApps/comments/1f0562x/there_is_a_known_issue_where_on_ios_the_ui_will/
+                  - generic [ref=e595]:
+                    - text: There is a known issue where on
+                    - emphasis [ref=e596]: iOS
+                    - text: the UI will auto ...
+                - generic [ref=e598]: 8 Posts
+                - generic [ref=e600]: 24. Aug. 2024
+              - link [ref=e604] [cursor=pointer]:
+                - /url: /search?q=prevent+ios+input+focus+zoom+best+practices+site:www.reddit.com&sca_esv=96401a4aa5f3e59e&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQrQIoAnoECD8QAw
+                - text: Weitere Ergebnisse von www.reddit.com
+      - generic [ref=e606]:
+        - generic [ref=e611]:
+          - heading [level=2] [ref=e613]: Wird auch oft gesucht
+          - generic [ref=e615]:
+            - generic [ref=e616]:
+              - link [ref=e620] [cursor=pointer]:
+                - /url: /search?sca_esv=96401a4aa5f3e59e&q=Ios+prevent+scrolling+on+input+focus&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ1QJ6BAgyEAE
+                - generic [ref=e621]:
+                  - generic [ref=e626]: Ios prevent scrolling on input focus
+                  - img [ref=e630]
+              - link [ref=e635] [cursor=pointer]:
+                - /url: /search?sca_esv=96401a4aa5f3e59e&q=HTML+viewport+disable+zoom&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ1QJ6BAg2EAE
+                - generic [ref=e636]:
+                  - generic [ref=e641]: HTML viewport disable zoom
+                  - img [ref=e645]
+              - link [ref=e650] [cursor=pointer]:
+                - /url: /search?sca_esv=96401a4aa5f3e59e&q=Css+disable+zoom+in+browser&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ1QJ6BAg1EAE
+                - generic [ref=e651]:
+                  - generic [ref=e656]: Css disable zoom in browser
+                  - img [ref=e660]
+              - link [ref=e665] [cursor=pointer]:
+                - /url: /search?sca_esv=96401a4aa5f3e59e&q=HTML+disable+zoom&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ1QJ6BAg0EAE
+                - generic [ref=e666]:
+                  - generic [ref=e671]: HTML disable zoom
+                  - img [ref=e675]
+            - generic [ref=e677]:
+              - link [ref=e681] [cursor=pointer]:
+                - /url: /search?sca_esv=96401a4aa5f3e59e&q=iOS+Safari+disable+zoom&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ1QJ6BAgzEAE
+                - generic [ref=e682]:
+                  - generic [ref=e687]: iOS Safari disable zoom
+                  - img [ref=e691]
+              - link [ref=e696] [cursor=pointer]:
+                - /url: /search?sca_esv=96401a4aa5f3e59e&q=Html+disable+double-tap+zoom&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ1QJ6BAgwEAE
+                - generic [ref=e697]:
+                  - generic [ref=e702]: Html disable double-tap zoom
+                  - img [ref=e706]
+              - link [ref=e711] [cursor=pointer]:
+                - /url: /search?sca_esv=96401a4aa5f3e59e&q=Nextjs+prevent+zoom&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ1QJ6BAgxEAE
+                - generic [ref=e712]:
+                  - generic [ref=e717]: Nextjs prevent zoom
+                  - img [ref=e721]
+              - link [ref=e726] [cursor=pointer]:
+                - /url: /search?sca_esv=96401a4aa5f3e59e&q=CSS+zoom&sa=X&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ1QJ6BAgvEAE
+                - generic [ref=e727]:
+                  - generic [ref=e732]: CSS zoom
+                  - img [ref=e736]
+        - navigation [ref=e738]:
+          - heading [level=1] [ref=e739]: Seitennavigation
+          - text: "1"
+          - link [ref=e742] [cursor=pointer]:
+            - /url: /search?q=prevent+ios+input+focus+zoom+best+practices&sca_esv=96401a4aa5f3e59e&ei=913VaJX-Muaji-gP8fXsgQ0&start=10&sa=N&sstk=Af77f_cbs8zgPLJ247GnWGXaUi2dg0M0OYvdKxLv6sJKRjq6DSeyyFcETd1CWEsHWX5wkRTsyWNopWID3HUlZgJZ39Yf6lZLz5I6ww&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ8tMDegQICBAE
+            - text: "2"
+          - link [ref=e744] [cursor=pointer]:
+            - /url: /search?q=prevent+ios+input+focus+zoom+best+practices&sca_esv=96401a4aa5f3e59e&ei=913VaJX-Muaji-gP8fXsgQ0&start=20&sa=N&sstk=Af77f_cbs8zgPLJ247GnWGXaUi2dg0M0OYvdKxLv6sJKRjq6DSeyyFcETd1CWEsHWX5wkRTsyWNopWID3HUlZgJZ39Yf6lZLz5I6ww&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ8tMDegQICBAG
+            - text: "3"
+          - link [ref=e746] [cursor=pointer]:
+            - /url: /search?q=prevent+ios+input+focus+zoom+best+practices&sca_esv=96401a4aa5f3e59e&ei=913VaJX-Muaji-gP8fXsgQ0&start=30&sa=N&sstk=Af77f_cbs8zgPLJ247GnWGXaUi2dg0M0OYvdKxLv6sJKRjq6DSeyyFcETd1CWEsHWX5wkRTsyWNopWID3HUlZgJZ39Yf6lZLz5I6ww&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ8tMDegQICBAI
+            - text: "4"
+          - link [ref=e748] [cursor=pointer]:
+            - /url: /search?q=prevent+ios+input+focus+zoom+best+practices&sca_esv=96401a4aa5f3e59e&ei=913VaJX-Muaji-gP8fXsgQ0&start=40&sa=N&sstk=Af77f_cbs8zgPLJ247GnWGXaUi2dg0M0OYvdKxLv6sJKRjq6DSeyyFcETd1CWEsHWX5wkRTsyWNopWID3HUlZgJZ39Yf6lZLz5I6ww&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ8tMDegQICBAK
+            - text: "5"
+          - link [ref=e750] [cursor=pointer]:
+            - /url: /search?q=prevent+ios+input+focus+zoom+best+practices&sca_esv=96401a4aa5f3e59e&ei=913VaJX-Muaji-gP8fXsgQ0&start=50&sa=N&sstk=Af77f_cbs8zgPLJ247GnWGXaUi2dg0M0OYvdKxLv6sJKRjq6DSeyyFcETd1CWEsHWX5wkRTsyWNopWID3HUlZgJZ39Yf6lZLz5I6ww&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ8tMDegQICBAM
+            - text: "6"
+          - link [ref=e752] [cursor=pointer]:
+            - /url: /search?q=prevent+ios+input+focus+zoom+best+practices&sca_esv=96401a4aa5f3e59e&ei=913VaJX-Muaji-gP8fXsgQ0&start=60&sa=N&sstk=Af77f_cbs8zgPLJ247GnWGXaUi2dg0M0OYvdKxLv6sJKRjq6DSeyyFcETd1CWEsHWX5wkRTsyWNopWID3HUlZgJZ39Yf6lZLz5I6ww&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ8tMDegQICBAO
+            - text: "7"
+          - link [ref=e754] [cursor=pointer]:
+            - /url: /search?q=prevent+ios+input+focus+zoom+best+practices&sca_esv=96401a4aa5f3e59e&ei=913VaJX-Muaji-gP8fXsgQ0&start=70&sa=N&sstk=Af77f_cbs8zgPLJ247GnWGXaUi2dg0M0OYvdKxLv6sJKRjq6DSeyyFcETd1CWEsHWX5wkRTsyWNopWID3HUlZgJZ39Yf6lZLz5I6ww&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ8tMDegQICBAQ
+            - text: "8"
+          - link [ref=e756] [cursor=pointer]:
+            - /url: /search?q=prevent+ios+input+focus+zoom+best+practices&sca_esv=96401a4aa5f3e59e&ei=913VaJX-Muaji-gP8fXsgQ0&start=80&sa=N&sstk=Af77f_cbs8zgPLJ247GnWGXaUi2dg0M0OYvdKxLv6sJKRjq6DSeyyFcETd1CWEsHWX5wkRTsyWNopWID3HUlZgJZ39Yf6lZLz5I6ww&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ8tMDegQICBAS
+            - text: "9"
+          - link [ref=e758] [cursor=pointer]:
+            - /url: /search?q=prevent+ios+input+focus+zoom+best+practices&sca_esv=96401a4aa5f3e59e&ei=913VaJX-Muaji-gP8fXsgQ0&start=90&sa=N&sstk=Af77f_cbs8zgPLJ247GnWGXaUi2dg0M0OYvdKxLv6sJKRjq6DSeyyFcETd1CWEsHWX5wkRTsyWNopWID3HUlZgJZ39Yf6lZLz5I6ww&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ8tMDegQICBAU
+            - text: "10"
+          - heading [level=3] [ref=e760]:
+            - link [ref=e761] [cursor=pointer]:
+              - /url: /search?q=prevent+ios+input+focus+zoom+best+practices&sca_esv=96401a4aa5f3e59e&ei=913VaJX-Muaji-gP8fXsgQ0&start=10&sa=N&sstk=Af77f_cbs8zgPLJ247GnWGXaUi2dg0M0OYvdKxLv6sJKRjq6DSeyyFcETd1CWEsHWX5wkRTsyWNopWID3HUlZgJZ39Yf6lZLz5I6ww&ved=2ahUKEwjV1dvIm_SPAxXm0QIHHfE6O9AQ8NMDegQICBAW
+              - generic [ref=e763]: Weiter
+    - contentinfo [ref=e764]:
+      - heading [level=1] [ref=e765]: Fußzeilenlinks

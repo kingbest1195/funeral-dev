@@ -126,14 +126,6 @@ select {
   }
 }
 
-@supports (-webkit-touch-callout: none) {
-  input,
-  select,
-  textarea {
-    font-size: max(16px, inherit);
-  }
-}
-
 input[type="search"] {
   -webkit-appearance: none;
   appearance: none;

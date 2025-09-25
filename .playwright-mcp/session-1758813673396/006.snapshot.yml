@@ -1,0 +1,356 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e3]:
+    - link "Skip to main content" [ref=e4] [cursor=pointer]:
+      - /url: "#maincontent"
+    - link "CSS-Tricks" [ref=e6] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e7]: CSS-Tricks
+      - img
+      - img [ref=e8]
+    - generic [ref=e29]:
+      - navigation [ref=e30]:
+        - list [ref=e31]:
+          - listitem [ref=e32]:
+            - link "Articles" [ref=e33] [cursor=pointer]:
+              - /url: https://css-tricks.com/category/articles/
+              - generic [ref=e34]: Articles
+          - listitem [ref=e35]:
+            - link "Notes" [ref=e36] [cursor=pointer]:
+              - /url: https://css-tricks.com/category/notes/
+              - generic [ref=e37]: Notes
+          - listitem [ref=e38]:
+            - link "Links" [ref=e39] [cursor=pointer]:
+              - /url: https://css-tricks.com/category/links/
+              - generic [ref=e40]: Links
+          - listitem [ref=e41]:
+            - link "Guides" [ref=e42] [cursor=pointer]:
+              - /url: /guides
+              - generic [ref=e43]: Guides
+          - listitem [ref=e44]:
+            - link "Almanac" [ref=e45] [cursor=pointer]:
+              - /url: /almanac
+              - generic [ref=e46]: Almanac
+          - listitem [ref=e47]:
+            - link "Picks" [ref=e48] [cursor=pointer]:
+              - /url: https://css-tricks.com/picks/
+              - generic [ref=e49]: Picks
+          - listitem [ref=e50]:
+            - link "Shuffle" [ref=e51] [cursor=pointer]:
+              - /url: /random
+              - generic [ref=e52]: Shuffle
+      - link "Search" [ref=e54] [cursor=pointer]:
+        - /url: https://www.google.com/search?q=site:css-tricks.com%20layout
+        - generic [ref=e55]: Search
+        - img [ref=e56]
+  - generic [ref=e59]:
+    - main [ref=e61]:
+      - article [ref=e62]:
+        - generic [ref=e63]:
+          - generic [ref=e64]:
+            - link "forms" [ref=e65] [cursor=pointer]:
+              - /url: https://css-tricks.com/tag/forms/
+            - link "ios" [ref=e66] [cursor=pointer]:
+              - /url: https://css-tricks.com/tag/ios/
+          - heading "16px or Larger Text Prevents iOS Form Zoom" [level=1] [ref=e67]
+          - generic [ref=e68]:
+            - img [ref=e69]
+            - generic [ref=e70]:
+              - link "Chris Coyier" [ref=e71] [cursor=pointer]:
+                - /url: https://css-tricks.com/author/chriscoyier/
+              - text: "on"
+              - time [ref=e72]: May 4, 2021
+        - paragraph [ref=e74]:
+          - text: Get affordable and hassle-free WordPress hosting plans with Cloudways —
+          - link "start your free trial today" [ref=e75] [cursor=pointer]:
+            - /url: https://www.cloudways.com/en/wordpress-hosting.php?id=1223312
+          - text: .
+        - generic [ref=e76]:
+          - paragraph [ref=e77]:
+            - text: This was a great
+            - link "“Today I Learned” for me from Josh W. Comeau" [ref=e78] [cursor=pointer]:
+              - /url: https://twitter.com/joshwcomeau/status/1379782931116351490?s=12
+            - text: . If the
+            - code [ref=e79]: font-size
+            - text: of an
+            - code [ref=e80]: <input>
+            - text: is 16px or larger, Safari on iOS will focus into the input normally. But as soon as the
+            - code [ref=e81]: font-size
+            - text: is 15px or less, the viewport will zoom into that input. Presumably, because it considers that type too small and wants you to see what you are doing. So it zooms in to help you. Accessibility. If you don’t want that, make the font big enough.
+          - figure [ref=e82]:
+            - generic [ref=e83]: https://twitter.com/joshwcomeau/status/1379782931116351490?s=12
+          - paragraph [ref=e84]:
+            - link "Here’s Josh’s exact Pen" [ref=e85] [cursor=pointer]:
+              - /url: https://codepen.io/joshwcomeau/pen/VwPMPZo
+            - text: if you want to have a play yourself.
+          - paragraph [ref=e86]: In general, I’d say I like this feature. It helps people see what they are doing and discourages super-tiny font sizes. What is a slight bummer — and I really don’t blame anyone here — is that not all typefaces are created equal in terms of readability at different sizes. For example, here’s San Francisco versus Caveat at 16px.
+          - figure "San Francisco on the left, Cavet on the right. Caveat looks visually much smaller even though the font-size is the same." [ref=e87]:
+            - generic [ref=e88]:
+              - text: San Francisco on the left, Cavet on the right. Caveat looks visually much smaller even though the
+              - code [ref=e89]: font-size
+              - text: is the same.
+          - paragraph [ref=e90]:
+            - text: You can view
+            - link "that example" [ref=e91] [cursor=pointer]:
+              - /url: https://codepen.io/chriscoyier/pen/MWJxXWz
+            - text: in
+            - link "Debug Mode" [ref=e92] [cursor=pointer]:
+              - /url: https://cdpn.io/chriscoyier/debug/MWJxXWz
+            - text: to see for yourself and change the font size to see what does and doesn’t zoom.
+    - generic [ref=e96]:
+      - generic [ref=e98]:
+        - emphasis [ref=e99]: Psst!
+        - text: Create a DigitalOcean account and get
+        - link "$200 in free credit" [ref=e100] [cursor=pointer]:
+          - /url: https://try.digitalocean.com/css-tricks/?utm_medium=content_acq&utm_source=css-tricks&utm_campaign=global_brand_ad_en&utm_content=conversion_postarticle_psst
+        - text: for cloud-based hosting and services.
+      - generic [ref=e101]:
+        - heading "Comments" [level=2] [ref=e102]
+        - list [ref=e103]:
+          - listitem [ref=e104]:
+            - generic [ref=e105]:
+              - generic [ref=e106]:
+                - generic [ref=e107]: Johan
+                - generic [ref=e108]:
+                  - 'link "Permalink to comment #" [ref=e109] [cursor=pointer]':
+                    - /url: https://css-tricks.com/16px-or-larger-text-prevents-ios-form-zoom/#comment-1771600
+                    - generic [ref=e110]: Permalink to comment
+                    - text: "#"
+                  - time [ref=e111]: May 5, 2021
+              - paragraph [ref=e113]: I would like a bit more control in this regard. You either disable all zooming (accessibility disaster!) or have to deal with setting 16px (which leaves you with almost no room to display anything complex). There’s no in-between.
+          - listitem [ref=e115]:
+            - generic [ref=e116]:
+              - generic [ref=e117]:
+                - generic [ref=e118]: Luis Hernandez
+                - generic [ref=e119]:
+                  - 'link "Permalink to comment #" [ref=e120] [cursor=pointer]':
+                    - /url: https://css-tricks.com/16px-or-larger-text-prevents-ios-form-zoom/#comment-1771601
+                    - generic [ref=e121]: Permalink to comment
+                    - text: "#"
+                  - time [ref=e122]: May 5, 2021
+              - generic [ref=e123]:
+                - paragraph [ref=e124]: "There is a way to bypass this, using transform: scale($target_font_size / 16); font-size: 16px."
+                - paragraph [ref=e125]: It requires some trickery with the label to make sure the whole input is still clickable.
+          - listitem [ref=e127]:
+            - generic [ref=e128]:
+              - generic [ref=e129]:
+                - generic [ref=e130]: Maurice
+                - generic [ref=e131]:
+                  - 'link "Permalink to comment #" [ref=e132] [cursor=pointer]':
+                    - /url: https://css-tricks.com/16px-or-larger-text-prevents-ios-form-zoom/#comment-1771856
+                    - generic [ref=e133]: Permalink to comment
+                    - text: "#"
+                  - time [ref=e134]: May 10, 2021
+              - paragraph [ref=e136]:
+                - text: I’ve also used this method for quite some time, but moved away from it some months ago. Setting a minimum of 16px for your form controls felt out of balance with the body font size in a lot of my cases. So, with a little help of Google and Stack Overflow, I found out that setting
+                - code [ref=e137]: maximum-scale=1
+                - text: for your
+                - code [ref=e138]: viewport
+                - text: also prevents zoom from happening, whatever the font size of the form control. I haven’t found any drawbacks of using this. Users are still alowed to zoom in on pages for example. Have a look at
+                - link "this pen" [ref=e139] [cursor=pointer]:
+                  - /url: https://codepen.io/mauricesnip/full/dyOMNMK
+                - text: .
+            - list [ref=e141]:
+              - listitem [ref=e142]:
+                - generic [ref=e143]:
+                  - generic [ref=e144]:
+                    - generic [ref=e145]: Maurice
+                    - generic [ref=e146]:
+                      - 'link "Permalink to comment #" [ref=e147] [cursor=pointer]':
+                        - /url: https://css-tricks.com/16px-or-larger-text-prevents-ios-form-zoom/#comment-1771859
+                        - generic [ref=e148]: Permalink to comment
+                        - text: "#"
+                      - time [ref=e149]: May 10, 2021
+                  - paragraph [ref=e151]:
+                    - text: Whoops, meant to paste the
+                    - link "debug mode" [ref=e152] [cursor=pointer]:
+                      - /url: https://cdpn.io/mauricesnip/debug/dyOMNMK/YvkgOwRDDPwk
+                    - text: link!
+          - listitem [ref=e154]:
+            - generic [ref=e155]:
+              - generic [ref=e156]:
+                - generic [ref=e157]: Manuel
+                - generic [ref=e158]:
+                  - 'link "Permalink to comment #" [ref=e159] [cursor=pointer]':
+                    - /url: https://css-tricks.com/16px-or-larger-text-prevents-ios-form-zoom/#comment-1771899
+                    - generic [ref=e160]: Permalink to comment
+                    - text: "#"
+                  - time [ref=e161]: May 11, 2021
+              - paragraph [ref=e163]:
+                - text: "@Maurice, iOS10 and higher ignore"
+                - code [ref=e164]: maximum-scale
+                - text: ","
+                - code [ref=e165]: minimum-scale
+                - text: ànd
+                - code [ref=e166]: ùser-scalable
+                - text: ", as it was misused. That’s the reason it seems to be working. Other devices may not be able to zoom/scale, as they play by the rules they are given."
+                - text: So it may be better to remove it again.
+          - listitem [ref=e168]:
+            - generic [ref=e169]:
+              - generic [ref=e170]:
+                - generic [ref=e171]: Ivan
+                - generic [ref=e172]:
+                  - 'link "Permalink to comment #" [ref=e173] [cursor=pointer]':
+                    - /url: https://css-tricks.com/16px-or-larger-text-prevents-ios-form-zoom/#comment-1773236
+                    - generic [ref=e174]: Permalink to comment
+                    - text: "#"
+                  - time [ref=e175]: June 1, 2021
+              - generic [ref=e176]:
+                - paragraph [ref=e177]:
+                  - text: "@Manuel you can wrap it in"
+                  - code [ref=e178]: CSS.supports
+                  - text: "call for “mobile Safari” features:"
+                - code [ref=e180]: "// This prevents iOS zoom on focused form elements with font size smaller than 16px. // iOS 10+ allows pinch-zoom even if viewport is unscalaeable. // We feature detect those browsers and apply additional rules. if ( window.CSS?.supports?.( '(font:-apple-system-body) and (-webkit-touch-callout:none) and (-webkit-tap-highlight-color:hotpink)' ) ) { const viewport = document.querySelector('meta[name=\"viewport\"]'); if (viewport !== null) { viewport.content = `${viewport.content},user-scalable=no`; } }"
+          - listitem [ref=e182]:
+            - generic [ref=e183]:
+              - generic [ref=e184]:
+                - generic [ref=e185]: Jeffery To
+                - generic [ref=e186]:
+                  - 'link "Permalink to comment #" [ref=e187] [cursor=pointer]':
+                    - /url: https://css-tricks.com/16px-or-larger-text-prevents-ios-form-zoom/#comment-1773419
+                    - generic [ref=e188]: Permalink to comment
+                    - text: "#"
+                  - time [ref=e189]: June 4, 2021
+              - generic [ref=e190]:
+                - paragraph [ref=e191]:
+                  - text: As Luis Hernandez mentioned, there is a CSS-only solution involving the
+                  - code [ref=e192]: scale()
+                  - text: transform that allows you to use font sizes smaller than 16px without having to disable page zooming.
+                - paragraph [ref=e193]:
+                  - text: I have a
+                  - link "StackOverflow answer" [ref=e194] [cursor=pointer]:
+                    - /url: https://stackoverflow.com/a/53106477
+                  - text: "that outlines the technique and a blog post that goes into slightly more detail:"
+                  - link "No input zoom in Safari on iPhone, the pixel perfect way" [ref=e195] [cursor=pointer]:
+                    - /url: https://thingsthemselves.com/no-input-zoom-in-safari-on-iphone-the-pixel-perfect-way/
+                  - text: .
+          - listitem [ref=e197]:
+            - generic [ref=e198]:
+              - generic [ref=e199]:
+                - generic [ref=e200]: Jon
+                - generic [ref=e201]:
+                  - 'link "Permalink to comment #" [ref=e202] [cursor=pointer]':
+                    - /url: https://css-tricks.com/16px-or-larger-text-prevents-ios-form-zoom/#comment-1782971
+                    - generic [ref=e203]: Permalink to comment
+                    - text: "#"
+                  - time [ref=e204]: September 27, 2021
+              - generic [ref=e205]:
+                - paragraph [ref=e206]: I believe I may have just found a better solution than the ones posted. I put it on Stack Overflow here…
+                - paragraph [ref=e207]:
+                  - link "https://stackoverflow.com/a/69353771/56007" [ref=e208] [cursor=pointer]:
+                    - /url: https://stackoverflow.com/a/69353771/56007
+          - listitem [ref=e210]:
+            - generic [ref=e211]:
+              - generic [ref=e212]:
+                - generic [ref=e213]: Aymane Lassfar
+                - generic [ref=e214]:
+                  - 'link "Permalink to comment #" [ref=e215] [cursor=pointer]':
+                    - /url: https://css-tricks.com/16px-or-larger-text-prevents-ios-form-zoom/#comment-1797973
+                    - generic [ref=e216]: Permalink to comment
+                    - text: "#"
+                  - time [ref=e217]: December 8, 2022
+              - generic [ref=e218]:
+                - paragraph [ref=e219]:
+                  - text: I used
+                  - code [ref=e220]: user-scalable=no
+                  - text: "and it prevent the default zooming in iOS devices, like so:"
+                - paragraph [ref=e221]:
+                  - code [ref=e222]: <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+        - generic [ref=e224]:
+          - text: This comment thread is closed. If you have important information to share, please
+          - link "contact us" [ref=e225] [cursor=pointer]:
+            - /url: /contact/
+          - text: .
+      - generic [ref=e228]:
+        - generic [ref=e229]:
+          - link "Accessible Font Sizing, Explained":
+            - /url: https://css-tricks.com/accessible-font-sizing-explained/
+          - heading "Accessible Font Sizing, Explained" [level=4] [ref=e230]:
+            - link "Accessible Font Sizing, Explained" [ref=e231] [cursor=pointer]:
+              - /url: https://css-tricks.com/accessible-font-sizing-explained/
+          - paragraph [ref=e232]: The Web Content Accessibility Guidelines (WCAG), an organization that defines standards for web content accessibility, does not specify a minimum font size for the web. But we know there’s such a thing as text that is too small to be legible, just as text that can be too large to…
+          - time [ref=e233]: April 23, 2020
+        - generic [ref=e234]:
+          - link "How Do You Do max-font-size in CSS?":
+            - /url: https://css-tricks.com/how-do-you-do-max-font-size-in-css/
+          - heading "How Do You Do max-font-size in CSS?" [level=4] [ref=e235]:
+            - link "How Do You Do max-font-size in CSS?" [ref=e236] [cursor=pointer]:
+              - /url: https://css-tricks.com/how-do-you-do-max-font-size-in-css/
+          - paragraph [ref=e237]: "CSS doesn't have max-font-size, so if we need something that does something along those lines, we have to get tricky. Why would you need it at all? Well, font-size itself can be set in dynamic ways. For example, font-size: 10vw;. That's using \"viewport units\" to size the type, which will…"
+          - time [ref=e238]: January 29, 2020
+        - generic [ref=e239]:
+          - link "Dropdown Default Styling":
+            - /url: https://css-tricks.com/dropdown-default-styling/
+          - heading "Dropdown Default Styling" [level=4] [ref=e240]:
+            - link "Dropdown Default Styling" [ref=e241] [cursor=pointer]:
+              - /url: https://css-tricks.com/dropdown-default-styling/
+          - paragraph [ref=e242]: There has always been big differences across how different browsers handle form styling. There probably always will be - because UI design choices aren't described in the specs. Browser makers perhaps view this as one of the ways they can differentiate the user experience a bit. Select (dropdown) menus are…
+          - time [ref=e243]: November 1, 2012
+  - contentinfo [ref=e244]:
+    - img [ref=e245]
+    - generic [ref=e247]:
+      - generic [ref=e248]:
+        - paragraph [ref=e249]:
+          - text: CSS-Tricks is powered by
+          - link "DigitalOcean" [ref=e250] [cursor=pointer]:
+            - /url: https://www.digitalocean.com/?utm_source=css-tricks.com&utm_medium=cta&utm_campaign=website_link
+          - text: .
+        - generic [ref=e251]:
+          - heading "Keep up to date on web dev" [level=4] [ref=e252]
+          - paragraph [ref=e253]: with our hand-crafted newsletter
+          - generic [ref=e254]:
+            - generic [ref=e257]:
+              - generic [ref=e258]:
+                - generic [ref=e259]: "*"
+                - text: "Email Address:"
+              - textbox "* Email Address:" [ref=e260]
+            - button "Subscribe" [ref=e263] [cursor=pointer]
+      - generic [ref=e264]:
+        - generic [ref=e266]:
+          - heading "DigitalOcean" [level=5] [ref=e267]
+          - navigation [ref=e268]:
+            - list [ref=e269]:
+              - listitem [ref=e270]:
+                - link "About DO" [ref=e271] [cursor=pointer]:
+                  - /url: https://www.digitalocean.com/about?utm_source=css-tricks.com&utm_medium=cta&utm_campaign=website_link
+              - listitem [ref=e272]:
+                - link "Cloudways" [ref=e273] [cursor=pointer]:
+                  - /url: https://www.cloudways.com/en/wordpress-hosting.php?id=1223312
+              - listitem [ref=e274]:
+                - link "Legal stuff" [ref=e275] [cursor=pointer]:
+                  - /url: https://www.digitalocean.com/legal?utm_source=css-tricks.com&utm_medium=cta&utm_campaign=website_link
+              - listitem [ref=e276]:
+                - link "Get free credit!" [ref=e277] [cursor=pointer]:
+                  - /url: https://try.digitalocean.com/css-tricks/?utm_source=wordpress-1242695-4567563.cloudwaysapps.com&utm_medium=cta&utm_campaign=website_link
+        - generic [ref=e279]:
+          - heading "CSS-Tricks" [level=5] [ref=e280]
+          - navigation [ref=e281]:
+            - list [ref=e282]:
+              - listitem [ref=e283]:
+                - link "Contact" [ref=e284] [cursor=pointer]:
+                  - /url: https://css-tricks.com/contact/
+              - listitem [ref=e285]:
+                - link "Write for CSS-Tricks!" [ref=e286] [cursor=pointer]:
+                  - /url: https://css-tricks.com/guest-writing/
+              - listitem [ref=e287]:
+                - link "Advertise with us" [ref=e288] [cursor=pointer]:
+                  - /url: https://css-tricks.com/advertising/
+        - generic [ref=e290]:
+          - heading "Social" [level=5] [ref=e291]
+          - navigation [ref=e292]:
+            - list [ref=e293]:
+              - listitem [ref=e294]:
+                - link "RSS Feeds" [ref=e295] [cursor=pointer]:
+                  - /url: https://css-tricks.com/rss-feeds/
+              - listitem [ref=e296]:
+                - link "CodePen" [ref=e297] [cursor=pointer]:
+                  - /url: https://codepen.io/team/css-tricks
+              - listitem [ref=e298]:
+                - link "Mastodon" [ref=e299] [cursor=pointer]:
+                  - /url: https://mastodon.social/@csstricks
+              - listitem [ref=e300]:
+                - link "Bluesky" [ref=e301] [cursor=pointer]:
+                  - /url: https://bsky.app/profile/css-tricks.com
+    - complementary "Open Cookie Preferences Modal" [ref=e302]:
+      - link "Cookie Preferences, opens a dedicated popup modal window":
+        - img [ref=e303] [cursor=pointer]
+  - img [ref=e304]

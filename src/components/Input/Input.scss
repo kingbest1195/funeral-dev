@@ -82,18 +82,16 @@
 @include md-down {
   .input {
     padding: var(--spacing-3) var(--spacing-4);
-    // Предотвращаем зум на iOS без нарушения доступности
-    // iOS зумирует если font-size < 16px, поэтому устанавливаем минимум 16px
-    font-size: max(16px, var(--font-size-base));
+    font-size: var(--font-size-base);
 
     &--small {
       padding: var(--spacing-2) var(--spacing-3);
-      font-size: max(16px, var(--font-size-sm));
+      font-size: var(--font-size-sm);
     }
 
     &--large {
       padding: var(--spacing-4) var(--spacing-5);
-      font-size: max(16px, var(--font-size-lg));
+      font-size: var(--font-size-lg);
     }
   }
 }

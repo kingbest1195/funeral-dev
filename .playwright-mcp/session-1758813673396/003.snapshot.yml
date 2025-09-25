@@ -1,0 +1,162 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Defensive CSS" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img [ref=e6]
+        - generic [ref=e9]: Defensive CSS
+      - link "Follow Defensive CSS on Twitter" [ref=e10] [cursor=pointer]:
+        - /url: https://twitter.com/DefensiveCSS
+        - img [ref=e11]
+    - navigation [ref=e15]:
+      - list [ref=e16]:
+        - listitem [ref=e17]:
+          - link "Home" [ref=e18] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e19]:
+          - link "Tips" [ref=e20] [cursor=pointer]:
+            - /url: /tips/
+  - banner [ref=e21]:
+    - heading "Input zoom on iOS Safari" [level=1] [ref=e22]
+  - generic [ref=e23]:
+    - main [ref=e24]:
+      - generic [ref=e25]:
+        - paragraph [ref=e26]: When focusing an input in iOS Safari, the whole web page will zoom by default. This is a common behavior in Safari. It's annoying, since when zooming the page, it won't zoom out as the input is no longer focused.
+        - paragraph [ref=e27]
+        - paragraph [ref=e28]:
+          - text: The solution is fairly simple, which is to add
+          - code [ref=e29]: "font-size: 16px"
+          - text: to the input.
+        - code [ref=e31]:
+          - text: "input {"
+          - text: "font-size: 16px;"
+          - text: "}"
+        - paragraph [ref=e32]
+        - paragraph [ref=e33]: By the way, zooming in is a good thing. Some users might prefer to see what they're typing in a large text, but what annoys me personally is that Safari only zoom-in, and left the user figure out themselves to zoom-out. That's why I would prefer to reset that early on.
+      - list [ref=e34]:
+        - listitem [ref=e35]:
+          - generic [ref=e36]: Previous
+          - link "Default flexbox stretching" [ref=e37] [cursor=pointer]:
+            - /url: /tip/default-flexbox-stretching/
+        - listitem [ref=e38]:
+          - generic [ref=e39]: Next
+          - link "Button minimum width" [ref=e40] [cursor=pointer]:
+            - /url: /tip/button-min-width/
+      - generic [ref=e41]:
+        - img [ref=e42]
+        - generic [ref=e45]:
+          - heading "Support Defensive CSS" [level=2] [ref=e46]
+          - paragraph [ref=e47]:
+            - text: Do you like the content? You can
+            - link "buy me a cup of coffee" [ref=e48] [cursor=pointer]:
+              - /url: https://ko-fi.com/ahmadshadeed
+            - text: . Thank you!
+      - generic [ref=e49]:
+        - heading "About the author" [level=2] [ref=e50]
+        - generic [ref=e52]:
+          - heading "Ahmad Shadeed" [level=3] [ref=e53]
+          - paragraph [ref=e54]:
+            - text: Ahmad is a UX designer and front-end developer from Palestine. He enjoys working on challenging design and front-end development projects. He wrote a book on
+            - link "debugging CSS" [ref=e55] [cursor=pointer]:
+              - /url: https://debuggingcss.com/
+            - text: ","
+            - link "writes extensively on CSS" [ref=e56] [cursor=pointer]:
+              - /url: https://ishadeed.com/
+            - text: ","
+            - link "Accessibility" [ref=e57] [cursor=pointer]:
+              - /url: https://www.a11ymatters.com/
+            - text: ", and"
+            - link "RTL (right to left) text styling" [ref=e58] [cursor=pointer]:
+              - /url: https://www.rtlstyling.com/
+            - text: .
+    - complementary [ref=e59]:
+      - heading "All tips" [level=2] [ref=e60]
+      - list [ref=e61]:
+        - listitem [ref=e62]:
+          - link "Flexbox Wrapping" [ref=e63] [cursor=pointer]:
+            - /url: /tip/flexbox-wrapping/
+        - listitem [ref=e64]:
+          - link "Image Distortion" [ref=e65] [cursor=pointer]:
+            - /url: /tip/image-compressed/
+        - listitem [ref=e66]:
+          - link "Long Content" [ref=e67] [cursor=pointer]:
+            - /url: /tip/long-content/
+        - listitem [ref=e68]:
+          - link "Component Spacing" [ref=e69] [cursor=pointer]:
+            - /url: /tip/spacing/
+        - listitem [ref=e70]:
+          - link "Auto-fit Vs Auto-fill" [ref=e71] [cursor=pointer]:
+            - /url: /tip/auto-fit-fill/
+        - listitem [ref=e72]:
+          - link "Background repeat" [ref=e73] [cursor=pointer]:
+            - /url: /tip/bg-repeat/
+        - listitem [ref=e74]:
+          - link "CSS grid fixed values" [ref=e75] [cursor=pointer]:
+            - /url: /tip/css-grid-fixed-values/
+        - listitem [ref=e76]:
+          - link "CSS Variable Fallback" [ref=e77] [cursor=pointer]:
+            - /url: /tip/css-variable-fallback/
+        - listitem [ref=e78]:
+          - link "Fixed sizes" [ref=e79] [cursor=pointer]:
+            - /url: /tip/fixed-sizes/
+        - listitem [ref=e80]:
+          - link "Minimum Content Size In CSS Flexbox" [ref=e81] [cursor=pointer]:
+            - /url: /tip/flexbox-min-content-size/
+        - listitem [ref=e82]:
+          - link "Minimum Content Size In CSS grid" [ref=e83] [cursor=pointer]:
+            - /url: /tip/grid-min-content-size/
+        - listitem [ref=e84]:
+          - link "Grouping vendor selectors" [ref=e85] [cursor=pointer]:
+            - /url: /tip/grouping-selectors/
+        - listitem [ref=e86]:
+          - link "Image maximum width" [ref=e87] [cursor=pointer]:
+            - /url: /tip/img-max-width/
+        - listitem [ref=e88]:
+          - link "Position sticky with CSS Grid" [ref=e89] [cursor=pointer]:
+            - /url: /tip/position-sticky-grid/
+        - listitem [ref=e90]:
+          - link "Scroll chaining" [ref=e91] [cursor=pointer]:
+            - /url: /tip/scroll-chain/
+        - listitem [ref=e92]:
+          - link "Scrollbar gutter" [ref=e93] [cursor=pointer]:
+            - /url: /tip/scrollbar-gutter/
+        - listitem [ref=e94]:
+          - link "Scrollbars on demand" [ref=e95] [cursor=pointer]:
+            - /url: /tip/scrollbar/
+        - listitem [ref=e96]:
+          - link "Using space-between" [ref=e97] [cursor=pointer]:
+            - /url: /tip/space-between/
+        - listitem [ref=e98]:
+          - link "Text over image" [ref=e99] [cursor=pointer]:
+            - /url: /tip/text-over-image/
+        - listitem [ref=e100]:
+          - link "Vertical media queries" [ref=e101] [cursor=pointer]:
+            - /url: /tip/vertical-mq/
+        - listitem [ref=e102]:
+          - link "Accidental hover on mobile" [ref=e103] [cursor=pointer]:
+            - /url: /tip/hover-media/
+        - listitem [ref=e104]:
+          - link "Image inner border" [ref=e105] [cursor=pointer]:
+            - /url: /tip/inner-shadow/
+        - listitem [ref=e106]:
+          - link "Default flexbox stretching" [ref=e107] [cursor=pointer]:
+            - /url: /tip/default-flexbox-stretching/
+        - listitem [ref=e108]:
+          - link "Input zoom on iOS Safari" [ref=e109] [cursor=pointer]:
+            - /url: /tip/input-zoom-safari/
+        - listitem [ref=e110]:
+          - link "Button minimum width" [ref=e111] [cursor=pointer]:
+            - /url: /tip/button-min-width/
+  - contentinfo [ref=e112]:
+    - generic [ref=e113]:
+      - paragraph [ref=e114]:
+        - text: Defensive CSS © 2024
+        - link "Ahmad Shadeed" [ref=e115] [cursor=pointer]:
+          - /url: https://ishadeed.com/
+      - list [ref=e116]:
+        - listitem [ref=e117]:
+          - link "Twitter" [ref=e118] [cursor=pointer]:
+            - /url: https://twitter.com/shadeed9
+        - listitem [ref=e119]:
+          - link "Github" [ref=e120] [cursor=pointer]:
+            - /url: https://github.com/shadeed
