@@ -17,7 +17,7 @@ export const getCurrentPageType = () => {
   const pageType = rootElement?.getAttribute('data-page');
 
   // Валидация типа страницы
-  const validPageTypes = ['home', 'uslugi', 'privacy'];
+  const validPageTypes = ['home', 'uslugi', 'privacy', 'organizatsiya-pohoron'];
 
   if (!pageType || !validPageTypes.includes(pageType)) {
     console.warn(`Invalid page type: ${pageType}. Falling back to 'home'.`);
@@ -75,6 +75,11 @@ export const getPageConfig = (pageType) => {
     privacy: {
       path: '/privacy',
       title: 'Политика конфиденциальности - Ритуальная служба Век',
+      isMainPage: false
+    },
+    'organizatsiya-pohoron': {
+      path: '/uslugi/organizatsiya-pohoron',
+      title: 'Организация похорон в Шуе под ключ – Ритуальная служба "Век"',
       isMainPage: false
     }
   };

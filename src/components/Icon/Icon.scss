@@ -1,0 +1,12 @@
+@import '../../styles/variables.scss';
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  transition: var(--transition-base);
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

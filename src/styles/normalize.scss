@@ -3,8 +3,8 @@
 // Импорт normalize.css + дополнительные сбросы
 // =================
 
-// Normalize.css уже импортирован в main.jsx
-// @import '~normalize.css/normalize.css';
+// Normalize.css импортирован в main.jsx первым для правильного порядка
+// @import 'normalize.css';
 
 // ДОПОЛНИТЕЛЬНЫЕ СБРОСЫ И НОРМАЛИЗАЦИЯ
 // =================
@@ -58,7 +58,7 @@ h6 {
 
 // ПАРАГРАФЫ
 p {
-  margin: 0 0 $margin-md 0;
+  margin: 0 0 $margin-md;
 
   &:last-child {
     margin-bottom: 0;
@@ -97,6 +97,7 @@ a {
 // КНОПКИ
 button {
   @include button-reset;
+
   cursor: pointer;
 
   &:focus {
@@ -249,7 +250,7 @@ nav {
   text-shadow: none;
 }
 
-::-moz-selection {
+::selection {
   background-color: $color-accent;
   color: $color-text-white;
   text-shadow: none;
@@ -302,7 +303,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: "Monaco", "Menlo", "Consolas", monospace;
+  font-family: Monaco, Menlo, Consolas, monospace;
   font-size: 0.9em;
 }
 

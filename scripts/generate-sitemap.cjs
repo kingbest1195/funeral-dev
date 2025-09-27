@@ -5,27 +5,50 @@ const path = require('path');
 
 /**
  * Автогенерация sitemap.xml для сайта ритуальной службы "Век"
- * Сканирует страницы проекта и создает sitemap.xml
+ * Импортирует домен из constants и включает все страницы
  */
 
-// Конфигурация сайта
-const SITE_CONFIG = {
-  baseUrl: 'https://ritual-vek.ru', // TODO: заменить на продакшн домен
-  defaultChangefreq: 'monthly',
-  defaultPriority: '0.8'
-};
+// Импортируем домен из constants
+function getSiteConfig() {
+  try {
+    // Читаем файл константы
+    const constantsPath = path.join(__dirname, '../src/constants/content.js');
+    const constantsContent = fs.readFileSync(constantsPath, 'utf8');
 
-// Настройки для разных типов страниц
+    // Извлекаем DOMAIN из SITE_CONFIG
+    const domainMatch = constantsContent.match(/DOMAIN:\s*["']([^"']+)["']/);
+    const baseUrl = domainMatch ? domainMatch[1] : 'https://xn----7sbhmlqd1btk.xn--p1ai';
+
+    return {
+      baseUrl,
+      defaultChangefreq: 'monthly',
+      defaultPriority: '0.8'
+    };
+  } catch (error) {
+    console.warn('⚠️  Не удалось импортировать домен из constants, использую дефолтный');
+    return {
+      baseUrl: 'https://xn----7sbhmlqd1btk.xn--p1ai',
+      defaultChangefreq: 'monthly',
+      defaultPriority: '0.8'
+    };
+  }
+}
+
+// Настройки для разных типов страниц (используем canonical URLs со слешем)
 const PAGE_SETTINGS = {
   '/': {
     priority: '1.0',
     changefreq: 'weekly'
   },
-  '/uslugi': {
+  '/uslugi/': {
     priority: '0.9',
     changefreq: 'monthly'
   },
-  '/privacy': {
+  '/uslugi/organizatsiya-pohoron/': {
+    priority: '0.8',
+    changefreq: 'monthly'
+  },
+  '/privacy/': {
     priority: '0.3',
     changefreq: 'yearly'
   }
@@ -35,13 +58,15 @@ class SitemapGenerator {
   constructor() {
     this.pages = [];
     this.lastmod = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    this.siteConfig = getSiteConfig();
   }
 
   async generate() {
     console.log('🗺️  Генерируем sitemap.xml...');
+    console.log(`🌐 Используем домен: ${this.siteConfig.baseUrl}`);
 
-    // Сканируем маршруты из App.jsx
-    await this.scanRoutes();
+    // Добавляем все известные страницы (canonical URLs)
+    this.addStaticRoutes();
 
     // Создаем sitemap.xml
     const sitemapContent = this.createSitemapXML();
@@ -91,11 +116,12 @@ class SitemapGenerator {
   }
 
   addStaticRoutes() {
-    // Статический список основных страниц
+    // Все страницы сайта (canonical URLs со слешем)
     const staticRoutes = [
       '/',
-      '/uslugi',
-      '/privacy'
+      '/uslugi/',
+      '/uslugi/organizatsiya-pohoron/',
+      '/privacy/'
     ];
 
     staticRoutes.forEach(route => this.addPage(route));
@@ -117,7 +143,7 @@ class SitemapGenerator {
   createSitemapXML() {
     const urls = this.pages.map(page => {
       return `  <url>
-    <loc>${SITE_CONFIG.baseUrl}${page.url}</loc>
+    <loc>${this.siteConfig.baseUrl}${page.url}</loc>
     <lastmod>${page.lastmod}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>

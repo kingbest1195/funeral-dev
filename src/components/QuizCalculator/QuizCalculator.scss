@@ -10,12 +10,11 @@
 // =================
 .quiz-modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: var(--z-modal);
+
   @include center;
+
   padding: var(--spacing-4);
 
   // Обеспечиваем центрирование на всех устройствах
@@ -24,10 +23,7 @@
 
   &__overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background-color: var(--color-bg-overlay);
     cursor: pointer;
   }
@@ -84,6 +80,7 @@
     opacity: 0;
     transform: scale(0.95) translateY(var(--transform-translate-lg)); // translateY(-20px)
   }
+
   100% {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -156,14 +153,11 @@
     &::after {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(255, 255, 255, 0.3) 50%,
+        rgb(255 255 255 / 30%) 50%,
         transparent 100%
       );
       animation: progressShimmer 2s ease-in-out infinite;
@@ -175,6 +169,7 @@
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }
@@ -199,7 +194,7 @@
   }
 
   // Для экранов с малой высотой - обеспечиваем скролл
-  @media (max-height: 600px) {
+  @media (height <= 600px) {
     min-height: auto;
     max-height: 50vh;
   }
@@ -259,6 +254,7 @@
     min-height: calc(
       var(--spacing-16) + var(--spacing-2)
     ); // 72px -> считаем через переменные
+
     transition: inherit;
   }
 
@@ -427,6 +423,7 @@
     background-color: var(--color-accent);
     color: var(--color-text-white);
     border-color: var(--color-accent);
+
     @include button-loading(16px, var(--color-text-white));
 
     &:hover:not(:disabled) {
@@ -502,6 +499,7 @@
 @include md-down {
   .quiz-modal {
     padding: var(--spacing-2);
+
     // Убираем align-items: center - используем миксин center
 
     // Специальная логика для мобильных устройств

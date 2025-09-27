@@ -8,6 +8,7 @@ import './styles/main.scss';
 // Lazy imports для остальных страниц
 const UslugiPage = React.lazy(() => import('./pages/UslugiPage/UslugiPage.jsx'));
 const PrivacyPage = React.lazy(() => import('./pages/PrivacyPage/PrivacyPage.jsx'));
+const OrganizatsiyaPohoronPage = React.lazy(() => import('./pages/OrganizatsiyaPohoronPage/OrganizatsiyaPohoronPage.jsx'));
 const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'));
 
 /**
@@ -39,6 +40,12 @@ const App = () => {
         return (
           <Suspense fallback={<PageFallback />}>
             <PrivacyPage />
+          </Suspense>
+        );
+      case 'organizatsiya-pohoron':
+        return (
+          <Suspense fallback={<PageFallback />}>
+            <OrganizatsiyaPohoronPage />
           </Suspense>
         );
       default:

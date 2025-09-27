@@ -78,7 +78,10 @@
       "WebFetch(domain:www.opengraph.xyz)",
       "WebFetch(domain:xn----7sbhmlqd1btk.xn--p1ai)",
       "WebSearch",
-      "Bash(npm run generate:html:*)"
+      "Bash(npm run generate:html:*)",
+      "Bash(npm run lint:js:*)",
+      "WebFetch(domain:www.svgrepo.com)",
+      "Bash(npm run prepare:yandex:*)"
     ],
     "deny": [],
     "ask": []

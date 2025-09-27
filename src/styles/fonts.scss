@@ -4,6 +4,7 @@
 // =================
 
 @use "sass:map";
+@use "media" as *;
 
 // Локальные лицензированные шрифты (SangBleu Sunrise + Euclid Flex)
 // Оптимизированная загрузка - только критические веса
@@ -64,12 +65,12 @@
 
 // Основные шрифтовые семейства
 $font-heading: "SangBleu Sunrise";
-$font-body: "Euclid Flex", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial,
+$font-body: "Euclid Flex", -apple-system, blinkmacsystemfont, "Segoe UI", arial,
   sans-serif;
 
 // Дополнительные шрифты
 $font-monospace: "Monaco", "Menlo", "Consolas", "Courier New", monospace;
-$font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+$font-system: -apple-system, blinkmacsystemfont, "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", sans-serif;
 
 // ВЕСЫ ШРИФТОВ
@@ -196,6 +197,7 @@ $line-heights: (
 // Миксин для размера шрифта с rem конвертацией
 @mixin font-size($size-name) {
   $size: map.get($font-sizes, $size-name);
+
   font-size: $size;
 }
 

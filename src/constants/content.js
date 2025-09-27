@@ -20,7 +20,7 @@ export const SITE_CONFIG = {
     SITE_TITLE_SUFFIX: " – Ритуальная служба Век",
     DESCRIPTION_SUFFIX: " +7 (920) 366-36-36",
     LOCATION: " в Шуе",
-  }
+  },
 };
 
 // Функция для генерации полного URL
@@ -31,7 +31,7 @@ export const getFullUrl = (path = "") => {
 // Функция для генерации полного пути к OG изображению
 export const getOgImageUrl = (imageUrl) => {
   // Если URL уже содержит домен, возвращаем как есть
-  if (imageUrl.startsWith('http')) {
+  if (imageUrl.startsWith("http")) {
     return imageUrl;
   }
   // Иначе добавляем домен
@@ -50,10 +50,11 @@ export const SERVICES_DATA = {
       description:
         "Полностью организуем прощание: от сбора документов и подготовки тела до поминального обеда.",
       icon: {
+        type: "svg",
         viewBox: "0 0 24 24",
-        path: "M4 7h16M6 7v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7M9 11h6",
+        path: "M6 5c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V5zm2 0v12h8V5H8zm-1 14h10v2H7v-2zm5-16L10 1h4l-2 2zm0 2c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1zm-2 4h4v2h-4V9zm0 4h4v2h-4v-2z",
       },
-      link: "#",
+      link: "/uslugi/organizatsiya-pohoron/",
       ariaLabel: "Подробнее: Организация похорон",
     },
     {
@@ -62,8 +63,9 @@ export const SERVICES_DATA = {
       description:
         "Оказываем содействие в организации воинских похорон, помогаем с оформлением льгот и почестей.",
       icon: {
+        type: "svg",
         viewBox: "0 0 24 24",
-        path: "M4 12h16M7 7l-3 5 3 5M17 7l3 5-3 5",
+        path: "M4 4h16l-2 6H6L4 4zm2 8h12l-2 6H8l-2-6zm8-6v12M8 6l8 12M16 6L8 18",
       },
       link: "#",
       ariaLabel: "Подробнее: Захоронение участников СВО",
@@ -74,8 +76,9 @@ export const SERVICES_DATA = {
       description:
         "Помогаем с транспортировкой тела в другие города и регионы с соблюдением всех требований.",
       icon: {
+        type: "svg",
         viewBox: "0 0 24 24",
-        path: "M3 7V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2M3 7h18M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7M12 16v-6",
+        path: "M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0 M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0 M5 17H3v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0H9",
       },
       link: "#",
       ariaLabel: "Подробнее: Перевозка тела",
@@ -86,6 +89,7 @@ export const SERVICES_DATA = {
       description:
         "Помогаем с организацией кремации умершего, предоставляем урны для праха.",
       icon: {
+        type: "svg",
         viewBox: "0 0 24 24",
         path: "M12 3v18M19 12a7 7 0 1 1-14 0 7 7 0 0 1 14 0z",
       },
@@ -98,8 +102,9 @@ export const SERVICES_DATA = {
       description:
         "Изготавливаем и устанавливаем памятники из гранита, мрамора. Собственное производство оград.",
       icon: {
+        type: "svg",
         viewBox: "0 0 24 24",
-        path: "M4 4h16v16H4zM8 8h8M8 12h8M8 16h4",
+        path: "M12 2L8 6v16h8V6l-4-4zm0 2l2 2v14h-4V6l2-2zm-6 8h4v2H6v-2zm0 4h4v2H6v-2zm12-4h-4v2h4v-2zm0 4h-4v2h4v-2zm-6-8h0m0 4h0m0 4h0",
       },
       link: "#",
       ariaLabel: "Подробнее: Памятники и ограды",
@@ -110,6 +115,7 @@ export const SERVICES_DATA = {
       description:
         "Укладка плитки, установка скамеек, столиков, цветников и другие работы по благоустройству.",
       icon: {
+        type: "svg",
         viewBox: "0 0 24 24",
         path: "M12 2l8 18H4l8-18zM12 8v8M8 18h8",
       },
@@ -297,7 +303,8 @@ export const CTA_DATA = {
 export const HOME_SEO_DATA = {
   title: `${SITE_CONFIG.SITE_NAME} - Помощь в трудную минуту | Шуя`,
   description: `${SITE_CONFIG.SITE_NAME}${SITE_CONFIG.COMMON_TEXTS.LOCATION}. Круглосуточная помощь в организации похорон, кремация, памятники. Профессиональные агенты. Звоните${SITE_CONFIG.COMMON_TEXTS.DESCRIPTION_SUFFIX}`,
-  keywords: "ритуальные услуги Шуя, похоронное бюро Шуя, организация похорон, кремация Шуя, памятники Шуя, ритуальный агент Шуя, груз 200",
+  keywords:
+    "ритуальные услуги Шуя, похоронное бюро Шуя, организация похорон, кремация Шуя, памятники Шуя, ритуальный агент Шуя, груз 200",
   type: "website",
   // Open Graph и Twitter Card мета-теги
   ogTitle: `${SITE_CONFIG.SITE_NAME} - Помощь в трудную минуту | Шуя`,

@@ -1,23 +1,21 @@
 @use "@/styles/mixins" as *;
 
 .reviews-empty-state {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include center;
   min-height: 280px;
   padding: var(--spacing-8);
   background: var(--color-bg-primary);
-  border: 1px solid var(--color-border);
+  border: var(--border-width-1) solid var(--color-border);
   border-radius: var(--border-radius-lg);
   text-align: center;
 
   &__content {
-    max-width: 320px;
+    max-width: var(--container-xs);
     width: 100%;
   }
 
   &__icon {
-    font-size: 3rem;
+    font-size: var(--size-icon-lg);
     margin-bottom: var(--spacing-4);
     opacity: 0.8;
   }
@@ -41,7 +39,7 @@
   }
 
   &__cta {
-    border-top: 1px solid var(--color-border-light);
+    border-top: var(--border-width-1) solid var(--color-border-light);
     padding-top: var(--spacing-4);
   }
 
@@ -64,8 +62,8 @@
     }
 
     &:focus {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 2px;
+      outline: var(--border-width-2) solid var(--color-accent);
+      outline-offset: var(--border-width-2);
       border-radius: var(--border-radius-sm);
     }
   }
@@ -73,7 +71,7 @@
   // Вариации для разных типов состояний
   &--error {
     border-color: var(--color-error);
-    background: rgba(239, 68, 68, 0.02);
+    background: rgb(239 68 68 / 2%);
 
     .reviews-empty-state__title {
       color: var(--color-error);
@@ -101,7 +99,7 @@
     }
 
     &__icon {
-      font-size: 2.5rem;
+      font-size: var(--size-icon-md);
     }
 
     &__title {

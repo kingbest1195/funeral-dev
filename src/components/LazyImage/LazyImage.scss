@@ -72,6 +72,7 @@
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -83,7 +84,7 @@
 }
 
 // Респонсивность
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .lazy-image {
     &__spinner {
       width: 20px;

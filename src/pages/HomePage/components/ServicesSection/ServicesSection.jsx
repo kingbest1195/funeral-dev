@@ -1,5 +1,6 @@
 import React from "react";
 import { SERVICES_DATA } from "@/constants/content";
+import ServiceCard from "@/components/ServiceCard/ServiceCard.jsx";
 import "./ServicesSection.scss";
 
 /**
@@ -15,34 +16,16 @@ const ServicesSection = () => {
 
         <div className="services__grid">
           {SERVICES_DATA.items.map((service) => (
-            <div key={service.id} className="service-card">
-              <div className="service-card__icon" aria-hidden="true">
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox={service.icon.viewBox}
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path
-                    d={service.icon.path}
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <h3 className="service-card__title">{service.title}</h3>
-              <p className="service-card__description">{service.description}</p>
-              <div className="service-card__actions">
-                <a href={service.link} aria-label={service.ariaLabel}>
-                  Подробнее
-                </a>
-              </div>
-            </div>
+            <ServiceCard
+              key={service.id}
+              id={service.id}
+              title={service.title}
+              description={service.description}
+              icon={service.icon}
+              link={service.link}
+              ariaLabel={service.ariaLabel}
+              showActions={true}
+            />
           ))}
         </div>
       </div>

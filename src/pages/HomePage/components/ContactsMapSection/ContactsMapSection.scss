@@ -1,5 +1,5 @@
-@import "/src/styles/variables.scss";
-@import "/src/styles/mixins.scss";
+@import "/src/styles/variables";
+@import "/src/styles/mixins";
 
 // =================
 // CONTACTS MAP SECTION
@@ -167,6 +167,7 @@
     aspect-ratio: 1 / 1; // Квадратная карта на мобильных
     min-height: auto;
     width: 100%;
+
     // Карта остается в естественном порядке (под адресами)
   }
 }

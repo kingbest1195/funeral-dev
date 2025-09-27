@@ -9,23 +9,23 @@
 // Основные цвета (UI new)
 // Текстовый основной — темно-серый почти черный
 $color-primary: #444442; // Основной текст/заголовки
-$color-secondary: #888888; // Вторичный текст
+$color-secondary: #888; // Вторичный текст
 // Акцент — матовое золото
 $color-accent: #c49e5e; // Золотой акцент (кнопки, ссылки)
 $color-accent-light: #d9bb82; // Светлее для hover
 
 // Текстовые цвета
 $color-text-primary: #444442; // Основной текст
-$color-text-secondary: #888888; // Вторичный текст
+$color-text-secondary: #888; // Вторичный текст
 $color-text-muted: #9a9a9a; // Приглушенный текст
-$color-text-white: #ffffff; // Белый текст
+$color-text-white: #fff; // Белый текст
 $color-text-light: #f0f0f0; // Светлый текст
 
 // Фоновые цвета
-$color-bg-primary: #ffffff; // Белые карточки
+$color-bg-primary: #fff; // Белые карточки
 $color-bg-secondary: #f6f6f6; // Светло-серый фон страницы (основной фон)
 $color-bg-dark: #2d3748; // Темный фон
-$color-bg-overlay: rgba(45, 55, 72, 0.9); // Overlay
+$color-bg-overlay: rgb(45 55 72 / 90%); // Overlay
 
 // Служебные цвета
 $color-success: #38a169; // Успех
@@ -35,7 +35,7 @@ $color-info: #3182ce; // Информация
 
 // Цвета границ
 $color-border: #eaeaea; // Тонкая спокойная граница
-$color-border-dark: #cccccc; // Темнее
+$color-border-dark: #ccc; // Темнее
 $color-border-accent: #c49e5e; // В тон акценту
 
 // ТИПОГРАФИКА
@@ -43,10 +43,10 @@ $color-border-accent: #c49e5e; // В тон акценту
 
 // Шрифтовые семейства (новая типографика)
 // Прямое подключение коммерческих шрифтов не выполняем; используем имена и фолбэки
-$font-heading: "SangBleu Sunrise", "Playfair Display", Georgia,
+$font-heading: "SangBleu Sunrise", "Playfair Display", georgia,
   "Times New Roman", serif; // Заголовки
-$font-body: "Euclid Flex", "Inter", "Roboto", -apple-system, BlinkMacSystemFont,
-  "Segoe UI", Arial, sans-serif; // Текст
+$font-body: "Euclid Flex", "Inter", "Roboto", -apple-system, blinkmacsystemfont,
+  "Segoe UI", arial, sans-serif; // Текст
 
 // Веса шрифтов
 $font-weight-light: 300;
@@ -69,6 +69,7 @@ $font-size-6xl: 64px; // 4rem
 
 // Высоты строк
 $line-height-tight: 1.2;
+
 // Согласно правилам: основной текст 16px, line-height 1.6–1.7
 $line-height-normal: 1.65;
 $line-height-relaxed: 1.7;
@@ -158,11 +159,11 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 // =================
 
 // Тени
-$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-$shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-$shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.15);
+$shadow-sm: 0 1px 3px rgb(0 0 0 / 10%);
+$shadow-md: 0 4px 6px rgb(0 0 0 / 10%);
+$shadow-lg: 0 10px 15px rgb(0 0 0 / 10%);
+$shadow-xl: 0 20px 25px rgb(0 0 0 / 10%);
+$shadow-2xl: 0 25px 50px rgb(0 0 0 / 15%);
 
 // Скругления углов
 $border-radius-none: 0;

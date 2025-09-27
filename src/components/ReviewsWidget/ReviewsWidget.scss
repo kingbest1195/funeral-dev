@@ -25,6 +25,7 @@
 
   &__content {
     margin-bottom: var(--spacing-8);
+
     // Добавляем отступы по бокам для стрелок
     padding: 0 var(--spacing-20); // Увеличиваем отступы для стрелок
 
@@ -49,7 +50,9 @@
       margin-top: 0;
       opacity: 1;
       visibility: visible;
+
       @include center;
+
       background: transparent;
       border: var(--height-divider) solid var(--color-border); // 1px
       border-radius: 50%;
@@ -57,8 +60,8 @@
       transition: all var(--duration-base) var(--ease-smooth);
 
       // Убираем стандартный контент swiper
-      &:after,
-      &:before {
+      &::after,
+      &::before {
         display: none;
       }
 
@@ -111,7 +114,9 @@
     .swiper-pagination {
       position: static !important;
       margin-top: var(--spacing-6) !important;
+
       @include center;
+
       gap: var(--spacing-2);
       padding: var(--spacing-1) 0;
       flex-wrap: wrap;
@@ -185,6 +190,7 @@
 
   &__cta {
     @include center;
+
     flex-direction: column;
     gap: var(--spacing-4);
     padding: var(--spacing-6) var(--spacing-4);
@@ -233,7 +239,9 @@
     border-radius: var(--border-radius-lg);
     padding: var(--spacing-8);
     height: 100%;
+
     @include center;
+
     transition: all var(--duration-base) var(--ease-smooth);
 
     @include hover {
@@ -305,6 +313,7 @@
     opacity: 0;
     transform: translateY(var(--spacing-5));
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

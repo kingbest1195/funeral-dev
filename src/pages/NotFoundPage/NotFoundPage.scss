@@ -146,6 +146,7 @@
 
   &__buttons {
     @include center;
+
     gap: var(--spacing-6);
     flex-wrap: wrap;
     margin-bottom: var(--spacing-8);
@@ -241,7 +242,9 @@
       color: var(--color-text-primary);
       line-height: var(--line-height-tight);
       margin: 0 0 var(--spacing-4) 0;
+
       @include center;
+
       gap: var(--spacing-2);
 
       @include md-down {
@@ -433,6 +436,7 @@
     opacity: 0;
     transform: translateY(var(--spacing-8));
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -444,13 +448,16 @@
     opacity: 0;
     transform: scale(0.3);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.05);
   }
+
   70% {
     transform: scale(0.9);
   }
+
   100% {
     opacity: 1;
     transform: scale(1);

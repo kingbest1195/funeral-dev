@@ -2,18 +2,26 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import { fileURLToPath, URL } from 'node:url';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import imageOptimizationPlugin from './vite-plugins/image-optimization-plugin.js';
 import criticalCssPlugin from './vite-plugins/critical-css-plugin.js';
 import { htmlAssetsPlugin } from './vite-plugins/html-assets-plugin.js';
+import trailingSlashPlugin from './vite-plugins/trailing-slash-plugin.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [
     react(),
+    createSvgIconsPlugin({
+      iconDirs: [path.resolve(process.cwd(), 'src/assets/icons-svg')],
+      symbolId: 'icon-[dir]-[name]',
+      customDomId: '__svg__icons__dom__',
+    }),
     imageOptimizationPlugin(),
     criticalCssPlugin(),
-    htmlAssetsPlugin()
+    htmlAssetsPlugin(),
+    trailingSlashPlugin()
   ],
   resolve: {
     alias: {
@@ -41,6 +49,7 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, 'index.html'),
         uslugi: path.resolve(__dirname, 'uslugi/index.html'),
+        'organizatsiya-pohoron': path.resolve(__dirname, 'uslugi/organizatsiya-pohoron/index.html'),
         privacy: path.resolve(__dirname, 'privacy/index.html')
       },
       output: {
@@ -75,7 +84,9 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       }
-    }
+    },
+    // Middleware отключен для Yandex Cloud S3 - используется дублирование файлов
+    // В production URL без слеша будут работать через дублированные .html файлы
   },
   preview: {
     port: 3001,

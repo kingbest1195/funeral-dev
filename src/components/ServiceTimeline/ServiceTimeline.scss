@@ -1,0 +1,191 @@
+// =================
+// SERVICE TIMELINE COMPONENT STYLES
+// =================
+
+@use "@/styles/mixins" as *;
+
+.service-timeline {
+  padding: var(--spacing-20) 0;
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-tight);
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-12);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  &__list {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: var(--container-max-width-sm);
+    margin-inline: auto;
+
+    // Вертикальная линия таймлайна
+    &::before {
+      content: "";
+      position: absolute;
+      left: var(--spacing-8);
+      top: var(--spacing-6);
+      bottom: var(--spacing-10);
+      width: var(--border-width-2);
+      background: linear-gradient(
+        to bottom,
+        var(--color-accent) 0%,
+        var(--color-border-light) 50%,
+        var(--color-accent) 100%
+      );
+      border-radius: var(--border-radius-full);
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    gap: var(--spacing-6);
+    padding-bottom: var(--spacing-8);
+    align-items: flex-start;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__number {
+    position: relative;
+    z-index: 2;
+    flex: 0 0 auto;
+    @include center;
+    width: var(--spacing-16);
+    height: var(--spacing-16);
+    background: var(--color-accent);
+    color: var(--color-text-white);
+    border-radius: var(--border-radius-full);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-heading);
+    box-shadow: 0 0 0 var(--spacing-1) var(--color-bg-primary);
+    transition: all var(--duration-base) var(--ease-smooth);
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 var(--spacing-1) var(--color-bg-primary),
+        var(--shadow-md);
+    }
+  }
+
+  &__content {
+    flex: 1;
+    background: var(--color-bg-primary);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-6);
+    box-shadow: var(--shadow-sm);
+    border-left: var(--border-width-4) solid var(--color-accent);
+    transition: all var(--duration-base) var(--ease-smooth);
+
+    &:hover {
+      transform: translateX(var(--spacing-1));
+      box-shadow: var(--shadow-md);
+    }
+  }
+
+  &__step-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-2);
+    line-height: var(--line-height-tight);
+  }
+
+  &__step-description {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+}
+
+// Адаптивность для планшетов
+@include lg-down {
+  .service-timeline {
+    &__list {
+      &::before {
+        bottom: var(--spacing-16);
+      }
+    }
+  }
+}
+
+@include md-down {
+  .service-timeline {
+    padding: var(--spacing-16) 0;
+
+    &__title {
+      font-size: var(--font-size-2xl);
+      margin-bottom: var(--spacing-10);
+    }
+
+    &__list {
+      &::before {
+        left: var(--spacing-5);
+      }
+    }
+
+    &__number {
+      width: var(--spacing-12);
+      height: var(--spacing-12);
+      font-size: var(--font-size-base);
+    }
+
+    &__content {
+      padding: var(--spacing-5);
+    }
+
+    &__item {
+      gap: var(--spacing-5);
+      padding-bottom: var(--spacing-6);
+    }
+  }
+}
+
+// Адаптивность для мобильных
+@include sm-down {
+  .service-timeline {
+    padding: var(--spacing-12) 0;
+
+    &__title {
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--spacing-8);
+    }
+
+    &__number {
+      width: var(--spacing-10);
+      height: var(--spacing-10);
+      font-size: var(--font-size-sm);
+    }
+
+    &__content {
+      padding: var(--spacing-4);
+      border-left-width: var(--border-width-2);
+    }
+
+    &__item {
+      gap: var(--spacing-4);
+      padding-bottom: var(--spacing-5);
+    }
+
+    &__step-title {
+      font-size: var(--font-size-base);
+      margin-bottom: var(--spacing-1);
+    }
+
+    &__step-description {
+      font-size: var(--font-size-sm);
+    }
+  }
+}

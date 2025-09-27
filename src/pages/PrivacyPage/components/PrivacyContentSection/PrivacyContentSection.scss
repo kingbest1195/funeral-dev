@@ -21,7 +21,6 @@
     font-size: var(--font-size-2xl);
     margin-bottom: var(--spacing-8);
     color: var(--color-text-primary);
-
     padding-bottom: var(--spacing-4);
     border-bottom: var(--border-width-2) solid var(--color-accent);
   }
@@ -63,6 +62,7 @@
   // Списки определений
   &__definition-list {
     @include list-reset;
+
     font-size: var(--font-size-lg);
     line-height: var(--line-height-normal);
   }
@@ -84,6 +84,7 @@
   // Информационные списки
   &__info-list {
     @include list-reset;
+
     font-size: var(--font-size-lg);
     line-height: var(--line-height-normal);
   }
@@ -188,11 +189,12 @@
   &__contact {
     margin-top: var(--spacing-20);
     padding-top: var(--spacing-20);
-    border-top: 2px solid var(--color-border);
+    border-top: var(--border-width-2) solid var(--color-border);
   }
 
   &__contact-list {
     @include list-reset;
+
     font-size: var(--font-size-lg);
     line-height: var(--line-height-normal);
   }

@@ -46,11 +46,78 @@
   }
 }
 
+// Равная ширина колонок
+.data-table--columns-equal {
+  table-layout: fixed;
+
+  .data-table__header-cell {
+    width: auto;
+
+    &:first-child {
+      width: auto;
+    }
+  }
+}
+
+// Заголовки с изображениями
+.data-table__header-content {
+  @include center;
+  gap: var(--spacing-2);
+}
+
+.data-table__header-image {
+  display: block;
+  max-width: var(--spacing-8);
+  max-height: var(--spacing-8);
+  object-fit: contain;
+}
+
+.data-table__header-text {
+  flex: 1;
+}
+
+// Стили для ячеек с ценами
+.data-table__cell--price {
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-primary) 0%,
+    var(--color-text-light) 100%
+  );
+  color: var(--color-text-white);
+  font-weight: var(--font-weight-semibold);
+}
+
+.data-table__price {
+  @include center;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  padding: var(--spacing-2) 0;
+}
+
+.data-table__price-label {
+  font-size: var(--font-size-sm);
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.data-table__price-amount {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+}
+
+.data-table__price-currency {
+  font-size: var(--font-size-sm);
+  opacity: 0.9;
+}
+
 .data-table__row {
   transition: background-color var(--duration-base) var(--ease-smooth);
 
   &:hover {
-    background: rgba(196, 158, 94, 0.1);
+    background: rgb(196 158 94 / 10%);
   }
 }
 

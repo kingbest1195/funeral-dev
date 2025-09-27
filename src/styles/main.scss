@@ -6,32 +6,32 @@
 // =================
 
 // 1. CSS переменные (должны быть первыми)
-@import './variables.scss';
+@import './variables';
 
 // 2. Sass константы
-@import './constants.scss';
+@import './constants';
 
 // 3. Функции
-@import './functions.scss';
+@import './functions';
 
 // 4. Медиа-миксины  
-@import './media.scss';
+@import './media';
 
 // 5. Миксины (зависят от функций и медиа-миксинов)
-@import './mixins.scss';
+@import './mixins';
 @import './abstracts/mixins-enhanced';
 
 // БАЗОВЫЕ СТИЛИ
 // =================
 
 // 6. Шрифты
-@import './fonts.scss';
+@import './fonts';
 
 // 7. Нормализация
-@import './normalize.scss';
+@import './normalize';
 
 // 8. Глобальные стили
-@import './globals.scss';
+@import './globals';
 
 // 9. Утилитарные классы удалены (не использовались)
 
@@ -77,15 +77,15 @@
   
   // Разрывы страниц
   .page-break-before {
-    page-break-before: always;
+    break-before: always;
   }
   
   .page-break-after {
-    page-break-after: always;
+    break-after: always;
   }
   
   .page-break-inside-avoid {
-    page-break-inside: avoid;
+    break-inside: avoid;
   }
 }
 
@@ -108,10 +108,10 @@
 // Высокая контрастность
 @media (prefers-contrast: high) {
   :root {
-    --color-border: #000000;
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
-    --shadow-lg: 0 10px 15px rgba(--color-0, 0, 0, 0.5);
+    --color-border: #000;
+    --shadow-sm: 0 1px 3px rgb(0 0 0 / 50%);
+    --shadow-md: 0 4px 6px rgb(0 0 0 / 50%);
+    --shadow-lg: 0 10px 15px rgb(--color-0 0 0 / 50%);
   }
 }
 
@@ -167,13 +167,13 @@
     
     &--layout {
       * {
-        outline: 1px solid rgba(255, 0, 0, 0.3) !important;
+        outline: 1px solid rgb(255 0 0 / 30%) !important;
       }
     }
     
     &--spacing {
       * {
-        background-color: rgba(0, 255, 0, 0.1) !important;
+        background-color: rgb(0 255 0 / 10%) !important;
       }
     }
   }
@@ -185,13 +185,10 @@
     &::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       background-image: 
-        linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
+        linear-gradient(rgb(255 0 0 / 10%) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(255 0 0 / 10%) 1px, transparent 1px);
       background-size: 10px 10px;
       pointer-events: none;
       z-index: 9999;

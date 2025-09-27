@@ -5,11 +5,11 @@
 .section {
   padding: var(--spacing-20) 0;
 
-  @media (max-width: 1024px) {
+  @media (width <= 1024px) {
     padding: var(--spacing-16) 0;
   }
 
-  @media (max-width: 767px) {
+  @media (width <= 767px) {
     padding: var(--spacing-12) 0;
   }
 
@@ -19,7 +19,7 @@
   &--compact {
     padding: var(--spacing-12) 0;
 
-    @media (max-width: 767px) {
+    @media (width <= 767px) {
       padding: var(--spacing-8) 0;
     }
   }
@@ -54,7 +54,7 @@
   background: var(--color-border);
   margin: var(--spacing-16) 0;
   
-  @media (max-width: 767px) {
+  @media (width <= 767px) {
     margin: var(--spacing-12) 0;
   }
 }

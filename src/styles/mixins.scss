@@ -4,6 +4,7 @@
 
 @use "sass:color";
 @use "sass:map";
+@import "./constants";
 
 // ТИПОГРАФИКА
 // =================
@@ -214,6 +215,7 @@
       @content;
     }
   }
+
   @if $hasActiveEffectOnMobile {
     @media (any-hover: none) {
       &:active {
@@ -330,6 +332,7 @@ $breakpoints: (
 /// Основная кнопка (primary)
 @mixin button-primary {
   @include button-base;
+
   // Фон и объём как в референсе: мягкий градиент + лёгкая фаска
   background-color: $color-accent; // fallback
   background-image: linear-gradient(
@@ -342,10 +345,10 @@ $breakpoints: (
   border: $border-width-thin solid color.scale($color-accent, $lightness: -10.6%);
   padding: $padding-md $padding-xl;
   font-size: $font-size-base;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 35%),
+    inset 0 -1px 0 rgb(0 0 0 / 12%),
     0 8px 22px
-      rgba(color.channel($color-accent, "red"), color.channel($color-accent, "green"), color.channel($color-accent, "blue"), 0.25);
+      rgba(color.channel($color-accent, "red"), color.channel($color-accent, "green"), color.channel($color-accent, "blue"), 25%);
 
   &:hover:not(:disabled) {
     background-image: linear-gradient(
@@ -356,7 +359,7 @@ $breakpoints: (
     );
     transform: translateY(-1px);
     box-shadow: 0 10px 28px
-      rgba(color.channel($color-accent, "red"), color.channel($color-accent, "green"), color.channel($color-accent, "blue"), 0.3);
+      rgba(color.channel($color-accent, "red"), color.channel($color-accent, "green"), color.channel($color-accent, "blue"), 30%);
   }
 
   &:active:not(:disabled) {
@@ -367,7 +370,7 @@ $breakpoints: (
       color.scale($color-accent, $lightness: -9.3%) 60%,
       color.scale($color-accent, $lightness: -23.3%) 100%
     );
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
   }
 
   &:focus {
@@ -378,6 +381,7 @@ $breakpoints: (
 /// Акцентная кнопка (accent)
 @mixin button-accent {
   @include button-base;
+
   background-color: $color-accent;
   color: $color-text-white;
   padding: $padding-md $padding-xl;
@@ -402,6 +406,7 @@ $breakpoints: (
 /// Вторичная кнопка (secondary)
 @mixin button-secondary {
   @include button-base;
+
   background-color: transparent;
   color: $color-accent; // текст золотой
   border: $border-width-thin solid $color-accent; // контур золотой
@@ -420,13 +425,13 @@ $breakpoints: (
     color: $color-text-white;
     transform: translateY(-1px);
     box-shadow: 0 8px 22px
-      rgba(color.channel($color-accent, "red"), color.channel($color-accent, "green"), color.channel($color-accent, "blue"), 0.25);
+      rgba(color.channel($color-accent, "red"), color.channel($color-accent, "green"), color.channel($color-accent, "blue"), 25%);
     border-color: color.scale($color-accent, $lightness: -13.9%);
   }
 
   &:active:not(:disabled) {
     transform: translateY(0);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
   }
 
   &:focus {
@@ -437,6 +442,7 @@ $breakpoints: (
 /// Кнопка-ссылка (link)
 @mixin button-link {
   @include button-base;
+
   background-color: transparent;
   color: $color-accent;
   padding: $padding-sm $padding-md;
@@ -734,12 +740,14 @@ $breakpoints: (
 /// Стили для текстовых полей
 @mixin input-text {
   @include input-base;
+
   height: 48px;
 }
 
 /// Стили для многострочных полей (textarea)
 @mixin input-textarea {
   @include input-base;
+
   min-height: 120px;
   resize: vertical;
 }
@@ -747,6 +755,7 @@ $breakpoints: (
 /// Стили для select
 @mixin input-select {
   @include input-base;
+
   height: 48px;
   cursor: pointer;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
@@ -857,19 +866,19 @@ $breakpoints: (
 
 /// Миксины для адаптивности - короткие алиасы
 @mixin media-mobile {
-  @media (max-width: 767px) {
+  @media (width <= 767px) {
     @content;
   }
 }
 
 @mixin media-tablet {
-  @media (min-width: 768px) and (max-width: 1023px) {
+  @media (width >= 768px) and (width <= 1023px) {
     @content;
   }
 }
 
 @mixin media-desktop {
-  @media (min-width: 1024px) {
+  @media (width >= 1024px) {
     @content;
   }
 }
@@ -928,6 +937,7 @@ $breakpoints: (
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
   }
+
   100% {
     transform: translate(-50%, -50%) rotate(360deg);
   }

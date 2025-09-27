@@ -11,31 +11,30 @@
   --color-primary: #444442; // Основной текст/заголовки
   --color-primary-light: #5a5a58;
   --color-primary-dark: #2e2e2d;
-
-  --color-secondary: #888888; // Вторичный текст и элементы
+  --color-secondary: #888; // Вторичный текст и элементы
   --color-accent: #c49e5e; // Золотой акцент
   --color-accent-light: #d9bb82; // Hover/active светлее
   --color-accent-dark: #a98240; // Акцент темнее
-  --color-accent-transparent: rgba(
-    196,
-    158,
-    94,
-    0.05
+  --color-accent-transparent: rgb(
+    196
+    158
+    94 /
+    5%
   ); // Прозрачный акцентный фон
 
   // Текстовые цвета
   --color-text-primary: #444442; // Основной текст
-  --color-text-secondary: #888888; // Вторичный текст
+  --color-text-secondary: #888; // Вторичный текст
   --color-text-muted: #9a9a9a; // Приглушенный текст
-  --color-text-white: #ffffff; // Белый текст
+  --color-text-white: #fff; // Белый текст
   --color-text-light: #f7fafc; // Светлый текст
 
   // Фоновые цвета
-  --color-bg-primary: #ffffff; // Белые карточки/контейнеры
+  --color-bg-primary: #fff; // Белые карточки/контейнеры
   --color-bg-secondary: #f6f6f6; // Светло-серый фон страницы
   --color-bg-dark: #2d3748; // Темный фон
   --color-bg-darker: #1a202c; // Еще более темный фон
-  --color-bg-overlay: rgba(26, 26, 26, 0.85); // Overlay для модалок
+  --color-bg-overlay: rgb(26 26 26 / 85%); // Overlay для модалок
 
   // Служебные цвета
   --color-success: #10b981; // Успех (зеленый)
@@ -45,7 +44,7 @@
 
   // Цвета границ
   --color-border: #eaeaea; // Тонкая серая граница карточек
-  --color-border-dark: #cccccc; // Темнее
+  --color-border-dark: #ccc; // Темнее
   --color-border-accent: #c49e5e; // Акцентная граница в тон кнопок
   --color-border-light: #f0f0f0; // Светлее
 
@@ -55,7 +54,7 @@
   // Шрифтовые семейства
   --font-heading: "SangBleu Sunrise";
   --font-body: "Euclid Flex", "Inter", "Roboto", -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    blinkmacsystemfont, "Segoe UI", arial, sans-serif;
   --font-monospace: "Monaco", "Menlo", "Consolas", monospace;
 
   // Веса шрифтов
@@ -166,15 +165,15 @@
   // =================
 
   // Тени (на основе референса)
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.12);
-  --shadow-xl: 0 20px 30px rgba(0, 0, 0, 0.15);
-  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.2);
-  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-  --shadow-outline: 0 0 0 3px rgba(212, 165, 116, 0.3);
-  --shadow-elevated: 0 10px 25px rgba(0, 0, 0, 0.06);
+  --shadow-xs: 0 1px 2px rgb(0 0 0 / 5%);
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / 10%);
+  --shadow-md: 0 4px 6px rgb(0 0 0 / 10%);
+  --shadow-lg: 0 10px 20px rgb(0 0 0 / 12%);
+  --shadow-xl: 0 20px 30px rgb(0 0 0 / 15%);
+  --shadow-2xl: 0 25px 50px rgb(0 0 0 / 20%);
+  --shadow-inner: inset 0 2px 4px rgb(0 0 0 / 5%);
+  --shadow-outline: 0 0 0 3px rgb(212 165 116 / 30%);
+  --shadow-elevated: 0 10px 25px rgb(0 0 0 / 6%);
 
   // Скругления углов
   --border-radius-none: 0;
@@ -225,9 +224,9 @@
   --testimonial-card-width: 18rem; // 288px
 
   // Цвета для состояний элементов
-  --color-hover-overlay: rgba(212, 165, 116, 0.1);
-  --color-active-overlay: rgba(212, 165, 116, 0.2);
-  --color-disabled-overlay: rgba(107, 114, 128, 0.5);
+  --color-hover-overlay: rgb(212 165 116 / 10%);
+  --color-active-overlay: rgb(212 165 116 / 20%);
+  --color-disabled-overlay: rgb(107 114 128 / 50%);
 
   // ДОПОЛНИТЕЛЬНЫЕ ПЕРЕМЕННЫЕ ДЛЯ УСТРАНЕНИЯ ХАРДКОДИНГА
   // =================
@@ -291,6 +290,7 @@
   --height-progress-bar: var(
     --spacing-1
   ); // 4px - но не используем spacing в коде
+
   --height-min-touch: 2.75rem; // 44px - WCAG рекомендация
 
   // Размеры для специфических элементов
@@ -309,6 +309,7 @@
   --layout-hero-padding: calc(
     var(--spacing-24) + 7.5rem
   ); // 96px + 120px = 216px
+
   --layout-section-offset: 7.5rem; // 120px
   --layout-mobile-offset: 1rem; // 16px
 
@@ -347,7 +348,7 @@
 // =================
 
 // Мобильные устройства
-@media (max-width: 768px) {
+@media (width <= 768px) {
   :root {
     --container-padding: var(--spacing-4);
     --grid-gap: var(--grid-gap-sm);
@@ -361,14 +362,14 @@
 }
 
 // Планшеты
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (width >= 769px) and (width <= 1024px) {
   :root {
     --container-padding: var(--spacing-6);
   }
 }
 
 // Большие экраны
-@media (min-width: 1400px) {
+@media (width >= 1400px) {
   :root {
     --container-padding: var(--spacing-8);
     --header-height: 6rem; // 96px для больших экранов
@@ -380,9 +381,9 @@
 
 @media print {
   :root {
-    --color-primary: #000000;
-    --color-text-primary: #000000;
-    --color-bg-primary: #ffffff;
+    --color-primary: #000;
+    --color-text-primary: #000;
+    --color-bg-primary: #fff;
     --shadow-sm: none;
     --shadow-md: none;
     --shadow-lg: none;

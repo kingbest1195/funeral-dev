@@ -1,0 +1,182 @@
+// =================
+// SERVICE CARD COMPONENT - Универсальная карточка услуги
+// Используется на главной странице и страницах услуг
+// =================
+
+@use "@/styles/mixins" as *;
+
+.service-card {
+  background-color: var(--color-bg-primary);
+  padding: var(--spacing-6);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: var(--border-width-1) solid var(--color-border-light);
+  transition: all var(--duration-base) var(--ease-smooth);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  position: relative;
+  overflow: hidden; // чтобы верхняя полоса имела скругления
+  height: 100%; // для равной высоты в grid - карточки принимают высоту самой высокой
+
+  // Золотая верхняя линия-акцент
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--height-divider-thicker); // 3px
+    background: var(--color-accent);
+    opacity: 0.85;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+
+  &:hover {
+    transform: translateY(calc(-1 * var(--spacing-1)));
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-border-accent);
+  }
+
+  // Иконка (поддерживает как SVG, так и emoji)
+  &__icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-md);
+    background: var(--color-accent-transparent);
+    color: var(--color-accent); // для SVG через currentColor
+    flex-shrink: 0;
+    margin-bottom: var(--spacing-2);
+
+    svg {
+      display: block;
+      width: 1.5rem; // 24px
+      height: 1.5rem; // 24px
+    }
+
+    // Для emoji поддержки
+    &__emoji {
+      font-size: var(--font-size-2xl);
+      line-height: 1;
+    }
+  }
+
+  // Контентная область
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Заголовок
+  &__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-3);
+    text-align: left;
+  }
+
+  // Описание
+  &__description {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-secondary);
+    margin: 0;
+    flex: 1; // занимает доступное пространство
+    text-align: left;
+  }
+
+  // Действия (кнопки/ссылки) - только когда showActions=true
+  &__actions {
+    margin-top: auto;
+    padding-top: var(--spacing-4);
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-base);
+
+      &::after {
+        content: " →";
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Адаптивность для планшетов
+@include lg-down {
+  .service-card {
+    padding: var(--spacing-5);
+
+    &__icon {
+      width: 3rem;
+      height: 3rem;
+
+      svg {
+        width: 1.25rem; // 20px
+        height: 1.25rem; // 20px
+      }
+
+      &__emoji {
+        font-size: var(--font-size-xl);
+      }
+    }
+
+    &__title {
+      font-size: var(--font-size-lg);
+    }
+
+    &__description {
+      font-size: var(--font-size-sm);
+    }
+  }
+}
+
+// Адаптивность для мобильных
+@include md-down {
+  .service-card {
+    padding: var(--spacing-4);
+
+    &__icon {
+      width: 2.5rem;
+      height: 2.5rem;
+
+      svg {
+        width: 1rem; // 16px
+        height: 1rem; // 16px
+      }
+
+      &__emoji {
+        font-size: var(--font-size-lg);
+      }
+    }
+
+    &__title {
+      font-size: var(--font-size-base);
+      margin-bottom: var(--spacing-2);
+    }
+
+    &__description {
+      font-size: var(--font-size-xs);
+    }
+
+    &__actions {
+      padding-top: var(--spacing-3);
+
+      a {
+        font-size: var(--font-size-sm);
+      }
+    }
+  }
+}

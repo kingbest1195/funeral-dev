@@ -1,0 +1,100 @@
+// =================
+// BREADCRUMBS COMPONENT STYLES
+// =================
+
+@use "@/styles/constants" as *;
+@use "@/styles/mixins" as *;
+
+@mixin inline-center {
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumbs {
+  // Отступ сверху чтобы не скрываться за фиксированной шапкой
+  padding-top: calc(var(--header-height) + var(--spacing-10));
+  padding-bottom: var(--spacing-5);
+  background-color: var(--color-bg-secondary);
+  border-bottom: var(--border-width-1) solid var(--color-border-light);
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    @include inline-center;
+    gap: var(--spacing-1);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    margin-bottom: 0;
+
+    &:not(:last-child) {
+      margin-right: var(--spacing-2);
+
+      &::after {
+        content: "›";
+        color: var(--color-text-muted);
+        font-weight: var(--font-weight-regular);
+        margin-left: var(--spacing-2);
+        font-size: var(--font-size-lg);
+        line-height: 1;
+        @include inline-center;
+      }
+    }
+  }
+
+  &__link {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: all var(--duration-base) var(--ease-smooth);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--border-radius-sm);
+    border: var(--border-width-1) solid transparent; // Для выравнивания с current
+
+    &:hover {
+      color: var(--color-accent-hover);
+      background-color: var(--color-bg-primary);
+      text-decoration: none;
+    }
+
+    &:focus {
+      outline: var(--border-width-2) solid var(--color-accent);
+      outline-offset: var(--border-width-2);
+      background-color: var(--color-bg-primary);
+    }
+  }
+
+  &__current {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+    padding: var(--spacing-1) var(--spacing-2);
+    background-color: var(--color-bg-accent-soft);
+    border-radius: var(--border-radius-sm);
+    border: var(--border-width-1) solid var(--color-border-light);
+    @include inline-center;
+  }
+}
+
+// Адаптивность
+@include md-down {
+  .breadcrumbs {
+    &__item {
+      font-size: var(--font-size-sm);
+
+      &:not(:last-child)::after {
+        font-size: var(--font-size-base);
+      }
+    }
+
+    &__link,
+    &__current {
+      padding: var(--spacing-1);
+      font-size: var(--font-size-sm);
+    }
+  }
+}

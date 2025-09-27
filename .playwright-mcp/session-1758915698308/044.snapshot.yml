@@ -1,0 +1,166 @@
+- generic [ref=e4]:
+  - link "Перейти к основному содержанию" [ref=e5] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e6]:
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - link "Ритуальная служба Век" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img "Ритуальная служба Век — логотип" [ref=e11]
+          - generic [ref=e12]: Ритуальная служба Век
+        - paragraph [ref=e13]: г. Шуя, Ивановская область
+      - navigation "Основная навигация" [ref=e14]:
+        - list [ref=e15]:
+          - listitem [ref=e16]:
+            - link "Услуги" [ref=e17] [cursor=pointer]:
+              - /url: /uslugi/
+          - listitem [ref=e18]:
+            - link "Почему мы" [ref=e19] [cursor=pointer]:
+              - /url: "#benefits"
+          - listitem [ref=e20]:
+            - link "О компании" [ref=e21] [cursor=pointer]:
+              - /url: "#stats"
+          - listitem [ref=e22]:
+            - link "Контакты" [ref=e23] [cursor=pointer]:
+              - /url: "#contacts"
+      - generic [ref=e24]:
+        - link "Позвонить по номеру +7 (920) 366-36-36" [ref=e25] [cursor=pointer]:
+          - /url: tel:79203663636
+          - text: +7 (920) 366-36-36
+        - generic [ref=e26]: (Круглосуточно)
+        - button "Позвонить сейчас" [ref=e27] [cursor=pointer]:
+          - img [ref=e28]
+  - main [ref=e29]:
+    - main [ref=e30]:
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - heading "Помощь в трудную минуту. Круглосуточная ритуальная служба в Шуе." [level=1] [ref=e35]
+          - paragraph [ref=e36]: Бесплатно проконсультируем, что делать дальше. Агент приедет в течение часа в любую точку города и района.
+          - link "Вызвать ритуального агента круглосуточно" [ref=e38] [cursor=pointer]:
+            - /url: tel:+79203663636
+            - text: Вызвать ритуального агента 24/7
+        - img [ref=e41]
+      - generic [ref=e45]:
+        - heading "Что делать, если умер близкий человек?" [level=2] [ref=e46]
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - heading "Мы возьмем все заботы на себя" [level=3] [ref=e49]
+            - paragraph [ref=e50]: Понимаем, как тяжело в такой момент собраться с мыслями. Позвоните нам, и наш специалист немедленно приедет, поможет с оформлением всех документов и полностью возьмет на себя организацию похорон. Вам не придется делать это в одиночку.
+          - group "Связаться по телефону" [ref=e52]:
+            - img [ref=e55]
+            - link "Позвонить +7 (920) 366-36-36" [ref=e56] [cursor=pointer]:
+              - /url: tel:79203663636
+              - text: +7 (920) 366-36-36
+            - generic [ref=e57]: Круглосуточно
+      - generic [ref=e59]:
+        - heading "Наши услуги" [level=2] [ref=e60]
+        - paragraph [ref=e61]: Берем на себя все заботы по организации и проведению похорон.
+        - generic [ref=e62]:
+          - article [ref=e63]:
+            - generic [ref=e65]:
+              - heading "Организация похорон" [level=3] [ref=e66]
+              - paragraph [ref=e67]: "Полностью организуем прощание: от сбора документов и подготовки тела до поминального обеда."
+              - 'link "Подробнее: Организация похорон" [ref=e69] [cursor=pointer]':
+                - /url: "#"
+                - text: Подробнее →
+          - article [ref=e70]:
+            - generic [ref=e72]:
+              - heading "Захоронение участников СВО" [level=3] [ref=e73]
+              - paragraph [ref=e74]: Оказываем содействие в организации воинских похорон, помогаем с оформлением льгот и почестей.
+              - 'link "Подробнее: Захоронение участников СВО" [ref=e76] [cursor=pointer]':
+                - /url: "#"
+                - text: Подробнее →
+          - article [ref=e77]:
+            - generic [ref=e79]:
+              - heading "Перевозка тела" [level=3] [ref=e80]
+              - paragraph [ref=e81]: Помогаем с транспортировкой тела в другие города и регионы с соблюдением всех требований.
+              - 'link "Подробнее: Перевозка тела" [ref=e83] [cursor=pointer]':
+                - /url: "#"
+                - text: Подробнее →
+          - article [ref=e84]:
+            - generic [ref=e86]:
+              - heading "Кремация" [level=3] [ref=e87]
+              - paragraph [ref=e88]: Помогаем с организацией кремации умершего, предоставляем урны для праха.
+              - 'link "Подробнее: Кремация" [ref=e90] [cursor=pointer]':
+                - /url: "#"
+                - text: Подробнее →
+          - article [ref=e91]:
+            - generic [ref=e93]:
+              - heading "Памятники и ограды" [level=3] [ref=e94]
+              - paragraph [ref=e95]: Изготавливаем и устанавливаем памятники из гранита, мрамора. Собственное производство оград.
+              - 'link "Подробнее: Памятники и ограды" [ref=e97] [cursor=pointer]':
+                - /url: "#"
+                - text: Подробнее →
+          - article [ref=e98]:
+            - generic [ref=e100]:
+              - heading "Благоустройство мест захоронения" [level=3] [ref=e101]
+              - paragraph [ref=e102]: Укладка плитки, установка скамеек, столиков, цветников и другие работы по благоустройству.
+              - 'link "Подробнее: Благоустройство мест захоронения" [ref=e104] [cursor=pointer]':
+                - /url: "#"
+                - text: Подробнее →
+      - generic [ref=e109]:
+        - generic [ref=e110]:
+          - heading "Вычитаем пособие на погребение из стоимости услуг" [level=2] [ref=e111]
+          - paragraph [ref=e112]: Государство предоставляет пособие на погребение. Мы поможем вам с оформлением необходимых документов и сразу вычтем эту сумму из итогового счета, чтобы уменьшить ваши расходы.
+        - group [ref=e114]:
+          - img [ref=e117]
+          - generic [ref=e118]: 9165 ₽
+          - generic [ref=e119]: Пособие на погребение
+      - separator [ref=e120]
+      - generic [ref=e126]:
+        - heading "Рассчитайте предварительную стоимость похорон" [level=2] [ref=e127]
+        - paragraph [ref=e128]: Чтобы вы могли спланировать бюджет, мы подготовили калькулятор. Он поможет узнать ориентировочную стоимость услуг.
+        - paragraph [ref=e129]: Ответьте на несколько вопросов, и наш специалист свяжется с вами, чтобы бесплатно проконсультировать и озвучить точный расчет.
+        - button "Открыть калькулятор стоимости похорон" [ref=e131] [cursor=pointer]: Перейти к расчету
+      - generic [ref=e132]: Загружаем отзывы...
+      - generic [ref=e135]:
+        - heading "Свяжитесь с нами" [level=2] [ref=e136]
+        - paragraph [ref=e137]: Мы находимся на связи круглосуточно и готовы ответить на все ваши вопросы.
+        - generic [ref=e138]:
+          - generic [ref=e139]:
+            - generic [ref=e140]:
+              - heading "Телефон" [level=3] [ref=e141]
+              - link "+7 (920) 366-36-36" [ref=e142] [cursor=pointer]:
+                - /url: tel:+79203663636
+            - generic [ref=e143]:
+              - heading "Адреса офисов" [level=3] [ref=e144]
+              - generic [ref=e145]:
+                - heading "г. Шуя, Ул. Красноармейский переулок, 6" [level=4] [ref=e146]
+                - paragraph [ref=e147]: (2 минуты от ЦРБ)
+                - paragraph [ref=e148]: "График работы: Пн-Вс, с 8:00 до 17:00"
+              - generic [ref=e149]:
+                - heading "г. Шуя, Ул. Фабричная, 27" [level=4] [ref=e150]
+                - paragraph [ref=e151]: (ритуальный зал)
+                - paragraph [ref=e152]: "График работы: Пн-Вс, с 8:00 до 17:00"
+              - generic [ref=e153]:
+                - heading "г. Шуя, Ул. Генерала Белова, 33" [level=4] [ref=e154]
+                - paragraph [ref=e155]: "График работы: Пн-Вс, с 8:00 до 17:00"
+          - generic [ref=e158]: Карта загрузится при прокрутке
+  - contentinfo [ref=e160]:
+    - generic [ref=e161]:
+      - generic [ref=e162]:
+        - generic [ref=e163]:
+          - heading "Ритуальная служба Век" [level=2] [ref=e164]
+          - paragraph [ref=e165]: Помощь в трудную минуту. Организация достойного прощания с вашими близкими.
+        - generic [ref=e166]:
+          - heading "Контакты" [level=3] [ref=e167]
+          - paragraph [ref=e168]:
+            - link "+7 (920) 366-36-36" [ref=e169] [cursor=pointer]:
+              - /url: tel:79203663636
+          - paragraph [ref=e170]: "Телефон: Круглосуточно"
+          - paragraph [ref=e171]: "Офис: Пн-Вс, с 8:00 до 17:00"
+        - generic [ref=e172]:
+          - heading "Наши офисы" [level=3] [ref=e173]
+          - paragraph [ref=e175]:
+            - text: Ул. Красноармейский переулок, 6
+            - generic [ref=e176]: (2 минуты от ЦРБ)
+          - paragraph [ref=e178]:
+            - text: Ул. Фабричная, 27
+            - generic [ref=e179]: (ритуальный зал)
+          - paragraph [ref=e181]: Ул. Генерала Белова, 33
+      - generic [ref=e182]:
+        - paragraph [ref=e184]:
+          - text: "ИП Шадрина Лариса Геннадьевна · ИНН: 370601474199 · ОГРНИП: 324370000006824 ·"
+          - link "Политика конфиденциальности" [ref=e185] [cursor=pointer]:
+            - /url: /privacy/
+        - paragraph [ref=e187]: © 2025 Ритуальная служба Век. Все права защищены.
