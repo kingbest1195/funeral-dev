@@ -25,7 +25,7 @@ const ServiceCard = ({
 
   return (
     <article className={cardClasses}>
-      <div className="service-card__icon" aria-label={`Иконка услуги: ${title}`}>
+      <div className="service-card__icon" aria-hidden="true">
         {iconName ? (
           <Icon name={iconName} size={40} />
         ) : icon && typeof icon === 'object' && icon.type === 'svg' ? (
