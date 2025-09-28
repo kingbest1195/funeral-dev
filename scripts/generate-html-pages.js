@@ -8,6 +8,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { COMPANY_INFO } from "../src/helpers/index.js";
+import { JSON_LD_SCHEMAS } from "../src/constants/json-ld-schemas.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, "..");
@@ -103,6 +104,19 @@ const PAGES_CONFIG = {
     canonicalUrl: "https://ритуал-век.рф/uslugi/",
     dataPage: "uslugi",
     preloadHeroImage: false,
+    jsonLd: JSON_LD_SCHEMAS.uslugi,
+  },
+  'organizatsiya-pohoron': {
+    title: `Организация похорон в Шуе под ключ – Ритуальная служба "Век"`,
+    description: `Профессиональная организация похорон в Шуе от службы "Век". Полный комплекс услуг: от оформления документов до проведения поминального обеда. Поможем достойно проститься с близким. Круглосуточная деликатная поддержка.`,
+    keywords: "организация похорон Шуя, ритуальные услуги под ключ, похоронная служба Шуя, оформление документов умершего",
+    ogTitle: `Организация похорон в Шуе под ключ – Ритуальная служба "Век"`,
+    ogDescription: `Профессиональная организация похорон в Шуе от службы "Век". Полный комплекс услуг. Круглосуточная поддержка.`,
+    ogImage: `https://ритуал-век.рф${OG_IMAGES.funeralHall}`,
+    canonicalUrl: "https://ритуал-век.рф/uslugi/organizatsiya-pohoron/",
+    dataPage: "organizatsiya-pohoron",
+    preloadHeroImage: false,
+    jsonLd: JSON_LD_SCHEMAS['organizatsiya-pohoron'],
   },
   privacy: {
     title: `Политика конфиденциальности | ${COMPANY_INFO.name}`,
@@ -223,6 +237,23 @@ const generateImagePreload = (shouldPreload) => {
     ).join("\n    ")}`;
 };
 
+/**
+ * Создает JSON-LD структурированные данные для включения в статический HTML
+ * @param {Object} jsonLdData - JSON-LD данные для страницы
+ * @returns {string} - HTML строка с JSON-LD скриптом
+ */
+const generateJsonLdScript = (jsonLdData) => {
+  if (!jsonLdData) return "";
+
+  const jsonString = JSON.stringify(jsonLdData, null, 2);
+
+  return `
+    <!-- JSON-LD структурированные данные -->
+    <script type="application/ld+json">
+${jsonString}
+    </script>`;
+};
+
 // ОСНОВНАЯ ФУНКЦИЯ ГЕНЕРАЦИИ
 // =========================
 
@@ -242,6 +273,7 @@ function generateHtmlTemplate(pageConfig) {
     canonicalUrl,
     dataPage,
     preloadHeroImage,
+    jsonLd,
   } = pageConfig;
 
   // Подготавливаем данные для генерации
@@ -264,6 +296,7 @@ function generateHtmlTemplate(pageConfig) {
 
     ${generateExternalResources()}
     ${generateImagePreload(preloadHeroImage)}
+    ${generateJsonLdScript(jsonLd)}
   </head>
   <body>
     <div id="root" data-page="${dataPage}"></div>
@@ -288,8 +321,17 @@ function generateHtmlPages() {
       console.log(`✅ Создан index.html`);
     } else {
       // Остальные страницы создаем в папках
-      const dirPath = path.join(ROOT_DIR, pageName);
-      const filePath = path.join(dirPath, "index.html");
+      let dirPath, filePath;
+
+      if (pageName === 'organizatsiya-pohoron') {
+        // Вложенная страница: uslugi/organizatsiya-pohoron
+        dirPath = path.join(ROOT_DIR, 'uslugi', 'organizatsiya-pohoron');
+        filePath = path.join(dirPath, "index.html");
+      } else {
+        // Обычные страницы
+        dirPath = path.join(ROOT_DIR, pageName);
+        filePath = path.join(dirPath, "index.html");
+      }
 
       // Создаем папку если не существует
       if (!fs.existsSync(dirPath)) {
@@ -297,7 +339,7 @@ function generateHtmlPages() {
       }
 
       fs.writeFileSync(filePath, htmlContent, "utf8");
-      console.log(`✅ Создан ${pageName}/index.html`);
+      console.log(`✅ Создан ${pageName === 'organizatsiya-pohoron' ? 'uslugi/organizatsiya-pohoron' : pageName}/index.html`);
     }
   });
 
