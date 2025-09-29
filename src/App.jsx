@@ -9,6 +9,7 @@ import './styles/main.scss';
 const UslugiPage = React.lazy(() => import('./pages/UslugiPage/UslugiPage.jsx'));
 const PrivacyPage = React.lazy(() => import('./pages/PrivacyPage/PrivacyPage.jsx'));
 const OrganizatsiyaPohoronPage = React.lazy(() => import('./pages/OrganizatsiyaPohoronPage/OrganizatsiyaPohoronPage.jsx'));
+const TransportirovkaUmershegoPage = React.lazy(() => import('./pages/TransportirovkaUmershegoPage/TransportirovkaUmershegoPage.jsx'));
 const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'));
 
 /**
@@ -46,6 +47,12 @@ const App = () => {
         return (
           <Suspense fallback={<PageFallback />}>
             <OrganizatsiyaPohoronPage />
+          </Suspense>
+        );
+      case 'transportirovka-umershego':
+        return (
+          <Suspense fallback={<PageFallback />}>
+            <TransportirovkaUmershegoPage />
           </Suspense>
         );
       default:

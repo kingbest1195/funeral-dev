@@ -28,6 +28,7 @@
 
   &__item {
     @include inline-center;
+
     gap: var(--spacing-1);
     font-size: var(--font-size-base);
     line-height: var(--line-height-normal);
@@ -43,6 +44,7 @@
         margin-left: var(--spacing-2);
         font-size: var(--font-size-lg);
         line-height: 1;
+
         @include inline-center;
       }
     }
@@ -76,6 +78,7 @@
     background-color: var(--color-bg-accent-soft);
     border-radius: var(--border-radius-sm);
     border: var(--border-width-1) solid var(--color-border-light);
+
     @include inline-center;
   }
 }

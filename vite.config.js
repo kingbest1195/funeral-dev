@@ -50,6 +50,7 @@ export default defineConfig({
         main: path.resolve(__dirname, 'index.html'),
         uslugi: path.resolve(__dirname, 'uslugi/index.html'),
         'organizatsiya-pohoron': path.resolve(__dirname, 'uslugi/organizatsiya-pohoron/index.html'),
+        'transportirovka-umershego': path.resolve(__dirname, 'uslugi/transportirovka-umershego/index.html'),
         privacy: path.resolve(__dirname, 'privacy/index.html')
       },
       output: {

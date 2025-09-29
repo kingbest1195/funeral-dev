@@ -62,6 +62,7 @@
 // Заголовки с изображениями
 .data-table__header-content {
   @include center;
+
   gap: var(--spacing-2);
 }
 
@@ -90,6 +91,7 @@
 
 .data-table__price {
   @include center;
+
   flex-direction: column;
   gap: var(--spacing-1);
   padding: var(--spacing-2) 0;
@@ -145,6 +147,34 @@
   }
 }
 
+// Стили для изображений в ячейках таблицы
+.data-table__cell-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: var(--border-radius-md);
+  object-fit: cover;
+  border: var(--border-width-1) solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  display: block;
+}
+
+// Контейнер для изображения с подписью
+.data-table__image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+// Подпись под изображением
+.data-table__image-caption {
+  font-size: var(--font-size-sm);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  text-align: center;
+  line-height: var(--line-height-tight);
+}
+
 @include md-down {
   .data-table__header-cell {
     padding: var(--spacing-3) var(--spacing-4);
@@ -154,5 +184,10 @@
   .data-table__cell {
     padding: var(--spacing-3) var(--spacing-4);
     font-size: var(--font-size-sm);
+  }
+
+  // Квадратные изображения на мобильных
+  .data-table__cell-image {
+    aspect-ratio: 1/1;
   }
 }

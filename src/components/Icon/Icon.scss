@@ -1,9 +1,9 @@
-@import '../../styles/variables.scss';
+@import '../../styles/variables';
 
 .icon {
   display: inline-block;
   vertical-align: middle;
-  fill: currentColor;
+  fill: currentcolor;
   transition: var(--transition-base);
 
   &:hover {

@@ -60,7 +60,9 @@
     position: relative;
     z-index: 2;
     flex: 0 0 auto;
+
     @include center;
+
     width: var(--spacing-16);
     height: var(--spacing-16);
     background: var(--color-accent);

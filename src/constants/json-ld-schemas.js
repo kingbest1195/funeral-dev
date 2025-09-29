@@ -4,7 +4,7 @@
  * Используется как в React компонентах, так и в статическом генераторе HTML
  */
 
-import { SITE_CONFIG, getFullUrl, getOgImageUrl } from "./content.js";
+import { SITE_CONFIG, getFullUrl } from "./content.js";
 
 // Базовая схема LocalBusiness для всех страниц
 const createLocalBusinessSchema = () => ({
@@ -179,10 +179,83 @@ export const ORGANIZATSIYA_POHORON_JSON_LD = {
   },
 };
 
+// JSON-LD для страницы перевозки умерших
+export const TRANSPORTIROVKA_UMERSHEGO_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Перевозка умерших в Шуе и по России",
+  description: "Услуги по перевозке умерших в Шуе и по России (Груз 200). Специализированный ритуальный транспорт (катафалк) для похорон. Бережная и своевременная подача транспорта 24/7. Ритуальная служба \"Век\".",
+  url: getFullUrl("/uslugi/transportirovka-umershego"),
+  mainEntity: {
+    "@type": "Service",
+    serviceType: "Перевозка умерших",
+    name: "Ритуальный транспорт и перевозка умерших",
+    description: "Транспортировка тела усопшего специализированным транспортом в Шуе и по России",
+    serviceOutput: "Транспортировка умерших",
+    serviceAudience: {
+      "@type": "Audience",
+      geographicArea: "Шуя, Ивановская область, Россия",
+    },
+    provider: {
+      "@type": "LocalBusiness",
+      name: SITE_CONFIG.SITE_NAME,
+      url: getFullUrl(),
+      telephone: "+79203663636",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Шуя",
+        addressRegion: "Ивановская область",
+        addressCountry: "RU",
+      },
+      openingHours: "Mo-Su 00:00-24:00",
+    },
+    areaServed: [
+      {
+        "@type": "City",
+        name: "Шуя",
+      },
+      {
+        "@type": "Country",
+        name: "Россия",
+      },
+    ],
+    offers: {
+      "@type": "Offer",
+      priceRange: "5000-25000",
+      priceCurrency: "RUB",
+      availability: "https://schema.org/InStock",
+    },
+  },
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Главная",
+        item: getFullUrl(),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Услуги",
+        item: getFullUrl("/uslugi"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Перевозка умерших",
+        item: getFullUrl("/uslugi/transportirovka-umershego"),
+      },
+    ],
+  },
+};
+
 // Экспорт всех схем для удобного использования
 export const JSON_LD_SCHEMAS = {
   uslugi: USLUGI_JSON_LD,
   'organizatsiya-pohoron': ORGANIZATSIYA_POHORON_JSON_LD,
+  'transportirovka-umershego': TRANSPORTIROVKA_UMERSHEGO_JSON_LD,
   localBusiness: createLocalBusinessSchema,
 };
 

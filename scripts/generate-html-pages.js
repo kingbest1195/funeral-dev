@@ -118,6 +118,18 @@ const PAGES_CONFIG = {
     preloadHeroImage: false,
     jsonLd: JSON_LD_SCHEMAS['organizatsiya-pohoron'],
   },
+  'transportirovka-umershego': {
+    title: `Ритуальный транспорт и перевозка умерших в Шуе – Груз 200 | Служба "Век"`,
+    description: `Услуги по перевозке умерших в Шуе и по России (Груз 200). Специализированный ритуальный транспорт (катафалк) для похорон. Бережная и своевременная подача транспорта 24/7. Ритуальная служба "Век".`,
+    keywords: "перевозка умерших Шуя, ритуальный транспорт, катафалк Шуя, груз 200, транспортировка тела умершего, похоронный транспорт",
+    ogTitle: `Ритуальный транспорт и перевозка умерших в Шуе – Груз 200 | Служба "Век"`,
+    ogDescription: `Услуги по перевозке умерших в Шуе и по России (Груз 200). Специализированный ритуальный транспорт для похорон. Бережная подача транспорта 24/7.`,
+    ogImage: `https://ритуал-век.рф${OG_IMAGES.funeralHall}`,
+    canonicalUrl: "https://ритуал-век.рф/uslugi/transportirovka-umershego/",
+    dataPage: "transportirovka-umershego",
+    preloadHeroImage: false,
+    jsonLd: JSON_LD_SCHEMAS['transportirovka-umershego'],
+  },
   privacy: {
     title: `Политика конфиденциальности | ${COMPANY_INFO.name}`,
     description: `Политика конфиденциальности и обработки персональных данных ${COMPANY_INFO.legalName} в ${COMPANY_INFO.city}. Информация о защите персональных данных.`,
@@ -327,6 +339,10 @@ function generateHtmlPages() {
         // Вложенная страница: uslugi/organizatsiya-pohoron
         dirPath = path.join(ROOT_DIR, 'uslugi', 'organizatsiya-pohoron');
         filePath = path.join(dirPath, "index.html");
+      } else if (pageName === 'transportirovka-umershego') {
+        // Вложенная страница: uslugi/transportirovka-umershego
+        dirPath = path.join(ROOT_DIR, 'uslugi', 'transportirovka-umershego');
+        filePath = path.join(dirPath, "index.html");
       } else {
         // Обычные страницы
         dirPath = path.join(ROOT_DIR, pageName);
@@ -339,7 +355,7 @@ function generateHtmlPages() {
       }
 
       fs.writeFileSync(filePath, htmlContent, "utf8");
-      console.log(`✅ Создан ${pageName === 'organizatsiya-pohoron' ? 'uslugi/organizatsiya-pohoron' : pageName}/index.html`);
+      console.log(`✅ Создан ${pageName === 'organizatsiya-pohoron' ? 'uslugi/organizatsiya-pohoron' : pageName === 'transportirovka-umershego' ? 'uslugi/transportirovka-umershego' : pageName}/index.html`);
     }
   });
 

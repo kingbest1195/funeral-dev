@@ -48,6 +48,10 @@ const PAGE_SETTINGS = {
     priority: '0.8',
     changefreq: 'monthly'
   },
+  '/uslugi/transportirovka-umershego/': {
+    priority: '0.8',
+    changefreq: 'monthly'
+  },
   '/privacy/': {
     priority: '0.3',
     changefreq: 'yearly'
@@ -121,6 +125,7 @@ class SitemapGenerator {
       '/',
       '/uslugi/',
       '/uslugi/organizatsiya-pohoron/',
+      '/uslugi/transportirovka-umershego/',
       '/privacy/'
     ];
 
