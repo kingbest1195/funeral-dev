@@ -454,6 +454,27 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     }
   };
 
+  // Обработка навигации с якорями
+  const handleAnchorClick = (e, hash) => {
+    e.preventDefault();
+    const isHomePage = window.location.pathname === "/" || window.location.pathname === "/index.html";
+
+    if (isHomePage) {
+      // Если на главной — просто скроллим
+      const target = document.querySelector(hash);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.history.pushState(null, "", hash);
+      }
+    } else {
+      // Если на другой странице — переходим на главную с хешем
+      window.location.href = `/${hash}`;
+    }
+
+    // Закрываем мобильное меню если открыто
+    setIsMenuOpen(false);
+  };
+
   React.useEffect(() => {
     const onScroll = () => {
       setIsHeaderScrolled(window.scrollY > 0);
@@ -461,6 +482,42 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Обработка хеша при загрузке страницы
+  React.useEffect(() => {
+    const scrollToHashElement = () => {
+      const hash = window.location.hash;
+      if (!hash) return;
+
+      // Пытаемся найти элемент несколько раз с увеличивающейся задержкой
+      let attempts = 0;
+      const maxAttempts = 10;
+
+      const tryScroll = () => {
+        const target = document.querySelector(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+
+        // Если элемент не найден и еще есть попытки, пробуем снова
+        attempts++;
+        if (attempts < maxAttempts) {
+          setTimeout(tryScroll, 100);
+        }
+      };
+
+      // Начинаем с небольшой задержки для рендера
+      setTimeout(tryScroll, 100);
+    };
+
+    // Выполняем при загрузке
+    scrollToHashElement();
+
+    // Также слушаем изменения хеша
+    window.addEventListener('hashchange', scrollToHashElement);
+    return () => window.removeEventListener('hashchange', scrollToHashElement);
   }, []);
 
   // Блокировка скролла и закрытие на Escape / ресайз
@@ -563,13 +620,13 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
                   <a href="/uslugi/">Услуги</a>
                 </li>
                 <li>
-                  <a href="#benefits">Почему мы</a>
+                  <a href="#benefits" onClick={(e) => handleAnchorClick(e, "#benefits")}>Почему мы</a>
                 </li>
                 <li>
-                  <a href="#stats">О компании</a>
+                  <a href="#stats" onClick={(e) => handleAnchorClick(e, "#stats")}>О компании</a>
                 </li>
                 <li>
-                  <a href="#contacts">Контакты</a>
+                  <a href="#contacts" onClick={(e) => handleAnchorClick(e, "#contacts")}>Контакты</a>
                 </li>
               </ul>
             </nav>
@@ -678,17 +735,17 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
                   </a>
                 </li>
                 <li>
-                  <a href="#benefits" onClick={() => setIsMenuOpen(false)}>
+                  <a href="#benefits" onClick={(e) => handleAnchorClick(e, "#benefits")}>
                     Почему мы
                   </a>
                 </li>
                 <li>
-                  <a href="#stats" onClick={() => setIsMenuOpen(false)}>
+                  <a href="#stats" onClick={(e) => handleAnchorClick(e, "#stats")}>
                     О компании
                   </a>
                 </li>
                 <li>
-                  <a href="#contacts" onClick={() => setIsMenuOpen(false)}>
+                  <a href="#contacts" onClick={(e) => handleAnchorClick(e, "#contacts")}>
                     Контакты
                   </a>
                 </li>

@@ -10,6 +10,10 @@ const UslugiPage = React.lazy(() => import('./pages/UslugiPage/UslugiPage.jsx'))
 const PrivacyPage = React.lazy(() => import('./pages/PrivacyPage/PrivacyPage.jsx'));
 const OrganizatsiyaPohoronPage = React.lazy(() => import('./pages/OrganizatsiyaPohoronPage/OrganizatsiyaPohoronPage.jsx'));
 const TransportirovkaUmershegoPage = React.lazy(() => import('./pages/TransportirovkaUmershegoPage/TransportirovkaUmershegoPage.jsx'));
+const BlagoustroystvomMogilPage = React.lazy(() => import('./pages/BlagoustroystvomMogilPage/BlagoustroystvomMogilPage.jsx'));
+const KrematsiyaPage = React.lazy(() => import('./pages/KrematsiyaPage/KrematsiyaPage.jsx'));
+const PamyatnikiOgradyPage = React.lazy(() => import('./pages/PamyatnikiOgradyPage/PamyatnikiOgradyPage.jsx'));
+const ZahoronenieUchastnikovSVOPage = React.lazy(() => import('./pages/ZahoronenieUchastnikovSVOPage/ZahoronenieUchastnikovSVOPage.jsx'));
 const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'));
 
 /**
@@ -53,6 +57,30 @@ const App = () => {
         return (
           <Suspense fallback={<PageFallback />}>
             <TransportirovkaUmershegoPage />
+          </Suspense>
+        );
+      case 'blagoustroystvo-mogil':
+        return (
+          <Suspense fallback={<PageFallback />}>
+            <BlagoustroystvomMogilPage />
+          </Suspense>
+        );
+      case 'krematsiya':
+        return (
+          <Suspense fallback={<PageFallback />}>
+            <KrematsiyaPage />
+          </Suspense>
+        );
+      case 'pamyatniki-ogrady':
+        return (
+          <Suspense fallback={<PageFallback />}>
+            <PamyatnikiOgradyPage />
+          </Suspense>
+        );
+      case 'zahoronenie-uchastnikov-svo':
+        return (
+          <Suspense fallback={<PageFallback />}>
+            <ZahoronenieUchastnikovSVOPage />
           </Suspense>
         );
       default:

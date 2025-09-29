@@ -17,7 +17,7 @@ export const getCurrentPageType = () => {
   const pageType = rootElement?.getAttribute('data-page');
 
   // Валидация типа страницы
-  const validPageTypes = ['home', 'uslugi', 'privacy', 'organizatsiya-pohoron', 'transportirovka-umershego'];
+  const validPageTypes = ['home', 'uslugi', 'privacy', 'organizatsiya-pohoron', 'transportirovka-umershego', 'blagoustroystvo-mogil', 'krematsiya', 'pamyatniki-ogrady', 'zahoronenie-uchastnikov-svo'];
 
   if (!pageType || !validPageTypes.includes(pageType)) {
     console.warn(`Invalid page type: ${pageType}. Falling back to 'home'.`);
@@ -85,6 +85,26 @@ export const getPageConfig = (pageType) => {
     'transportirovka-umershego': {
       path: '/uslugi/transportirovka-umershego',
       title: 'Ритуальный транспорт и перевозка умерших в Шуе – Груз 200 | Служба "Век"',
+      isMainPage: false
+    },
+    'blagoustroystvo-mogil': {
+      path: '/uslugi/blagoustroystvo-mogil',
+      title: 'Благоустройство могил и мест захоронения в Шуе | Ритуальная служба "Век"',
+      isMainPage: false
+    },
+    'krematsiya': {
+      path: '/uslugi/krematsiya',
+      title: 'Организация кремации в Шуе – Услуги крематория | Служба "Век"',
+      isMainPage: false
+    },
+    'pamyatniki-ogrady': {
+      path: '/uslugi/pamyatniki-ogrady',
+      title: 'Памятники и ограды от производителя в Шуе – Заказать | Ритуальная служба "Век"',
+      isMainPage: false
+    },
+    'zahoronenie-uchastnikov-svo': {
+      path: '/uslugi/zahoronenie-uchastnikov-svo',
+      title: 'Организация похорон участников СВО в Шуе – Воинские почести | Служба "Век"',
       isMainPage: false
     }
   };

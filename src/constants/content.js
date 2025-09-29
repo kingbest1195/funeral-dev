@@ -67,12 +67,12 @@ export const SERVICES_DATA = {
         viewBox: "0 0 24 24",
         path: "M4 4h16l-2 6H6L4 4zm2 8h12l-2 6H8l-2-6zm8-6v12M8 6l8 12M16 6L8 18",
       },
-      link: "#",
+      link: "/uslugi/zahoronenie-uchastnikov-svo/",
       ariaLabel: "Подробнее: Захоронение участников СВО",
     },
     {
       id: 3,
-      title: "Перевозка тела",
+      title: "Транспортировка умершего",
       description:
         "Помогаем с транспортировкой тела в другие города и регионы с соблюдением всех требований.",
       icon: {
@@ -80,7 +80,7 @@ export const SERVICES_DATA = {
         viewBox: "0 0 24 24",
         path: "M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0 M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0 M5 17H3v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0H9",
       },
-      link: "#",
+      link: "/uslugi/transportirovka-umershego/",
       ariaLabel: "Подробнее: Перевозка тела",
     },
     {
@@ -93,7 +93,7 @@ export const SERVICES_DATA = {
         viewBox: "0 0 24 24",
         path: "M12 3v18M19 12a7 7 0 1 1-14 0 7 7 0 0 1 14 0z",
       },
-      link: "#",
+      link: "/uslugi/krematsiya/",
       ariaLabel: "Подробнее: Кремация",
     },
     {
@@ -106,7 +106,7 @@ export const SERVICES_DATA = {
         viewBox: "0 0 24 24",
         path: "M12 2L8 6v16h8V6l-4-4zm0 2l2 2v14h-4V6l2-2zm-6 8h4v2H6v-2zm0 4h4v2H6v-2zm12-4h-4v2h4v-2zm0 4h-4v2h4v-2zm-6-8h0m0 4h0m0 4h0",
       },
-      link: "#",
+      link: "/uslugi/pamyatniki-ogrady/",
       ariaLabel: "Подробнее: Памятники и ограды",
     },
     {
@@ -119,7 +119,7 @@ export const SERVICES_DATA = {
         viewBox: "0 0 24 24",
         path: "M12 2l8 18H4l8-18zM12 8v8M8 18h8",
       },
-      link: "#",
+      link: "/uslugi/blagoustroystvo-mogil/",
       ariaLabel: "Подробнее: Благоустройство мест захоронения",
     },
   ],

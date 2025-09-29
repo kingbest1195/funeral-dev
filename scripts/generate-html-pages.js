@@ -130,6 +130,54 @@ const PAGES_CONFIG = {
     preloadHeroImage: false,
     jsonLd: JSON_LD_SCHEMAS['transportirovka-umershego'],
   },
+  'blagoustroystvo-mogil': {
+    title: `Благоустройство могил и мест захоронения в Шуе | Ритуальная служба "Век"`,
+    description: `Услуги по благоустройству могил в Шуе. Укладка плитки, установка цоколя, оград, памятников. Создание мемориальных комплексов. Уход за захоронениями. Гарантия качества.`,
+    keywords: "благоустройство могил Шуя, укладка плитки на могилу, установка цоколя, ограды для могил, памятники Шуя, мемориальные комплексы, уход за захоронениями",
+    ogTitle: `Благоустройство могил и мест захоронения в Шуе | Ритуальная служба "Век"`,
+    ogDescription: `Услуги по благоустройству могил в Шуе. Укладка плитки, установка цоколя, оград, памятников. Создание мемориальных комплексов.`,
+    ogImage: `https://ритуал-век.рф${OG_IMAGES.funeralHall}`,
+    canonicalUrl: "https://ритуал-век.рф/uslugi/blagoustroystvo-mogil/",
+    dataPage: "blagoustroystvo-mogil",
+    preloadHeroImage: false,
+    jsonLd: JSON_LD_SCHEMAS['blagoustroystvo-mogil'],
+  },
+  'krematsiya': {
+    title: `Организация кремации в Шуе – Услуги крематория | Служба "Век"`,
+    description: `Полная организация кремации в Шуе от ритуальной службы "Век". Помощь в оформлении документов, проведение прощания, доставка праха. Узнайте стоимость и порядок процедуры. Круглосуточная поддержка.`,
+    keywords: "кремация Шуя, организация кремации, услуги крематория, помощь с документами для кремации, урна для праха Шуя, прощание перед кремацией",
+    ogTitle: `Организация кремации в Шуе – Услуги крематория | Служба "Век"`,
+    ogDescription: `Полная организация кремации в Шуе от ритуальной службы "Век". Помощь в оформлении документов, проведение прощания, доставка праха.`,
+    ogImage: `https://ритуал-век.рф${OG_IMAGES.funeralHall}`,
+    canonicalUrl: "https://ритуал-век.рф/uslugi/krematsiya/",
+    dataPage: "krematsiya",
+    preloadHeroImage: false,
+    jsonLd: JSON_LD_SCHEMAS['krematsiya'],
+  },
+  'pamyatniki-ogrady': {
+    title: `Памятники и ограды от производителя в Шуе – Заказать | Ритуальная служба "Век"`,
+    description: `Изготовление и установка гранитных и мраморных памятников, оград и мемориальных комплексов в Шуе. Собственное производство. Гарантия качества, доступные цены. Закажите бесплатный 3D-макет.`,
+    keywords: "памятники Шуя, ограды Шуя, изготовление памятников, гранитные памятники, мраморные памятники, мемориальные комплексы, установка памятников, собственное производство",
+    ogTitle: `Памятники и ограды от производителя в Шуе – Заказать | Ритуальная служба "Век"`,
+    ogDescription: `Изготовление и установка памятников, оград и мемориальных комплексов в Шуе. Собственное производство, гарантия качества.`,
+    ogImage: `https://ритуал-век.рф${OG_IMAGES.funeralHall}`,
+    canonicalUrl: "https://ритуал-век.рф/uslugi/pamyatniki-ogrady/",
+    dataPage: "pamyatniki-ogrady",
+    preloadHeroImage: false,
+    jsonLd: JSON_LD_SCHEMAS['pamyatniki-ogrady'],
+  },
+  'zahoronenie-uchastnikov-svo': {
+    title: `Организация похорон участников СВО в Шуе – Воинские почести | Служба "Век"`,
+    description: `Помощь в организации похорон участников и ветеранов СВО в Шуе. Полное сопровождение: оформление льгот, взаимодействие с военкоматом, организация воинских почестей. Достойное прощание с героем.`,
+    keywords: "похороны участников СВО, захоронение военнослужащих, воинские почести Шуя, похороны ветеранов СВО, организация похорон героев, военные похороны, льготы на погребение военных",
+    ogTitle: `Организация похорон участников СВО в Шуе – Воинские почести | Служба "Век"`,
+    ogDescription: `Организация похорон участников СВО с воинскими почестями в Шуе. Полное сопровождение, оформление льгот, взаимодействие с военкоматом.`,
+    ogImage: `https://ритуал-век.рф${OG_IMAGES.funeralHall}`,
+    canonicalUrl: "https://ритуал-век.рф/uslugi/zahoronenie-uchastnikov-svo/",
+    dataPage: "zahoronenie-uchastnikov-svo",
+    preloadHeroImage: false,
+    jsonLd: JSON_LD_SCHEMAS['zahoronenie-uchastnikov-svo'],
+  },
   privacy: {
     title: `Политика конфиденциальности | ${COMPANY_INFO.name}`,
     description: `Политика конфиденциальности и обработки персональных данных ${COMPANY_INFO.legalName} в ${COMPANY_INFO.city}. Информация о защите персональных данных.`,
@@ -342,6 +390,22 @@ function generateHtmlPages() {
       } else if (pageName === 'transportirovka-umershego') {
         // Вложенная страница: uslugi/transportirovka-umershego
         dirPath = path.join(ROOT_DIR, 'uslugi', 'transportirovka-umershego');
+        filePath = path.join(dirPath, "index.html");
+      } else if (pageName === 'blagoustroystvo-mogil') {
+        // Вложенная страница: uslugi/blagoustroystvo-mogil
+        dirPath = path.join(ROOT_DIR, 'uslugi', 'blagoustroystvo-mogil');
+        filePath = path.join(dirPath, "index.html");
+      } else if (pageName === 'krematsiya') {
+        // Вложенная страница: uslugi/krematsiya
+        dirPath = path.join(ROOT_DIR, 'uslugi', 'krematsiya');
+        filePath = path.join(dirPath, "index.html");
+      } else if (pageName === 'pamyatniki-ogrady') {
+        // Вложенная страница: uslugi/pamyatniki-ogrady
+        dirPath = path.join(ROOT_DIR, 'uslugi', 'pamyatniki-ogrady');
+        filePath = path.join(dirPath, "index.html");
+      } else if (pageName === 'zahoronenie-uchastnikov-svo') {
+        // Вложенная страница: uslugi/zahoronenie-uchastnikov-svo
+        dirPath = path.join(ROOT_DIR, 'uslugi', 'zahoronenie-uchastnikov-svo');
         filePath = path.join(dirPath, "index.html");
       } else {
         // Обычные страницы

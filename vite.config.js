@@ -51,6 +51,10 @@ export default defineConfig({
         uslugi: path.resolve(__dirname, 'uslugi/index.html'),
         'organizatsiya-pohoron': path.resolve(__dirname, 'uslugi/organizatsiya-pohoron/index.html'),
         'transportirovka-umershego': path.resolve(__dirname, 'uslugi/transportirovka-umershego/index.html'),
+        'blagoustroystvo-mogil': path.resolve(__dirname, 'uslugi/blagoustroystvo-mogil/index.html'),
+        'krematsiya': path.resolve(__dirname, 'uslugi/krematsiya/index.html'),
+        'pamyatniki-ogrady': path.resolve(__dirname, 'uslugi/pamyatniki-ogrady/index.html'),
+        'zahoronenie-uchastnikov-svo': path.resolve(__dirname, 'uslugi/zahoronenie-uchastnikov-svo/index.html'),
         privacy: path.resolve(__dirname, 'privacy/index.html')
       },
       output: {

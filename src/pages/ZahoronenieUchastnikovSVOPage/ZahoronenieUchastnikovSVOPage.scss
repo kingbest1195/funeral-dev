@@ -1,0 +1,157 @@
+// =================
+// ZAHORONENIE UCHASTNIKOV SVO PAGE STYLES
+// =================
+
+@use "@/styles/mixins" as *;
+
+// Страница-контейнер без дополнительных стилей
+// Все стили находятся в компонентах секций
+
+// Секция "Организация воинских похорон включает"
+.svo-services {
+  padding: var(--spacing-20) 0;
+
+  &__title {
+    text-align: center;
+    margin-bottom: var(--spacing-6);
+  }
+
+  &__description {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-secondary);
+    text-align: center;
+    max-width: 50rem;
+    margin: 0 auto var(--spacing-16);
+  }
+}
+
+// Секция "Государственные гарантии и компенсации"
+.svo-guarantees {
+  padding: var(--spacing-20) 0;
+
+  &__title {
+    text-align: center;
+    margin-bottom: var(--spacing-6);
+  }
+
+  &__description {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-secondary);
+    text-align: center;
+    max-width: 50rem;
+    margin: 0 auto var(--spacing-16);
+  }
+
+  &__content {
+    margin-bottom: var(--spacing-12);
+  }
+
+  &__subtitle {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-6);
+    padding-bottom: var(--spacing-3);
+    border-bottom: var(--border-width-2) solid var(--color-accent);
+  }
+
+  &__note {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    font-style: italic;
+    text-align: left;
+    padding: var(--spacing-6);
+    background: var(--color-bg-primary);
+    border-radius: var(--border-radius-lg);
+    border-left: var(--border-width-4) solid var(--color-accent);
+  }
+}
+
+// Адаптивность для планшетов
+@include lg-down {
+  .svo-services {
+    padding: var(--spacing-16) 0;
+
+    &__title {
+      margin-bottom: var(--spacing-10);
+    }
+
+    &__description {
+      font-size: var(--font-size-base);
+      margin-bottom: var(--spacing-12);
+    }
+  }
+
+  .svo-guarantees {
+    padding: var(--spacing-16) 0;
+
+    &__title {
+      margin-bottom: var(--spacing-10);
+    }
+
+    &__description {
+      font-size: var(--font-size-base);
+      margin-bottom: var(--spacing-12);
+    }
+
+    &__content {
+      margin-bottom: var(--spacing-10);
+    }
+
+    &__subtitle {
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--spacing-5);
+    }
+
+    &__note {
+      font-size: var(--font-size-sm);
+      padding: var(--spacing-5);
+    }
+  }
+}
+
+// Адаптивность для мобильных
+@include md-down {
+  .svo-services {
+    padding: var(--spacing-12) 0;
+
+    &__title {
+      margin-bottom: var(--spacing-8);
+    }
+
+    &__description {
+      font-size: var(--font-size-sm);
+      margin-bottom: var(--spacing-10);
+    }
+  }
+
+  .svo-guarantees {
+    padding: var(--spacing-12) 0;
+
+    &__title {
+      margin-bottom: var(--spacing-8);
+    }
+
+    &__description {
+      font-size: var(--font-size-sm);
+      margin-bottom: var(--spacing-10);
+    }
+
+    &__content {
+      margin-bottom: var(--spacing-8);
+    }
+
+    &__subtitle {
+      font-size: var(--font-size-base);
+      margin-bottom: var(--spacing-4);
+    }
+
+    &__note {
+      font-size: var(--font-size-xs);
+      padding: var(--spacing-4);
+    }
+  }
+}

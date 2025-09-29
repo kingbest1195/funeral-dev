@@ -25,4 +25,12 @@ export const SERVICE_ICON_MAPPING = {
   107: 'hearse-svgrepo-com', // Перевозка
   108: 'grave-svgrepo-com', // Погребение
   109: 'restaurant-dish-svgrepo-com', // Организация поминок
+
+  // Услуги со страницы "Кремация"
+  201: 'telephone-svgrepo-com', // Консультация
+  202: 'file-svgrepo-com', // Оформление документов
+  203: 'wreath-easter-svgrepo-com', // Подбор ритуальных принадлежностей
+  204: 'suit-clothes-svgrepo-com', // Подготовка тела
+  205: 'church-svgrepo-com', // Организация прощания
+  206: 'hearse-svgrepo-com', // Транспортировка
 };

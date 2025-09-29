@@ -251,11 +251,352 @@ export const TRANSPORTIROVKA_UMERSHEGO_JSON_LD = {
   },
 };
 
+// JSON-LD для страницы благоустройства могил
+export const BLAGOUSTROYSTVO_MOGIL_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Благоустройство могил и мест захоронения в Шуе",
+  description: "Услуги по благоустройству могил в Шуе. Укладка плитки, установка цоколя, оград, памятников. Создание мемориальных комплексов. Уход за захоронениями. Гарантия качества.",
+  url: getFullUrl("/uslugi/blagoustroystvo-mogil"),
+  mainEntity: {
+    "@type": "Service",
+    serviceType: "Благоустройство мест захоронения",
+    name: "Благоустройство могил и мемориальных комплексов",
+    description: "Комплексные услуги по благоустройству мест захоронения: укладка плитки, установка цоколя, оград и памятников",
+    serviceOutput: "Благоустроенное место захоронения",
+    serviceAudience: {
+      "@type": "Audience",
+      geographicArea: "Шуя, Ивановская область",
+    },
+    provider: {
+      "@type": "LocalBusiness",
+      name: SITE_CONFIG.SITE_NAME,
+      url: getFullUrl(),
+      telephone: "+79203663636",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Шуя",
+        addressRegion: "Ивановская область",
+        addressCountry: "RU",
+      },
+      openingHours: "Mo-Su 00:00-24:00",
+    },
+    areaServed: {
+      "@type": "City",
+      name: "Шуя",
+      containedInPlace: {
+        "@type": "AdministrativeArea",
+        name: "Ивановская область",
+      },
+    },
+    offers: [
+      {
+        "@type": "Offer",
+        name: "Укладка плитки на могилу",
+        description: "Облицовка территории тротуарной, гранитной или керамогранитной плиткой",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          priceCurrency: "RUB",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Установка цоколя",
+        description: "Создание прочного фундамента по периметру участка из гранита или бетона",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          priceCurrency: "RUB",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Уход за захоронениями",
+        description: "Разовый и годовой уход за местами захоронения с фотоотчетом",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          priceCurrency: "RUB",
+        },
+      },
+    ],
+  },
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Главная",
+        item: getFullUrl(),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Услуги",
+        item: getFullUrl("/uslugi"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Благоустройство могил",
+        item: getFullUrl("/uslugi/blagoustroystvo-mogil"),
+      },
+    ],
+  },
+};
+
+// JSON-LD для страницы кремации
+export const KREMATSIYA_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Организация кремации в Шуе",
+  description: "Полная организация кремации в Шуе от ритуальной службы \"Век\". Помощь в оформлении документов, проведение прощания, доставка праха. Узнайте стоимость и порядок процедуры. Круглосуточная поддержка.",
+  url: getFullUrl("/uslugi/krematsiya"),
+  mainEntity: {
+    "@type": "Service",
+    serviceType: "Организация кремации",
+    name: "Полная организация кремации",
+    description: "Комплексные услуги по организации кремации: оформление документов, проведение церемонии прощания, доставка праха",
+    serviceOutput: "Организация кремации и доставка праха",
+    serviceAudience: {
+      "@type": "Audience",
+      geographicArea: "Шуя, Ивановская область",
+    },
+    provider: {
+      "@type": "LocalBusiness",
+      name: "Ритуальная служба Век",
+      url: getFullUrl(),
+      telephone: "+79203663636",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Шуя",
+        addressRegion: "Ивановская область",
+        addressCountry: "RU",
+      },
+      openingHours: "Mo-Su 00:00-24:00",
+    },
+    areaServed: {
+      "@type": "City",
+      name: "Шуя",
+      containedInPlace: {
+        "@type": "AdministrativeArea",
+        name: "Ивановская область",
+      },
+    },
+    offers: [
+      {
+        "@type": "Offer",
+        name: "Пакет 'Эконом'",
+        description: "Базовая организация кремации с гробом и оформлением документов",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          price: "25000",
+          priceCurrency: "RUB",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Пакет 'Стандарт'",
+        description: "Организация кремации с залом прощания и урной для праха",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          price: "45000",
+          priceCurrency: "RUB",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Пакет 'Премиум'",
+        description: "Полная организация кремации с сопровождением агента",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          price: "70000",
+          priceCurrency: "RUB",
+        },
+      },
+    ],
+  },
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Главная",
+        item: getFullUrl(),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Услуги",
+        item: getFullUrl("/uslugi"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Кремация",
+        item: getFullUrl("/uslugi/krematsiya"),
+      },
+    ],
+  },
+};
+
+// JSON-LD для страницы памятников и оград
+export const PAMYATNIKI_OGRADY_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Изготовление памятников и оград в Шуе",
+  description: "Изготовление и установка гранитных и мраморных памятников, оград и мемориальных комплексов в Шуе. Собственное производство. Гарантия качества, доступные цены. Закажите бесплатный 3D-макет.",
+  url: getFullUrl("/uslugi/pamyatniki-ogrady"),
+  mainEntity: {
+    "@type": "Service",
+    serviceType: "Изготовление памятников и оград",
+    name: "Памятники и ограды от производителя",
+    description: "Собственное производство памятников из гранита и мрамора, металлических и кованых оград, мемориальных комплексов в Шуе",
+    serviceOutput: "Изготовление и установка памятников",
+    serviceAudience: {
+      "@type": "Audience",
+      geographicArea: "Шуя, Ивановская область",
+    },
+    provider: {
+      "@type": "Organization",
+      name: "Ритуальная служба Век",
+      telephone: "+79203663636",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Шуя",
+        addressRegion: "Ивановская область",
+        addressCountry: "Россия",
+      },
+    },
+    areaServed: {
+      "@type": "City",
+      name: "Шуя",
+      containedInPlace: {
+        "@type": "AdministrativeArea",
+        name: "Ивановская область",
+      },
+    },
+    offers: [
+      {
+        "@type": "Offer",
+        name: "Гранитные памятники",
+        description: "Вертикальные и горизонтальные памятники из карельского гранита",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          priceCurrency: "RUB",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Мраморные памятники",
+        description: "Памятники из уральского мрамора с художественной обработкой",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          priceCurrency: "RUB",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Мемориальные комплексы",
+        description: "Эксклюзивные мемориальные комплексы с полным благоустройством",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          priceCurrency: "RUB",
+        },
+      },
+    ],
+  },
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Главная",
+        item: getFullUrl(),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Услуги",
+        item: getFullUrl("/uslugi"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Памятники и ограды",
+        item: getFullUrl("/uslugi/pamyatniki-ogrady"),
+      },
+    ],
+  },
+};
+
+// JSON-LD для страницы "Захоронение участников СВО"
+export const ZAHORONENIE_UCHASTNIKOV_SVO_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Организация похорон участников и ветеранов боевых действий (СВО)",
+  description:
+    "Помощь в организации похорон участников и ветеранов СВО в Шуе. Полное сопровождение: оформление льгот, взаимодействие с военкоматом, организация воинских почестей.",
+  url: getFullUrl("/uslugi/zahoronenie-uchastnikov-svo"),
+  mainEntity: {
+    "@type": "Service",
+    serviceType: "Организация похорон участников СВО",
+    name: "Похороны участников и ветеранов боевых действий с воинскими почестями",
+    description:
+      "Полное сопровождение при организации похорон участников и ветеранов СВО в Шуе. Оформление документов, взаимодействие с военкоматом, воинские почести, помощь в получении государственных компенсаций.",
+    provider: {
+      "@type": "LocalBusiness",
+      name: SITE_CONFIG.SITE_NAME,
+      url: getFullUrl(),
+      telephone: "+79203663636",
+    },
+    areaServed: {
+      "@type": "City",
+      name: "Шуя",
+    },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "RUB",
+      price: "0",
+      description:
+        "Расходы полностью компенсируются государством согласно Федеральному закону",
+    },
+  },
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Главная",
+        item: getFullUrl(),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Все услуги",
+        item: getFullUrl("/uslugi"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Захоронение участников СВО",
+        item: getFullUrl("/uslugi/zahoronenie-uchastnikov-svo"),
+      },
+    ],
+  },
+};
+
 // Экспорт всех схем для удобного использования
 export const JSON_LD_SCHEMAS = {
   uslugi: USLUGI_JSON_LD,
   'organizatsiya-pohoron': ORGANIZATSIYA_POHORON_JSON_LD,
   'transportirovka-umershego': TRANSPORTIROVKA_UMERSHEGO_JSON_LD,
+  'blagoustroystvo-mogil': BLAGOUSTROYSTVO_MOGIL_JSON_LD,
+  'krematsiya': KREMATSIYA_JSON_LD,
+  'pamyatniki-ogrady': PAMYATNIKI_OGRADY_JSON_LD,
+  'zahoronenie-uchastnikov-svo': ZAHORONENIE_UCHASTNIKOV_SVO_JSON_LD,
   localBusiness: createLocalBusinessSchema,
 };
 

@@ -81,7 +81,12 @@
       "Bash(npm run generate:html:*)",
       "Bash(npm run lint:js:*)",
       "WebFetch(domain:www.svgrepo.com)",
-      "Bash(npm run prepare:yandex:*)"
+      "Bash(npm run prepare:yandex:*)",
+      "Bash(mkdir:*)",
+      "Bash(npx stylelint:*)",
+      "Bash(npm run build:dev:*)",
+      "mcp__playwright__browser_wait_for",
+      "Bash(npm run lint:scss:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,5 +1,6 @@
 import React from "react";
 import { WHY_TRUST_DATA } from "@/constants/content";
+import AdvantagesSection from "@/components/AdvantagesSection/AdvantagesSection";
 import "./WhyTrustSection.scss";
 
 /**
@@ -8,20 +9,14 @@ import "./WhyTrustSection.scss";
  */
 const WhyTrustSection = () => {
   return (
-    <section id="benefits" className="why-trust section bg-light">
-      <div className="container">
-        <h2 className="why-trust__title">{WHY_TRUST_DATA.title}</h2>
-
-        <div className="advantages__grid">
-          {WHY_TRUST_DATA.items.map((advantage) => (
-            <div key={advantage.id} className="advantage-card">
-              <h3 className="advantage-card__title">{advantage.title}</h3>
-              <p className="advantage-card__description">{advantage.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <AdvantagesSection
+      id="benefits"
+      title={WHY_TRUST_DATA.title}
+      advantages={WHY_TRUST_DATA.items}
+      columns={4}
+      sectionClass="section bg-light"
+      className="why-trust"
+    />
   );
 };
 
