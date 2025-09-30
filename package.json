@@ -18,6 +18,7 @@
     "generate:sitemap": "node scripts/generate-sitemap.cjs",
     "prepare:yandex": "node scripts/prepare-for-yandex-cloud.cjs",
     "build:yandex": "npm run build && npm run prepare:yandex",
+    "cdn:clear": "bash scripts/invalidate-cdn-cache.sh",
     "test:quiz": "node tests/test-optimizations.cjs",
     "test:final": "node tests/test-final-improvements.cjs"
   },

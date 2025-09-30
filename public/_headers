@@ -1,0 +1,56 @@
+# Заголовки кеширования для Yandex Cloud Storage
+# Этот файл управляет кешированием статических ресурсов
+
+# Для HTML файлов - минимальное кеширование, всегда проверяем актуальность
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+  Accept-Ranges: none
+
+# Для CSS и JS с хешами - агрессивное кеширование (1 год)
+# Отключаем Range requests для предотвращения ошибки 416
+/assets/*.css
+  Cache-Control: public, max-age=31536000, immutable
+  Accept-Ranges: none
+
+/assets/*.js
+  Cache-Control: public, max-age=31536000, immutable
+  Accept-Ranges: none
+
+# Для изображений с хешами - долгое кеширование
+/assets/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+  Accept-Ranges: none
+
+/assets/*.png
+  Cache-Control: public, max-age=31536000, immutable
+  Accept-Ranges: none
+
+/assets/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+  Accept-Ranges: none
+
+/assets/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+  Accept-Ranges: none
+
+# Для шрифтов - долгое кеширование
+/assets/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+  Accept-Ranges: none
+
+# Для корневых статических файлов (favicon, robots.txt и т.д.)
+/*.ico
+  Cache-Control: public, max-age=86400
+  Accept-Ranges: none
+
+/*.txt
+  Cache-Control: public, max-age=86400
+  Accept-Ranges: none
+
+/*.xml
+  Cache-Control: public, max-age=86400
+  Accept-Ranges: none
+
+/*.webmanifest
+  Cache-Control: public, max-age=86400
+  Accept-Ranges: none

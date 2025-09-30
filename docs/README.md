@@ -36,6 +36,17 @@
 - **[`module-structure/`](templates/module-structure/)** - Структура модуля
 - **[`scss-template/`](templates/scss-template/)** - Шаблон SCSS файла
 
+### 🆘 Troubleshooting (`docs/troubleshooting/`)
+Решение распространенных проблем:
+
+- **[`README.md`](troubleshooting/README.md)** - Обзор всех проблем и быстрые решения
+- **[`fix-416-error.md`](troubleshooting/fix-416-error.md)** - Ошибка HTTP 416 при загрузке CSS
+
+### 🚀 Deploy (`docs/deploy/`)
+Деплой и инфраструктура:
+
+- **[`deploy-plan.md`](deploy/deploy-plan.md)** - Полный план деплоя на Yandex Cloud
+
 ## 🚀 Быстрый старт
 
 ### Создание нового компонента
@@ -104,6 +115,10 @@ npm run dev                  # Запуск dev сервера
 # Сборка
 npm run build               # Production с оптимизацией
 npm run build:dev           # Development без оптимизации
+npm run build:yandex        # Сборка для деплоя на Yandex Cloud
+
+# Деплой
+npm run cdn:clear           # Инвалидация кеша CDN (после деплоя)
 
 # Качество кода
 npm run lint:scss           # Проверка SCSS

@@ -44,6 +44,9 @@ export default defineConfig({
     sourcemap: true,
     minify: 'terser',
     target: 'es2018', // Поддержка современных браузеров для меньшего размера
+    // Настройки для предотвращения ошибки 416 при preload CSS
+    cssCodeSplit: true, // Разделение CSS по чанкам
+    assetsInlineLimit: 0, // Отключаем инлайнинг ассетов для стабильности кеширования
     rollupOptions: {
       // Конфигурация для многостраничного приложения (MPA)
       input: {
@@ -63,6 +66,16 @@ export default defineConfig({
           react: ['react', 'react-dom'],
           // Библиотеки UI (убираем react-router-dom для MPA)
           ui: ['@dr.pogodin/react-helmet', 'swiper', 'imask']
+        },
+        // Стабильные имена файлов для предотвращения конфликтов кеширования
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          // Для CSS используем более предсказуемые имена с хешем содержимого
+          if (/\.(css)$/i.test(assetInfo.name)) {
+            return `assets/[name]-[hash][extname]`;
+          }
+          return `assets/[name]-[hash][extname]`;
         }
       }
     },
