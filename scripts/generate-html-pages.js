@@ -307,7 +307,7 @@ const generateImagePreload = (shouldPreload) => {
     <!-- Preload critical images -->
     ${CRITICAL_IMAGES.map(
       (image) =>
-        `<link rel="preload" href="${image.href}" as="image" type="${image.type}" />`
+        `<link rel="preload" href="${image.href}" as="image" type="${image.type}" fetchpriority="high" />`
     ).join("\n    ")}`;
 };
 
