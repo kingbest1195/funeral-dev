@@ -1,0 +1,128 @@
+# ============================================
+# КОНФИГУРАЦИЯ ДЛЯ ЯНДЕКС SEO ОПТИМИЗАЦИИ
+# ============================================
+# Заполни этот файл и отправь Claude для внедрения изменений
+
+# --- ПРИОРИТЕТ 1 (КРИТИЧНО) - Обязательно заполни ---
+
+yandex_metrika:
+  id: 104326103  # Получить на https://metrika.yandex.ru
+  # Инструкция:
+  # 1. Перейди на https://metrika.yandex.ru
+  # 2. Создай новый счетчик для сайта "ритуал-век.рф"
+  # 3. Скопируй числовой ID счетчика (например: 98765432)
+  # 4. Вставь сюда
+  # Код из яндекса
+  ```html
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104326103', 'ym');
+
+    ym(104326103, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/104326103" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+  ```
+
+og_images:
+  strategy: "use_existing"
+  # Варианты:
+  # - create_new: Нужны новые изображения 1200x630px (рекомендуется)
+  # - use_existing: Использовать имеющиеся фото из проекта
+
+  # Если выбрал create_new - заполни пути ниже:
+  home: "ПУТЬ_ИЛИ_URL или GENERATE_AI"  # Для главной страницы
+  services: "ПУТЬ_ИЛИ_URL или GENERATE_AI"  # Для страницы услуг
+  funeral_hall: "ПУТЬ_ИЛИ_URL или GENERATE_AI"  # Для залов
+  # Если хочешь, чтобы я сгенерировал через AI - напиши "GENERATE_AI"
+
+# --- ПРИОРИТЕТ 2 (ВАЖНО) - Можно заполнить позже ---
+
+yandex_webmaster:
+  verification_code: "614c2088cfa90fbd" 
+  # Инструкция:
+  # 1. Перейди на https://webmaster.yandex.ru
+  # 2. Нажми "Добавить сайт"
+  # 3. Введи: https://ритуал-век.рф
+  # 4. Выбери "Мета-тег" для подтверждения
+  # 5. Скопируй код из content="..." (только то, что внутри кавычек)
+  # 6. Вставь сюда
+  # Код из яндекса
+  ```html
+  <meta name="yandex-verification" content="614c2088cfa90fbd" />
+  ```
+  site_added: false  # Поменяй на true после добавления сайта
+
+yandex_sprav:
+  created: true  # Поменяй на true после создания карточки
+  url: "https://yandex.ru/maps/org/vek/22307782205/?ll=41.376716%2C56.846701&z=16"  # Ссылка на карточку организации (опционально)
+  # Инструкция:
+  # 1. Перейди на https://yandex.ru/sprav
+  # 2. Нажми "Добавить организацию"
+  # 3. Заполни данные:
+  #    - Название: "Ритуальная служба Век"
+  #    - Адрес: Красноармейский переулок, 6, Шуя, Ивановская область
+  #    - Телефон: +7 (920) 366-36-36
+  #    - Режим работы: Круглосуточно (24/7)
+  #    - Категория: Ритуальные услуги
+  # 4. Загрузи минимум 5 фотографий (см. office_photos ниже)
+  # 5. После создания поменяй created на true
+
+office_photos:
+  # Укажи пути к 5 фотографиям высокого качества (минимум 1200x800px):
+  facade: "USE_EXISTING"  # Фасад офиса (есть в проекте)
+  hall_big: "USE_EXISTING"  # Большой зал (есть в проекте)
+  hall_small: "USE_EXISTING"  # Малый зал (есть в проекте)
+  shop: "dist/assets/funeral-market-C7vjvhpu.png" #Используй плагин vite-plugins/html-assets-plugin.js для автоматического получения пути  # Витрина товаров (нужна новая фотография)
+  interior: "dist/assets/office-facade-main-BPzJqPMt.png" #Используй плагин vite-plugins/html-assets-plugin.js для автоматического получения пути # Интерьер офиса (нужна новая фотография)
+  # Варианты:
+  # - "USE_EXISTING" - использовать фото из проекта
+  # - "ПУТЬ_К_ФОТО" - путь к новому файлу
+  # - "URL" - ссылка на фото в интернете
+  # - "GENERATE_AI" - сгенерировать через AI (если нужно)
+
+social_media:
+  # Если есть соцсети - укажи ссылки, если нет - оставь "НЕТ":
+  vk: "НЕТ"  # Пример: https://vk.com/ritual_vek_shuya
+  ok: "НЕТ"  # Пример: https://ok.ru/ritual.vek
+  telegram: "НЕТ"  # Пример: https://t.me/ritual_vek
+  instagram: "НЕТ"  # Пример: https://instagram.com/ritual_vek
+  facebook: "НЕТ"  # Пример: https://facebook.com/ritual.vek
+
+# --- ПРИОРИТЕТ 3 (ОПЦИОНАЛЬНО) ---
+
+content_plan:
+  create_articles: false  # Создать SEO-статьи? (true/false)
+  create_faq: false  # Создать отдельную страницу FAQ? (true/false)
+  turbo_pages: false  # Настроить турбо-страницы Яндекса? (true/false)
+  # Если true - я создам контент-план для статей
+
+# --- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ ---
+
+contact_info:
+  # Проверь корректность данных:
+  company_name: "Ритуальная служба Век"
+  address: "Красноармейский переулок, 6, Шуя, Ивановская область, 155900"
+  phone: "+7 (920) 366-36-36"
+  email: ""  # Если есть - укажи
+  schedule: "Круглосуточно, 24/7"
+
+# Дополнительные примечания или вопросы:
+notes: |
+  Напиши здесь любые вопросы или пожелания по оптимизации.
+  Например:
+  - Нужна ли помощь с получением ID метрики?
+  - Есть ли готовые фотографии для Справочника?
+  - Какие статьи хочешь видеть на сайте?
+
+# ============================================
+# КОНЕЦ КОНФИГУРАЦИИ
+# ============================================
+
+# Сохрани этот файл с заполненными данными и отправь мне
+# Для начала работы достаточно заполнить только ПРИОРИТЕТ 1

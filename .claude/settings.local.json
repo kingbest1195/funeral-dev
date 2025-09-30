@@ -86,7 +86,9 @@
       "Bash(npx stylelint:*)",
       "Bash(npm run build:dev:*)",
       "mcp__playwright__browser_wait_for",
-      "Bash(npm run lint:scss:*)"
+      "Bash(npm run lint:scss:*)",
+      "Bash(cat:*)",
+      "Bash(timeout 60 npm run build:*)"
     ],
     "deny": [],
     "ask": []

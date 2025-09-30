@@ -5,14 +5,15 @@
 // ГЛОБАЛЬНЫЕ SEO КОНСТАНТЫ
 // =================
 export const SITE_CONFIG = {
-  // Основной домен (Punycode для кириллического домена)
-  DOMAIN: "https://xn----7sbhmlqd1btk.xn--p1ai",
+  // Основной домен (кириллический домен для лучшего UX)
+  DOMAIN: "https://ритуал-век.рф",
   SITE_NAME: "Ритуальная служба Век",
 
-  // Базовые шаблоны для Open Graph (абсолютные URL для соцсетей)
+  // Базовые шаблоны для Open Graph (используем существующие изображения)
   OG_IMAGES: {
-    DEFAULT: "https://xn----7sbhmlqd1btk.xn--p1ai/images/og/hero-main.png",
-    SERVICES: "https://xn----7sbhmlqd1btk.xn--p1ai/images/og/funeral-hall.png",
+    DEFAULT: "/assets/office-facade-main-BPzJqPMt.png",
+    SERVICES: "/assets/funeral-hall-big-Bn7S320D.png",
+    FUNERAL_HALL: "/assets/funeral-hall-small-Bous5W0h.png",
   },
 
   // Повторяющиеся текстовые блоки

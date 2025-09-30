@@ -2,10 +2,8 @@ import React from "react";
 import { Helmet } from "@dr.pogodin/react-helmet";
 
 const StructuredData = () => {
-  const baseUrl =
-    typeof window !== "undefined"
-      ? window.location.origin
-      : "https://ритуал-век.рф";
+  // Используем фиксированный домен для избежания конфликтов
+  const baseUrl = "https://ритуал-век.рф";
 
   const schemaData = {
     "@context": "https://schema.org",
@@ -28,6 +26,11 @@ const StructuredData = () => {
       addressRegion: "Ивановская область",
       postalCode: "155900",
       addressCountry: "RU",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 56.840843,
+      longitude: 41.364861,
     },
     areaServed: {
       "@type": "City",

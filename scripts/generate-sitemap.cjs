@@ -17,7 +17,7 @@ function getSiteConfig() {
 
     // Извлекаем DOMAIN из SITE_CONFIG
     const domainMatch = constantsContent.match(/DOMAIN:\s*["']([^"']+)["']/);
-    const baseUrl = domainMatch ? domainMatch[1] : 'https://xn----7sbhmlqd1btk.xn--p1ai';
+    const baseUrl = domainMatch ? domainMatch[1] : 'https://ритуал-век.рф';
 
     return {
       baseUrl,
@@ -27,7 +27,7 @@ function getSiteConfig() {
   } catch (error) {
     console.warn('⚠️  Не удалось импортировать домен из constants, использую дефолтный');
     return {
-      baseUrl: 'https://xn----7sbhmlqd1btk.xn--p1ai',
+      baseUrl: 'https://ритуал-век.рф',
       defaultChangefreq: 'monthly',
       defaultPriority: '0.8'
     };
