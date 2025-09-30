@@ -81,8 +81,8 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "56.8503",
-      longitude: "41.3851",
+      latitude: "56.847504",
+      longitude: "41.378828",
     },
     openingHours: "Mo-Su 08:00-17:00",
     openingHoursSpecification: [

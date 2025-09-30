@@ -29,8 +29,8 @@ const StructuredData = () => {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 56.840843,
-      longitude: 41.364861,
+      latitude: 56.847504,
+      longitude: 41.378828,
     },
     areaServed: {
       "@type": "City",
