@@ -446,8 +446,8 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
   // Обработка клика по телефону для аналитики
   const handlePhoneClick = () => {
     // Здесь можно добавить отправку события в аналитику
-    if (typeof gtag !== "undefined") {
-      gtag("event", "phone_call", {
+    if (typeof window !== "undefined" && typeof window.gtag !== "undefined") {
+      window.gtag("event", "phone_call", {
         event_category: "contact",
         event_label: COMPANY_INFO.phone,
       });
@@ -924,8 +924,8 @@ const MobileCallButton = () => {
   }, []);
 
   const handleClick = () => {
-    if (typeof gtag !== "undefined") {
-      gtag("event", "mobile_call_button", {
+    if (typeof window !== "undefined" && typeof window.gtag !== "undefined") {
+      window.gtag("event", "mobile_call_button", {
         event_category: "contact",
         event_label: COMPANY_INFO.phone,
       });

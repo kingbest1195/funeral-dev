@@ -1,6 +1,5 @@
 import React from "react";
 import { COMPANY_STATS } from "@/constants/content";
-import "./StatsSection.scss";
 
 /**
  * Секция статистики компании на главной странице

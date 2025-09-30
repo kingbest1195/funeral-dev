@@ -25,6 +25,26 @@ const filesToCopy = [
   {
     from: 'uslugi/organizatsiya-pohoron/index.html',
     to: 'uslugi/organizatsiya-pohoron.html'
+  },
+  {
+    from: 'uslugi/transportirovka-umershego/index.html',
+    to: 'uslugi/transportirovka-umershego.html'
+  },
+  {
+    from: 'uslugi/krematsiya/index.html',
+    to: 'uslugi/krematsiya.html'
+  },
+  {
+    from: 'uslugi/pamyatniki-ogrady/index.html',
+    to: 'uslugi/pamyatniki-ogrady.html'
+  },
+  {
+    from: 'uslugi/blagoustroystvo-mogil/index.html',
+    to: 'uslugi/blagoustroystvo-mogil.html'
+  },
+  {
+    from: 'uslugi/zahoronenie-uchastnikov-svo/index.html',
+    to: 'uslugi/zahoronenie-uchastnikov-svo.html'
   }
 ];
 
@@ -64,7 +84,12 @@ function getCanonicalUrl(filePath) {
   const urlMap = {
     'uslugi.html': `${baseUrl}/uslugi/`,
     'privacy.html': `${baseUrl}/privacy/`,
-    'uslugi/organizatsiya-pohoron.html': `${baseUrl}/uslugi/organizatsiya-pohoron/`
+    'uslugi/organizatsiya-pohoron.html': `${baseUrl}/uslugi/organizatsiya-pohoron/`,
+    'uslugi/transportirovka-umershego.html': `${baseUrl}/uslugi/transportirovka-umershego/`,
+    'uslugi/krematsiya.html': `${baseUrl}/uslugi/krematsiya/`,
+    'uslugi/pamyatniki-ogrady.html': `${baseUrl}/uslugi/pamyatniki-ogrady/`,
+    'uslugi/blagoustroystvo-mogil.html': `${baseUrl}/uslugi/blagoustroystvo-mogil/`,
+    'uslugi/zahoronenie-uchastnikov-svo.html': `${baseUrl}/uslugi/zahoronenie-uchastnikov-svo/`
   };
 
   return urlMap[filePath] || baseUrl;
@@ -82,6 +107,11 @@ if (fs.existsSync(sitemapPath)) {
   sitemap = sitemap.replace(/<url>\s*<loc>https:\/\/[^\/]+\/uslugi<\/loc>[\s\S]*?<\/url>/g, '');
   sitemap = sitemap.replace(/<url>\s*<loc>https:\/\/[^\/]+\/privacy<\/loc>[\s\S]*?<\/url>/g, '');
   sitemap = sitemap.replace(/<url>\s*<loc>https:\/\/[^\/]+\/uslugi\/organizatsiya-pohoron<\/loc>[\s\S]*?<\/url>/g, '');
+  sitemap = sitemap.replace(/<url>\s*<loc>https:\/\/[^\/]+\/uslugi\/transportirovka-umershego<\/loc>[\s\S]*?<\/url>/g, '');
+  sitemap = sitemap.replace(/<url>\s*<loc>https:\/\/[^\/]+\/uslugi\/krematsiya<\/loc>[\s\S]*?<\/url>/g, '');
+  sitemap = sitemap.replace(/<url>\s*<loc>https:\/\/[^\/]+\/uslugi\/pamyatniki-ogrady<\/loc>[\s\S]*?<\/url>/g, '');
+  sitemap = sitemap.replace(/<url>\s*<loc>https:\/\/[^\/]+\/uslugi\/blagoustroystvo-mogil<\/loc>[\s\S]*?<\/url>/g, '');
+  sitemap = sitemap.replace(/<url>\s*<loc>https:\/\/[^\/]+\/uslugi\/zahoronenie-uchastnikov-svo<\/loc>[\s\S]*?<\/url>/g, '');
 
   fs.writeFileSync(sitemapPath, sitemap);
   console.log('✅ Sitemap обновлен - оставлены только canonical URLs');

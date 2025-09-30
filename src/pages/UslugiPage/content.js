@@ -31,7 +31,7 @@ import { SITE_CONFIG, getFullUrl, getOgImageUrl } from "@/constants/content.js";
 // SEO данные для страницы услуг
 export const USLUGI_SEO_DATA = {
   title: `Ритуальные услуги${SITE_CONFIG.COMMON_TEXTS.LOCATION}: организация похорон и кремация${SITE_CONFIG.COMMON_TEXTS.SITE_TITLE_SUFFIX}`,
-  description: `Полный комплекс ритуальных услуг от службы \"Век\"${SITE_CONFIG.COMMON_TEXTS.LOCATION}. Организация похорон, кремация, ритуальные залы для прощания, транспорт, магазин товаров. Деликатная помощь и поддержка 24/7. Звоните.`,
+  description: `Полный комплекс ритуальных услуг от службы "Век"${SITE_CONFIG.COMMON_TEXTS.LOCATION}. Организация похорон, кремация, ритуальные залы для прощания, транспорт, магазин товаров. Деликатная помощь и поддержка 24/7. Звоните.`,
   keywords:
     "ритуальные услуги Шуя, организация похорон Шуя, кремация Шуя, прощальные залы, ритуальный магазин, памятники Шуя",
   type: "website",

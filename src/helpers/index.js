@@ -43,7 +43,7 @@ export const createTelLink = (phone) => {
  */
 export const validatePhone = (phone) => {
   const phoneRegex =
-    /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+    /^(\+7|7|8)?[\s-]?\(?[489][0-9]{2}\)?[\s-]?[0-9]{3}[\s-]?[0-9]{2}[\s-]?[0-9]{2}$/;
   return phoneRegex.test(phone);
 };
 
@@ -63,7 +63,7 @@ export const validateEmail = (email) => {
  * @returns {boolean} - Результат валидации
  */
 export const validateName = (name) => {
-  const nameRegex = /^[а-яёА-ЯЁa-zA-Z\s\-]+$/;
+  const nameRegex = /^[а-яёА-ЯЁa-zA-Z\s-]+$/;
   return nameRegex.test(name) && name.trim().length >= 2;
 };
 

@@ -126,6 +126,10 @@ class SitemapGenerator {
       '/uslugi/',
       '/uslugi/organizatsiya-pohoron/',
       '/uslugi/transportirovka-umershego/',
+      '/uslugi/krematsiya/',
+      '/uslugi/pamyatniki-ogrady/',
+      '/uslugi/blagoustroystvo-mogil/',
+      '/uslugi/zahoronenie-uchastnikov-svo/',
       '/privacy/'
     ];
 
@@ -138,8 +142,8 @@ class SitemapGenerator {
     const page = {
       url: path,
       lastmod: this.lastmod,
-      changefreq: settings.changefreq || SITE_CONFIG.defaultChangefreq,
-      priority: settings.priority || SITE_CONFIG.defaultPriority
+      changefreq: settings.changefreq || this.siteConfig.defaultChangefreq,
+      priority: settings.priority || this.siteConfig.defaultPriority
     };
 
     this.pages.push(page);

@@ -3,6 +3,9 @@
 // =================
 
 @use "sass:math";
+@use "sass:color";
+@use "sass:list";
+@use "sass:map";
 
 // ФУНКЦИИ ДЛЯ ОТСТУПОВ И РАЗМЕРОВ
 // =================
@@ -19,7 +22,7 @@
 /// @param {number} $total-columns - Общее количество колонок в сетке (по умолчанию 12)
 /// @return {percentage} - Ширина в процентах
 @function col-width($columns, $total-columns: $grid-columns) {
-  @return percentage(math.div($columns, $total-columns));
+  @return math.percentage(math.div($columns, $total-columns));
 }
 
 /// Функция для создания гибкой типографики (fluid typography)
@@ -82,18 +85,16 @@
 /// @param {color} $color - Цвет
 /// @return {number} - Значение яркости от 0 до 1
 @function luminance($color) {
-  $red: red($color);
-  $green: green($color);
-  $blue: blue($color);
-  
+  $red: color.red($color);
+  $green: color.green($color);
+  $blue: color.blue($color);
   $red: math.div($red, 255);
   $green: math.div($green, 255);
   $blue: math.div($blue, 255);
-  
-  $red: if($red <= 0.03928, math.div($red, 12.92), pow(math.div(($red + 0.055), 1.055), 2.4));
-  $green: if($green <= 0.03928, math.div($green, 12.92), pow(math.div(($green + 0.055), 1.055), 2.4));
-  $blue: if($blue <= 0.03928, math.div($blue, 12.92), pow(math.div(($blue + 0.055), 1.055), 2.4));
-  
+  $red: if($red <= 0.0393, math.div($red, 12.92), pow(math.div(($red + 0.055), 1.055), 2.4));
+  $green: if($green <= 0.0393, math.div($green, 12.92), pow(math.div(($green + 0.055), 1.055), 2.4));
+  $blue: if($blue <= 0.0393, math.div($blue, 12.92), pow(math.div(($blue + 0.055), 1.055), 2.4));
+
   @return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
 }
 
@@ -119,7 +120,7 @@
 /// @param {percentage} $amount - Процент осветления
 /// @return {color} - Осветленный цвет
 @function tint($color, $amount) {
-  @return mix(white, $color, $amount);
+  @return color.mix(white, $color, $amount);
 }
 
 /// Затемняет цвет с сохранением насыщенности
@@ -127,7 +128,7 @@
 /// @param {percentage} $amount - Процент затемнения
 /// @return {color} - Затемненный цвет
 @function shade($color, $amount) {
-  @return mix(black, $color, $amount);
+  @return color.mix(black, $color, $amount);
 }
 
 /// Получает оптимальный цвет текста (черный или белый) для данного фона
@@ -161,14 +162,14 @@
 /// @param {...} $values - Список значений
 /// @return {number} - Максимальное значение
 @function max-value($values...) {
-  $max: nth($values, 1);
-  
+  $max: list.nth($values, 1);
+
   @each $value in $values {
     @if $value > $max {
       $max: $value;
     }
   }
-  
+
   @return $max;
 }
 
@@ -176,14 +177,14 @@
 /// @param {...} $values - Список значений
 /// @return {number} - Минимальное значение
 @function min-value($values...) {
-  $min: nth($values, 1);
-  
+  $min: list.nth($values, 1);
+
   @each $value in $values {
     @if $value < $min {
       $min: $value;
     }
   }
-  
+
   @return $min;
 }
 
@@ -210,8 +211,8 @@
     'xl': $container-xl,
     '2xl': $container-2xl
   );
-  
-  @return map-get($sizes, $size);
+
+  @return map.get($sizes, $size);
 }
 
 /// Создает значение для CSS Grid с заданным количеством колонок

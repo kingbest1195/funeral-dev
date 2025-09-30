@@ -42,8 +42,8 @@ const NotFoundPage = () => {
 
   const handlePhoneClick = () => {
     // Аналитика для отслеживания звонков с 404 страницы
-    if (typeof gtag !== "undefined") {
-      gtag("event", "phone_call_404", {
+    if (typeof window !== "undefined" && typeof window.gtag !== "undefined") {
+      window.gtag("event", "phone_call_404", {
         event_category: "contact",
         event_label: COMPANY_INFO.phone,
         page_title: "404 - Страница не найдена",

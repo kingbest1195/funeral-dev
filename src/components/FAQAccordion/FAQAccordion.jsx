@@ -17,22 +17,6 @@ const FAQAccordion = ({
 }) => {
   const [openItems, setOpenItems] = useState(new Set([0]));
 
-  if (!items.length) return null;
-
-  const toggleItem = (index) => {
-    const newOpenItems = new Set(openItems);
-    if (newOpenItems.has(index)) {
-      newOpenItems.delete(index);
-    } else {
-      newOpenItems.add(index);
-    }
-    setOpenItems(newOpenItems);
-  };
-
-  const accordionClassName = ["faq-accordion", className]
-    .filter(Boolean)
-    .join(" ");
-
   // Мемоизируем JSON-LD для FAQ
   const faqJsonLd = React.useMemo(() => {
     if (!items.length) return null;
@@ -57,6 +41,22 @@ const FAQAccordion = ({
       onJsonLdUpdate(faqJsonLd);
     }
   }, [faqJsonLd, onJsonLdUpdate]);
+
+  if (!items.length) return null;
+
+  const toggleItem = (index) => {
+    const newOpenItems = new Set(openItems);
+    if (newOpenItems.has(index)) {
+      newOpenItems.delete(index);
+    } else {
+      newOpenItems.add(index);
+    }
+    setOpenItems(newOpenItems);
+  };
+
+  const accordionClassName = ["faq-accordion", className]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <section className={accordionClassName}>

@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { CTA_DATA } from "@/constants/content";
-import "./CTASection.scss";
 
 /**
  * Секция призыва к действию
