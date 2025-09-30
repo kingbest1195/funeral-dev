@@ -10,8 +10,8 @@ const StructuredData = () => {
     "@type": "LocalBusiness",
     name: "Ритуальная служба Век",
     image: [
-      `${baseUrl}/assets/logo-vek.svg`,
-      `${baseUrl}/assets/office-facade-CENYA-P5.webp`,
+      `${baseUrl}/logo-vek.svg`,
+      `${baseUrl}/logo-vek.svg`,
     ],
     "@id": `${baseUrl}/`,
     url: `${baseUrl}/`,
@@ -63,8 +63,8 @@ const StructuredData = () => {
               "Гранитные и мраморные памятники, ограды для мест захоронения",
             category: "Ритуальные товары",
             image: [
-              `${baseUrl}/assets/office-facade-CENYA-P5.webp`,
-              `${baseUrl}/assets/logo-vek.svg`,
+              `${baseUrl}/logo-vek.svg`,
+              `${baseUrl}/logo-vek.svg`,
             ],
             aggregateRating: {
               "@type": "AggregateRating",

@@ -6,7 +6,176 @@
 
 import { SITE_CONFIG, getFullUrl } from "./content.js";
 
-// Базовая схема LocalBusiness для всех страниц
+// ПОЛНАЯ схема LocalBusiness для главной страницы (статическая версия)
+// Эта схема вставляется в статический HTML для гарантированной индексации Яндексом
+export const HOME_LOCAL_BUSINESS_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://xn----7sbhmlqd1btk.xn--p1ai/#organization",
+  name: "Ритуальная служба Век",
+  alternateName: "ИП Шадрина Лариса Геннадьевна",
+  legalName: "ИП Шадрина Лариса Геннадьевна",
+  telephone: "+7 (920) 366-36-36",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Ул. Красноармейский переулок, 6",
+    addressLocality: "г. Шуя",
+    addressRegion: "Ивановская область",
+    addressCountry: "RU",
+    postalCode: "155900",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "56.8503",
+    longitude: "41.3851",
+  },
+  openingHours: "Mo-Su 08:00-17:00",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "08:00",
+      closes: "17:00",
+    },
+  ],
+  url: "https://xn----7sbhmlqd1btk.xn--p1ai",
+  image: "https://xn----7sbhmlqd1btk.xn--p1ai/logo-vek.svg",
+  logo: "https://xn----7sbhmlqd1btk.xn--p1ai/logo-vek.svg",
+  description:
+    "Ритуальная служба Век в Шуе. Круглосуточная помощь в организации похорон, кремация, памятники. Профессиональные агенты. Звоните +7 (920) 366-36-36",
+  priceRange: "$$",
+  areaServed: {
+    "@type": "City",
+    name: "Шуя",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Ритуальные услуги",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Организация похорон",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Кремация",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Product",
+          name: "Памятники и ограды",
+          description:
+            "Гранитные и мраморные памятники, ограды для мест захоронения",
+          category: "Ритуальные товары",
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: 4.89,
+            reviewCount: 38,
+            bestRating: 5,
+            worstRating: 1,
+          },
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/InStock",
+            priceCurrency: "RUB",
+            price: "15000",
+            priceRange: "15000-150000",
+          },
+        },
+      },
+    ],
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: 4.89,
+    reviewCount: 38,
+    bestRating: 5,
+    worstRating: 1,
+  },
+  review: [
+    {
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: "Николай П.",
+      },
+      datePublished: "2023-05-04",
+      reviewBody:
+        "Спасибо, за помощь с обрядом погребения. Ваше внимание и забота достойна уважения.",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: 5,
+        bestRating: 5,
+        worstRating: 1,
+      },
+    },
+    {
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: "Алена Горбунова",
+      },
+      datePublished: "2023-04-17",
+      reviewBody:
+        "Спасибо ритуальной  службе «Век», все было организованно но высшем уровне, работники относятся с понимаем, цены доступные.",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: 5,
+        bestRating: 5,
+        worstRating: 1,
+      },
+    },
+    {
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: "Таня П.",
+      },
+      datePublished: "2023-04-03",
+      reviewBody:
+        "Спасибо большое всему коллективу! Помогли во всём по приемлемым ценам и поддержали в трудный момент.",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: 5,
+        bestRating: 5,
+        worstRating: 1,
+      },
+    },
+    {
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: "Наталья Алексеевна Окунькова",
+      },
+      datePublished: "2023-03-20",
+      reviewBody:
+        'Благодарю коллектив ритуальной службы "Век" за отзывчивость и профессионализм. Помогли достойно устроить похороны близкого человека.',
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: 5,
+        bestRating: 5,
+        worstRating: 1,
+      },
+    },
+  ],
+};
+
+// Базовая схема LocalBusiness для всех страниц (для обратной совместимости)
 const createLocalBusinessSchema = () => ({
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -24,7 +193,7 @@ const createLocalBusinessSchema = () => ({
     "@type": "City",
     name: "Шуя",
   },
-  openingHours: "Mo-Su 00:00-24:00",
+  openingHours: "Mo-Su 08:00-17:00",
   url: getFullUrl(),
   description: "Ритуальная служба Век в Шуе. Круглосуточная помощь в организации похорон, кремация, памятники.",
   priceRange: "$$"

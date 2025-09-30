@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import { HelmetProvider } from '@dr.pogodin/react-helmet';
 import HomePage from './pages/HomePage/HomePage.jsx';
-import StructuredData from './components/StructuredData/StructuredData.jsx';
 import { getCurrentPageType } from './utils/pageDetection.js';
 import './styles/main.scss';
 
@@ -95,7 +94,6 @@ const App = () => {
 
   return (
     <HelmetProvider>
-      <StructuredData />
       <div className="app">
         {renderCurrentPage()}
       </div>

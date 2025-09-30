@@ -66,7 +66,10 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://xn----7sbhmlqd1btk.xn--p1ai/#organization",
     name: COMPANY_INFO.name,
+    alternateName: COMPANY_INFO.nameOfficial,
+    legalName: COMPANY_INFO.nameOfficial,
     telephone: COMPANY_INFO.phone,
     address: {
       "@type": "PostalAddress",
@@ -76,9 +79,31 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
       addressCountry: "RU",
       postalCode: "155900",
     },
-    openingHours: COMPANY_INFO.workSchedule,
-    url: typeof window !== "undefined" ? window.location.origin : "",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "56.8503",
+      longitude: "41.3851",
+    },
+    openingHours: "Mo-Su 08:00-17:00",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "08:00",
+        closes: "17:00",
+      },
+    ],
+    url: typeof window !== "undefined" ? window.location.origin : "https://xn----7sbhmlqd1btk.xn--p1ai",
     image: image || getAbsoluteUrl("/logo-vek.svg"),
+    logo: image || getAbsoluteUrl("/logo-vek.svg"),
     description: description,
     priceRange: "$$",
     areaServed: {
@@ -272,11 +297,18 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
   };
 
   // Объединяем структурированные данные (поддержка массива)
-  const structuredData = Array.isArray(jsonLd)
-    ? [localBusinessJsonLd, ...jsonLd]
-    : jsonLd
-    ? [localBusinessJsonLd, jsonLd]
-    : [localBusinessJsonLd];
+  // ВАЖНО: для главной страницы LocalBusiness уже в статическом HTML,
+  // поэтому добавляем только jsonLd из props (WebPage, FAQPage и т.д.)
+  const isHomePage = typeof window !== "undefined" &&
+    (window.location.pathname === "/" || window.location.pathname === "/index.html");
+
+  const structuredData = isHomePage
+    ? (Array.isArray(jsonLd) ? jsonLd : (jsonLd ? [jsonLd] : []))
+    : (Array.isArray(jsonLd)
+        ? [localBusinessJsonLd, ...jsonLd]
+        : jsonLd
+        ? [localBusinessJsonLd, jsonLd]
+        : [localBusinessJsonLd]);
 
   React.useEffect(() => {
     // Обновляем мета-теги при изменении SEO данных

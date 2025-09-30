@@ -8,7 +8,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { COMPANY_INFO } from "../src/helpers/index.js";
-import { JSON_LD_SCHEMAS } from "../src/constants/json-ld-schemas.js";
+import { JSON_LD_SCHEMAS, HOME_LOCAL_BUSINESS_SCHEMA } from "../src/constants/json-ld-schemas.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, "..");
@@ -97,6 +97,7 @@ const PAGES_CONFIG = {
     canonicalUrl: "https://ритуал-век.рф/",
     dataPage: "home",
     preloadHeroImage: true,
+    jsonLd: HOME_LOCAL_BUSINESS_SCHEMA,
   },
   uslugi: {
     title: `Ритуальные услуги в ${COMPANY_INFO.city}: организация похорон и кремация – ${COMPANY_INFO.name}`,

@@ -43,12 +43,16 @@ const HomePage = () => {
   const seoData = {
     ...HOME_SEO_DATA,
     canonical: typeof window !== "undefined" ? window.location.href : "",
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: "Главная страница - Ритуальная служба Век",
-      description: HOME_SEO_DATA.description,
-      mainEntity: {
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: "Главная страница - Ритуальная служба Век",
+        description: HOME_SEO_DATA.description,
+        url: typeof window !== "undefined" ? window.location.href : "https://xn----7sbhmlqd1btk.xn--p1ai/",
+      },
+      {
+        "@context": "https://schema.org",
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -61,7 +65,7 @@ const HomePage = () => {
           },
         ],
       },
-    },
+    ],
   };
 
   return (

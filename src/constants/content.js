@@ -11,9 +11,9 @@ export const SITE_CONFIG = {
 
   // Базовые шаблоны для Open Graph (используем существующие изображения)
   OG_IMAGES: {
-    DEFAULT: "/assets/office-facade-main-BPzJqPMt.png",
-    SERVICES: "/assets/funeral-hall-big-Bn7S320D.png",
-    FUNERAL_HALL: "/assets/funeral-hall-small-Bous5W0h.png",
+    DEFAULT: "/images/og/hero-main.png",
+    SERVICES: "/images/og/funeral-hall.png",
+    FUNERAL_HALL: "/images/og/funeral-hall.png",
   },
 
   // Повторяющиеся текстовые блоки
