@@ -38,6 +38,7 @@ const BASE_CONFIG = {
 
 // Структура favicon'ов (пути генерируются Vite автоматически)
 const FAVICON_ASSETS = [
+  { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
   { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
   {
     rel: "icon",

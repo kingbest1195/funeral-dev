@@ -317,7 +317,7 @@ export const ORGANIZATSIYA_POHORON_JSON_LD = {
     },
     offers: {
       "@type": "Offer",
-      priceRange: "20000-55000",
+      price: "20000",
       priceCurrency: "RUB",
       availability: "https://schema.org/InStock",
     },
@@ -389,7 +389,7 @@ export const TRANSPORTIROVKA_UMERSHEGO_JSON_LD = {
     ],
     offers: {
       "@type": "Offer",
-      priceRange: "5000-25000",
+      price: "5000",
       priceCurrency: "RUB",
       availability: "https://schema.org/InStock",
     },
