@@ -94,7 +94,6 @@ export const HOME_LOCAL_BUSINESS_SCHEMA = {
             availability: "https://schema.org/InStock",
             priceCurrency: "RUB",
             price: "15000",
-            priceRange: "15000-150000",
           },
         },
       },

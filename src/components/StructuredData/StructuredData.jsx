@@ -112,7 +112,6 @@ const StructuredData = () => {
               availability: "http://schema.org/InStock",
               priceCurrency: "RUB",
               price: "15000",
-              priceRange: "15000-150000",
             },
           },
         },

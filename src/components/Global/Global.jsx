@@ -215,7 +215,6 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
               availability: "https://schema.org/InStock",
               priceCurrency: "RUB",
               price: "15000",
-              priceRange: "15000-150000",
             },
           },
         },
