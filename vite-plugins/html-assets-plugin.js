@@ -39,64 +39,9 @@ export function htmlAssetsPlugin() {
         }
       });
 
-      // Второй проход: обрабатываем манифесты (HTML файлы обрабатываются в writeBundle)
-      Object.values(bundle).forEach((file) => {
-        if (
-          file.type === "asset" &&
-          file.fileName.endsWith(".webmanifest")
-        ) {
-          let content = file.source.toString();
+      // Копируем файлы в корень без хешей для совместимости
 
-          // Заменяем все найденные пути
-          assetMap.forEach((hashedPath, originalPath) => {
-            // Заменяем в атрибутах href, content и src
-            const patterns = [
-              // Точные совпадения в атрибутах
-              new RegExp(`href="/${originalPath}"`, "g"),
-              new RegExp(`src="/${originalPath}"`, "g"),
-              // Для Open Graph и Twitter изображений
-              new RegExp(
-                `content="https://ритуал-век\\.рф/${originalPath}"`,
-                "g"
-              ),
-              // Также для путей без ведущего слеша в content
-              new RegExp(
-                `content="https://ритуал-век\\.рф/${originalPath.replace(
-                  /^\//,
-                  ""
-                )}"`,
-                "g"
-              ),
-              // Для JSON манифеста - заменяем в значениях "src"
-              new RegExp(`"src":\\s*"${originalPath.split("/").pop()}"`, "g"),
-            ];
-
-            patterns.forEach((pattern) => {
-              content = content.replace(pattern, (match) => {
-                if (match.includes("https://")) {
-                  // Для URL с доменом заменяем только путь
-                  return match.replace(
-                    new RegExp(originalPath.replace(/\//g, "\\/")),
-                    hashedPath
-                  );
-                } else if (match.includes('"src":')) {
-                  // Для JSON манифеста заменяем только имя файла
-                  const fileName = originalPath.split("/").pop();
-                  const hashedFileName = hashedPath.split("/").pop();
-                  return match.replace(fileName, hashedFileName);
-                } else {
-                  // Для локальных путей заменяем полностью
-                  return match.replace(originalPath, hashedPath);
-                }
-              });
-            });
-          });
-
-          file.source = content;
-        }
-      });
-
-      // Копируем favicon.ico в корень без хеша
+      // 1. Копируем favicon.ico
       const faviconAsset = Object.values(bundle).find(
         (file) =>
           file.type === "asset" &&
@@ -111,41 +56,27 @@ export function htmlAssetsPlugin() {
         };
       }
 
-      // Копируем и обновляем site.webmanifest в корень
-      const manifestAsset = Object.values(bundle).find(
-        (file) =>
-          file.type === "asset" && file.fileName.includes("site.webmanifest")
+      // 2. Копируем android-chrome иконки для манифеста
+      const androidChrome192 = Object.values(bundle).find(
+        (f) => f.type === "asset" && f.fileName.includes("android-chrome-192x192")
       );
-      if (manifestAsset) {
-        let manifestContent = manifestAsset.source.toString();
+      const androidChrome512 = Object.values(bundle).find(
+        (f) => f.type === "asset" && f.fileName.includes("android-chrome-512x512")
+      );
 
-        // Заменяем пути в манифесте на актуальные хеши (с отладкой)
-        // Ищем все android-chrome файлы и заменяем их пути
-        const androidChrome192 = Object.values(bundle).find(
-          (f) =>
-            f.type === "asset" && f.fileName.includes("android-chrome-192x192")
-        );
-        const androidChrome512 = Object.values(bundle).find(
-          (f) =>
-            f.type === "asset" && f.fileName.includes("android-chrome-512x512")
-        );
-
-        if (androidChrome192) {
-          const oldPath = '"src": "/assets/android-chrome-192x192.png"';
-          const newPath = `"src": "/assets/${androidChrome192.fileName}"`;
-          manifestContent = manifestContent.replace(oldPath, newPath);
-        }
-
-        if (androidChrome512) {
-          const oldPath = '"src": "/assets/android-chrome-512x512.png"';
-          const newPath = `"src": "/assets/${androidChrome512.fileName}"`;
-          manifestContent = manifestContent.replace(oldPath, newPath);
-        }
-
-        bundle["site.webmanifest"] = {
+      if (androidChrome192) {
+        bundle["android-chrome-192x192.png"] = {
           type: "asset",
-          fileName: "site.webmanifest",
-          source: manifestContent,
+          fileName: "android-chrome-192x192.png",
+          source: androidChrome192.source,
+        };
+      }
+
+      if (androidChrome512) {
+        bundle["android-chrome-512x512.png"] = {
+          type: "asset",
+          fileName: "android-chrome-512x512.png",
+          source: androidChrome512.source,
         };
       }
     },
