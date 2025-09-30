@@ -64,8 +64,8 @@ export default defineConfig({
         manualChunks: {
           // Выносим React в отдельный чанк для лучшего кеширования
           react: ['react', 'react-dom'],
-          // Библиотеки UI (убираем react-router-dom для MPA)
-          ui: ['@dr.pogodin/react-helmet', 'swiper', 'imask']
+          // Библиотеки UI (Swiper убран - загружается только с ReviewsWidget через lazy loading)
+          ui: ['@dr.pogodin/react-helmet', 'imask']
         },
         // Стабильные имена файлов для предотвращения конфликтов кеширования
         assetFileNames: (assetInfo) => {

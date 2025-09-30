@@ -59,9 +59,10 @@ const FAVICON_ASSETS = [
   { rel: "manifest", href: "/site.webmanifest" },
 ];
 
-// Внешние подключения (только DNS prefetch для аналитики)
+// Внешние подключения (DNS prefetch для аналитики + preconnect для Яндекс.Метрики)
 const EXTERNAL_RESOURCES = {
   dnsPrefetch: ["//www.google-analytics.com", "//www.googletagmanager.com"],
+  preconnect: ["https://mc.yandex.ru"],
 };
 
 // Изображения для Open Graph (пути обрабатываются htmlAssetsPlugin)
@@ -72,8 +73,13 @@ const OG_IMAGES = {
 };
 
 // Критически важные изображения для preload
+// ВАЖНО: Vite flatten все ассеты в /assets/, структура папок не сохраняется
+// Хеш захардкожен, так как не меняется между сборками (content-based hash)
 const CRITICAL_IMAGES = [
-  // Убраны неиспользуемые изображения office-facade для устранения warning в консоли
+  {
+    href: "/assets/office-facade-CENYA-P5.webp",
+    type: "image/webp",
+  },
 ];
 
 // КОНФИГУРАЦИЯ СТРАНИЦ
@@ -278,8 +284,15 @@ const generateExternalResources = () => {
     .map((url) => `<link rel="dns-prefetch" href="${url}" />`)
     .join("\n    ");
 
+  const preconnectLinks = EXTERNAL_RESOURCES.preconnect
+    ? EXTERNAL_RESOURCES.preconnect
+        .map((url) => `<link rel="preconnect" href="${url}" crossorigin />`)
+        .join("\n    ")
+    : "";
+
   return `<!-- DNS Prefetch для аналитики -->
-    ${dnsPrefetchLinks}`;
+    ${dnsPrefetchLinks}
+    ${preconnectLinks ? `\n    <!-- Preconnect для критичных ресурсов -->\n    ${preconnectLinks}` : ""}`;
 };
 
 /**

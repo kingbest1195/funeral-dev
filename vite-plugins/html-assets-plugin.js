@@ -27,7 +27,8 @@ export function htmlAssetsPlugin() {
             file.fileName.endsWith(".webmanifest"))
         ) {
           // Извлекаем оригинальный путь без хеша Vite (формат: filename-HASH8CHARS.ext)
-          const originalPath = file.fileName.replace(/-[a-zA-Z0-9]{8}\./i, ".");
+          // Хеш может содержать буквы, цифры и подчёркивания
+          const originalPath = file.fileName.replace(/-[a-zA-Z0-9_]{8}\./i, ".");
           assetMap.set(originalPath, file.fileName);
 
           // Также создаем маппинг для src/assets/ префикса
@@ -38,12 +39,11 @@ export function htmlAssetsPlugin() {
         }
       });
 
-      // Второй проход: обрабатываем HTML файлы и манифесты
+      // Второй проход: обрабатываем манифесты (HTML файлы обрабатываются в writeBundle)
       Object.values(bundle).forEach((file) => {
         if (
           file.type === "asset" &&
-          (file.fileName.endsWith(".html") ||
-            file.fileName.endsWith(".webmanifest"))
+          file.fileName.endsWith(".webmanifest")
         ) {
           let content = file.source.toString();
 
@@ -150,43 +150,66 @@ export function htmlAssetsPlugin() {
       }
     },
 
-    // Дополнительная обработка после записи файлов (для public/site.webmanifest)
+    // Обработка HTML файлов после записи (они не попадают в bundle как assets)
     async writeBundle(options, bundle) {
-      // Путь к manifest в dist
-      const manifestPath = path.join(options.dir || "dist", "site.webmanifest");
+      const distDir = options.dir || "dist";
 
-      if (fs.existsSync(manifestPath)) {
-        let manifestContent = fs.readFileSync(manifestPath, "utf8");
-
-        // Ищем файлы android-chrome с хешами в dist/assets/
-        const assetsDir = path.join(options.dir || "dist", "assets");
-
-        if (fs.existsSync(assetsDir)) {
-          const assetFiles = fs.readdirSync(assetsDir);
-
-          const androidChrome192 = assetFiles.find((f) =>
-            f.includes("android-chrome-192x192")
-          );
-          const androidChrome512 = assetFiles.find((f) =>
-            f.includes("android-chrome-512x512")
-          );
-
-          if (androidChrome192) {
-            const oldPath = '"src": "/assets/android-chrome-192x192.png"';
-            const newPath = `"src": "/assets/${androidChrome192}"`;
-            manifestContent = manifestContent.replace(oldPath, newPath);
-          }
-
-          if (androidChrome512) {
-            const oldPath = '"src": "/assets/android-chrome-512x512.png"';
-            const newPath = `"src": "/assets/${androidChrome512}"`;
-            manifestContent = manifestContent.replace(oldPath, newPath);
-          }
-
-          // Записываем обновленный manifest
-          fs.writeFileSync(manifestPath, manifestContent, "utf8");
+      // Собираем маппинг хешей из bundle
+      const assetMap = new Map();
+      Object.values(bundle).forEach((file) => {
+        if (file.type === "asset" &&
+            (file.fileName.endsWith(".webp") ||
+             file.fileName.endsWith(".jpg") ||
+             file.fileName.endsWith(".png") ||
+             file.fileName.endsWith(".ico"))) {
+          const originalPath = file.fileName.replace(/-[a-zA-Z0-9_]{8}\./i, ".");
+          assetMap.set(originalPath, file.fileName);
         }
-      }
+      });
+
+      // Обрабатываем все HTML файлы в dist
+      const processHtmlFile = (filePath) => {
+        if (!fs.existsSync(filePath)) return;
+
+        let content = fs.readFileSync(filePath, "utf8");
+        let changed = false;
+
+        assetMap.forEach((hashedPath, originalPath) => {
+          const pattern = new RegExp(`href="/assets/${originalPath.split('/').pop()}"`, "g");
+          if (pattern.test(content)) {
+            content = content.replace(pattern, `href="/assets/${hashedPath.split('/').pop()}"`);
+            changed = true;
+          }
+        });
+
+        if (changed) {
+          fs.writeFileSync(filePath, content, "utf8");
+          console.log(`[html-assets-plugin] Updated asset hashes in ${path.basename(filePath)}`);
+        }
+      };
+
+      // Обрабатываем index.html
+      processHtmlFile(path.join(distDir, "index.html"));
+
+      // Обрабатываем все HTML в подпапках
+      const processDirectory = (dir) => {
+        if (!fs.existsSync(dir)) return;
+
+        const items = fs.readdirSync(dir);
+        items.forEach(item => {
+          const fullPath = path.join(dir, item);
+          const stat = fs.statSync(fullPath);
+
+          if (stat.isDirectory()) {
+            processDirectory(fullPath);
+          } else if (item === "index.html") {
+            processHtmlFile(fullPath);
+          }
+        });
+      };
+
+      processDirectory(path.join(distDir, "uslugi"));
+      processDirectory(path.join(distDir, "privacy"));
     },
   };
 }

@@ -88,7 +88,8 @@
       "mcp__playwright__browser_wait_for",
       "Bash(npm run lint:scss:*)",
       "Bash(cat:*)",
-      "Bash(timeout 60 npm run build:*)"
+      "Bash(timeout 60 npm run build:*)",
+      "Bash(awk:*)"
     ],
     "deny": [],
     "ask": []
