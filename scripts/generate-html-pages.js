@@ -207,7 +207,8 @@ const generateSeoMetaTags = (seoData) => {
     <meta name="description" content="${escapeAttribute(description)}" />
     <meta name="keywords" content="${escapeAttribute(keywords)}" />
     <link rel="canonical" href="${escapeAttribute(canonicalUrl)}" />
-    <meta name="robots" content="${escapeAttribute(BASE_CONFIG.robots)}" />`;
+    <meta name="robots" content="${escapeAttribute(BASE_CONFIG.robots)}" />
+    <meta name="yandex-verification" content="614c2088cfa90fbd" />`;
 };
 
 /**
@@ -314,6 +315,32 @@ ${jsonString}
     </script>`;
 };
 
+/**
+ * Создает скрипт Яндекс.Метрики с оптимизированной загрузкой
+ * @returns {string} - HTML строка со скриптом Метрики
+ */
+const generateYandexMetrika = () => {
+  return `
+    <!-- Яндекс.Метрика -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+      ym(104326103, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true,
+        trackHash:true
+      });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/104326103" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Яндекс.Метрика -->`;
+};
+
 // ОСНОВНАЯ ФУНКЦИЯ ГЕНЕРАЦИИ
 // =========================
 
@@ -357,6 +384,7 @@ function generateHtmlTemplate(pageConfig) {
     ${generateExternalResources()}
     ${generateImagePreload(preloadHeroImage)}
     ${generateJsonLdScript(jsonLd)}
+    ${generateYandexMetrika()}
   </head>
   <body>
     <div id="root" data-page="${dataPage}"></div>

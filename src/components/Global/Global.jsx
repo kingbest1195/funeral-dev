@@ -10,7 +10,6 @@ import androidIcon192 from "@/assets/favicons-optimized/android-chrome-192x192.p
 import androidIcon512 from "@/assets/favicons-optimized/android-chrome-512x512.png";
 import faviconIco from "@/assets/favicons/favicon.ico";
 import funeralMarketImage from "@/assets/images-optimized/transport-and-office/funeral-market.png";
-import YandexMetrika from "@/components/YandexMetrika/YandexMetrika.jsx";
 import "./Global.scss";
 
 /**
@@ -778,9 +777,6 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
       <main id="main-content" className="global__main" role="main">
         {children}
       </main>
-
-      {/* Яндекс.Метрика - загружается асинхронно после рендера */}
-      <YandexMetrika />
 
       {/* Footer будет здесь */}
       <footer className="global__footer" role="contentinfo">
