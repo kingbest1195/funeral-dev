@@ -50,22 +50,16 @@ export const YANDEX_GOALS = {
  */
 const reachGoal = (goalId, params = {}) => {
   try {
-    // Проверяем наличие объекта ym (Яндекс.Метрика)
     if (typeof window !== 'undefined' && window.ym) {
       // ВРЕМЕННО: вызываем без параметров для тестирования
       window.ym(COUNTER_ID, 'reachGoal', goalId);
-      console.log(`[Яндекс.Метрика] Цель достигнута: ${goalId}`);
 
       // TODO: Раскомментировать когда понадобится передача параметров
       // if (Object.keys(params).length === 0) {
       //   window.ym(COUNTER_ID, 'reachGoal', goalId);
-      //   console.log(`[Яндекс.Метрика] Цель достигнута: ${goalId}`);
       // } else {
       //   window.ym(COUNTER_ID, 'reachGoal', goalId, params);
-      //   console.log(`[Яндекс.Метрика] Цель достигнута: ${goalId}`, params);
       // }
-    } else {
-      console.warn('[Яндекс.Метрика] Счетчик не найден. Цель не отправлена:', goalId);
     }
   } catch (error) {
     console.error('[Яндекс.Метрика] Ошибка отправки цели:', error);
@@ -114,17 +108,8 @@ let isInitialized = false;
  * Вызывается один раз при загрузке приложения
  */
 export const initYandexGoals = () => {
-  // Убеждаемся, что код выполняется в браузере
-  if (typeof window === 'undefined') {
-    console.warn('[Яндекс.Метрика] initYandexGoals вызван не в браузере');
-    return;
-  }
-
-  // Предотвращаем повторную инициализацию
-  if (isInitialized) {
-    console.warn('[Яндекс.Метрика] Цели уже инициализированы');
-    return;
-  }
+  if (typeof window === 'undefined') return;
+  if (isInitialized) return;
 
   isInitialized = true;
 
@@ -143,52 +128,47 @@ export const initYandexGoals = () => {
     }
   }, { passive: true });
 
-  // 2. ПОСТРОЕНИЕ МАРШРУТА - клик по ссылкам на Яндекс.Карты с текстом "Маршрут"
+  // 2. ПОСТРОЕНИЕ МАРШРУТА - клик по внешним ссылкам на Яндекс.Карты
   document.addEventListener('click', (e) => {
     const link = e.target.closest('a[href*="yandex.ru/maps"]');
-    if (link && link.textContent && link.textContent.toLowerCase().includes('маршрут')) {
-      const url = link.getAttribute('href');
-      // Определяем офис по контексту
-      const officeContainer = link.closest('.contacts-info__item, [class*="office"]');
-      let office = 'unknown';
-
-      if (officeContainer) {
-        const addressText = officeContainer.textContent;
-        if (addressText.includes('Красноармейский')) {
-          office = 'office_main';
-        } else if (addressText.includes('Фабричная')) {
-          office = 'office_hall';
-        } else if (addressText.includes('Белова')) {
-          office = 'office_belova';
-        }
-      }
-
-      reachGoal(YANDEX_GOALS.ROUTE_CLICK.id, {
-        url: url,
-        office: office
-      });
-    }
-  }, { passive: true });
-
-  // 3. ПЕРЕХОД НА СТРАНИЦУ УСЛУГ - клик по любой ссылке содержащей /uslugi
-  document.addEventListener('click', (e) => {
-    const link = e.target.closest('a[href*="/uslugi"]');
     if (link) {
-      const serviceUrl = link.getAttribute('href');
-      const serviceName = link.textContent.trim();
+      const url = link.getAttribute('href');
+      const isExternal = url.startsWith('http://') || url.startsWith('https://');
 
-      reachGoal(YANDEX_GOALS.SERVICES_PAGE.id, {
-        url: serviceUrl,
-        service_name: serviceName
-      });
+      if (isExternal) {
+        const officeContainer = link.closest('.contacts-info__item, [class*="office"]');
+        let office = 'unknown';
+
+        if (officeContainer) {
+          const addressText = officeContainer.textContent;
+          if (addressText.includes('Красноармейский')) {
+            office = 'office_main';
+          } else if (addressText.includes('Фабричная')) {
+            office = 'office_hall';
+          } else if (addressText.includes('Белова')) {
+            office = 'office_belova';
+          }
+        }
+
+        reachGoal(YANDEX_GOALS.ROUTE_CLICK.id, {
+          url: url,
+          office: office
+        });
+      }
     }
   }, { passive: true });
 
-  console.log('[Яндекс.Метрика] Отслеживание целей инициализировано');
-  console.log('[Яндекс.Метрика] Доступные цели:', Object.keys(YANDEX_GOALS).map(key => ({
-    id: YANDEX_GOALS[key].id,
-    name: YANDEX_GOALS[key].name
-  })));
+  // 3. ПРОСМОТР СТРАНИЦЫ УСЛУГИ - при загрузке страницы с /uslugi в URL
+  const currentUrl = window.location.pathname;
+
+  if (currentUrl.includes('/uslugi')) {
+    const pageTitle = document.title;
+
+    reachGoal(YANDEX_GOALS.SERVICES_PAGE.id, {
+      url: currentUrl,
+      service_name: pageTitle
+    });
+  }
 };
 
 /**

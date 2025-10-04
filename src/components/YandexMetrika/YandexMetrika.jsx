@@ -16,7 +16,13 @@ const YandexMetrika = () => {
     if (typeof window === 'undefined') return;
 
     // Проверяем, не загружена ли уже метрика
-    if (window.ym) return;
+    if (window.ym) {
+      // Если метрика уже загружена (например, из index.html), просто инициализируем цели
+      setTimeout(() => {
+        initYandexGoals();
+      }, 500);
+      return;
+    }
 
     // Функция инициализации метрики
     const initMetrika = () => {

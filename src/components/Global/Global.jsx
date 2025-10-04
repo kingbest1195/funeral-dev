@@ -1,6 +1,7 @@
 import React from "react";
 import { COMPANY_INFO, devLog } from "@/helpers/index.js";
 import { trackGoal, YANDEX_GOALS } from "@/utils/yandexGoals";
+import YandexMetrika from "@/components/YandexMetrika/YandexMetrika";
 import iconPhone from "@/assets/icons/icon-phone.svg";
 import logoUrl from "@/assets/icons/logo-vek.svg";
 // Favicons (импорт для корректной работы Vite с хешированными путями)
@@ -899,6 +900,9 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
 
       {/* Виджет быстрого звонка для мобильных */}
       <MobileCallButton />
+
+      {/* Яндекс.Метрика */}
+      <YandexMetrika />
     </div>
   );
 };
