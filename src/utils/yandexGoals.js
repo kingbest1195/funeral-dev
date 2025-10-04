@@ -52,8 +52,18 @@ const reachGoal = (goalId, params = {}) => {
   try {
     // Проверяем наличие объекта ym (Яндекс.Метрика)
     if (typeof window !== 'undefined' && window.ym) {
-      window.ym(COUNTER_ID, 'reachGoal', goalId, params);
-      console.log(`[Яндекс.Метрика] Цель достигнута: ${goalId}`, params);
+      // ВРЕМЕННО: вызываем без параметров для тестирования
+      window.ym(COUNTER_ID, 'reachGoal', goalId);
+      console.log(`[Яндекс.Метрика] Цель достигнута: ${goalId}`);
+
+      // TODO: Раскомментировать когда понадобится передача параметров
+      // if (Object.keys(params).length === 0) {
+      //   window.ym(COUNTER_ID, 'reachGoal', goalId);
+      //   console.log(`[Яндекс.Метрика] Цель достигнута: ${goalId}`);
+      // } else {
+      //   window.ym(COUNTER_ID, 'reachGoal', goalId, params);
+      //   console.log(`[Яндекс.Метрика] Цель достигнута: ${goalId}`, params);
+      // }
     } else {
       console.warn('[Яндекс.Метрика] Счетчик не найден. Цель не отправлена:', goalId);
     }
