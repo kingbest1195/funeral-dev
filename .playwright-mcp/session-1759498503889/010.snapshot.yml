@@ -1,0 +1,49 @@
+- generic [ref=e4]:
+  - generic [ref=e8]:
+    - link "Back to previous screen" [ref=e9] [cursor=pointer]:
+      - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D1%80%D0%B8%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8%20%D1%88%D1%83%D1%8F
+      - img [ref=e10]
+    - generic [ref=e12]:
+      - link "Yandex" [ref=e15] [cursor=pointer]:
+        - /url: https://yandex.com
+        - img [ref=e16]
+      - generic [ref=e25]:
+        - heading "Log in with Yandex ID" [level=1] [ref=e28]
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - button "Mail" [pressed] [ref=e32] [cursor=pointer]:
+              - generic: Mail
+            - button "Phone number" [ref=e34] [cursor=pointer]:
+              - generic: Phone number
+          - generic [ref=e36]:
+            - generic [ref=e37] [cursor=pointer]: Enter your ID
+            - textbox "Enter your ID" [ref=e40]:
+              - /placeholder: Username or email
+        - generic [ref=e42]:
+          - button "Log in" [ref=e44] [cursor=pointer]:
+            - generic: Log in
+          - link "Create ID" [ref=e46] [cursor=pointer]:
+            - /url: https://passport.yandex.com/registration?retpath=https%3A%2F%2Fwordstat.yandex.com%2F%3Fregion%3Dall%26view%3Dtable%26words%3D%25D1%2580%25D0%25B8%25D1%2582%25D1%2583%25D0%25B0%25D0%25BB%25D1%258C%25D0%25BD%25D1%258B%25D0%25B5%2520%25D1%2583%25D1%2581%25D0%25BB%25D1%2583%25D0%25B3%25D0%25B8%2520%25D1%2588%25D1%2583%25D1%258F&process_uuid=224cc9c8-453f-411f-b202-0f11f33e69f1
+            - generic: Create ID
+          - generic [ref=e47]:
+            - heading "Log in with" [level=2] [ref=e48]
+            - generic [ref=e49]:
+              - button "Google" [ref=e50] [cursor=pointer]
+              - button "QR code" [ref=e52] [cursor=pointer]:
+                - generic [ref=e54]: QR code
+              - button "X (Twitter)" [ref=e55] [cursor=pointer]
+    - generic [ref=e57]:
+      - text: Yandex ID. The key to all your services
+      - link "Learn more" [ref=e58] [cursor=pointer]:
+        - /url: https://yandex.com/support/id/index.html
+  - contentinfo [ref=e59]:
+    - generic [ref=e60]:
+      - link "Use Incognito mode on a shared computer" [ref=e63] [cursor=pointer]:
+        - /url: https://yandex.com/support/common/browsers-settings/incognito.html
+      - generic [ref=e64]:
+        - link "Help and support" [ref=e66] [cursor=pointer]:
+          - /url: https://yandex.com/support/passport/
+        - generic [ref=e67]:
+          - text: © 2025,
+          - link "Yandex" [ref=e68] [cursor=pointer]:
+            - /url: https://yandex.com

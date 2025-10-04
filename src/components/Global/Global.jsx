@@ -1,5 +1,6 @@
 import React from "react";
 import { COMPANY_INFO, devLog } from "@/helpers/index.js";
+import { trackGoal, YANDEX_GOALS } from "@/utils/yandexGoals";
 import iconPhone from "@/assets/icons/icon-phone.svg";
 import logoUrl from "@/assets/icons/logo-vek.svg";
 // Favicons (импорт для корректной работы Vite с хешированными путями)
@@ -679,11 +680,16 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
               <button
                 className="global__call-circle"
                 onClick={() => {
+                  const phoneNumber = COMPANY_INFO.phone.replace(/\D/g, "");
+                  // Отправляем цель в Яндекс.Метрику
+                  trackGoal(YANDEX_GOALS.PHONE_CALL.id, {
+                    phone: `tel:${phoneNumber}`,
+                    element: 'Позвонить сейчас',
+                    source: 'header_call_circle'
+                  });
+                  // Совершаем звонок
                   if (typeof window !== "undefined") {
-                    window.location.href = `tel:${COMPANY_INFO.phone.replace(
-                      /\D/g,
-                      ""
-                    )}`;
+                    window.location.href = `tel:${phoneNumber}`;
                   }
                 }}
                 aria-label="Позвонить сейчас"

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { initYandexGoals } from '@/utils/yandexGoals';
 
 /**
  * Компонент Яндекс.Метрики с оптимизированной загрузкой
@@ -62,6 +63,11 @@ const YandexMetrika = () => {
         trackHash: true,
         ecommerce: 'dataLayer',
       });
+
+      // Инициализация отслеживания целей после загрузки метрики
+      setTimeout(() => {
+        initYandexGoals();
+      }, 500);
     };
 
     // Используем requestIdleCallback для загрузки метрики

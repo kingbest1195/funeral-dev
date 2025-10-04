@@ -1,0 +1,203 @@
+- generic [ref=e4]:
+  - generic [ref=e5]:
+    - img "Яндекс Вордстат" [ref=e7]:
+      - link "Яндекс" [ref=e8] [cursor=pointer]:
+        - /url: //yandex.com
+        - img "Яндекс"
+      - link "Вордстат" [ref=e9] [cursor=pointer]:
+        - /url: /
+        - img "Вордстат"
+    - generic [ref=e10]:
+      - button [ref=e12] [cursor=pointer]
+      - generic [ref=e14]:
+        - link [ref=e15] [cursor=pointer]:
+          - /url: https://passport.yandex.com
+          - img [ref=e17]
+        - link "Выйти" [ref=e18] [cursor=pointer]:
+          - /url: https://passport.yandex.com/passport?mode=embeddedauth&origin=https://wordstat.yandex.com/?region=all&view=table&words=%D1%80%D0%B8%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8%20%D1%88%D1%83%D1%8F&action=logout&yu=8766095891757458569&uid=true&retpath=https%3A%2F%2Fpassport.yandex.com%2Fauth%2F%3Fretpath%3Dhttps%3A%2F%2Fwordstat.yandex.com%2F%3Fregion%3Dall%26view%3Dtable%26words%3D%25D1%2580%25D0%25B8%25D1%2582%25D1%2583%25D0%25B0%25D0%25BB%25D1%258C%25D0%25BD%25D1%258B%25D0%25B5%2520%25D1%2583%25D1%2581%25D0%25BB%25D1%2583%25D0%25B3%25D0%25B8%2520%25D1%2588%25D1%2583%25D1%258F
+  - generic [ref=e20]:
+    - generic [ref=e21]:
+      - textbox "Введите слово или словосочетание" [active] [ref=e23]: памятники шуя
+      - button [ref=e26] [cursor=pointer]
+    - generic [ref=e27]:
+      - generic [ref=e29] [cursor=pointer]: Топы запросов
+      - generic [ref=e32] [cursor=pointer]: Динамика
+      - generic [ref=e35] [cursor=pointer]: Регионы
+      - generic [ref=e38] [cursor=pointer]: Сайты по запросу
+    - generic [ref=e40]:
+      - generic [ref=e135]:
+        - paragraph [ref=e136]: Еще больше о запросах
+        - button [ref=e137] [cursor=pointer]
+        - paragraph [ref=e139]:
+          - text: Узнайте, какой контент популярен по ключевым словам, с которыми вы работаете.
+          - text: Смотрите в
+          - link "Яндекс Вебмастере" [ref=e140] [cursor=pointer]:
+            - /url: https://webmaster.yandex.ru/site/wordcraft/?device=ALL_DEVICES&rivals=GENERAL&tab=GENERAL&userQueries=SITES&utm_campaign=cross_promo&utm_medium=banner&utm_source=wordstat&query=%D1%80%D0%B8%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8%20%D1%88%D1%83%D1%8F
+          - text: сайты и страницы, которые уже популярны в Поиске по этим запросам.
+        - button "Попробовать" [ref=e141] [cursor=pointer]:
+          - generic: Попробовать
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - radiogroup [ref=e45]:
+            - generic [ref=e46]:
+              - radio "Популярные" [checked] [ref=e47]
+              - generic: Популярные
+            - generic [ref=e48] [cursor=pointer]:
+              - radio "Похожие" [ref=e49]
+              - generic: Похожие
+          - button "Все регионы" [ref=e52] [cursor=pointer]:
+            - generic: Все регионы
+        - generic [ref=e55]:
+          - generic [ref=e56] [cursor=pointer]:
+            - generic [ref=e57]:
+              - checkbox "Десктопы" [checked] [ref=e58]
+              - generic:
+                - generic:
+                  - img
+            - text: Десктопы
+          - generic [ref=e59] [cursor=pointer]:
+            - generic [ref=e60]:
+              - checkbox "Cмартфоны" [checked] [ref=e61]
+              - generic:
+                - generic:
+                  - img
+            - text: Cмартфоны
+          - generic [ref=e62] [cursor=pointer]:
+            - generic [ref=e63]:
+              - checkbox "Планшеты" [checked] [ref=e64]
+              - generic:
+                - generic:
+                  - img
+            - text: Планшеты
+      - generic [ref=e143]:
+        - generic [ref=e144]:
+          - generic [ref=e145]:
+            - generic [ref=e146]: Общее число запросов
+            - generic [ref=e154]: памятники шуя
+            - generic [ref=e156]: "за 02.09.2025 – 02.10.2025: 452"
+          - button "Скачать" [ref=e159] [cursor=pointer]:
+            - generic: Скачать
+        - table [ref=e163]:
+          - rowgroup [ref=e164]:
+            - row "Формулировка Число запросов" [ref=e165]:
+              - columnheader "Формулировка" [ref=e166]:
+                - generic [ref=e168]: Формулировка
+              - columnheader "Число запросов" [ref=e169] [cursor=pointer]:
+                - generic [ref=e170]:
+                  - generic [ref=e171]: Число
+                  - generic [ref=e172]: запросов
+          - rowgroup [ref=e174]:
+            - row "памятники шуя 452" [ref=e175]:
+              - cell "памятники шуя" [ref=e176]:
+                - link "памятники шуя" [ref=e177] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%D0%B8%20%D1%88%D1%83%D1%8F
+              - cell "452" [ref=e178]
+            - row "памятники г шуя 33" [ref=e179]:
+              - cell "памятники г шуя" [ref=e180]:
+                - link "памятники г шуя" [ref=e181] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%D0%B8%20%D0%B3%20%D1%88%D1%83%D1%8F
+              - cell "33" [ref=e182]
+            - row "памятник фрунзе шуя 33" [ref=e183]:
+              - cell "памятник фрунзе шуя" [ref=e184]:
+                - link "памятник фрунзе шуя" [ref=e185] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D1%84%D1%80%D1%83%D0%BD%D0%B7%D0%B5%20%D1%88%D1%83%D1%8F
+              - cell "33" [ref=e186]
+            - row "шуя памятники ленину 26" [ref=e187]:
+              - cell "шуя памятники ленину" [ref=e188]:
+                - link "шуя памятники ленину" [ref=e189] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D1%88%D1%83%D1%8F%20%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%D0%B8%20%D0%BB%D0%B5%D0%BD%D0%B8%D0%BD%D1%83
+              - cell "26" [ref=e190]
+            - row "памятники шуя цены 22" [ref=e191]:
+              - cell "памятники шуя цены" [ref=e192]:
+                - link "памятники шуя цены" [ref=e193] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%D0%B8%20%D1%88%D1%83%D1%8F%20%D1%86%D0%B5%D0%BD%D1%8B
+              - cell "22" [ref=e194]
+            - row "заказать памятник в шуе 22" [ref=e195]:
+              - cell "заказать памятник в шуе" [ref=e196]:
+                - link "заказать памятник в шуе" [ref=e197] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%B2%20%D1%88%D1%83%D0%B5
+              - cell "22" [ref=e198]
+            - row "памятники города шуя 20" [ref=e199]:
+              - cell "памятники города шуя" [ref=e200]:
+                - link "памятники города шуя" [ref=e201] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%D0%B8%20%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0%20%D1%88%D1%83%D1%8F
+              - cell "20" [ref=e202]
+            - row "памятник бальмонту в шуе 17" [ref=e203]:
+              - cell "памятник бальмонту в шуе" [ref=e204]:
+                - link "памятник бальмонту в шуе" [ref=e205] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%B1%D0%B0%D0%BB%D1%8C%D0%BC%D0%BE%D0%BD%D1%82%D1%83%20%D0%B2%20%D1%88%D1%83%D0%B5
+              - cell "17" [ref=e206]
+            - row "изготовление памятников в шуе 17" [ref=e207]:
+              - cell "изготовление памятников в шуе" [ref=e208]:
+                - link "изготовление памятников в шуе" [ref=e209] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D0%B8%D0%B7%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2%20%D0%B2%20%D1%88%D1%83%D0%B5
+              - cell "17" [ref=e210]
+            - row "памятники шуя ивановская область 16" [ref=e211]:
+              - cell "памятники шуя ивановская область" [ref=e212]:
+                - link "памятники шуя ивановская область" [ref=e213] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%D0%B8%20%D1%88%D1%83%D1%8F%20%D0%B8%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C
+              - cell "16" [ref=e214]
+            - row "шуя памятник погибшим за веру 13" [ref=e215]:
+              - cell "шуя памятник погибшим за веру" [ref=e216]:
+                - link "шуя памятник погибшим за веру" [ref=e217] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D1%88%D1%83%D1%8F%20%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%BF%D0%BE%D0%B3%D0%B8%D0%B1%D1%88%D0%B8%D0%BC%20%D0%B7%D0%B0%20%D0%B2%D0%B5%D1%80%D1%83
+              - cell "13" [ref=e218]
+            - row "памятник новомученикам в шуе 10" [ref=e219]:
+              - cell "памятник новомученикам в шуе" [ref=e220]:
+                - link "памятник новомученикам в шуе" [ref=e221] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%BD%D0%BE%D0%B2%D0%BE%D0%BC%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%BA%D0%B0%D0%BC%20%D0%B2%20%D1%88%D1%83%D0%B5
+              - cell "10" [ref=e222]
+            - row "старая контора шуя памятники 8" [ref=e223]:
+              - cell "старая контора шуя памятники" [ref=e224]:
+                - link "старая контора шуя памятники" [ref=e225] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D1%81%D1%82%D0%B0%D1%80%D0%B0%D1%8F%20%D0%BA%D0%BE%D0%BD%D1%82%D0%BE%D1%80%D0%B0%20%D1%88%D1%83%D1%8F%20%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%D0%B8
+              - cell "8" [ref=e226]
+            - row "изготовления памятников в г шуя 6" [ref=e227]:
+              - cell "изготовления памятников в г шуя" [ref=e228]:
+                - link "изготовления памятников в г шуя" [ref=e229] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D0%B8%D0%B7%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2%20%D0%B2%20%D0%B3%20%D1%88%D1%83%D1%8F
+              - cell "6" [ref=e230]
+            - row "памятники в шуе которые хотят возвести 6" [ref=e231]:
+              - cell "памятники в шуе которые хотят возвести" [ref=e232]:
+                - link "памятники в шуе которые хотят возвести" [ref=e233] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%D0%B8%20%D0%B2%20%D1%88%D1%83%D0%B5%20%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B5%20%D1%85%D0%BE%D1%82%D1%8F%D1%82%20%D0%B2%D0%BE%D0%B7%D0%B2%D0%B5%D1%81%D1%82%D0%B8
+              - cell "6" [ref=e234]
+            - row "памятник мученикам шуя рассказ коротко 5" [ref=e235]:
+              - cell "памятник мученикам шуя рассказ коротко" [ref=e236]:
+                - link "памятник мученикам шуя рассказ коротко" [ref=e237] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%20%D0%BC%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%BA%D0%B0%D0%BC%20%D1%88%D1%83%D1%8F%20%D1%80%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B7%20%D0%BA%D0%BE%D1%80%D0%BE%D1%82%D0%BA%D0%BE
+              - cell "5" [ref=e238]
+            - row "памятники в шуе фото и цены 5" [ref=e239]:
+              - cell "памятники в шуе фото и цены" [ref=e240]:
+                - link "памятники в шуе фото и цены" [ref=e241] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%D0%B8%20%D0%B2%20%D1%88%D1%83%D0%B5%20%D1%84%D0%BE%D1%82%D0%BE%20%D0%B8%20%D1%86%D0%B5%D0%BD%D1%8B
+              - cell "5" [ref=e242]
+            - row "старая контора шуя изготовление памятников 5" [ref=e243]:
+              - cell "старая контора шуя изготовление памятников" [ref=e244]:
+                - link "старая контора шуя изготовление памятников" [ref=e245] [cursor=pointer]:
+                  - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D1%81%D1%82%D0%B0%D1%80%D0%B0%D1%8F%20%D0%BA%D0%BE%D0%BD%D1%82%D0%BE%D1%80%D0%B0%20%D1%88%D1%83%D1%8F%20%D0%B8%D0%B7%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2
+              - cell "5" [ref=e246]
+  - generic [ref=e106]:
+    - generic [ref=e107]:
+      - text: При использовании материалов с этой страницы обязательна ссылка на
+      - link "Яндекс" [ref=e108] [cursor=pointer]:
+        - /url: https://ya.ru
+    - generic [ref=e109]:
+      - link "Помощь" [ref=e110] [cursor=pointer]:
+        - /url: https://yandex.ru/support2/wordstat/ru/
+      - link "Пользовательское соглашение" [ref=e111] [cursor=pointer]:
+        - /url: https://yandex.ru/legal/rules/
+      - link "Тур по интерфейсу" [ref=e112] [cursor=pointer]:
+        - /url: https://yandex.com/support2/wordstat/ru/content/api-wordstat
+      - link "API" [ref=e113] [cursor=pointer]:
+        - /url: https://yandex.com/support2/wordstat/ru/content/api-wordstat
+    - generic [ref=e114]:
+      - link [ref=e116] [cursor=pointer]:
+        - /url: https://www.yandex.ru/portal/set/lang/
+      - generic [ref=e118]:
+        - text: ©
+        - generic [ref=e119]: 2009–2025
+        - text: ООО «
+        - link "ЯНДЕКС" [ref=e120] [cursor=pointer]:
+          - /url: https://ya.ru
+        - text: »

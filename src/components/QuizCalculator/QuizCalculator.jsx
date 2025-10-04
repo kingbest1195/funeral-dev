@@ -6,6 +6,7 @@ import Input from "@/components/Input";
 import PopupNotification from "@/components/PopupNotification/PopupNotification";
 import { validatePhone } from "@/helpers";
 import { apiRequest } from "@/utils/api";
+import { trackGoal, YANDEX_GOALS } from "@/utils/yandexGoals";
 import "./QuizCalculator.scss";
 
 /**
@@ -329,6 +330,12 @@ const QuizCalculator = ({ isOpen, onClose }) => {
     try {
       // Отправляем данные в Telegram
       await sendToTelegram(finalData);
+
+      // Отправляем цель в Яндекс.Метрику об успешной отправке формы
+      trackGoal(YANDEX_GOALS.CALCULATOR_SUBMIT.id, {
+        burial_type: finalData.step_1,
+        product_type: finalData.step_2
+      });
 
       // Попытка отправить ранее неудачные заявки
       await retryFailedSubmissions();

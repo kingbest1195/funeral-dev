@@ -91,7 +91,8 @@
       "Bash(timeout 60 npm run build:*)",
       "Bash(awk:*)",
       "Bash(while read file)",
-      "Bash(do echo \"=== $file ===\")"
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(for file in dist/uslugi/*.html dist/privacy.html dist/uslugi.html)"
     ],
     "deny": [],
     "ask": []

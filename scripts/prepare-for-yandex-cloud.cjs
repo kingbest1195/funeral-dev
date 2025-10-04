@@ -65,9 +65,17 @@ filesToCopy.forEach(({ from, to }) => {
     // Определяем canonical URL (версия со слешем)
     const canonicalUrl = getCanonicalUrl(to);
 
-    // Добавляем canonical link в head секцию
-    const canonicalTag = `    <link rel="canonical" href="${canonicalUrl}" />`;
-    content = content.replace('</head>', `${canonicalTag}\n  </head>`);
+    // Проверяем, есть ли уже canonical tag
+    const canonicalRegex = /<link\s+rel=["']canonical["'][^>]*>/i;
+    const canonicalTag = `<link rel="canonical" href="${canonicalUrl}" />`;
+
+    if (canonicalRegex.test(content)) {
+      // Заменяем существующий canonical
+      content = content.replace(canonicalRegex, canonicalTag);
+    } else {
+      // Добавляем canonical перед </head> если его нет
+      content = content.replace('</head>', `    ${canonicalTag}\n  </head>`);
+    }
 
     // Сохраняем модифицированный файл
     fs.writeFileSync(toPath, content);

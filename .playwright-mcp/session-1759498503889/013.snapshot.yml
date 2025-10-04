@@ -1,0 +1,127 @@
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - img "Яндекс Вордстат" [ref=e7]:
+        - link "Яндекс" [ref=e8] [cursor=pointer]:
+          - /url: //yandex.com
+          - img "Яндекс"
+        - link "Вордстат" [ref=e9] [cursor=pointer]:
+          - /url: /
+          - img "Вордстат"
+      - generic [ref=e10]:
+        - button [ref=e12] [cursor=pointer]
+        - generic [ref=e14]:
+          - link [ref=e15] [cursor=pointer]:
+            - /url: https://passport.yandex.com
+            - img [ref=e17]
+          - link "Выйти" [ref=e18] [cursor=pointer]:
+            - /url: https://passport.yandex.com/passport?mode=embeddedauth&origin=https://wordstat.yandex.com/?region=all&view=table&words=%D1%80%D0%B8%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8%20%D1%88%D1%83%D1%8F&action=logout&yu=8766095891757458569&uid=true&retpath=https%3A%2F%2Fpassport.yandex.com%2Fauth%2F%3Fretpath%3Dhttps%3A%2F%2Fwordstat.yandex.com%2F%3Fregion%3Dall%26view%3Dtable%26words%3D%25D1%2580%25D0%25B8%25D1%2582%25D1%2583%25D0%25B0%25D0%25BB%25D1%258C%25D0%25BD%25D1%258B%25D0%25B5%2520%25D1%2583%25D1%2581%25D0%25BB%25D1%2583%25D0%25B3%25D0%25B8%2520%25D1%2588%25D1%2583%25D1%258F
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - textbox "Введите слово или словосочетание" [ref=e23]: ритуальные услуги шуя
+        - button [ref=e26] [cursor=pointer]
+      - generic [ref=e27]:
+        - generic [ref=e29] [cursor=pointer]: Топы запросов
+        - generic [ref=e32] [cursor=pointer]: Динамика
+        - generic [ref=e35] [cursor=pointer]: Регионы
+        - generic [ref=e38] [cursor=pointer]: Сайты по запросу
+      - generic [ref=e40]:
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - radiogroup [ref=e45]:
+              - generic [ref=e46]:
+                - radio "Популярные" [checked] [ref=e47]
+                - generic: Популярные
+              - generic [ref=e48] [cursor=pointer]:
+                - radio "Похожие" [ref=e49]
+                - generic: Похожие
+            - button "Все регионы" [ref=e52] [cursor=pointer]:
+              - generic: Все регионы
+          - generic [ref=e55]:
+            - generic [ref=e56] [cursor=pointer]:
+              - generic [ref=e57]:
+                - checkbox "Десктопы" [checked] [ref=e58]
+                - generic:
+                  - generic:
+                    - img
+              - text: Десктопы
+            - generic [ref=e59] [cursor=pointer]:
+              - generic [ref=e60]:
+                - checkbox "Cмартфоны" [checked] [ref=e61]
+                - generic:
+                  - generic:
+                    - img
+              - text: Cмартфоны
+            - generic [ref=e62] [cursor=pointer]:
+              - generic [ref=e63]:
+                - checkbox "Планшеты" [checked] [ref=e64]
+                - generic:
+                  - generic:
+                    - img
+              - text: Планшеты
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - generic [ref=e68]:
+              - generic [ref=e69]: Общее число запросов
+              - generic [ref=e77]: ритуальные услуги шуя
+              - generic [ref=e79]: "за 02.09.2025 – 02.10.2025: 110"
+            - button "Скачать" [ref=e82] [cursor=pointer]:
+              - generic: Скачать
+          - table [ref=e86]:
+            - rowgroup [ref=e87]:
+              - row "Формулировка Число запросов" [ref=e88]:
+                - columnheader "Формулировка" [ref=e89]:
+                  - generic [ref=e91]: Формулировка
+                - columnheader "Число запросов" [ref=e92] [cursor=pointer]:
+                  - generic [ref=e93]:
+                    - generic [ref=e94]: Число
+                    - generic [ref=e95]: запросов
+            - rowgroup [ref=e97]:
+              - row "шуя ритуальные услуги 110" [ref=e98]:
+                - cell "шуя ритуальные услуги" [ref=e99]:
+                  - link "шуя ритуальные услуги" [ref=e100] [cursor=pointer]:
+                    - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D1%88%D1%83%D1%8F%20%D1%80%D0%B8%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8
+                - cell "110" [ref=e101]
+              - row "ритуальные услуги век шуя 17" [ref=e102]:
+                - cell "ритуальные услуги век шуя" [ref=e103]:
+                  - link "ритуальные услуги век шуя" [ref=e104] [cursor=pointer]:
+                    - /url: https://wordstat.yandex.com/?region=all&view=table&words=%D1%80%D0%B8%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8%20%D0%B2%D0%B5%D0%BA%20%D1%88%D1%83%D1%8F
+                - cell "17" [ref=e105]
+    - generic [ref=e106]:
+      - generic [ref=e107]:
+        - text: При использовании материалов с этой страницы обязательна ссылка на
+        - link "Яндекс" [ref=e108] [cursor=pointer]:
+          - /url: https://ya.ru
+      - generic [ref=e109]:
+        - link "Помощь" [ref=e110] [cursor=pointer]:
+          - /url: https://yandex.ru/support2/wordstat/ru/
+        - link "Пользовательское соглашение" [ref=e111] [cursor=pointer]:
+          - /url: https://yandex.ru/legal/rules/
+        - link "Тур по интерфейсу" [ref=e112] [cursor=pointer]:
+          - /url: https://yandex.com/support2/wordstat/ru/content/api-wordstat
+        - link "API" [ref=e113] [cursor=pointer]:
+          - /url: https://yandex.com/support2/wordstat/ru/content/api-wordstat
+      - generic [ref=e114]:
+        - link [ref=e116] [cursor=pointer]:
+          - /url: https://www.yandex.ru/portal/set/lang/
+        - generic [ref=e118]:
+          - text: ©
+          - generic [ref=e119]: 2009–2025
+          - text: ООО «
+          - link "ЯНДЕКС" [ref=e120] [cursor=pointer]:
+            - /url: https://ya.ru
+          - text: »
+  - img
+  - dialog "Поисковая строка" [ref=e122]:
+    - text: 1/21
+    - generic [ref=e123]:
+      - banner [ref=e124]:
+        - heading "Поисковая строка" [level=3] [ref=e125]
+        - button "Close Tour" [ref=e126] [cursor=pointer]: ×
+      - generic [ref=e128]:
+        - text: Для начала нужно ввести запрос, по которому вы хотите получить данные. Вы можете использовать специальные
+        - link "операторы" [ref=e129] [cursor=pointer]:
+          - /url: https://yandex.ru/support2/wordstat/ru/content/operators
+        - text: ", чтобы уточнить запрос."
+      - contentinfo [ref=e130]:
+        - button "Дальше" [active] [ref=e131] [cursor=pointer]
