@@ -136,7 +136,7 @@ export const initYandexGoals = () => {
   // 2. ПОСТРОЕНИЕ МАРШРУТА - клик по ссылкам на Яндекс.Карты с текстом "Маршрут"
   document.addEventListener('click', (e) => {
     const link = e.target.closest('a[href*="yandex.ru/maps"]');
-    if (link && link.textContent.toLowerCase().includes('маршрут')) {
+    if (link && link.textContent && link.textContent.toLowerCase().includes('маршрут')) {
       const url = link.getAttribute('href');
       // Определяем офис по контексту
       const officeContainer = link.closest('.contacts-info__item, [class*="office"]');
