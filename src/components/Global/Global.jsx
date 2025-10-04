@@ -456,7 +456,9 @@ const Global = ({ children, seo = {}, pageClass = "" }) => {
 
     jsonLdScript = document.createElement("script");
     jsonLdScript.type = "application/ld+json";
-    jsonLdScript.textContent = JSON.stringify(structuredData);
+    // Safari-safe: используем createTextNode вместо textContent для избежания парсинга как JS
+    const jsonText = document.createTextNode(JSON.stringify(structuredData));
+    jsonLdScript.appendChild(jsonText);
     document.head.appendChild(jsonLdScript);
   }, [
     title,
